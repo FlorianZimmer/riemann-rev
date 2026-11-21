@@ -526,7 +526,7 @@ def build() -> str:
         "backwards, from the theorem to its input. The two dashed arrows are the places where the proof has also "
         "been machine-checked in isolation, as an implication from explicitly stated premises.\n")
     colour = {s["id"]: s["color"] for s in model["strata"]}
-    add("```mermaid\nflowchart TB\n"
+    add("```mermaid\n%%{init: {\"flowchart\": {\"wrappingWidth\": 460}}}%%\nflowchart TB\n"
         '  S7["<b>7 · Automorphic foundation</b><br/>Galois representations of automorphic forms"]\n'
         '  S6["<b>6 · Iwasawa theory</b><br/>cohomology bounded on a whole window"]\n'
         '  S4["<b>4 · Chain of theta lifts</b><br/>divisibility against size: a slope inequality"]\n'
@@ -572,7 +572,7 @@ def build() -> str:
         add(f'### Step {s["n"]}: {s["title"]}\n')
         add(s["text"] + "\n")
         add("```math\n" + s["math"] + "\n```\n")
-        add("<sub>" + s["where"] + "</sub>\n")
+        add("**Notation.** " + s["where"] + "\n")
         names = " · ".join(f'{comps[c]["n"]}. {comps[c]["title"]} ({tier_text(comps[c]["tier"])})' for c in s["comps"])
         add(f'**Proved in Lean at:** {lean_links(s["lean"])}  \n'
             f'**Components of the map:** {names}  \n'
@@ -753,8 +753,16 @@ def build() -> str:
 
 
 def mathsafe(text: str) -> str:
-    """Write < and > as \\lt and \\gt inside mathematics (GitHub otherwise escapes some of them twice)."""
-    fix = lambda m: m.group(0).replace("<", "\\lt ").replace(">", "\\gt ")
+    """Adapt the mathematics to GitHub's renderer, which turns TeX into MathML and lets the browser
+    draw it: < and > as \\lt and \\gt (some are otherwise escaped twice); no \\operatorname, which
+    GitHub refuses ("macro not allowed"); and an explicit thin space after a function name such as
+    \\log when a letter, digit or symbol follows, because browsers put no space there."""
+    def fix(m):
+        seg = m.group(0).replace("<", "\\lt ").replace(">", "\\gt ")
+        seg = re.sub(r"\\operatorname\{([A-Za-z]+)\}(?=[A-Za-z])", r"\\mathrm{\1}\\,", seg)
+        seg = re.sub(r"\\operatorname\{([A-Za-z]+)\}", r"\\mathrm{\1}", seg)
+        return re.sub(r"\\(log|exp|max|min)(?![A-Za-z])\s*(?=[A-Za-z0-9]|\\(?!bigl|Bigl|left|lvert|,|;|!)[A-Za-z])",
+                      r"\\\1\\,", seg)
     text = re.sub(r"```math\n.*?\n```", fix, text, flags=re.S)
     inline = lambda m: "$`" + fix(m)[1:-1] + "`$"
     return re.sub(r"(?<![\\$`\w])\$(?![\s$`])[^$\n`]*?(?<![\s\\])\$(?![\w$])", inline, text)
@@ -762,6 +770,9 @@ def mathsafe(text: str) -> str:
 
 def problems(text: str) -> list[str]:
     out = []
+    refused = sorted(set(re.findall(r"\\(?:operatorname|href|require|newcommand|def|unicode|class|style)\b", text)))
+    if refused:
+        out.append("TeX macros that GitHub refuses: " + ", ".join(refused))
     if re.search(r"private:" + "//", text):
         out.append("a link into a private place")
     for target in sorted(set(re.findall(r"\]\((?!https?://|#)([^)\s]+)\)", text) + re.findall(r'(?:src|href)="(?!https?://|#)([^"]+)"', text))):

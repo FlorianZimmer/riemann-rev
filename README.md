@@ -113,7 +113,7 @@ At Lean 4.33.1 we checked 24 named original results and 21 reading deductions ac
 
 ## The theorem
 
-Throughout, $`s`$ is a complex number and $`\operatorname{Re}s`$ its real part. The Riemann zeta function and the $`L`$-function of a Dirichlet character $`\chi`$ modulo $`N`$ (a function $`\chi\colon\mathbb Z\to\mathbb C`$ with $`\chi(mn)=\chi(m)\chi(n)`$, $`\chi(n+N)=\chi(n)`$, and $`\chi(n)\ne0`$ exactly when $`n`$ is coprime to $`N`$) are defined for $`\operatorname{Re}s\gt 1`$ by
+Throughout, $`s`$ is a complex number and $`\mathrm{Re}\,s`$ its real part. The Riemann zeta function and the $`L`$-function of a Dirichlet character $`\chi`$ modulo $`N`$ (a function $`\chi\colon\mathbb Z\to\mathbb C`$ with $`\chi(mn)=\chi(m)\chi(n)`$, $`\chi(n+N)=\chi(n)`$, and $`\chi(n)\ne0`$ exactly when $`n`$ is coprime to $`N`$) are defined for $`\mathrm{Re}\,s\gt 1`$ by
 
 ```math
 \zeta(s)=\sum_{n=1}^{\infty}\frac1{n^{s}}=\prod_{p\ \mathrm{prime}}\frac1{1-p^{-s}},\qquad\qquad L(s,\chi)=\sum_{n=1}^{\infty}\frac{\chi(n)}{n^{s}}=\prod_{p\ \mathrm{prime}}\frac1{1-\chi(p)\,p^{-s}},
@@ -124,15 +124,15 @@ and extend to analytic functions of all complex $`s`$, except for a simple pole 
 > **Theorem** (announced by L. Alpöge; the formal statements are those of the Lean archive). Let $`N\ge1`$ be an integer and let $`\chi`$ be **any** Dirichlet character modulo $`N`$. Then the following hold.
 
 ```math
-\begin{aligned}&\textbf{(1)}\quad L(s,\chi)\neq0\quad\text{for every }s\in\mathbb C\text{ with }\operatorname{Re}s\gt \tfrac12\qquad(\text{and }s\neq1\text{ if }\chi\text{ is principal});\\[6pt]&\textbf{(2)}\quad L(s,\chi)=0\ \text{ and }\ 0\lt \operatorname{Re}s\lt 1\quad\Longrightarrow\quad\operatorname{Re}s=\tfrac12;\\[6pt]&\textbf{(3)}\quad \zeta(s)=0,\ \ s\notin\{-2,-4,-6,\dots\},\ \ s\neq1\quad\Longrightarrow\quad\operatorname{Re}s=\tfrac12 .\end{aligned}
+\begin{aligned}&\textbf{(1)}\quad L(s,\chi)\neq0\quad\text{for every }s\in\mathbb C\text{ with }\mathrm{Re}\,s\gt \tfrac12\qquad(\text{and }s\neq1\text{ if }\chi\text{ is principal});\\[6pt]&\textbf{(2)}\quad L(s,\chi)=0\ \text{ and }\ 0\lt \mathrm{Re}\,s\lt 1\quad\Longrightarrow\quad\mathrm{Re}\,s=\tfrac12;\\[6pt]&\textbf{(3)}\quad \zeta(s)=0,\ \ s\notin\{-2,-4,-6,\dots\},\ \ s\neq1\quad\Longrightarrow\quad\mathrm{Re}\,s=\tfrac12 .\end{aligned}
 ```
 
 **(1)** says that there are no zeros to the right of the critical line (the pole of a principal character at $`s=1`$ is not a zero and is set aside). **(2)** says that the zeros in the critical strip lie on the critical line. **(3)** is the Riemann hypothesis itself, the case $`N=1`$: every zero of $`\zeta`$ other than the trivial zeros $`-2,-4,-6,\dots`$ has real part $`\tfrac12`$.
 
-Statements (1) and (2), for all $`N`$ and $`\chi`$, are the generalized Riemann hypothesis for Dirichlet $`L`$-functions. For the primes, the Riemann hypothesis is equivalent to the sharpest possible form of the prime number theorem: with $`\pi(x)`$ the number of primes up to $`x`$ and $`\operatorname{li}(x)=\int_0^x dt/\log t`$ (Schoenfeld, 1976),
+Statements (1) and (2), for all $`N`$ and $`\chi`$, are the generalized Riemann hypothesis for Dirichlet $`L`$-functions. For the primes, the Riemann hypothesis is equivalent to the sharpest possible form of the prime number theorem: with $`\pi(x)`$ the number of primes up to $`x`$ and $`\mathrm{li}(x)=\int_0^x dt/\log\,t`$ (Schoenfeld, 1976),
 
 ```math
-\bigl\lvert\pi(x)-\operatorname{li}(x)\bigr\rvert\ \lt \ \frac1{8\pi}\,\sqrt x\,\log x\qquad\text{for all }x\ge2657 .
+\bigl\lvert\pi(x)-\mathrm{li}(x)\bigr\rvert\ \lt \ \frac1{8\pi}\,\sqrt x\,\log\,x\qquad\text{for all }x\ge2657 .
 ```
 
 **The five formal statements.** The archive exports exactly five theorems; all five follow from statement (1). Each name links to its line in the public mirror of the archive.
@@ -186,7 +186,7 @@ def PrimitiveDirichletLZerosOnLine : Prop :=
 <details>
 <summary><b>Fine print: what is and is not claimed</b></summary>
 
-- The modulus $`N`$ is any positive integer and $`\chi`$ any character modulo $`N`$, primitive or not. An imprimitive character has additional zeros on the line $`\operatorname{Re}s=0`$, coming from finitely many Euler factors; they lie outside the open strip of statement (2) and to the left of the half-plane of statement (1).
+- The modulus $`N`$ is any positive integer and $`\chi`$ any character modulo $`N`$, primitive or not. An imprimitive character has additional zeros on the line $`\mathrm{Re}\,s=0`$, coming from finitely many Euler factors; they lie outside the open strip of statement (2) and to the left of the half-plane of statement (1).
 - The statements concern Dirichlet $`L`$-functions only. The announcement expects an extension to further $`L`$-functions; the archive contains no theorem about them.
 - The announcement is a claim by its author. The formal statements above are what the proof checkers have accepted; see the dashboard for by whom, when and with which caveats.
 
@@ -196,9 +196,9 @@ def PrimitiveDirichletLZerosOnLine : Prop :=
 
 <img src="assets/figures/strip.svg" align="right" width="46%" alt="The critical strip: the first zeros of the zeta function, computed, on the line Re s = 1/2; a hypothetical zero off the line and its mirror image.">
 
-**Primes and the zeta function.** The primes $`2,3,5,7,11,\dots`$ thin out in a regular way: near a large number $`x`$ about one number in $`\log x`$ is prime. In 1859 Riemann showed that the fine structure of this pattern is governed by a single function, $`\zeta(s)`$, and more precisely by the complex numbers $`s`$ where it vanishes, its *zeros*.
+**Primes and the zeta function.** The primes $`2,3,5,7,11,\dots`$ thin out in a regular way: near a large number $`x`$ about one number in $`\log\,x`$ is prime. In 1859 Riemann showed that the fine structure of this pattern is governed by a single function, $`\zeta(s)`$, and more precisely by the complex numbers $`s`$ where it vanishes, its *zeros*.
 
-**The hypothesis.** Apart from the trivial zeros $`-2,-4,-6,\dots`$, all zeros of $`\zeta`$ lie in the strip $`0\lt \operatorname{Re}s\lt 1`$. The Riemann hypothesis (RH) says that they all lie exactly in the middle of it, on the *critical line* $`\operatorname{Re}s=\tfrac12`$. Enormous numbers of zeros have been computed, all on the line; the figure shows the first ten. A proof must exclude every zero off the line, for ever.
+**The hypothesis.** Apart from the trivial zeros $`-2,-4,-6,\dots`$, all zeros of $`\zeta`$ lie in the strip $`0\lt \mathrm{Re}\,s\lt 1`$. The Riemann hypothesis (RH) says that they all lie exactly in the middle of it, on the *critical line* $`\mathrm{Re}\,s=\tfrac12`$. Enormous numbers of zeros have been computed, all on the line; the figure shows the first ten. A proof must exclude every zero off the line, for ever.
 
 **Why it matters.** RH is equivalent to the statement that the primes are distributed as regularly as they possibly can be: the error in the prime number theorem is of the order of $`\sqrt x`$, no larger. Hundreds of theorems in number theory have been proved *assuming* RH or its generalization.
 
@@ -215,6 +215,7 @@ def PrimitiveDirichletLZerosOnLine : Prop :=
 The diagram shows the flow of the argument from its arithmetic input to the theorem; the numbers refer to the steps below, which are numbered as in the [guide](guide/proof-guide.pdf) and read the proof backwards, from the theorem to its input. The two dashed arrows are the places where the proof has also been machine-checked in isolation, as an implication from explicitly stated premises.
 
 ```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 460}}}%%
 flowchart TB
   S7["<b>7 · Automorphic foundation</b><br/>Galois representations of automorphic forms"]
   S6["<b>6 · Iwasawa theory</b><br/>cohomology bounded on a whole window"]
@@ -274,13 +275,13 @@ flowchart TB
 
 ### Step 1: Reflection
 
-An $`L`$-function has a symmetry, its *functional equation*, which exchanges $`s`$ and $`1-s`$. A zero with $`\operatorname{Re}s\lt \tfrac12`$ would therefore produce a zero with $`\operatorname{Re}s\gt \tfrac12`$. So it is enough to prove that there are **no zeros to the right of the line**. A second classical step passes from the *primitive* characters to all characters, whose $`L`$-functions differ only by finitely many harmless factors.
+An $`L`$-function has a symmetry, its *functional equation*, which exchanges $`s`$ and $`1-s`$. A zero with $`\mathrm{Re}\,s\lt \tfrac12`$ would therefore produce a zero with $`\mathrm{Re}\,s\gt \tfrac12`$. So it is enough to prove that there are **no zeros to the right of the line**. A second classical step passes from the *primitive* characters to all characters, whose $`L`$-functions differ only by finitely many harmless factors.
 
 ```math
-\Lambda(s,\chi)=W(\chi)\,\Lambda(1-s,\bar\chi)\qquad\Longrightarrow\qquad\text{it suffices that } L(s,\psi)\neq0\ \text{ for }\operatorname{Re}s\gt \tfrac12,\ \psi\text{ primitive.}
+\Lambda(s,\chi)=W(\chi)\,\Lambda(1-s,\bar\chi)\qquad\Longrightarrow\qquad\text{it suffices that } L(s,\psi)\neq0\ \text{ for }\mathrm{Re}\,s\gt \tfrac12,\ \psi\text{ primitive.}
 ```
 
-<sub>$`\Lambda(s,\chi)`$ is $`L(s,\chi)`$ completed by its Gamma factor, $`W(\chi)`$ a complex number of absolute value $`1`$, $`\bar\chi`$ the complex conjugate character and $`\psi`$ any primitive character.</sub>
+**Notation.** $`\Lambda(s,\chi)`$ is $`L(s,\chi)`$ completed by its Gamma factor, $`W(\chi)`$ a complex number of absolute value $`1`$, $`\bar\chi`$ the complex conjugate character and $`\psi`$ any primitive character.
 
 **Proved in Lean at:** all characters [`imprimitive`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/Imprimitive.lean#L5-L35) · reflection [`Claim.strip`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L59-L73) · reflection for ζ [`rh_of_right`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/GammaFactorNonvanishing/RhOfRight.lean#L5-L62)  
 **Components of the map:** 1. The five endpoints (✅ Checked by two kernels) · 2. Reflection (✅ Kernel-checked at the archive pin) · 3. Conductor descent (✅ Kernel-checked at the archive pin)  
@@ -291,10 +292,10 @@ An $`L`$-function has a symmetry, its *functional equation*, which exchanges $`s
 Instead of counting primes one weighs each prime power $`n\le y`$ by a *ramp* $`y/n-1`$ and subtracts the expected main term. The resulting function $`G(y)`$ is of size $`\sqrt y`$ exactly when the Riemann hypothesis holds, because every zero $`\rho`$ of $`\zeta`$ contributes an oscillating term $`y^{\rho}`$. For a Dirichlet character $`\chi`$ there is an analogous sum $`g_\chi(y)`$.
 
 ```math
-G(y)=\sum_{n\le y}\Lambda(n)\Bigl(\frac yn-1\Bigr)-y\,(\log y-1-\gamma)=\log 2\pi-\sum_{\rho}\frac{y^{\rho}}{\rho(\rho-1)}+O(y^{-2})
+G(y)=\sum_{n\le y}\Lambda(n)\Bigl(\frac yn-1\Bigr)-y\,(\log\,y-1-\gamma)=\log\,2\pi-\sum_{\rho}\frac{y^{\rho}}{\rho(\rho-1)}+O(y^{-2})
 ```
 
-<sub>$`\Lambda(n)=\log p`$ if $`n`$ is a power of the prime $`p`$ and $`0`$ otherwise, $`\gamma`$ is Euler's constant, and $`\rho`$ runs over the zeros of $`\zeta`$ in the critical strip.</sub>
+**Notation.** $`\Lambda(n)=\log\,p`$ if $`n`$ is a power of the prime $`p`$ and $`0`$ otherwise, $`\gamma`$ is Euler's constant, and $`\rho`$ runs over the zeros of $`\zeta`$ in the critical strip.
 
 **Proved in Lean at:** the two sums [`Deduction.G`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/CharFamily.lean#L10-L45) · transform of the ramp [`MellinRamp`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/MellinRamp.lean#L10-L32) · poles and residues [`poleData`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData.lean#L248-L259)  
 **Components of the map:** 4. The centered prime sum (✅ Kernel-checked at the archive pin) · 5. Mellin transform and positive residues (✅ Kernel-checked at the archive pin)  
@@ -308,7 +309,7 @@ This is the analytic heart, and it is elementary to state. One does not need $`G
 (\star)\qquad\text{for every small }\varepsilon\gt 0\text{ there are arbitrarily large }Y\text{ with }\ G_\psi(x)\le x^{1/2+9\varepsilon}\ \text{ for all }x\in[Y,Y^{3/2}]
 ```
 
-<sub>$`\psi`$ is the primitive character under study and $`o`$ its order; $`G_\psi`$ is $`G`$ plus $`1/(3o+1)`$ times the real parts of the sums $`g_\chi`$ for the other powers $`\chi`$ of $`\psi`$; $`\varepsilon`$ is chosen after the hypothetical zero.</sub>
+**Notation.** $`\psi`$ is the primitive character under study and $`o`$ its order; $`G_\psi`$ is $`G`$ plus $`1/(3o+1)`$ times the real parts of the sums $`g_\chi`$ for the other powers $`\chi`$ of $`\psi`$; $`\varepsilon`$ is chosen after the hypothetical zero.
 
 **Proved in Lean at:** the criterion [`zeroFree_of_rpow_window`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ZeroFreeOfRpowWindow.lean#L11-L14) · the order of choices [`level_of_tiedWin`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/TopWin.lean#L68-L81), [`zeroFreeAll_of_topG`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean#L26-L34)  
 **Components of the map:** 6. The window criterion (✅ Checked by two kernels) · 7. The order of choices (✅ Kernel-checked at the archive pin)  
@@ -322,7 +323,7 @@ Where can an *upper* bound for a sum over primes come from? From divisibility. A
 \begin{aligned}\frac1b\Bigl(\mathrm{ASK}(a)-\mathrm{MAIN}(a)\Bigr)\ &\le\ x^{O(\varepsilon)}\Bigl(\frac xm+m+\sqrt x\Bigr),\\[6pt]\mathrm{ASK}(a)-\mathrm{MAIN}(a)\ &=\ w\,\bigl(G(y)-g_{\chi_{-d}}(y)\bigr)\qquad\text{for equal weights } w,\ \text{with } y=a/w.\end{aligned}
 ```
 
-<sub>$`x`$ is the point at which the bound is wanted and $`m`$ the number of lifts; $`a\gt 0`$ is a size parameter (the *height*), and $`w`$, $`b`$ are weights with $`a/b\approx x`$. $`\mathrm{ASK}(a)=\sum_n\Lambda(n)\,(1-\chi_{-d}(n))\,\max(a/n-w_n,0)`$ measures the divisibility gained, $`\mathrm{MAIN}(a)=a\,(\log a-1-\gamma+\tfrac{L'}{L}(1,\chi_{-d})-\overline{\log w})`$ is its expected size, and $`\chi_{-d}`$ is the quadratic character of $`K`$. $`G`$ and $`g_\chi`$ are the sums of step 2.</sub>
+**Notation.** $`x`$ is the point at which the bound is wanted and $`m`$ the number of lifts; $`a\gt 0`$ is a size parameter (the *height*), and $`w`$, $`b`$ are weights with $`a/b\approx x`$. $`\mathrm{ASK}(a)=\sum_n\Lambda(n)\,(1-\chi_{-d}(n))\,\max(a/n-w_n,0)`$ measures the divisibility gained, $`\mathrm{MAIN}(a)=a\,(\log\,a-1-\gamma+\tfrac{L'}{L}(1,\chi_{-d})-\overline{\log\,w})`$ is its expected size, and $`\chi_{-d}`$ is the quadratic character of $`K`$. $`G`$ and $`g_\chi`$ are the sums of step 2.
 
 **Proved in Lean at:** hosts [`IsChiField`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean#L19-L25) · integrality [`ChainInt`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/ThetaLiftIndependence/Statement.lean#L40-L57) · local divisibility [`key_minor_dvd`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/SharpRestriction/GrowthBounds/CoarseMultiplicity/KeyMinorDvd.lean#L132-L155) · slopes [`slopeInequality_of`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/LatticeSlopes/LatticeSlopesProofs/SlopeInequality.lean#L111-L125) · periods [`chowla_selberg_period`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicSpectrum/Proofs/GeometryProofs/ChowlaSelbergPeriodStatement.lean#L9-L10) · the two sides [`ASK, MAIN`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/SizeWindowBrackets/FirstPrimeNeSecondPrime.lean#L72-L92) · sizes [`RankVal`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AbelianVarietyTheory/Definitions/GlobalTwisting/PairRowIffQdRows.lean#L28-L32) · the outcome [`TopG`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean#L12-L14)  
 **Components of the map:** 9. The geometric family and the theta chain (🟡 Partly checked)  
@@ -333,10 +334,10 @@ Where can an *upper* bound for a sum over primes come from? From divisibility. A
 The inequality of step 4 involves the wrong characters, and with a minus sign. Fourier analysis on the Galois group of the auxiliary field, with deliberately unequal weights, isolates the character $`\psi`$ under study and its powers, with coefficients that are positive *by design*. The remaining unwanted characters are removed with the help of two auxiliary primes $`q`$ and $`d`$, which an averaging argument allows one to choose so that the corresponding sums are small. The result is statement $`(\star)`$ of step 3.
 
 ```math
-\mathrm{ASK}(a)-\mathrm{MAIN}(a)=\frac1{\lvert\Phi\rvert}\sum_{\chi}\ \sum_{\sigma\notin\Phi}\overline{\chi(\sigma)}\;w_\sigma\;g_\chi\!\Bigl(\frac a{w_\sigma}\Bigr),\qquad\Phi=\operatorname{Gal}(E/K)
+\mathrm{ASK}(a)-\mathrm{MAIN}(a)=\frac1{\lvert\Phi\rvert}\sum_{\chi}\ \sum_{\sigma\notin\Phi}\overline{\chi(\sigma)}\;w_\sigma\;g_\chi\!\Bigl(\frac a{w_\sigma}\Bigr),\qquad\Phi=\mathrm{Gal}(E/K)
 ```
 
-<sub>$`E`$ is the auxiliary abelian number field containing $`K`$, built from $`\psi`$ and the two primes; $`\chi`$ runs over the characters of $`\operatorname{Gal}(E/\mathbb Q)`$, $`\sigma`$ over its elements outside $`\Phi`$, and $`w_\sigma`$ are the weights; $`g_1=G`$.</sub>
+**Notation.** $`E`$ is the auxiliary abelian number field containing $`K`$, built from $`\psi`$ and the two primes; $`\chi`$ runs over the characters of $`\mathrm{Gal}(E/\mathbb Q)`$, $`\sigma`$ over its elements outside $`\Phi`$, and $`w_\sigma`$ are the weights; $`g_1=G`$.
 
 **Proved in Lean at:** Fourier identity [`ch_balance`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ChBalance.lean#L200-L222) · weights [`Frame.Shares`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean#L133-L141) · twisted characters [`BoundedCharsPointwise`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/Analytic.lean#L136-L156) · auxiliary primes [`QH.pairEx`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/MeanSquareBounds/pairEx.lean#L112-L169) · hosts at every scale [`supplyChi`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/SupplyChi.lean#L8-L16) · the thick set [`hostThickExists`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/FrobeniusOrbits/FrobeniusOrbitsProofs/ThickExists.lean#L181-L187) · conclusion [`core_gm`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean#L12-L74)  
 **Components of the map:** 8. The finite character comparison (✅ Kernel-checked at the archive pin) · 10. Hosts for every character (✅ Kernel-checked at the archive pin) · 12. Auxiliary primes and Behrend towers (✅ Kernel-checked at the archive pin)  
@@ -347,10 +348,10 @@ The inequality of step 4 involves the wrong characters, and with a minus sign. F
 The divisibility used in step 4 holds only up to a loss, which is measured by Galois cohomology groups of the kind that occur in Vandiver's conjecture. No vanishing is needed, only a bound for their total size that holds throughout a whole window. Iwasawa theory (the theorem of Ferrero and Washington) shows that only boundedly many *twists* are expensive, and a pigeonhole argument finds a window that avoids them all.
 
 ```math
-\sum_{\ell}\ \log\ell\sum_{1\le h\lt x^{401}}\operatorname{len}\,\text{Ш}^1_\ell(E,h)\ \le\ \exp\bigl(x^{\varepsilon}/2\bigr)\qquad\text{for all }x\in[Y,Y^2]
+\sum_{\ell}\ \log\,\ell\sum_{1\le h\lt x^{401}}\mathrm{len}\,\text{Ш}^1_\ell(E,h)\ \le\ \exp\bigl(x^{\varepsilon}/2\bigr)\qquad\text{for all }x\in[Y,Y^2]
 ```
 
-<sub>$`\ell`$ runs over all primes and $`h`$ over the twists; $`\text{Ш}^1_\ell(E,h)`$ is the group of Galois cohomology classes of $`E`$ with coefficients $`\mathbb Q_\ell/\mathbb Z_\ell(-h)`$ that are trivial at the places above $`\ell`$, and $`\operatorname{len}`$ its length; $`[Y,Y^2]`$ is the window.</sub>
+**Notation.** $`\ell`$ runs over all primes and $`h`$ over the twists; $`\text{Ш}^1_\ell(E,h)`$ is the group of Galois cohomology classes of $`E`$ with coefficients $`\mathbb Q_\ell/\mathbb Z_\ell(-h)`$ that are trivial at the places above $`\ell`$, and $`\mathrm{len}`$ its length; $`[Y,Y^2]`$ is the window.
 
 **Proved in Lean at:** the window [`VWinAt`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean#L44-L47) · interval lemma [`window1`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean#L6-L58)  
 **Components of the map:** 11. The cohomological window (🟡 Partly checked)  
@@ -361,10 +362,10 @@ The divisibility used in step 4 holds only up to a loss, which is measured by Ga
 Both the sizes in step 4 and the cohomology in step 6 are controlled by Galois representations attached to automorphic forms on $`\mathrm{GL}_n`$ over CM fields, a central object of the Langlands programme. The archive does not cite the literature for them: it contains its own formal construction, together with the other inputs of the final assembly.
 
 ```math
-r_\pi\colon\operatorname{Gal}(\overline E/E)\to\mathrm{GL}_n(\overline{\mathbb Q}_\ell),\qquad\iota\,\operatorname{charpoly}\,r_\pi(\mathrm{Frob}_v^{-1})=\prod_{\alpha}\bigl(X-q_v^{(n-1)/2}\alpha\bigr)
+r_\pi\colon\mathrm{Gal}(\overline E/E)\to\mathrm{GL}_n(\overline{\mathbb Q}_\ell),\qquad\iota\,\mathrm{charpoly}\,r_\pi(\mathrm{Frob}_v^{-1})=\prod_{\alpha}\bigl(X-q_v^{(n-1)/2}\alpha\bigr)
 ```
 
-<sub>$`\pi`$ is a cuspidal automorphic representation of $`\mathrm{GL}_n`$ over the CM field $`E`$ (regular algebraic and polarized), $`r_\pi`$ its $`\ell`$-adic Galois representation, $`\mathrm{Frob}_v`$ a Frobenius element, $`q_v`$ the size of the residue field, $`\alpha`$ the Satake parameters of $`\pi`$ at $`v`$, and $`\iota`$ a fixed isomorphism $`\overline{\mathbb Q}_\ell\cong\mathbb C`$.</sub>
+**Notation.** $`\pi`$ is a cuspidal automorphic representation of $`\mathrm{GL}_n`$ over the CM field $`E`$ (regular algebraic and polarized), $`r_\pi`$ its $`\ell`$-adic Galois representation, $`\mathrm{Frob}_v`$ a Frobenius element, $`q_v`$ the size of the residue field, $`\alpha`$ the Satake parameters of $`\pi`$ at $`v`$, and $`\iota`$ a fixed isomorphism $`\overline{\mathbb Q}_\ell\cong\mathbb C`$.
 
 **Proved in Lean at:** the Galois representations [`Row0b`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TypeConditions/WeightsConjBis.lean#L69-L73), [`galoisLocalGlobalStrong_recParameter`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean#L6-L6) · the final assembly [`every_character_of_literature_of_vWin`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L810-L813)  
 **Components of the map:** 13. The Galois row (🔵 Source-read) · 14. Seven inputs at the decisive call (🔵 Source-read)  
@@ -388,7 +389,7 @@ Independently of the complete proof, two implications were checked on their own,
 | --- | --- | --- | --- | --- | --- |
 | 1 | **The five endpoints** | The destination | Ordinary RH in Mathlib's own formulation, and Dirichlet GRH for every character of every positive modulus. | [`riemannHypothesis`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Main.lean#L4-L4) · [`riemannZeta_eq_zero_re`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Main.lean#L6-L6) · [`LFunction_ne_zero_of_half_lt_re`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Main.lean#L8-L8) | ✅ Checked by two kernels |
 | 2 | **Reflection** | The destination | A zero left of the critical line reflects to a zero right of it, so the right half-plane is all one has to clear. | [`rh_of_right`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/GammaFactorNonvanishing/RhOfRight.lean#L5-L62) · [`prim_reflect`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L42-L57) · [`strip`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L59-L73) | ✅ Kernel-checked at the archive pin |
-| 3 | **Conductor descent** | The destination | An imprimitive character differs from its primitive inducing character by finitely many Euler factors, none of which vanishes for $`\operatorname{Re}s\gt 0`$. | [`imprimitive`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/Imprimitive.lean#L5-L35) · [`prim_zero`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L23-L33) · [`factor_ne_zero`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L7-L21) | ✅ Kernel-checked at the archive pin |
+| 3 | **Conductor descent** | The destination | An imprimitive character differs from its primitive inducing character by finitely many Euler factors, none of which vanishes for $`\mathrm{Re}\,s\gt 0`$. | [`imprimitive`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/Imprimitive.lean#L5-L35) · [`prim_zero`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L23-L33) · [`factor_ne_zero`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L7-L21) | ✅ Kernel-checked at the archive pin |
 | 4 | **The centered prime sum** | The analytic engine | A ramp-weighted von Mangoldt sum, centered so that the main terms cancel exactly, and its positive combinations over a cyclic family of characters. | [`Gz`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/StatementOC.lean#L13-L13) · [`G / Gchi (CharFamily)`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/CharFamily.lean#L10-L45) · [`Gm`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean#L38-L38) | ✅ Kernel-checked at the archive pin |
 | 5 | **Mellin transform and positive residues** | The analytic engine | The Mellin transform of a ramp is $`n^{-s}/(s(s-1))`$; a zero of any family member becomes a pole whose residue cannot be cancelled, because the weights are positive. | [`MellinRamp`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/MellinRamp.lean#L10-L32) · [`mellinGchiOfNeOne`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/mellinGchiOfNeOne.lean#L116-L125) · [`poleData`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData.lean#L248-L259) | ✅ Kernel-checked at the archive pin |
 | 6 | **The window criterion** | The analytic engine | If a positive family's prime sum stays below $`Cy^\theta`$ throughout arbitrarily late windows $`[Y,Y^{1+\delta}]`$, none of its $`L`$-functions vanishes to the right of $`\theta`$. | [`zeroFree_of_rpow_window`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ZeroFreeOfRpowWindow.lean#L11-L14) · [`landau_window`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindow.lean#L83-L95) · [`isolation of an offending pole (proof)`](https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindow.lean#L83-L116) | ✅ Checked by two kernels |
@@ -455,7 +456,7 @@ What each command needs, and what it should print, is in [`BUILDING.md`](BUILDIN
 - *Status and verification records*: imported from the reading project's status record (as of 2026-11-20 23:51 UTC; imported 2026-11-21 00:17 UTC; 12 files with SHA-256 in [`PROVENANCE.json`](data/source/PROVENANCE.json)). 1 link into a private place was replaced by a neutral token on import; nothing else was altered.
 - *Statements about the Lean archive*: read at the source lines that are linked (107 pinned links). The guide lists, section by section, which declarations it relies on.
 - *Quotations of the announcement*: from its four pages, by entry number.
-- *Numbers in the figures*: computed by [`scripts/rhlib.py`](scripts/rhlib.py) and stored, with assertions, in [`assets/figures/facts.json`](assets/figures/facts.json). For instance the first zero of $`\zeta`$ is computed as $`14.134725`$, and $`\lvert G(y)-\log2\pi\rvert/\sqrt y`$ stays below $`0.023`$ for $`10\le y\le10^{7}`$, inside the band $`2+\gamma-\log4\pi=0.0462`$ that RH predicts.
+- *Numbers in the figures*: computed by [`scripts/rhlib.py`](scripts/rhlib.py) and stored, with assertions, in [`assets/figures/facts.json`](assets/figures/facts.json). For instance the first zero of $`\zeta`$ is computed as $`14.134725`$, and $`\lvert G(y)-\log\,2\pi\rvert/\sqrt y`$ stays below $`0.023`$ for $`10\le y\le10^{7}`$, inside the band $`2+\gamma-\log\,4\pi=0.0462`$ that RH predicts.
 
 **What this repository does not do.**
 
@@ -475,9 +476,9 @@ What each command needs, and what it should print, is in [`BUILDING.md`](BUILDIN
 
 | Term | Meaning |
 | --- | --- |
-| **Prime number theorem** | The number of primes up to $`x`$ is approximately $`x/\log x`$. The Riemann hypothesis is a statement about the size of the error in this approximation. |
+| **Prime number theorem** | The number of primes up to $`x`$ is approximately $`x/\log\,x`$. The Riemann hypothesis is a statement about the size of the error in this approximation. |
 | **Zeta function, $`\zeta(s)`$** | The function $`\sum_{n\ge1}n^{-s}`$, extended to all complex $`s\ne1`$. Its zeros control the distribution of the primes. |
-| **Critical strip, critical line** | The strip $`0\lt \operatorname{Re}s\lt 1`$, where all the interesting zeros lie, and its middle line $`\operatorname{Re}s=\tfrac12`$. |
+| **Critical strip, critical line** | The strip $`0\lt \mathrm{Re}\,s\lt 1`$, where all the interesting zeros lie, and its middle line $`\mathrm{Re}\,s=\tfrac12`$. |
 | **Dirichlet character, $`L(s,\chi)`$** | A periodic multiplicative function $`\chi`$ on the integers, and the series $`\sum\chi(n)n^{-s}`$ built from it. These govern the primes in arithmetic progressions. |
 | **GRH** | The generalized Riemann hypothesis. Here always in the form stated on this page: for Dirichlet $`L`$-functions. |
 | **Lean** | A proof assistant: a programming language in which statements and proofs are written so that a program can check every step. |
