@@ -487,8 +487,23 @@ PALETTE = {
 }
 
 
+SEMIBOLD = "semibold"      # the weight of titles and labels; plot_style() lowers it to "bold" where needed
+
+
+def _weight_for_titles(families: list[str]) -> str:
+    """"semibold" if the first font really has that weight, else "bold".
+
+    Where it is missing (DejaVu Sans, the only font of a fresh machine such as the one that builds the
+    site, has 400 and 700) newer versions of matplotlib answer the request with a warning on stderr,
+    which would be printed into the page. So the weight is never asked for unless it exists."""
+    from matplotlib import font_manager
+    weights = {str(f.weight).lower() for f in font_manager.fontManager.ttflist if f.name == families[0]}
+    return "semibold" if weights & {"600", "semibold", "demibold", "demi"} else "bold"
+
+
 def plot_style() -> None:
     """Matplotlib in the atlas palette; inline figures as SVG with live text."""
+    global SEMIBOLD
     import matplotlib as mpl
     try:
         from IPython import get_ipython
@@ -502,10 +517,11 @@ def plot_style() -> None:
     # an explicit list (not the generic family) enables per-glyph fallback to DejaVu Sans,
     # which has the tier icons; only installed families are named, so findfont stays silent
     families = [f for f in ("Inter", "Helvetica Neue", "Helvetica", "Arial") if f in have][:1] + ["DejaVu Sans"]
+    SEMIBOLD = _weight_for_titles(families)
     mpl.rcParams.update({
         "svg.fonttype": "none", "svg.hashsalt": "riemann-rev",
         "font.family": families,
-        "font.size": 10, "axes.titlesize": 11, "axes.titleweight": "semibold", "axes.labelsize": 10,
+        "font.size": 10, "axes.titlesize": 11, "axes.titleweight": SEMIBOLD, "axes.labelsize": 10,
         "axes.edgecolor": tokens.FAINT, "axes.labelcolor": tokens.TEXT, "axes.titlecolor": tokens.INK,
         "xtick.color": tokens.MUTED, "ytick.color": tokens.MUTED, "text.color": tokens.TEXT,
         "axes.spines.top": False, "axes.spines.right": False,

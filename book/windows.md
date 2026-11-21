@@ -107,7 +107,7 @@ for a in starts:
     ax.text(float(a + B * a) / 2, 0.93, f"[{a}, {B * a})", ha='center', va='bottom', fontsize=8.5, color=P['arith'])
 ax.add_patch(Rectangle((float(y), 0.28), float(y2 - y), 0.26, color=P['ok'], alpha=0.9))
 ax.text(float(y2) + 3, 0.41, f"[{y}, {y2}]  →  [Y, Y²] = [2^{y}, 2^{y2}]", va='center', fontsize=9,
-        color=P['ok'], fontweight='semibold')
+        color=P['ok'], fontweight=bd.SEMIBOLD)
 for i, (ceiling, live) in enumerate(trace):
     ax.plot([0, float(ceiling)], [0.12 - 0.08 * i] * 2, color=P['muted'], lw=2)
     ax.plot([float(ceiling)], [0.12 - 0.08 * i], 'o', color=P['muted'], ms=4)

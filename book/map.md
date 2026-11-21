@@ -111,9 +111,9 @@ for v, (x, y) in pos.items():
                                 fc=col + '1a', ec=col, lw=1.6, zorder=2))
     title = textwrap.fill(f"{c['n']}. {c['title']}", 24)
     ax.text(x - W / 2 + 0.05, y + H / 2 - 0.08, title, ha='left', va='top', fontsize=10.5,
-            color=P['ink'], fontweight='semibold', zorder=4, linespacing=1.15)
+            color=P['ink'], fontweight=bd.SEMIBOLD, zorder=4, linespacing=1.15)
     ax.text(x - W / 2 + 0.05, y - H / 2 + 0.07, f"{T['icon']} {bd.SHORT_TIER[c['tier']]}", ha='left',
-            va='bottom', fontsize=8.8, color=T['color'], zorder=4, fontweight='semibold')
+            va='bottom', fontsize=8.8, color=T['color'], zorder=4, fontweight=bd.SEMIBOLD)
     tags = [t for t, key in (('Z', 'cut-zeta'), ('D', 'cut-dirichlet')) if v in in_cut[key]]
     for k, t in enumerate(tags):
         tc = bd.tier(bd.cut('cut-zeta' if t == 'Z' else 'cut-dirichlet')['tier'])['color']
@@ -126,7 +126,7 @@ for k, sid in enumerate(bd.STRATUM_ORDER):
     ax.add_patch(FancyBboxPatch((-0.55, -7.55 + 0.32 * k), 0.16, 0.18, boxstyle='round,pad=0.01',
                                 fc=s['color'] + '1a', ec=s['color'], lw=1.4))
     ax.text(-0.33, -7.46 + 0.32 * k, s['title'], fontsize=9.4, va='center', color=P['text'])
-ax.text(-0.55, -7.55 + 0.32 * 4 + 0.02, 'Strata', fontsize=9.8, fontweight='semibold', color=P['ink'])
+ax.text(-0.55, -7.55 + 0.32 * 4 + 0.02, 'Strata', fontsize=9.8, fontweight=bd.SEMIBOLD, color=P['ink'])
 ax.text(-0.55, -6.05, 'Z: in the cut "prime windows ⇒ RH"\nD: in the cut "TopG ∧ VWinAt ⇒ RH ∧ GRH"',
         fontsize=9, color=P['text'], va='bottom', linespacing=1.4)
 ax.set_xlim(-0.62, 3.3)

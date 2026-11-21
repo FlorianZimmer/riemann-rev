@@ -11,7 +11,8 @@
     _site/book/                         the Jupyter Book (book/_build/html)
 
 Nothing is typed by hand: counts, the status line and its time come from the model. The script
-fails if a relative link of the home page or of the atlas does not resolve inside the site.
+fails if a relative link of the home page or of the atlas does not resolve inside the site, or if a
+computation of the book printed a warning into its page.
 """
 from __future__ import annotations
 
@@ -211,14 +212,19 @@ def main() -> int:
         shutil.copytree(book, OUT / "book", ignore=shutil.ignore_patterns(".doctrees", ".buildinfo"))
     (OUT / "index.html").write_text(home(has_book), encoding="utf-8")
 
+    noisy = []              # pages of the book into which a computation printed a warning
+    if has_book:
+        noisy = sorted(p.name for p in (OUT / "book").glob("*.html")
+                       if 'class="output stderr' in p.read_text(encoding="utf-8"))
     broken = relative_links(OUT / "index.html") + relative_links(OUT / "atlas" / "index.html")
     if not has_book:        # the link to the book is expected to be open until the book is built
         broken = [b for b in broken if "book/" not in b]
     files = [p for p in OUT.rglob("*") if p.is_file()]
     size = sum(p.stat().st_size for p in files) / 2**20
     print(f"site: _site/, {len(files)} files, {size:.1f} MiB, book {'included' if has_book else 'not built'}; "
-          f"served at {SITE}/" + ("" if not broken else " -- BROKEN LINKS: " + "; ".join(broken)))
-    return 1 if broken else 0
+          f"served at {SITE}/" + ("" if not broken else " -- BROKEN LINKS: " + "; ".join(broken))
+          + ("" if not noisy else " -- WARNINGS PRINTED INTO THE BOOK: " + ", ".join(noisy)))
+    return 1 if broken or noisy else 0
 
 
 if __name__ == "__main__":
