@@ -8,6 +8,7 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 book/_build/
+_site/
 book/_static/atlas/
 
 # LaTeX intermediates (the PDF itself is committed)

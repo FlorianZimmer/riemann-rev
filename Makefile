@@ -7,12 +7,13 @@
 #   guide    compile the guide to the proof (guide/proof-guide.pdf: every symbol defined, notation page)
 #   guide-gif  the same guide as an animated GIF, one frame per page (guide/proof-guide.gif)
 #   readme   regenerate README.md, the public dashboard, from the data
+#   site     assemble the web site in _site/ (home page, atlas, guide, blueprint, book)
 #   book     build the Jupyter Book (executes the notebooks)
 #   vault    regenerate the Obsidian vault and check its links
 #   mathlib  the Mathlib instantiation of the destination layer (runs on a cluster, see BUILDING.md)
 PY := python3 -B
 
-.PHONY: all data model figures lean atlas pdf guide guide-gif book vault readme check selftest mathlib clean
+.PHONY: all data model figures lean atlas pdf guide guide-gif book vault readme site check selftest mathlib clean
 
 all: model figures lean atlas pdf guide guide-gif book vault readme
 
@@ -46,6 +47,9 @@ guide-gif: guide
 
 readme: model
 	$(PY) scripts/build_readme.py
+
+site: atlas guide book
+	$(PY) scripts/build_site.py --require-book
 
 book: atlas
 	$(PY) scripts/sync_book_assets.py

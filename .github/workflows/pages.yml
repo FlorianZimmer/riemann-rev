@@ -1,0 +1,47 @@
+# Builds the web site on every push and publishes it with GitHub Pages: the home page, the atlas,
+# the guide, the blueprint, and the book, whose notebooks are all executed again (warnings are errors).
+name: site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    name: build the book and assemble the site
+    # not in a private copy of the repository (no free minutes there)
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: tools
+        run: python -m pip install --quiet "jupyter-book==1.0.4.post1" numpy matplotlib networkx ipykernel pillow
+      - name: build the book
+        run: jupyter-book build book/ --warningiserror --keep-going
+      - name: assemble the site
+        run: python -B scripts/build_site.py --require-book
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    name: publish
+    # the site belongs to the public repository; a copy of this workflow elsewhere only builds
+    if: github.repository == 'nasqret/riemann-rev' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

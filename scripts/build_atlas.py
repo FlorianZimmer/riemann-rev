@@ -617,7 +617,7 @@ def main() -> int:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The architecture of the announced proof of the Riemann hypothesis — an illustrated atlas</title>
-<meta name="description" content="An illustrated map and Lean blueprint of Levent Alpöge's announced proof of RH and Dirichlet GRH: fourteen components, two machine-checked cuts, 87 pinned declarations.">
+<meta name="description" content="An illustrated map and Lean blueprint of Levent Alpöge's announced proof of RH and Dirichlet GRH: {len(model["components"])} components, {len(model["cuts"])} implications checked in isolation, {n_decl} mapped declarations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>window.MathJax={{tex:{{inlineMath:[['$','$']],displayMath:[['$$','$$']]}},options:{{skipHtmlTags:['script','noscript','style','textarea','pre','code']}},chtml:{{scale:0.97}},startup:{{pageReady:()=>MathJax.startup.defaultPageReady().then(()=>window.dispatchEvent(new Event('mathjax-ready')))}}}};</script>
@@ -759,7 +759,7 @@ make check</pre><p class="small muted">Built {esc(built)}. Fonts and MathJax loa
   announcement and the Lean archive belong to their author; this atlas paraphrases them and links to immutable sources. It
   does not assert that the announced theorem is true.</div>
   <div><a href="../guide/proof-guide.pdf">Guide to the proof (PDF)</a><br><a href="../blueprint/atlas-blueprint.pdf">Blueprint PDF</a><br>
-  <a href="../lean/Atlas/Architecture.lean">Lean skeleton</a><br><a href="../README.md">Status dashboard (README)</a></div>
+  <!--site-links--><a href="../lean/Atlas/Architecture.lean">Lean skeleton</a><br><a href="../README.md">Status dashboard (README)</a></div>
   <div><a href="#top">Back to top ↑</a></div>
 </div></footer>
 

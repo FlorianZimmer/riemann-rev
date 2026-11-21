@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The architecture of the announced proof of the Riemann hypothesis — an illustrated atlas</title>
-<meta name="description" content="An illustrated map and Lean blueprint of Levent Alpöge's announced proof of RH and Dirichlet GRH: fourteen components, two machine-checked cuts, 87 pinned declarations.">
+<meta name="description" content="An illustrated map and Lean blueprint of Levent Alpöge's announced proof of RH and Dirichlet GRH: 14 components, 2 implications checked in isolation, 107 mapped declarations.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},chtml:{scale:0.97},startup:{pageReady:()=>MathJax.startup.defaultPageReady().then(()=>window.dispatchEvent(new Event('mathjax-ready')))}};</script>
@@ -443,7 +443,7 @@ make figures   # compute figures, assert facts
 make lean      # build the Lean library, axiom audit
 make atlas     # this page
 make pdf guide book
-make check</pre><p class="small muted">Built 2026-11-21T00:56:01+00:00. Fonts and MathJax load from a CDN; without a network the page
+make check</pre><p class="small muted">Built 2026-11-21T01:13:02+00:00. Fonts and MathJax load from a CDN; without a network the page
    still works with system fonts and TeX source for formulas.</p></div>
   </div>
   <h3 style="margin-top:22px">About the images</h3><ul class="small"><li><b>hero.</b> Computed: (G(y) - log 2pi)/sqrt(y) for 10 &lt;= y &lt;= 10^7, where G(y) = sum_{n&lt;=y} Lambda(n)(y/n-1) - y log y + (1+gamma) y. Dotted lines: +-(2+gamma-log 4pi), the band that RH forces. Shaded column: one power window [Y, Y^(3/2)], Y = 10^4, with an illustrative one-sided ceiling C y^theta (theta = 0.55) in the same normalization.</li><li><b>explicit-formula.</b> Computed: normalized G(y) from primes (amber) and the explicit formula with the first 100 zeta zeros (indigo), 100 &lt;= y &lt;= 2e6; dashed: the term a hypothetical zero at 0.62+40i would add (it grows like y^0.12).</li><li><b>strip.</b> Schematic plane with the computed first zeta zeros on the critical line; a hypothetical off-line zero rho and its mirror image 1 - conj(rho) under the functional equation.</li><li><b>ramp.</b> Computed. Left: the weighted ramps Lambda(n)(y/n-1)_+ for prime powers n &lt;= 13, each switching on at y = n with slope Lambda(n)/n. Right: their full sum minus y log y - (1+gamma) y, i.e. G(y), for 1 &lt;= y &lt;= 120; it hovers around log 2pi (dashed), the residue at s = 0.</li><li><b>spotlight.</b> Computed: kernels u^k e^{-u}/k! (normalized to peak 1) with k = ceil(1.25 U) for U = 20, 40, 80, 160 and the windows [U, 1.5 U] in u = log y; labels give the fraction of each kernel&#x27;s mass inside its window.</li><li><b>balance.</b> Left: exponents 1-a of x/m and a of m when m = x^a; the larger is smallest at a = 1/2. Right: exact staircase of the losses in units of epsilon, from the finite comparison to 1/2 + (e_D+e_L+7) eps = 1/2 + 9 eps for the source&#x27;s choice e_D = 2, e_L = 0.</li><li><b>windows.</b> Computed with the induction of UpperTheory.V.Win.window1 on the book&#x27;s example: forbidden logarithmic intervals [a, B a) for a = 8, 90 with B = 2 inside [0, 128]; the recursion lowers the ceiling 128 -&gt; 32 and returns [16, 32], i.e. [Y, Y^2] = [2^16, 2^32].</li><li><b>behrend.</b> Computed: the vectors of {0,1,2}^3 with squared norm 5 are the six permutations of (0,1,2); they lie on the circle where the sphere meets the plane x+y+z = 3. Their base-24 encodings avoid every relation j(s2-s1) = i(s3-s1) with 1 &lt;= |i|,|j| &lt;= 2, i != j: 1,440 checks.</li></ul>
@@ -454,7 +454,7 @@ make check</pre><p class="small muted">Built 2026-11-21T00:56:01+00:00. Fonts an
   announcement and the Lean archive belong to their author; this atlas paraphrases them and links to immutable sources. It
   does not assert that the announced theorem is true.</div>
   <div><a href="../guide/proof-guide.pdf">Guide to the proof (PDF)</a><br><a href="../blueprint/atlas-blueprint.pdf">Blueprint PDF</a><br>
-  <a href="../lean/Atlas/Architecture.lean">Lean skeleton</a><br><a href="../README.md">Status dashboard (README)</a></div>
+  <!--site-links--><a href="../lean/Atlas/Architecture.lean">Lean skeleton</a><br><a href="../README.md">Status dashboard (README)</a></div>
   <div><a href="#top">Back to top ↑</a></div>
 </div></footer>
 

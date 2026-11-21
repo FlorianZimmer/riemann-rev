@@ -26,6 +26,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_guide  # noqa: E402  (the table of cited Lean declarations is shared with the guide)
 
 REPO = "nasqret/riemann-rev"
+SITE = "https://nasqret.github.io/riemann-rev"      # GitHub Pages, built by .github/workflows/pages.yml
 ARCHIVE_URL = "https://alpo.ge/lean.tar.gz.part01"          # footnote 1 of the announcement: parts 01 to 14
 ICON = {"two-kernels": "✅", "checked": "✅", "partial": "🟡", "covered": "🟢", "read": "🔵", "reported": "↗️",
         "motivation": "⚪"}
@@ -281,7 +282,7 @@ def build() -> str:
     add("# The announced proof of the Riemann hypothesis\n")
     add("**A map, a guide and a verification dashboard for the formal proof announced by Levent Alpöge "
         "on 20 November 2026**\n")
-    add('<a href="guide/proof-guide.pdf"><img src="assets/figures/hero.svg" width="94%" '
+    add(f'<a href="{SITE}/"><img src="assets/figures/hero.svg" width="94%" '
         'alt="The centred prime sum (G(y) − log 2π)/√y computed for y up to ten million: it stays inside the band '
         'that the Riemann hypothesis predicts."></a>\n')
     row1 = [
@@ -299,9 +300,13 @@ def build() -> str:
         badge("Mathlib", pins["mathlib"][:8], "57606a", f'https://github.com/leanprover-community/mathlib4/tree/{pins["mathlib"]}'),
         f'<a href="https://github.com/{REPO}/actions/workflows/checks.yml"><img alt="checks of this repository" '
         f'src="https://github.com/{REPO}/actions/workflows/checks.yml/badge.svg"></a>',
+        f'<a href="https://github.com/{REPO}/actions/workflows/pages.yml"><img alt="build of the site" '
+        f'src="https://github.com/{REPO}/actions/workflows/pages.yml/badge.svg"></a>',
     ]
     add(" ".join(row1) + "\n")
     add(" ".join(row2) + "\n")
+    add(f"**Read it online:** [site]({SITE}/) · [atlas]({SITE}/atlas/) · [guide]({SITE}/guide/proof-guide.pdf) · "
+        f"[book]({SITE}/book/) · [blueprint]({SITE}/blueprint/atlas-blueprint.pdf)\n")
     add("[Status](#status-dashboard) · [The theorem](#the-theorem) · [New here?](#new-here-start-here) · "
         "[Route of the proof](#the-route-of-the-proof) · [Contents](#what-is-in-this-repository) · "
         "[Check it yourself](#check-it-yourself) · [Transparency](#transparency) · [FAQ](#questions-and-answers)\n")
@@ -403,7 +408,9 @@ def build() -> str:
         "and collected. Each time that record is imported, the model, the figures, the guide and this page are "
         "rebuilt (`make data && make all`), and one line is added to the log below "
         "([`data/sync-log.json`](data/sync-log.json), [`data/source/PROVENANCE.json`](data/source/PROVENANCE.json)). "
-        "The reading project itself is a private working copy; its public evidence is linked in the next table.\n")
+        "The reading project itself is a private working copy; its public evidence is linked in the next table. "
+        f"The [site]({SITE}/) is rebuilt from this repository on every push, the book with all its computations "
+        "executed again.\n")
     add(table(["Imported (UTC)", "Record as of (UTC)", "Headline of the record"],
               [[utc(e["imported_utc"]), utc(e["status_as_of"]), e["headline"]] for e in reversed(sync)]) + "\n")
 
@@ -606,19 +613,20 @@ def build() -> str:
 
     # ------------------------------------------------------------------ contents
     add("## What is in this repository\n")
-    preview = f"https://htmlpreview.github.io/?https://github.com/{REPO}/blob/main/atlas/index.html"
     add(table(["", "What", "Where"], [
         ["📄", "**The guide.** The whole argument in standard mathematical terminology: flow diagram, the theorem, the "
                "seven steps, and why each idea calls for the next. Every symbol is defined, and there is a page of notation.",
-         "[`guide/proof-guide.pdf`](guide/proof-guide.pdf) · [animated preview](guide/proof-guide.gif)"],
+         f"[**read online**]({SITE}/guide/proof-guide.pdf) · [`guide/proof-guide.pdf`](guide/proof-guide.pdf) · "
+         "[animated preview](guide/proof-guide.gif)"],
         ["🗺️", f"**The atlas.** An interactive map: the {len(comps)} components, a guided tour, the blueprint graph of "
                f"{n_decl} declarations with their dependencies, illustrated ideas and the verification ledger. One "
                "self-contained HTML file.",
-         f"[`atlas/index.html`](atlas/index.html) ([open in the browser]({preview}), or download and open it)"],
+         f"[**open the atlas**]({SITE}/atlas/) · [`atlas/index.html`](atlas/index.html)"],
         ["📘", "**The illustrated blueprint.** The same map as a PDF, with every declaration linked to its source line.",
+         f"[**read online**]({SITE}/blueprint/atlas-blueprint.pdf) · "
          "[`blueprint/atlas-blueprint.pdf`](blueprint/atlas-blueprint.pdf)"],
-        ["📓", "**The book.** Chapters with formulas and executed computations (Jupyter Book sources).",
-         "[`book/`](book/) · build with `make book`"],
+        ["📓", "**The book.** Chapters with formulas, figures and computations that are executed at every build.",
+         f"[**read the book**]({SITE}/book/) · sources in [`book/`](book/)"],
         ["🧩", "**A Lean skeleton of the argument.** Every component as an explicit hypothesis, and the proof that they "
                "compose; no imports, no axioms.",
          "[`lean/Atlas/Architecture.lean`](lean/Atlas/Architecture.lean)"],
@@ -749,8 +757,8 @@ def build() -> str:
         "- **Verification reports**: " + ", ".join(people) + ", and the reading project; "
         "each is cited with its source in the table of checks.\n"
         "- **Mathlib and Lean**: the Lean community and the Lean FRO.\n"
-        "- **Licence**: no licence has been chosen for this repository yet, so the usual copyright rules apply to "
-        "its texts, figures and scripts. Quoted Lean code and quotations of the announcement belong to their "
+        "- **Licence**: [0BSD](LICENSE). Everything original here (texts, figures, scripts, Lean files) may be used "
+        "for any purpose, without conditions. Quoted Lean code and quotations of the announcement belong to their "
         "authors.\n")
     add(f"<sub>Generated by <a href=\"scripts/build_readme.py\"><code>scripts/build_readme.py</code></a> from the record of "
         f"{as_of}. Do not edit this file by hand.</sub>\n")

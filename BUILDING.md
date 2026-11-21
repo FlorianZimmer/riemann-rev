@@ -29,7 +29,15 @@ Everything except the prose is generated. All commands are run from the reposito
 | `make guide-gif` | the guide as an animated GIF | `guide gif: … frames` |
 | `make book` | builds the Jupyter Book; notebooks are executed and contain assertions | `build succeeded` |
 | `make readme` | regenerates `README.md` from the data | `readme: README.md, … lines` |
+| `make site` | assembles the web site in `_site/`: home page, atlas, guide, blueprint, book | `site: _site/, … files` |
 | `make all` | all of the above in order | |
+
+## The web site
+
+The site at https://nasqret.github.io/riemann-rev/ is built by `.github/workflows/pages.yml` on every push:
+the book is built from its sources with every notebook executed (`jupyter-book build book/ --warningiserror`),
+`scripts/build_site.py` puts it next to the atlas, the guide and the blueprint and writes the home page, and
+GitHub Pages publishes the result. Locally, `make site` gives the same pages in `_site/`.
 
 ## The check against Mathlib
 
