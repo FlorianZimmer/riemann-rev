@@ -621,7 +621,7 @@ def main() -> int:
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script>window.MathJax={{tex:{{inlineMath:[['$','$']],displayMath:[['$$','$$']]}},options:{{skipHtmlTags:['script','noscript','style','textarea','pre','code']}},chtml:{{scale:0.97}},startup:{{pageReady:()=>MathJax.startup.defaultPageReady().then(()=>window.dispatchEvent(new Event('mathjax-ready')))}}}};</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>(function(){{var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js";document.head.appendChild(s);}})();</script>
 <style>{css}</style>
 </head>
 <body>
