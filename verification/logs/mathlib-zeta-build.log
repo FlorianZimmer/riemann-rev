@@ -1,0 +1,10 @@
+srun: job 26662752 queued and waiting for resources
+srun: job 26662752 has been allocated resources
+Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+prefetch: 12 s
+ℹ [3575/3576] Built AtlasZeta (881s)
+info: AtlasZeta.lean:176:0: 'Atlas.Zeta.rh_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: AtlasZeta.lean:177:0: 'Atlas.Zeta.reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: AtlasZeta.lean:178:0: 'Atlas.Zeta.riemannHypothesis_of_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (3576 jobs).
+exit=0

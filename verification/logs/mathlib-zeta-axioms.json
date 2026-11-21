@@ -1,0 +1,29 @@
+{
+  "lean": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "build": "passed",
+  "build_log_sha256": "7a1a596a80a199a30dacb8b0a15f641b4f20dd181d2188dcc2a9f148d27d3cbe",
+  "sources": {
+    "lean-mathlib/AtlasZeta.lean": "2c4ce0b13fdb587cd44cf25a61f1b670bfd31bcc62bf42cd7fc083a55f309723",
+    "lean/Atlas/Architecture.lean": "f80d1d7351d6cc6955a0b5e92c7735c1dfda97def8c43bb5afa4ddeccb202182",
+    "lean-mathlib/lake-manifest.json": "16339b85558d9c6a8b0bdfe1f3499a67208b9fe49e6c0be8d69780c7a2c53ef3"
+  },
+  "declarations": {
+    "Atlas.Zeta.rh_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Atlas.Zeta.reflection": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Atlas.Zeta.riemannHypothesis_of_right": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "problems": []
+}

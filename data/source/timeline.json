@@ -1,0 +1,214 @@
+{
+  "source": "src/remark.pdf",
+  "scope": "All numbered entries on physical pages 3–4. Relationships are source-level comparisons. Historical motivations may have no assigned Lean counterpart.",
+  "items": [
+    {
+      "number": 1,
+      "page": 3,
+      "topic": "Stepanov determinant",
+      "relation": "Historical motivation",
+      "anchor_ids": [],
+      "assessment": "The single-line entry records an origin of the argument. Its underlying function-field determinant is unspecified."
+    },
+    {
+      "number": 2,
+      "page": 3,
+      "topic": "Invariant differentials on a CM curve",
+      "relation": "Historical calculation",
+      "anchor_ids": [],
+      "assessment": "The entry describes inert-prime divisibility of iterated derivatives. The argument for this displayed exponent was not identified in the selected source path."
+    },
+    {
+      "number": 3,
+      "page": 3,
+      "topic": "The finite-field sign argument",
+      "relation": "Historical analogy",
+      "anchor_ids": [],
+      "assessment": "The footnote compares a zero mode with an error bounded by iterated Parseval. Its objects and hypotheses differ from the Dirichlet L-function endpoint."
+    },
+    {
+      "number": 4,
+      "page": 3,
+      "topic": "Determinantal positivity with multiplicity one",
+      "relation": "Historical motivation",
+      "anchor_ids": [],
+      "assessment": "The short entry leaves W and S implicit. An exact theorem-to-type identification would require definitions of both."
+    },
+    {
+      "number": 5,
+      "page": 3,
+      "topic": "The smoothed von Mangoldt sum",
+      "relation": "Formula matched",
+      "anchor_ids": [
+        "prime-sum",
+        "character-sum",
+        "weighted-level"
+      ],
+      "assessment": "The displayed zeta error has the exact ramp and the correction (1 + Euler’s constant)x. Character twists enter the level average. The sentence continues onto page 4."
+    },
+    {
+      "number": 6,
+      "page": 4,
+      "topic": "Two-support positivity test",
+      "relation": "Historical calculation",
+      "anchor_ids": [],
+      "assessment": "The two indicator functions are a proposed model for a zero-free exponent. The final power-window criterion has a different statement."
+    },
+    {
+      "number": 7,
+      "page": 4,
+      "topic": "Interlacing weights and periods",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "interlacing"
+      ],
+      "assessment": "A local Bessel model is constructed from two interlacing conditions. The announcement’s claim about determinant values 0 and 1 has further content."
+    },
+    {
+      "number": 8,
+      "page": 4,
+      "topic": "A chain with square-root length",
+      "relation": "Quantitative comparison",
+      "anchor_ids": [
+        "rank-scale",
+        "delta-scale",
+        "finite-kernel"
+      ],
+      "assessment": "The arithmetic rank specification puts m between one and two times x raised to 1/2 minus epsilon/16. The finite kernel recursion explains iteration."
+    },
+    {
+      "number": 9,
+      "page": 4,
+      "topic": "Norms, levels and arithmetic periods",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "cm-period",
+        "constant-level-volume"
+      ],
+      "assessment": "One result relates a CM period to a logarithmic derivative. Another cancels a level volume against an index. The complete order-m cancellation requires more data."
+    },
+    {
+      "number": 10,
+      "page": 4,
+      "topic": "Divisibility of repeated lifts",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "minor-divisor",
+        "local-order",
+        "lifted-column"
+      ],
+      "assessment": "A specific minor vanishes modulo a divisor and a lifted column has a higher-order remainder. Turning these local facts into the required global gain is an additional step."
+    },
+    {
+      "number": 11,
+      "page": 4,
+      "topic": "The tower of fields",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "field",
+        "cohomological-window"
+      ],
+      "assessment": "The formal window ranges over fields specified by a fixing subgroup in a cyclotomic extension and by layer parameter e(x)."
+    },
+    {
+      "number": 12,
+      "page": 4,
+      "topic": "Seesaw and Bessel periods",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "bessel-unfolding",
+        "constant-level-volume"
+      ],
+      "assessment": "Conditional unfolding identifies a theta-lift period with an integral. A middle-step volume identity is independent of the admissible character. A full iterated comparison is a stronger assertion."
+    },
+    {
+      "number": 13,
+      "page": 4,
+      "topic": "The slope inequality",
+      "relation": "Mathematical statement matched",
+      "anchor_ids": [
+        "slope",
+        "gram-comparison"
+      ],
+      "assessment": "The Euclidean lattice model bounds the slope of an injectively mapped source by the maximal target slope plus the logarithm of the map bound. Identification of the particular period lattice is separate."
+    },
+    {
+      "number": 14,
+      "page": 4,
+      "topic": "The provisional exponent two-thirds",
+      "relation": "Intermediate strategy",
+      "anchor_ids": [],
+      "assessment": "The author describes a barrier for an earlier estimate. The endpoint reads a one-half-plus-loss exponent. The earlier barrier is not derived in this comparison."
+    },
+    {
+      "number": 15,
+      "page": 4,
+      "topic": "A common integral structure across characters",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "common-family",
+        "combine-losses"
+      ],
+      "assessment": "The final deduction imposes local and global controls on the same family. A precise comparison with the gcd in the historical description remains open."
+    },
+    {
+      "number": 16,
+      "page": 4,
+      "topic": "Period pairings and approximate orthogonality",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "poincare-pairing",
+        "gap-to-primes"
+      ],
+      "assessment": "Unfolding relates a Poincare-series pairing to an integral of periods. The later host comparison turns suitable bounds into an estimate for the weighted prime sum."
+    },
+    {
+      "number": 17,
+      "page": 4,
+      "topic": "Cohomology and a weakening of Vandiver",
+      "relation": "Quantitative comparison",
+      "anchor_ids": [
+        "galois-length",
+        "weighted-length",
+        "cohomological-window",
+        "galois-count"
+      ],
+      "assessment": "The window requires finite lengths and an aggregate weighted bound. Further implications for individual K-groups are conjectural comments in the announcement."
+    },
+    {
+      "number": 18,
+      "page": 4,
+      "topic": "Covolumes, lattice indices and congruences",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "covolume",
+        "lifted-column",
+        "arithmetic-assembly"
+      ],
+      "assessment": "A covolume bound is an explicit premise of the automorphic assembly. The local congruence lemma gives a representative higher-order equality."
+    },
+    {
+      "number": 19,
+      "page": 4,
+      "topic": "A Behrend set in the tower construction",
+      "relation": "Supporting comparison",
+      "anchor_ids": [
+        "behrend-encoding",
+        "behrend-size",
+        "orbit"
+      ],
+      "assessment": "Encoding a populated integer sphere in a large base excludes short affine relations and controls intersections with short orbits."
+    },
+    {
+      "number": 20,
+      "page": 4,
+      "topic": "Dirichlet GRH",
+      "relation": "Endpoint statement matched",
+      "anchor_ids": [
+        "endpoint-grh",
+        "from-closed-row"
+      ],
+      "assessment": "The source declares that zeros of every Dirichlet L-function in the open critical strip are on the critical line. This entry records source-statement correspondence."
+    }
+  ]
+}

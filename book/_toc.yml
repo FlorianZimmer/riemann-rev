@@ -1,0 +1,29 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Overview
+    chapters:
+      - file: map
+  - caption: The four strata
+    chapters:
+      - file: destination
+      - file: engine
+      - file: estimate
+      - file: supply
+  - caption: Computations
+    chapters:
+      - file: explicit-formula
+      - file: spotlight
+      - file: balance
+      - file: windows
+      - file: behrend
+  - caption: The formal record
+    chapters:
+      - file: formalization
+      - file: blueprint
+      - file: verification
+      - file: timeline
+  - caption: Reference
+    chapters:
+      - file: glossary
+      - file: references

@@ -1,0 +1,638 @@
+% !TEX program = lualatex
+% ---------------------------------------------------------------------------------------------
+%  The illustrated blueprint of the architecture of the announced proof of RH  (riemann-rev)
+%
+%  Build:   make -C blueprint            (figures, generated parts, two LuaLaTeX passes)
+%  Frame:   this file (hand-written); every number, statement, name and status shown comes from
+%           generated/*.tex, which scripts/build_blueprint_tex.py writes from data/model.json,
+%           data/announcement_dates.json, data/source/*, verification/logs/axioms.json, the SVG
+%           figures and the Lean files (quoted verbatim).
+% ---------------------------------------------------------------------------------------------
+\documentclass[11pt,a4paper,oneside]{article}
+% reproducible output: do not copy the info dictionaries (creation dates) of included PDFs, the
+% file names or the banner into the result; the dates themselves come from SOURCE_DATE_EPOCH
+\ifdefined\pdfvariable\pdfvariable suppressoptionalinfo \numexpr 1+2+4+8\relax\fi
+\usepackage[a4paper,hmargin=24mm,top=24mm,bottom=27mm,headheight=14pt,headsep=7mm,footskip=11mm]{geometry}
+
+%% ------------------------------------------------------------------ fonts (LuaLaTeX, TeX Live)
+\usepackage{fontspec}
+\directlua{
+  luaotfload.add_fallback("bpfallback", {"STIXTwoMath-Regular.otf:mode=node;", "DejaVuSans.ttf:mode=node;"})
+  luaotfload.add_fallback("bpmonofallback", {"DejaVuSansMono.ttf:mode=node;", "STIXTwoMath-Regular.otf:mode=node;"})
+}
+\setmainfont{LibertinusSerif}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-Semibold,BoldItalicFont=*-SemiboldItalic,RawFeature={fallback=bpfallback}]
+\setsansfont{Inter}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,RawFeature={fallback=bpfallback}]
+\setmonofont{JetBrainsMono}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,Scale=MatchLowercase,
+  RawFeature={-calt;-liga;fallback=bpmonofallback}]
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+\setmathfont{LibertinusMath-Regular.otf}
+
+%% ------------------------------------------------------------------ packages
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,backgrounds,positioning}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{array,booktabs,longtable,tabularx,colortbl}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{caption}
+\usepackage{fvextra}
+\usepackage{pdflscape}
+\usepackage{etoolbox}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage[hyphens]{xurl}
+\usepackage[pdfusetitle,bookmarksnumbered,bookmarksopen,bookmarksopenlevel=1,pdfdisplaydoctitle]{hyperref}
+\usepackage{bookmark}
+
+%% ------------------------------------------------------------------ colours
+\definecolor{ink}{HTML}{0F172A}
+\definecolor{inksoft}{HTML}{475569}
+\definecolor{inkfaint}{HTML}{94A3B8}
+\definecolor{rulegrey}{HTML}{CBD5E1}
+\definecolor{wash}{HTML}{F8FAFC}
+\definecolor{linkblue}{HTML}{1E40AF}
+\definecolor{numerics}{HTML}{D97706}
+\input{generated/macros.tex}
+
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=linkblue,citecolor=ink,filecolor=linkblue,
+  pdftitle={\ModelTitle: an illustrated blueprint},
+  pdfsubject={Components, interfaces, machine-checked implications and pinned Lean declarations of the
+    announced proof (20 November 2026)},
+  pdfkeywords={Riemann hypothesis, Dirichlet L-functions, Lean, blueprint, formal verification}}
+\urlstyle{same}
+
+%% ------------------------------------------------------------------ page and text layout
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em plus 0.15em minus 0.05em}
+\setlength{\jot}{4pt}
+\setlist{leftmargin=1.4em,topsep=0.2em,itemsep=0.15em,parsep=0pt}
+\raggedbottom
+\AtBeginDocument{\color{ink}}
+\captionsetup{font={small},labelfont={sf,bf},labelsep=period,justification=justified,
+  singlelinecheck=true,skip=4pt,hypcap=false}
+\setcounter{tocdepth}{2}
+
+\newcommand\bpsf[1]{{\sffamily #1}}
+\newcommand\bpsmallhead[1]{{\sffamily\bfseries\fontsize{7.2}{9}\selectfont\addfontfeatures{LetterSpace=6}\MakeUppercase{#1}}}
+\newcommand\bpcode[1]{\texttt{#1}}
+\newcommand\bphash[1]{\texttt{\footnotesize\expandafter\seqsplit\expandafter{#1}}}
+\makeatletter
+% break long hashes anywhere (no package needed)
+\def\seqsplit#1{\bp@seqsplit#1\@nil}
+\def\bp@seqsplit#1{\ifx#1\@nil\else#1\hskip0pt plus 0.3pt\relax\expandafter\bp@seqsplit\fi}
+\makeatother
+
+% section headings
+\newcommand\bpseccolor{ink}
+\titleformat{\section}{\sffamily\bfseries\fontsize{19}{23}\selectfont\color{ink}}
+  {\textcolor{\bpseccolor}{\thesection}}{0.7em}{}
+\titlespacing*{\section}{0pt}{0pt}{4mm}
+\titleformat{\subsection}{\sffamily\bfseries\fontsize{13}{16}\selectfont\color{ink}}{\thesubsection}{0.6em}{}
+\titlespacing*{\subsection}{0pt}{5mm}{2mm}
+\titleformat{\subsubsection}[runin]{\sffamily\bfseries\fontsize{10}{12}\selectfont\color{ink}}{}{0pt}{}[.]
+\titlespacing*{\subsubsection}{0pt}{3mm}{0.6em}
+\titleformat{\paragraph}[runin]{\normalfont\bfseries}{}{0pt}{}
+\titlespacing*{\paragraph}{0pt}{1.6mm}{0.6em}
+
+% running heads
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{rulegrey}\hrule width\headwidth height\headrulewidth}}
+\fancyhead[L]{\sffamily\fontsize{7.5}{9}\selectfont\color{inksoft}\ModelTitle}
+\fancyhead[R]{\sffamily\fontsize{7.5}{9}\selectfont\color{inksoft}\rightmark}
+\fancyfoot[L]{\sffamily\fontsize{7}{9}\selectfont\color{inkfaint}Status as of \StatusAsOfShort\enspace
+  \textperiodcentered\enspace Lean links pinned to \MirrorCommitShort}
+\fancyfoot[R]{\sffamily\fontsize{8}{9}\selectfont\color{inksoft}\thepage}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\enspace #1}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[R]{\sffamily\fontsize{8}{9}\selectfont\color{inksoft}\thepage}}
+
+%% ------------------------------------------------------------------ TikZ: layers and styles
+\pgfdeclarelayer{panels}
+\pgfdeclarelayer{cuts}
+\pgfsetlayers{panels,cuts,main}
+\tikzset{
+  bpdiagram/.style={font=\sffamily},
+  bppanelhead/.style={text=white,font=\sffamily\bfseries\fontsize{8.6}{10}\selectfont},
+  bpflow/.style={-{Stealth[length=2.4mm,width=2.6mm]},line width=1.6pt,draw=black!16},
+  bpcomp/.style={draw=#1,line width=0.8pt,rounded corners=1.8mm,fill=white,text width=43mm,
+    minimum width=47mm,minimum height=19.5mm,inner sep=2mm,align=flush left,font=\sffamily},
+  bpif/.style={-{Stealth[length=2.1mm,width=1.8mm]},line width=0.85pt,draw=#1!80!black,rounded corners=1.2mm},
+  bplabel/.style={font=\sffamily\itshape\fontsize{6.3}{7.3}\selectfont,text=ink,fill=white,
+    fill opacity=0.93,text opacity=1,inner xsep=0.7mm,inner ysep=0.35mm,rounded corners=0.6mm},
+  bpcutII/.style={fill=tier-checked,fill opacity=0.07,draw=tier-checked,draw opacity=1,line width=1pt,
+    dash pattern=on 3.4pt off 2.2pt,rounded corners=4mm},
+  bpcutI/.style={fill=tier-two-kernels,fill opacity=0.09,draw=tier-two-kernels,draw opacity=1,
+    line width=1.2pt,dash pattern=on 7pt off 2pt on 1.4pt off 2pt,rounded corners=3mm},
+  bpcuttag/.style={fill=#1,text=white,font=\sffamily\bfseries\fontsize{6.4}{7.4}\selectfont,
+    rounded corners=1.6mm,inner xsep=1.5mm,inner ysep=0.75mm},
+  bpcutroute/.style={-{Stealth[length=2mm,width=1.7mm]},line width=0.95pt,draw=tier-two-kernels,
+    dash pattern=on 3pt off 1.6pt},
+  bplegendbox/.style={draw=#1,line width=0.7pt,rounded corners=1.8mm,fill=white,text width=95mm,
+    inner sep=2.2mm,align=flush left,font=\sffamily\fontsize{6.6}{8}\selectfont},
+  bptierbadgestyle/.style={bpinner,rounded corners=0.9mm,fill=#1!13,text=#1!72!black,inner xsep=1.3mm,
+    inner ysep=0.7mm,font=\sffamily\bfseries\fontsize{7}{8}\selectfont},
+  bpnumstyle/.style={bpinner,circle,fill=#1,text=white,inner sep=0pt},
+  % nodes of pictures nested in a node of another picture inherit its options: reset them
+  bpinner/.style={text width=,minimum width=0pt,minimum height=0pt,text height=,text depth=,
+    draw=none,line width=0.4pt,rounded corners=0pt,inner sep=0.333em,outer sep=0pt,fill opacity=1,
+    text opacity=1,rotate=0,xshift=0pt,yshift=0pt,font=},
+}
+\newcommand\bpfootfont{\sffamily\fontsize{6.2}{7.2}\selectfont\color{inksoft}}
+
+%% ------------------------------------------------------------------ tiers, numbers, references
+\newcommand\bptierlabel[1]{\csname bp@tierlabel@#1\endcsname}
+\newcommand\bptiericon[1]{\csname bp@tiericon@#1\endcsname}
+\newcommand\bptiericonplain[1]{\textcolor{tier-#1}{\bptiericon{#1}}}
+\newcommand\bptierbadge[1]{\tikz[baseline=0pt]\node[anchor=base,bptierbadgestyle=tier-#1]
+  {\bptiericon{#1}\enspace\bptierlabel{#1}};}
+\newcommand\bptierbadgesmall[1]{\tikz[baseline=0pt]\node[anchor=base,bptierbadgestyle=tier-#1,
+  font=\sffamily\bfseries\fontsize{5.7}{6.5}\selectfont,inner xsep=1mm,inner ysep=0.55mm]
+  {\bptiericon{#1}\enspace\bptierlabel{#1}};}
+% circled component numbers in the colour of the stratum: large (headings), small (picture), tiny (text)
+\newcommand\bpnumlarge[2]{\tikz[baseline=0pt]\node[anchor=base,bpnumstyle=stratum-#1,minimum size=6.6mm,
+  font=\sffamily\bfseries\fontsize{10.5}{10.5}\selectfont,yshift=-0.2mm]{#2};}
+\newcommand\bpnumsmall[2]{\tikz[baseline=0pt]\node[anchor=base,bpnumstyle=stratum-#1,minimum size=4.3mm,
+  font=\sffamily\bfseries\fontsize{6.8}{6.8}\selectfont]{#2};}
+\newcommand\bpnumtiny[2]{\tikz[baseline=0pt]\node[anchor=base,bpnumstyle=stratum-#1,minimum size=3.5mm,
+  font=\sffamily\bfseries\fontsize{5.6}{5.6}\selectfont,yshift=-0.15mm]{#2};}
+\makeatletter
+\newcommand\bpcompnum[1]{\edef\bp@s{\csname bp@compstrat@#1\endcsname}%
+  \bpnumtiny{\bp@s}{\csname bp@compnum@#1\endcsname}}
+\newcommand\bpcompref[1]{\hyperref[comp:#1]{\bpcompnum{#1}\nobreak\,\csname bp@comptitle@#1\endcsname}}
+\newcommand\bppath[1]{{\ttfamily\nolinkurl{#1}}}
+\newcommand\bpnoderef[1]{\hyperlink{node:#1}{\textcolor{tier-\csname bp@nodetier@#1\endcsname}%
+  {\bptiericon{\csname bp@nodetier@#1\endcsname}}\,\csname bp@nodetitle@#1\endcsname}}
+\makeatother
+\makeatletter\newcommand\bptoc{\@starttoc{toc}}\makeatother
+\newcommand\bpstep{\enspace{\color{inkfaint}$\rightarrow$}\enspace}
+
+%% ------------------------------------------------------------------ the picture: node contents
+\newcommand\bpdiagramtitle{\begin{minipage}{277mm}
+  {\sffamily\bfseries\fontsize{15}{17}\selectfont The proof in one picture}\hfill
+  {\sffamily\fontsize{7.4}{9}\selectfont\color{inksoft}status as of \StatusAsOf\enspace
+   \textperiodcentered\enspace Lean names link to the mirror at \MirrorCommitShort}\\[1mm]
+  {\fontsize{8.6}{10.4}\selectfont\itshape\color{inksoft}From the arithmetic supply (left) to the exported
+   statements (right). Arrows: the \NumInterfaces{} interfaces, labelled by the proposition they carry.
+   Dashed frontiers: the two machine-checked implications. Click a title for its section, a monospace
+   name for its pinned source.}\end{minipage}}
+\newcommand\bpnodehead[3]{\begin{tabular}{@{}p{4.4mm}@{\hspace{1.2mm}}p{37.4mm}@{}}
+  \bpnumsmall{#1}{#2} & \raggedright\fontsize{7.9}{9.1}\selectfont\bfseries #3\end{tabular}\par}
+\newcommand\bpnodekicker[1]{\vspace{0.7mm}{\raggedright\fontsize{6.1}{7.4}\selectfont\color{inksoft}#1\par}}
+\newcommand\bpkickertext[1]{{\itshape #1}}
+\newcommand\bpkickersep{\,{\color{inkfaint}\textperiodcentered}\,}
+\newcommand\bpnodeexports[1]{\vspace{0.6mm}{\fontsize{5.6}{6.9}\selectfont #1\par}}
+\newcommand\bpnodebadge[1]{\vspace{1mm}\bptierbadgesmall{#1}}
+\newcommand\bpcutlegend[6]{%
+  {\color{tier-#3}\bfseries CUT #2\enspace\bptiericon{#3}\enspace\bptierlabel{#3}}\hfill
+  {\color{inksoft}\hyperref[cut:#1]{details \textrightarrow}}\\[0.5mm]
+  {\fontsize{7.4}{9}\selectfont\bfseries\hyperref[cut:#1]{#4}}\\[0.9mm]
+  {\fontsize{7.2}{9}\selectfont premise\enspace\(#5\)}\\[0.4mm]
+  {\fontsize{7.2}{9}\selectfont\(\Longrightarrow\)\enspace #6}}
+\newcommand\bptierlegendline[1]{\makebox[5.4mm][l]{\bptiericonplain{#1}}\bptierlabel{#1}}
+\newcommand\bptierlegendbox[1]{{\bfseries\hyperref[sec:tiers]{Verification tiers}}\\[0.6mm]#1}
+\newcommand\bpdiagramfootbox{\begin{minipage}{277mm}\raggedright\bpdiagramfoot\end{minipage}}
+\newcommand\bpdiagramfoot{Numbers follow the reading order of Sections~\ref{stratum:dest}--\ref{stratum:arith}
+  (destination first). Green dots: where the premises of Cut~II cross its frontier.
+  (W): where the premise of Cut~I enters the window criterion; its zeta route bypasses the order of
+  choices and the conductor descent. Tiers as of \StatusAsOfShort.}
+
+%% ------------------------------------------------------------------ component pages
+\newcommand\bpstratcomp[1]{\item[\bpcompnum{#1}] \hyperref[comp:#1]{\csname bp@comptitle@#1\endcsname}}
+\newcommand\bpstratflow[3]{\item[] \raggedright\bpcompref{#1}\enspace\textrightarrow\enspace\bpcompref{#2}\newline
+  {\color{inksoft}\emph{#3}}}
+\newcommand\bpstratum[5]{%
+  \clearpage
+  \renewcommand\bpseccolor{stratum-#1}%
+  \section{#2}\label{stratum:#1}%
+  {\color{stratum-#1}\hrule height 2.2pt}\vspace{3mm}%
+  {\fontsize{12.5}{16}\selectfont\itshape #3\par}\vspace{2mm}%
+  \begin{minipage}[t]{0.42\linewidth}\bpsmallhead{Components}\par\vspace{0.6mm}
+    \begin{itemize}[leftmargin=6mm,labelsep=2mm]#4\end{itemize}\end{minipage}\hfill
+  \begin{minipage}[t]{0.55\linewidth}\bpsmallhead{Across the stratum boundary}\par\vspace{0.6mm}
+    {\small\begin{itemize}[leftmargin=0mm,labelsep=0mm,itemsep=0.5mm]#5\end{itemize}}\end{minipage}\par
+  \vspace{3mm}{\color{rulegrey}\hrule}\vspace{2mm}%
+  \renewcommand\bpseccolor{ink}}
+
+\newcommand\bpcomponent[5]{% id, stratum, number, title, tier
+  \par\Needspace{0.32\textheight}\addvspace{7mm}%
+  \phantomsection\label{comp:#1}%
+  \addcontentsline{toc}{subsection}{\protect\numberline{\texorpdfstring{\protect\bpnumtiny{#2}{#3}}{#3}}#4}%
+  \markright{#3\enspace #4}%
+  \noindent\begin{tabular}{@{}p{8.6mm}@{}p{\dimexpr\linewidth-8.6mm\relax}@{}}
+    \bpnumlarge{#2}{#3} & \raggedright\sffamily\bfseries\fontsize{15.5}{18.5}\selectfont #4
+  \end{tabular}\par\nobreak\vspace{1.3mm}%
+  {\color{stratum-#2}\hrule height 0.9pt}\nobreak\vspace{1.6mm}%
+  \noindent\bptierbadge{#5}}
+\newcommand\bpkicker[1]{\hfill{\sffamily\fontsize{7.6}{9}\selectfont\color{inksoft}#1}\par\nobreak}
+\newcommand\bpgist[1]{\vspace{1.2mm}{\fontsize{12.3}{15.6}\selectfont\itshape #1\par}\vspace{0.4mm}}
+\newcommand\bpdisplay[1]{{\centering\(\displaystyle #1\)\par}}
+\newtcolorbox{bpstatement}[1]{enhanced,colback=stratum-#1!3,colframe=stratum-#1,boxrule=0pt,
+  leftrule=2.4pt,arc=0pt,outer arc=0pt,left=3.5mm,right=3.5mm,top=3.4mm,bottom=2.6mm,
+  before skip=2.5mm,after skip=3.5mm,
+  overlay={\node[anchor=north east,font=\sffamily\bfseries\fontsize{6.2}{7}\selectfont,
+    text=stratum-#1,inner sep=1.1mm] at (frame.north east) {STATEMENT};}}
+\newcommand\bpfigure[4]{\par\vspace{2mm}\noindent\begin{minipage}{\linewidth}\centering
+  \includegraphics[width=#2\linewidth]{build/fig/#1.pdf}\par
+  \captionof{figure}{\textbf{#3.} #4}\label{fig:#1}\end{minipage}\par\vspace{2mm}}
+\newcommand\bpfigref[2]{\par{\small\color{inksoft}Figure~\ref{fig:#1} (\emph{#2}) illustrates this
+  component as well.}\par}
+\newenvironment{bpleantable}[1]{\par\vspace{1.5mm}\noindent
+  {\color{stratum-#1}\bpsmallhead{Lean declarations}}\enspace
+  {\sffamily\fontsize{7}{9}\selectfont\color{inksoft}pinned to \MirrorName{} at \MirrorCommitShort}\par
+  \nobreak\vspace{0.4mm}\small\setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.18}%
+  \tabularx{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedleft\arraybackslash}p{44mm}@{}}
+  \arrayrulecolor{rulegrey}\toprule}
+  {\bottomrule\endtabularx\par}
+\newcommand\bpleanrow[4]{\href{#1}{#2}\ifstrempty{#4}{}{\enspace{\footnotesize\color{inksoft}— #4}}
+  & \leavevmode{\sffamily\fontsize{7}{9}\selectfont\color{inksoft}#3}\\}
+\newcommand\bpiface[3]{\par\noindent\hangindent=4mm\hangafter=1\bpcompref{#1}\enspace
+  {\color{inksoft}\textperiodcentered}\enspace\emph{#2}\par\noindent\hspace*{4mm}{\footnotesize #3}\par\vspace{0.6mm}}
+\newcommand\bpnone{{\color{inkfaint}—}}
+\newcommand\bpinterfaces[2]{\par\vspace{2.4mm}\noindent
+  \begin{minipage}[t]{0.485\linewidth}\bpsmallhead{Uses}\enspace{\color{inkfaint}\textleftarrow}\par
+    \vspace{0.8mm}\small\ifstrempty{#1}{\bpnone{} {\footnotesize\color{inksoft}no incoming interface}}{#1}\end{minipage}\hfill
+  \begin{minipage}[t]{0.485\linewidth}\bpsmallhead{Supplies}\enspace{\color{inkfaint}\textrightarrow}\par
+    \vspace{0.8mm}\small\ifstrempty{#2}{\bpnone{} {\footnotesize\color{inksoft}the exported statements}}{#2}\end{minipage}\par}
+\newcommand\bpnodeitem[3]{\mbox{\textcolor{tier-#2}{\bptiericon{#2}}\,\hyperlink{node:#1}{#3}}\hskip 1.1em plus 0.6em\relax}
+\newcommand\bpownednodes[3]{\par\vspace{2mm}\noindent\bpsmallhead{Blueprint nodes}\enspace
+  {\footnotesize\color{inksoft}#1 declarations:\enspace #2\enspace(Section~\ref{sec:table})}\par\nobreak
+  \vspace{0.5mm}{\footnotesize\raggedright #3\par}}
+\newtcolorbox{bpinfobox}[1]{enhanced,breakable,colback=#1!5,colframe=#1,boxrule=0pt,leftrule=2.2pt,
+  arc=0pt,outer arc=0pt,left=3mm,right=3mm,top=1.6mm,bottom=1.6mm,before skip=2.5mm,after skip=1.5mm,
+  fontupper=\small}
+\newcommand\bpstatus[2]{\begin{bpinfobox}{tier-#1}\bpsmallhead{Status}\enspace
+  {\sffamily\fontsize{7}{9}\selectfont\color{inksoft}as of \StatusAsOfShort}\hfill\bptierbadge{#1}\par
+  \vspace{0.6mm}#2\end{bpinfobox}}
+\newcommand\bpcheck[2]{\begin{bpinfobox}{numerics}\bpsmallhead{What remains to check}\par\vspace{0.6mm}#1%
+  #2\end{bpinfobox}}
+\newcommand\bpaudit[3]{\par\vspace{0.6mm}{\footnotesize\textbf{Audit criterion} (\bpnoderef{#1}):
+  \emph{#2.} #3}}
+\newcommand\bptlitem[4]{\par\noindent\hyperlink{tl:#1}{Entry~#1} ({#2}):\enspace #3\enspace
+  {\color{inksoft}\textperiodcentered\enspace\emph{#4}}}
+\newcommand\bpannouncement[1]{\par\vspace{1.6mm}\noindent\bpsmallhead{In the announcement}\par\nobreak
+  \vspace{0.3mm}{\small #1\par}}
+
+%% ------------------------------------------------------------------ legend environments (Section 1)
+\newenvironment{bptierlegend}{\par\small\renewcommand{\arraystretch}{1.25}\setlength{\tabcolsep}{0pt}%
+  \tabularx{\linewidth}{@{}>{\raggedright\arraybackslash}p{50mm}@{\hspace{4mm}}>{\raggedright\arraybackslash}X@{}}
+  \arrayrulecolor{rulegrey}\toprule}{\bottomrule\endtabularx\par}
+\newcommand\bptierrow[2]{\bptierbadge{#1} & #2\\}
+\newenvironment{bpstratalegend}{\par\small\begin{itemize}[leftmargin=7mm,itemsep=1.2mm]}{\end{itemize}}
+\newcommand\bpstratumrow[3]{\item[\textcolor{stratum-#1}{\rule[-0.3mm]{3.2mm}{3.2mm}}]
+  \textbf{\hyperref[stratum:#1]{\csname bp@strattitle@#1\endcsname}.} #2\newline
+  {\footnotesize\raggedright #3\par}}
+\newenvironment{bpitineraries}{\par\small\begin{enumerate}[leftmargin=6mm,itemsep=1.4mm]}{\end{enumerate}}
+\newcommand\bpitinerary[3]{\item \textbf{#1.} \emph{#2}\newline{\footnotesize #3}}
+
+%% ------------------------------------------------------------------ cuts and Lean quotations
+\newtcolorbox{bpcut}[4]{enhanced,breakable,colback=tier-#3!4,colframe=tier-#3,boxrule=0.6pt,
+  leftrule=3pt,arc=1.6mm,left=3.5mm,right=3.5mm,top=2mm,bottom=2mm,before skip=4mm,after skip=3mm,
+  colbacktitle=tier-#3,coltitle=white,
+  title={\sffamily\bfseries Cut #2\enspace\bptiericon{#3}\enspace\bptierlabel{#3}\enspace
+    \textperiodcentered\enspace #4},
+  fonttitle=\fontsize{9.5}{12}\selectfont,phantom={\phantomsection\label{cut:#1}}}
+\newcommand\bpcutpremise[1]{\noindent\bpsmallhead{Premise}\par\nobreak\vspace{1mm}\bpdisplay{#1}\vspace{1.4mm}}
+\newcommand\bpcutconclusion[1]{\noindent\bpsmallhead{Conclusion}\par\nobreak\vspace{0.6mm}
+  {\centering\(\Longrightarrow\)\enspace #1\par}\vspace{1.4mm}}
+\newcommand\bpcutmeta[4]{{\small\raggedright\noindent\textbf{Lean.} #1, in \bppath{#2} (this repository;
+  it compiles only against the archive, at Lean \ToolchainVersion).\par\noindent\textbf{Evidence.} #3\par
+  \noindent\textbf{Components inside the cut.} #4\par}}
+\newcommand\bpquotecaption[2]{\par\vspace{1mm}{\small\raggedright\color{inksoft}Quoted verbatim from
+  \bppath{#1}: #2.\par}}
+\newcommand\LKw[1]{\textbf{\textcolor[HTML]{1E3A8A}{#1}}}
+\newcommand\LDecl[1]{\textbf{\textcolor[HTML]{B45309}{#1}}}
+\newcommand\LTac[1]{\textcolor[HTML]{0E7490}{#1}}
+\newcommand\LSort[1]{\textcolor[HTML]{7C2D12}{#1}}
+\newcommand\LCom[1]{\textit{\textcolor[HTML]{64748B}{#1}}}
+\newcommand\LStr[1]{\textcolor[HTML]{047857}{#1}}
+\DefineVerbatimEnvironment{bplean}{Verbatim}{commandchars=\\\{\},fontsize=\fontsize{8.4}{10.4}\selectfont,
+  numbers=left,numbersep=2.5mm,breaklines=true,breakindent=4ex,
+  breaksymbolleft={\tiny\color{inkfaint}\ensuremath{\hookrightarrow}},xleftmargin=6mm}
+\renewcommand\theFancyVerbLine{\sffamily\fontsize{6}{7}\selectfont\color{inkfaint}\arabic{FancyVerbLine}}
+\newtcolorbox{bpleanquote}[3]{enhanced,breakable,colback=wash,colframe=rulegrey,boxrule=0.5pt,arc=1.2mm,
+  left=1mm,right=2mm,top=1.2mm,bottom=1mm,before skip=2mm,after skip=3mm,
+  title={\bpcode{#1}\hfill lines #2--#3},fonttitle=\sffamily\fontsize{7}{8}\selectfont,
+  colbacktitle=wash,coltitle=inksoft,toptitle=0.4mm,bottomtitle=0.4mm,titlerule=0.4pt,
+  titlerule style={rulegrey}}
+\DefineVerbatimEnvironment{bpshell}{Verbatim}{fontsize=\fontsize{8.4}{10.6}\selectfont,
+  breaklines=true,xleftmargin=3mm,frame=leftline,framerule=1.2pt,rulecolor=\color{rulegrey}}
+\newenvironment{bpaxiomtable}{\par\small\renewcommand{\arraystretch}{1.16}\setlength{\tabcolsep}{0pt}%
+  \tabularx{\linewidth}{@{}>{\raggedright\arraybackslash}p{80mm}@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{\hspace{2mm}}c@{}}
+  \arrayrulecolor{rulegrey}\toprule
+  \bpsmallhead{Declaration} & \bpsmallhead{Axioms (transitive)} & \bpsmallhead{Free}\\\midrule}
+  {\bottomrule\endtabularx\par}
+\newcommand\bpaxiomrow[3]{#1 & \leavevmode #2 & \ifstrequal{#3}{1}{\textcolor{tier-checked}{✓}}{}\\}
+\newcommand\bpnoaxioms{{\color{tier-checked}none}}
+
+%% ------------------------------------------------------------------ the 87-declaration table
+\newcommand\bpnodecl{{\footnotesize\color{inkfaint}no declaration (motivation)}}
+\newenvironment{bpnodetable}{\par\footnotesize\setlength{\tabcolsep}{1.2mm}\renewcommand{\arraystretch}{1.12}%
+  \begin{longtable}{@{}>{\centering\arraybackslash}p{3.2mm}>{\raggedright\arraybackslash}p{33mm}%
+    >{\raggedright\arraybackslash}p{51mm}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-94.8mm\relax}@{}}
+  \arrayrulecolor{rulegrey}\toprule
+  & \bpsmallhead{Node} & \bpsmallhead{Declaration (pinned)} & \bpsmallhead{Contract}\\\midrule\endfirsthead
+  \toprule & \bpsmallhead{Node} & \bpsmallhead{Declaration (pinned)} & \bpsmallhead{Contract}\\\midrule\endhead
+  \bottomrule\endfoot}
+  {\end{longtable}\par}
+\newcommand\bpnodegroup[5]{\multicolumn{4}{@{}>{\columncolor{stratum-#2!7}}l@{}}{\rule{0pt}{4.2mm}%
+  \hyperref[comp:#1]{\bpnumtiny{#2}{#3}\enspace{\sffamily\bfseries\small #4}}\enspace
+  {\sffamily\fontsize{7}{9}\selectfont\color{inksoft}#5 nodes}}\\[0.5mm]}
+\newcommand\bpnoderow[6]{\leavevmode\hypertarget{node:#1}{}\textcolor{tier-#2}{\bptiericon{#2}} & #3\newline
+  {\sffamily\fontsize{6}{7.5}\selectfont\color{inkfaint}#1} & #4\newline{\sffamily\fontsize{6}{7.5}\selectfont
+  \color{inkfaint}#5} & #6\\}
+\newcommand\bpgraph[8]{% trim of left half (right part), of right half (left part), top, bottom, widths, caption
+  \clearpage\newgeometry{margin=10mm}
+  \begin{landscape}\thispagestyle{empty}\centering
+  \includegraphics[width=#5\linewidth,trim=0 #4 #1 #3,clip]{build/fig/blueprint-graph.pdf}\par
+  \vspace{1.5mm}{\color{rulegrey}\hrule}\vspace{1.5mm}
+  \includegraphics[width=#6\linewidth,trim=#2 #4 0 #3,clip]{build/fig/blueprint-graph.pdf}\par
+  \vspace{1mm}\captionof{figure}{\textbf{#7}, in two halves (left: the suppliers; right: continued
+    towards the endpoints). #8 The node titles are those of the table above.}\label{fig:graph}
+  \end{landscape}\restoregeometry}
+
+%% ------------------------------------------------------------------ timeline, pins
+\tikzset{
+  bptimeline/.style={font=\sffamily},
+  bptlaxis/.style={line width=0.8pt,draw=inksoft},
+  bptlmonth/.style={font=\sffamily\bfseries\fontsize{7}{8}\selectfont,text=inksoft},
+  bptlbreak/.style={draw=none,fill=white,minimum width=3mm,minimum height=3mm,
+    path picture={\draw[inksoft,line width=0.6pt] ([xshift=-0.8mm]path picture bounding box.south)
+    -- ++(1mm,3mm) ([xshift=0.3mm]path picture bounding box.south) -- ++(1mm,3mm);}},
+  bptltick/.style={draw=inksoft,line width=0.6pt},
+  bptlday/.style={font=\sffamily\fontsize{6.4}{7}\selectfont,text=inksoft,inner sep=0.6mm},
+  bptlann/.style={draw=stratum-dest,line width=0.9pt,dash pattern=on 2pt off 1.4pt},
+  bptlannlabel/.style={font=\sffamily\bfseries\fontsize{6.4}{7}\selectfont,text=stratum-dest},
+  bptldot/.style={circle,fill=#1,text=white,minimum size=4.2mm,inner sep=0pt,
+    font=\sffamily\bfseries\fontsize{6}{6}\selectfont},
+  bptlfrom/.style={-{Stealth[length=1.4mm]},draw=#1,line width=0.8pt},
+}
+\newcommand\bptldotinline[2]{\tikz[baseline=0pt]\node[anchor=base,bptldot=#1,yshift=-0.2mm]{#2};}
+\newcommand\bpnocomp{{\footnotesize\color{inkfaint}historical; no component}}
+\newenvironment{bptimelinetable}{\par\footnotesize\setlength{\tabcolsep}{1.3mm}\renewcommand{\arraystretch}{1.1}%
+  \begin{longtable}{@{}>{\centering\arraybackslash}p{4.5mm}>{\raggedright\arraybackslash}p{17mm}%
+    >{\raggedright\arraybackslash}p{\dimexpr\linewidth-74mm\relax}>{\raggedright\arraybackslash}p{40mm}@{}}
+  \arrayrulecolor{rulegrey}\toprule
+  & \bpsmallhead{Date} & \bpsmallhead{Entry, relation and assessment} & \bpsmallhead{Component}\\\midrule\endfirsthead
+  \toprule & \bpsmallhead{Date} & \bpsmallhead{Entry, relation and assessment} & \bpsmallhead{Component}\\\midrule\endhead
+  \bottomrule\endfoot}
+  {\end{longtable}\par}
+\newcommand\bptlrow[9]{\leavevmode\hypertarget{tl:#1}{}\bptldotinline{#9}{#1} & \bpcode{#2}\newline
+  {\fontsize{6.4}{7.6}\selectfont\color{inksoft}#3} & \textbf{#4}\enspace{\color{inksoft}(page~#5)}\newline
+  \emph{#6.}\enspace{\color{inksoft}#8} & #7\\[0.8mm]}
+\newenvironment{bppintable}{\par\small\renewcommand{\arraystretch}{1.25}\setlength{\tabcolsep}{0pt}%
+  \tabularx{\linewidth}{@{}>{\raggedright\arraybackslash}p{56mm}@{\hspace{4mm}}>{\raggedright\arraybackslash}X@{}}
+  \arrayrulecolor{rulegrey}\toprule}{\bottomrule\endtabularx\par}
+\newcommand\bppinrow[2]{#1 & #2\\}
+\newenvironment{bpsourcelist}{\begin{itemize}\small}{\end{itemize}}
+\newenvironment{bpprovenance}{\par\footnotesize\renewcommand{\arraystretch}{1.18}\setlength{\tabcolsep}{0pt}%
+  \tabularx{\linewidth}{@{}>{\raggedright\arraybackslash}p{62mm}@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{\hspace{3mm}}>{\raggedleft\arraybackslash}p{27mm}@{}}
+  \arrayrulecolor{rulegrey}\toprule
+  \bpsmallhead{In this repository} & \bpsmallhead{Imported from the reading project} & \bpsmallhead{SHA-256 (prefix)}\\\midrule}
+  {\bottomrule\endtabularx\par}
+\newcommand\bpprovrow[3]{#1 & #2 & \bpcode{#3}\\}
+
+%% =================================================================================== document
+\begin{document}
+
+%% ------------------------------------------------------------------ title page
+\newgeometry{hmargin=20mm,top=18mm,bottom=16mm}
+\begin{titlepage}
+\noindent\begin{tikzpicture}[x=1mm,y=1mm]
+  \foreach \s [count=\i from 0] in {arith,est,ana,dest} {\fill[stratum-\s] (\i*42.5,0) rectangle ++(42.5,1.6);}
+\end{tikzpicture}\par\vspace{5mm}
+{\sffamily\bfseries\fontsize{8.5}{10}\selectfont\addfontfeatures{LetterSpace=12}\color{inksoft}
+  AN ILLUSTRATED BLUEPRINT\par}\vspace{3mm}
+{\sffamily\bfseries\fontsize{23}{27.5}\selectfont\color{ink}The architecture of the announced proof\\
+  of the Riemann hypothesis\par}\vspace{3.5mm}
+{\fontsize{11.8}{14.8}\selectfont\itshape\color{inksoft}Levent Alpöge's announcement of 20~November 2026
+  and its Lean archive of \ModuleCount{} modules: \NumComponents{} components in \NumStrataWord{} strata,
+  \NumInterfaces{} interfaces, \NumCutsWord{} machine-checked implications and \NumDecls{} pinned declarations\par}
+\vspace{2.5mm}
+{\sffamily\fontsize{7.4}{9.4}\selectfont\color{inksoft}
+Companion: the interactive atlas \bpcode{atlas/index.html} in this repository (\bpcode{riemann-rev}).
+Data: \bpcode{data/model.json}, built from the reading project at \SourceCommitShort{} (imported
+\ImportedAt). Lean sources pinned to \MirrorName{} at \MirrorCommitShort{} (archive toolchain
+\Toolchain, Mathlib \MathlibCommitShort). All times UTC.\par}
+\vspace{3.5mm}
+{\centering\includegraphics[width=0.9\linewidth,trim=0 22 0 30,clip]{build/fig/hero.pdf}\par}\vspace{1.2mm}
+{\sffamily\fontsize{6.6}{8}\selectfont\color{inksoft}\HeroCaption\par}
+\vspace{2.5mm}
+\begin{tcolorbox}[enhanced,colback=wash,colframe=tier-reported,boxrule=0pt,leftrule=3pt,arc=0pt,
+  outer arc=0pt,left=4mm,right=4mm,top=2.4mm,bottom=2.4mm,fontupper=\footnotesize]
+\bpsmallhead{Status}\enspace{\sffamily\fontsize{7.4}{9}\selectfont\color{inksoft}as of \StatusAsOf{}
+  (headline of the reading project's status record)}\par\vspace{1.4mm}
+{\fontsize{10.6}{13.2}\selectfont\itshape ``\StatusHeadline''\par}\vspace{1mm}
+\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{0pt}
+\begin{tabularx}{\linewidth}{@{}p{47mm}@{\hspace{3mm}}>{\raggedright\arraybackslash}X@{}}
+\textbf{Announced proof} & Of RH and of GRH for Dirichlet characters, in a four-page announcement with a
+  Lean archive. This document maps its architecture; it does not assert that the Riemann hypothesis is
+  proved.\\
+\bptierbadge{\CutITier}\newline\bptierbadge{\CutIITier} & \textbf{Machine-checked implications}, with
+  their remaining inputs as explicit premises (Section~\ref{sec:cuts}). Cut~I: \CutITitle{}
+  (\MakeLowercase{\bptierlabel{\CutITier}}). Cut~II: \CutIITitle{} (\MakeLowercase{\bptierlabel{\CutIITier}}).\\
+\bptierbadge{reported} & \textbf{Externally reported full replay.} As recorded by the reading project:
+  ``\StatusExternalThird'' These are an external builder's results, not checks made for this document.
+  The reading project adds: ``\StatusExternalOwn''\\
+\bptierbadge{read} & \textbf{Source-read.} The producers of the arithmetic inputs were located at pinned
+  source lines and read, not separately replayed.\\
+\end{tabularx}
+\end{tcolorbox}
+\end{titlepage}
+\restoregeometry
+
+%% ------------------------------------------------------------------ contents
+\pagestyle{plain}
+{\sffamily\bfseries\fontsize{19}{23}\selectfont Contents\par}\vspace{3mm}
+{\small\bptoc}
+\clearpage
+\pagestyle{fancy}
+
+%% ------------------------------------------------------------------ 1. how to read
+\section{How to read this blueprint}\label{sec:read}
+
+This is a map of an \emph{announced} proof. Levent Alpöge's four-page announcement of 20~November~2026
+claims proofs of the Riemann hypothesis and of the generalized Riemann hypothesis for Dirichlet
+characters, accompanied by a Lean archive of \ModuleCount{} modules. The map divides the argument into
+\NumComponents{} mathematical components in \NumStrataWord{} strata, joined by \NumInterfaces{} \emph{interfaces}: the
+propositions through which the output of one component becomes the input of another. For each component
+it gives a plain-language gist, a precise statement in standard notation, an explanation of the idea,
+the pinned Lean declarations, a verification tier with its status, and what remains to be checked.
+
+The statements are paraphrases, in standard notation, of the reading project's chapters and of the
+archive's source lines they cite; nothing here is a new proof, and this repository does not re-check the
+archive. Two implications have been machine-checked with their remaining inputs as explicit hypotheses
+(Section~\ref{sec:cuts}). A full replay of the archive has been reported by an external builder; the
+reading project records its own checks separately, and its status record of \StatusAsOf{} is quoted in
+Section~\ref{sec:status}. Nothing in this document asserts that the Riemann hypothesis is proved.
+
+\paragraph{Reading order.} The components are numbered as in the model, from the destination backwards:
+the \NumExportsWord{} exported statements and the classical reductions to the half-plane theorem
+(Section~\ref{stratum:dest}), the analytic engine that turns one-sided prime-sum bounds into zero-free
+half-planes (Section~\ref{stratum:ana}), the estimate that produces those bounds
+(Section~\ref{stratum:est}), and the arithmetic supply on which the estimate rests
+(Section~\ref{stratum:arith}). The picture of Section~\ref{sec:picture} runs the other way, from the
+arithmetic on the left to the endpoints on the right.
+
+\paragraph{Links.} A monospace name such as \bpcode{Deduction.poleData} links to its source lines in the
+public mirror \MirrorName{}, pinned at commit \MirrorCommitShort{}, whose tree is identical to the archive;
+circled numbers and node titles link inside this document.
+
+\subsection{Verification tiers}\label{sec:tiers}
+Every component and every blueprint node carries one tier. The meanings are those of the model; node
+tiers are computed from the receipts of the reading project.
+\input{generated/tiers.tex}
+
+\subsection{The \NumStrataWord{} strata}
+\input{generated/strata.tex}
+
+\subsection{Ways into the blueprint}
+The reading project proposes \NumItinerariesWord{} itineraries through the blueprint graph; each step links to the
+declaration table of Section~\ref{sec:table}.
+\input{generated/itineraries.tex}
+
+%% ------------------------------------------------------------------ 2. the picture
+\clearpage
+\newgeometry{margin=10mm}
+\begin{landscape}
+\thispagestyle{empty}
+\refstepcounter{section}\phantomsection\label{sec:picture}%
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}The proof in one picture}%
+\noindent\makebox[\linewidth][l]{\input{generated/diagram.tex}}
+\end{landscape}
+\restoregeometry
+
+%% ------------------------------------------------------------------ 3-6. strata and components
+\input{generated/components.tex}
+
+%% ------------------------------------------------------------------ 7. cuts and skeleton
+\clearpage
+\section{The verified cuts and the Lean skeleton}\label{sec:cuts}
+
+Two implications have been machine-checked with the remaining inputs as explicit hypotheses. Each is a
+Lean theorem, written by the reading project against the archive, whose only open inputs are the premise
+displayed; the declarations it calls, directly or transitively, were elaborated and kernel-checked with
+it (tier \bptiericonplain{covered} in Section~\ref{sec:table}). Together they cut the proof into the part
+downstream of the premises, which is machine-checked, and the arithmetic supply, which is partly checked
+and partly source-read. In the picture of Section~\ref{sec:picture} they are the dashed frontiers.
+\input{generated/cuts.tex}
+
+\subsection{The architecture as a checked skeleton}\label{sec:skeleton}
+This repository's own Lean library (\SkeletonLean, no imports) restates the architecture over abstract
+types: each component becomes a hypothesis, a field of a structure, and the theorems prove only how the
+components compose. It is a map, not a proof of the Riemann hypothesis. A toy model at the end of the
+file (\bpcode{toyArchitecture}, not quoted) satisfies every hypothesis with zeros present, all on the
+line, so the skeleton is not vacuous; it says nothing about which model is the real one. The build
+\SkeletonBuild{} with \SkeletonWarnings{} warnings; the axioms of all \SkeletonDecls{} audited
+declarations are listed at the end of this section.
+
+\subsubsection{The objects} Points, characters and zeros, with the predicates the endpoints talk about.
+\input{generated/lean-objects.tex}
+\subsubsection{The target propositions} RH as in Mathlib, the half-plane theorem, its primitive form and
+Dirichlet GRH in the strip.
+\input{generated/lean-targets.tex}
+\subsubsection{The destination as hypotheses} Reflection (functional equations) and conductor descent
+(Euler factors), components \bpcompref{reflection} and \bpcompref{descent}.
+\input{generated/lean-destination.tex}
+\subsubsection{The closing deductions} Primitive half-plane \(\Rightarrow\) half-plane \(\Rightarrow\)
+strip and RH.
+\input{generated/lean-descent.tex}
+\subsubsection{The engine and the supply} The analytic criterion as a field, and the arithmetic supply
+with the order of choices (\(\theta\) after the zero, \(\varepsilon\) after \(\theta\)).
+\input{generated/lean-engine.tex}
+\subsubsection{The cuts in the skeleton}
+\input{generated/lean-supply.tex}
+\subsubsection{The whole architecture in one record}
+\input{generated/lean-record.tex}
+\subsubsection{A checked lemma from the cohomological window} The integer core of the ultrametric
+separation used in component \bpcompref{cohomology}: each centre accounts for at most one exceptional
+twist.
+\input{generated/lean-separation.tex}
+
+\subsubsection{Axiom report} Generated \SkeletonGenerated{} from the build log of
+\bppath{lean/Atlas/Audit.lean} (\bppath{verification/logs/axioms.json}); \SkeletonAxiomFree{} of
+\SkeletonDecls{} declarations use no axiom at all, the others only Lean's standard axioms.
+\input{generated/axioms.tex}
+
+%% ------------------------------------------------------------------ 8. blueprint table
+\clearpage
+\section{The blueprint: \NumDecls{} declarations}\label{sec:table}
+
+The reading project's blueprint graph has \NumNodes{} nodes, \NumDecls{} Lean declarations and
+\NumIdeas{} ideas from the announcement without a theorem, joined by \NumEdges{} edges; the model assigns
+every node to exactly one component. The table lists them component by component, in the reading order, with
+the declaration linked to its pinned source lines and its contract in one sentence. Node tiers are
+computed from receipts: \bptiericonplain{checked} a named declaration with a kernel-check receipt,
+\bptiericonplain{covered} called by one, \bptiericonplain{reported} the five exports,
+\bptiericonplain{read} located and read, \bptiericonplain{motivation} motivation only. Figure~\ref{fig:graph}
+draws the whole graph.
+\input{generated/nodes.tex}
+\input{generated/graph.tex}
+
+%% ------------------------------------------------------------------ 9. timeline
+\clearpage
+\section{The announcement, entry by entry}\label{sec:timeline}
+
+The announcement lists \NumTimeline{} dated entries on its pages \TimelinePages. The dates are as written in
+the announcement (a final ``+'' means \emph{from that date on}, drawn as a short arrow); the relation and
+the assessment of each entry are the reading project's, and the component is the one of this map to
+which the entry belongs. Dots are coloured by the stratum of that component.
+
+\begin{center}
+\input{generated/timeline-picture.tex}
+\end{center}
+\input{generated/timeline.tex}
+
+%% ------------------------------------------------------------------ 10. sources, pins, reproduction
+\clearpage
+\section{Sources, pins and reproduction}\label{sec:pins}
+
+\subsection{Pins}
+\input{generated/pins.tex}
+
+\subsection{The status record}\label{sec:status}
+The reading project's status record as of \StatusAsOf, quoted verbatim (``we'' is the reading project).
+It reports on the archive; this repository did not replay it.
+
+\noindent\textbf{Headline.} ``\StatusHeadline''
+
+\noindent\textbf{Checks made by the reading project.} ``\StatusNative''
+
+\noindent\textbf{External report and authentication.} ``\StatusExternal''
+
+\noindent\textbf{The implication at the centre.} ``\StatusDetail''
+
+\noindent\textbf{Build job} (Helios \StatusJob). ``\StatusFull.
+
+\noindent External sources, as recorded by the reading project:
+\input{generated/external.tex}
+
+\subsection{Provenance of the imported data}
+The data were imported from the reading project at commit \bphash{\SourceCommit} on \ImportedAt;
+the files and their SHA-256 prefixes are:
+\input{generated/provenance.tex}
+
+\subsection{Reproduction}
+Everything in this PDF is regenerated from the repository by the commands below (run from its root).
+The generator is deterministic; the PDF date is fixed to the status time through
+\bpcode{SOURCE\_DATE\_EPOCH}.
+\begin{bpshell}
+python3 -B scripts/model.py                 # data/model.json from the model and data/source
+python3 -B scripts/build_figures.py         # assets/figures/*.svg and facts.json
+python3 -B scripts/build_blueprint_tex.py   # blueprint/generated/*.tex
+make -C blueprint                           # SVG -> PDF (rsvg-convert), LuaLaTeX via latexmk
+(cd lean && lake build)                     # the skeleton and its axiom audit (lean/lean-toolchain)
+\end{bpshell}
+The LaTeX build needs TeX~Live (LuaLaTeX with the fonts Libertinus, Inter and JetBrains Mono, all part of
+TeX~Live) and \bpcode{rsvg-convert}; intermediates go to \bpcode{blueprint/build/}.
+
+\end{document}

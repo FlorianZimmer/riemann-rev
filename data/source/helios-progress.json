@@ -1,0 +1,87 @@
+{
+  "observed_utc": "2026-11-20T23:39:20+00:00",
+  "archive_sha256": "9631b4f020199e580ba86178cb56c6e9b09f690c2369a80dc4334aa93f49c7fc",
+  "jobs": [
+    {
+      "job": "26635287",
+      "state": "CANCELLED by 105923",
+      "elapsed_seconds": 455,
+      "cpus": 64,
+      "time_limit": "12:00:00",
+      "requested_memory": "120G"
+    },
+    {
+      "job": "26636583",
+      "state": "FAILED",
+      "elapsed_seconds": 2,
+      "cpus": 64,
+      "time_limit": "11:52:00",
+      "requested_memory": "120G"
+    },
+    {
+      "job": "26637105",
+      "state": "CANCELLED by 105923",
+      "elapsed_seconds": 1272,
+      "cpus": 64,
+      "time_limit": "11:52:00",
+      "requested_memory": "120G"
+    },
+    {
+      "job": "26639692",
+      "state": "CANCELLED by 105923",
+      "elapsed_seconds": 2988,
+      "cpus": 64,
+      "time_limit": "11:31:00",
+      "requested_memory": "120G"
+    },
+    {
+      "job": "26645922",
+      "state": "CANCELLED by 105923",
+      "elapsed_seconds": 723,
+      "cpus": 64,
+      "time_limit": "10:40:00",
+      "requested_memory": "120G"
+    },
+    {
+      "job": "26647685",
+      "state": "RUNNING",
+      "elapsed_seconds": 22405,
+      "cpus": 64,
+      "time_limit": "10:28:00",
+      "requested_memory": "120G"
+    }
+  ],
+  "latest_job": "26647685",
+  "latest_stages": [
+    "2026-11-20T17:25:56Z toolchain",
+    "2026-11-20T17:25:56Z dependencies",
+    "2026-11-20T17:25:58Z mathlib-cache",
+    "2026-11-20T17:26:00Z node-local-inputs",
+    "2026-11-20T17:30:00Z reductions",
+    "2026-11-20T17:30:47Z original-main"
+  ],
+  "allocated_core_hours": 495.0222,
+  "cumulative_elapsed_seconds": 27845,
+  "cumulative_limit_seconds": 43200,
+  "group_limit_gib": 250,
+  "last_space_sample": [
+    "2026-11-20T23:38:43Z",
+    "KiB",
+    "162774280"
+  ],
+  "maximum_observed_group_kib": 184104252,
+  "completed_scopes": {
+    "reductions": [
+      "26639692",
+      "26645922",
+      "26647685"
+    ],
+    "full": []
+  },
+  "latest_lake_message": {
+    "completed_jobs": 38672,
+    "jobs_scheduled_so_far": 39107,
+    "module": "ReciprocityTheory.AnalyticForms.PotentialTheory.HessCIsHermitian"
+  },
+  "existing_original_project_olean_files": 29967
+}

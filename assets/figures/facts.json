@@ -1,0 +1,214 @@
+{
+  "zeros": {
+    "count": 100,
+    "first": 14.134725,
+    "hundredth": 236.52423
+  },
+  "hero": {
+    "y_min": 10,
+    "y_max": 10000000,
+    "samples": 400000,
+    "r_max": 0.01867,
+    "r_min": -0.02268,
+    "rh_band": 0.046191,
+    "y_at_min": 319441.4,
+    "y_at_max": 3099.7
+  },
+  "explicit": {
+    "zeros_used": 100,
+    "largest_ordinate": 236.5242,
+    "max_abs_difference_normalized": 0.00064,
+    "y_range": [
+      100,
+      2000000
+    ],
+    "hypothetical_rho": [
+      0.62,
+      40.0
+    ],
+    "hyp_growth_exponent": 0.12
+  },
+  "strip": {
+    "zeros_drawn": 10
+  },
+  "ramp": {
+    "mellin_checks": 9,
+    "max_abs_error": 2.95e-10,
+    "G_range_20_120": [
+      1.64,
+      1.969
+    ],
+    "log_2pi": 1.8379
+  },
+  "residue": {
+    "rho": [
+      0.7,
+      14.0
+    ],
+    "direction_deg": 1.63
+  },
+  "spotlight": {
+    "sigma": 1.0,
+    "delta": 0.5,
+    "windows": {
+      "20": {
+        "k": 25,
+        "mass_inside": 0.6795
+      },
+      "40": {
+        "k": 50,
+        "mass_inside": 0.8397
+      },
+      "80": {
+        "k": 100,
+        "mass_inside": 0.9522
+      },
+      "160": {
+        "k": 200,
+        "mass_inside": 0.9945
+      }
+    }
+  },
+  "balance": {
+    "worst_budget_eps": "13/8",
+    "steps": [
+      [
+        "balance x/m vs m (worst budget term)",
+        "13/8"
+      ],
+      [
+        "geometric error E ≤ x^(C*·ε)·B with C* = e_D + e_L + 3",
+        "5"
+      ],
+      [
+        "density of the averaging set: 2/δ ≤ 2·x^ε",
+        "1"
+      ],
+      [
+        "absorbing the constant: 26 ≤ x^(3ε/8)",
+        "3/8"
+      ],
+      [
+        "restoring discarded characters: 1 + 4o ≤ x^ε",
+        "1"
+      ]
+    ],
+    "total_eps": "9",
+    "eD": 2,
+    "eL": 0,
+    "budget": [
+      {
+        "term": "a_E/(m b)",
+        "coef": 2,
+        "exponent": "1/2 + 1·ε",
+        "why": "a_E/(mb) <= 2x/m and m >= x^{1/2-eps}"
+      },
+      {
+        "term": "a_E m/(b k)",
+        "coef": 2,
+        "exponent": "O(1)",
+        "why": "x m <= k"
+      },
+      {
+        "term": "2 (n/u) m x^eps",
+        "coef": 4,
+        "exponent": "1/2 + 13/8·ε",
+        "why": "n/u <= 2x^{eps/8}, m <= x^{1/2+eps/2}, the explicit x^eps"
+      },
+      {
+        "term": "(v/u)(k/n^2) x^{2 eps}",
+        "coef": 2,
+        "exponent": "1/2 + 9/8·ε",
+        "why": "v/u <= n/u <= 2x^{eps/8}, k/n^2 <= x^{1/2-eps}, the explicit x^{2eps}"
+      }
+    ]
+  },
+  "windows": {
+    "example": {
+      "Ct": 2,
+      "eta": 1,
+      "B": 2,
+      "X": "2^128",
+      "twists": [
+        "2^16",
+        "2^180"
+      ],
+      "starts": [
+        8.0,
+        90.0
+      ],
+      "interval_log2": [
+        16.0,
+        32.0
+      ],
+      "interval": [
+        "2^16",
+        "2^32"
+      ]
+    },
+    "ultrametric": {
+      "ell": 3,
+      "Z": 80,
+      "center": 1,
+      "exceptional": [
+        1
+      ],
+      "if_mod_27": [
+        1,
+        28,
+        55
+      ]
+    }
+  },
+  "behrend": {
+    "S": 3,
+    "d": 3,
+    "L": 2,
+    "norm": 5,
+    "base": 24,
+    "points": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        1
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        1,
+        2,
+        0
+      ],
+      [
+        2,
+        0,
+        1
+      ],
+      [
+        2,
+        1,
+        0
+      ]
+    ],
+    "encodings": [
+      26,
+      49,
+      578,
+      624,
+      1153,
+      1176
+    ],
+    "checks": 1440,
+    "plane": "x+y+z=3",
+    "radius_in_plane": "sqrt(2)"
+  },
+  "generated_by": "scripts/build_figures.py"
+}

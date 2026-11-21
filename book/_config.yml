@@ -1,0 +1,63 @@
+# Jupyter Book 1.x configuration of the riemann-rev book.
+#
+# Build (from the repository root):
+#   python3 -B scripts/sync_book_assets.py        # optional: the extension below also syncs
+#   jupyter-book build book/ --warningiserror --keep-going
+#
+# Every page is a MyST Markdown notebook executed at each build (no cache). The local extension
+# book/_ext/bookbuild.py copies the companions (atlas, PDF blueprint) into _static/ and registers
+# the execution kernel (see its docstring: a system Python with numpy and matplotlib).
+
+title: "The architecture of the announced proof of the Riemann hypothesis"
+author: "riemann-rev"
+copyright: "2026"
+only_build_toc_files: true
+exclude_patterns: [_build, _ext, _lib, "**.ipynb_checkpoints", ".DS_Store"]
+
+execute:
+  execute_notebooks: force
+  timeout: 600
+  allow_errors: false
+  stderr_output: show
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_image
+    - linkify
+    - substitution
+
+html:
+  use_repository_button: false
+  use_issues_button: false
+  use_edit_page_button: false
+  use_multitoc_numbering: true
+  home_page_in_navbar: true
+  extra_footer: |
+    <p>Every number on these pages is computed at build time from <code>data/model.json</code>,
+    <code>assets/figures/facts.json</code>, <code>verification/logs/</code> and
+    <code>scripts/rhlib.py</code>. The announcement is a claim; see the verification ledger.</p>
+
+sphinx:
+  local_extensions:
+    bookbuild: _ext
+  config:
+    nb_execution_raise_on_error: true
+    nb_render_markdown_format: myst
+    myst_linkify_fuzzy_links: false
+    numfig: true
+    html_title: "Architecture of the announced RH proof"
+    html_static_path: ["_static"]
+    html_css_files: ["custom.css"]
+    html_show_copyright: false
+    html_last_updated_fmt: ""
+    mathjax3_config:
+      tex:
+        macros:
+          Re: '\operatorname{Re}'
+          Im: '\operatorname{Im}'
+          Res: '\operatorname*{Res}'
+          eps: '\varepsilon'

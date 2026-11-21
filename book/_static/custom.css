@@ -1,0 +1,98 @@
+/* riemann-rev book: badges, cards and tables in the atlas palette (defined in scripts/model.py). */
+
+:root {
+  --rr-ink: #0f172a;
+  --rr-text: #1e293b;
+  --rr-muted: #64748b;
+  --rr-grid: #e2e8f0;
+  --rr-arith: #c2410c;
+  --rr-est: #7c3aed;
+  --rr-ana: #0891b2;
+  --rr-dest: #e11d48;
+  --rr-ok: #059669;
+  --rr-read: #4f46e5;
+  --rr-num: #d97706;
+}
+
+/* Badges: background and text colour are set inline from data/model.json. */
+.rr-badge {
+  display: inline-block;
+  padding: 0.05em 0.55em;
+  margin: 0.1em 0.15em 0.1em 0;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+td .rr-badge { white-space: nowrap; font-size: 0.74em; }
+
+/* Long display formulas scroll inside the column instead of being cut off */
+div.math { overflow-x: auto; overflow-y: hidden; }
+mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+
+code.kicker {
+  font-size: 0.8em;
+  color: var(--rr-muted);
+  background: transparent;
+  border: 1px solid var(--rr-grid);
+  border-radius: 999px;
+  padding: 0.05em 0.6em;
+}
+
+/* The gist and the status box */
+div.admonition.gist {
+  border-left: 0.3rem solid var(--rr-read);
+}
+div.admonition.gist > .admonition-title { background: rgba(79, 70, 229, 0.08); }
+div.admonition.gist > .admonition-title::after { color: var(--rr-read); }
+
+div.admonition.status-box {
+  border-left: 0.3rem solid var(--rr-num);
+}
+div.admonition.status-box > .admonition-title { background: rgba(217, 119, 6, 0.10); }
+div.admonition.status-box > .admonition-title::after { color: var(--rr-num); }
+
+/* Tables: top-aligned cells, long Lean names may wrap */
+table.table td, table.table th { vertical-align: top; }
+table.table td code, table.table td a code { overflow-wrap: anywhere; white-space: normal; }
+table.table td code span.pre { white-space: normal; overflow-wrap: anywhere; hyphens: none; }
+
+/* glued numbers read as ordinary text */
+span.pasted-text { font-weight: inherit; }
+
+a.atlas-link {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--rr-ana);
+  border: 1px solid var(--rr-ana);
+  border-radius: 6px;
+  padding: 0.1em 0.6em;
+  text-decoration: none;
+}
+a.atlas-link:hover { background: rgba(8, 145, 178, 0.08); }
+
+span.pending {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 6px;
+  padding: 0.1em 0.6em;
+}
+
+/* Wide static graph: scroll horizontally instead of shrinking the text */
+figure.scroll-x { overflow-x: auto; }
+figure.scroll-x img { max-width: none !important; }
+
+/* Hero image on the landing page */
+figure.hero img { border-radius: 10px; }
+
+/* Stratum colours for section headings that carry a stratum class */
+.stratum-rule-dest { border-top: 4px solid var(--rr-dest); }
+.stratum-rule-ana { border-top: 4px solid var(--rr-ana); }
+.stratum-rule-est { border-top: 4px solid var(--rr-est); }
+.stratum-rule-arith { border-top: 4px solid var(--rr-arith); }

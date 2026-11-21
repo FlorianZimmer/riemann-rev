@@ -1,0 +1,43 @@
+# Checks that run on every push: the pages agree with the data, the imported data are intact,
+# and the Lean skeleton builds without axioms. They do not re-run the proof of the archive.
+name: checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  consistency:
+    name: pages agree with the data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
+          python -m pip install --quiet numpy pillow
+      - name: self-test of the numerics
+        run: python -B scripts/rhlib.py
+      - name: imported data match their recorded hashes
+        run: python -B scripts/import_sources.py --check
+      - name: model, atlas, guide and logs are consistent
+        run: python -B scripts/check_project.py
+      - name: the README is what the data give
+        run: python -B scripts/build_readme.py --check
+  lean:
+    name: Lean skeleton builds without axioms
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: build the library and audit its axioms
+        run: python3 -B scripts/lean_audit.py

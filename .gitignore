@@ -1,0 +1,34 @@
+# Lean / Lake build products
+.lake/
+**/.lake/
+
+# Python / Jupyter
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+book/_build/
+book/_static/atlas/
+
+# LaTeX intermediates (the PDF itself is committed)
+blueprint/build/
+guide/build/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+!verification/logs/*.log
+*.out
+*.toc
+*.synctex.gz
+
+# The announcement PDF: local only (checksum in source/SOURCE.md; public at https://alpo.ge/remark.pdf)
+source/*.pdf
+
+# Local / editor state
+.DS_Store
+.claude/
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace-mobile.json
+vault/.trash/
+book/_static/blueprint/

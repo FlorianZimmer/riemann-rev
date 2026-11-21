@@ -1,0 +1,65 @@
+{
+  "generated_utc": "2026-11-21T00:21:04+00:00",
+  "lean": "Lean (version 4.35.0, arm64-apple-darwin24.6.0, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "build": "passed",
+  "warnings": 0,
+  "declarations": {
+    "Atlas.halfPlane_of_primitive": [],
+    "Atlas.strip_of_halfPlane": [],
+    "Atlas.rh_of_halfPlane": [],
+    "Atlas.primitiveHalfPlane_of_supply": [],
+    "Atlas.endpoints_of_supply": [],
+    "Atlas.rh_of_prime_windows": [],
+    "Atlas.Architecture.endpoints": [],
+    "Atlas.toyArchitecture": [],
+    "Atlas.Separation.eq_of_dvd_sub": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Atlas.Separation.at_most_one_per_centre": [
+      "propext",
+      "Quot.sound"
+    ],
+    "Reading.excludeZeroByWindows": [],
+    "Reading.criticalLineByReflection": [],
+    "BehrendReading.normSq_nonneg": [
+      "propext"
+    ],
+    "BehrendReading.coordinates_zero_of_normSq_zero": [
+      "propext",
+      "Quot.sound"
+    ],
+    "BehrendReading.distance_pos_of_ne": [
+      "propext",
+      "Quot.sound"
+    ],
+    "BehrendReading.chord_identity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "BehrendReading.sphere_rel": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "BehrendReading.sphere_midpoint": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "axiom_free": [
+    "Atlas.Architecture.endpoints",
+    "Atlas.endpoints_of_supply",
+    "Atlas.halfPlane_of_primitive",
+    "Atlas.primitiveHalfPlane_of_supply",
+    "Atlas.rh_of_halfPlane",
+    "Atlas.rh_of_prime_windows",
+    "Atlas.strip_of_halfPlane",
+    "Atlas.toyArchitecture",
+    "Reading.criticalLineByReflection",
+    "Reading.excludeZeroByWindows"
+  ],
+  "problems": []
+}

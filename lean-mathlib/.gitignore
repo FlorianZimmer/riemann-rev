@@ -1,0 +1,3 @@
+.lake/
+# copied from ../lean/Atlas/Architecture.lean by scripts/helios_mathlib.sh
+Atlas/Architecture.lean

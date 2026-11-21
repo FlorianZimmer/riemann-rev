@@ -1,0 +1,107 @@
+{
+  "source_project": "the reading project (private working copy)",
+  "source_commit": "348ec48748e0ea536aba7d64351b2ee2f7d116d7",
+  "imported_utc": "2026-11-21T00:17:58+00:00",
+  "redaction_rules": [
+    "links into the private reading project",
+    "name of the private reading project"
+  ],
+  "files": [
+    {
+      "from": "blueprint/map.json",
+      "to": "data/source/map.json",
+      "sha256": "26ad5dd085d155ba2c56d5a8e9e9c594373663f65f779d36754b05f440683dd8",
+      "sha256_in_reading_project": "26ad5dd085d155ba2c56d5a8e9e9c594373663f65f779d36754b05f440683dd8",
+      "redactions": 0,
+      "bytes": 330831
+    },
+    {
+      "from": "evidence/status.json",
+      "to": "data/source/status.json",
+      "sha256": "d4afbf5694ca44cad2950999167bd7c60cdfc870ef761829a7f333a51a148410",
+      "sha256_in_reading_project": "1cbe8dc35da66ae1ee0c4cafd1a91c496b479b73bfe8c15f5352a116fa17ce1f",
+      "redactions": 1,
+      "bytes": 23582
+    },
+    {
+      "from": "evidence/sources.json",
+      "to": "data/source/sources.json",
+      "sha256": "19f64f8f967813cd55fac757c9a10d4d5a23dc1c270c1bb46dede2130f18cab3",
+      "sha256_in_reading_project": "19f64f8f967813cd55fac757c9a10d4d5a23dc1c270c1bb46dede2130f18cab3",
+      "redactions": 0,
+      "bytes": 1896
+    },
+    {
+      "from": "research/agents/arithmetic/timeline.json",
+      "to": "data/source/timeline.json",
+      "sha256": "8cc2d4c4dedc8f7cd38f4140390e085698d149ec15ceae95344db092022972f9",
+      "sha256_in_reading_project": "8cc2d4c4dedc8f7cd38f4140390e085698d149ec15ceae95344db092022972f9",
+      "redactions": 0,
+      "bytes": 8030
+    },
+    {
+      "from": "dashboard/data/native-scopes.json",
+      "to": "data/source/native-scopes.json",
+      "sha256": "13b55c110571a9977e1be98a1ac86fceb3d3c14845232da72cde931b02edda83",
+      "sha256_in_reading_project": "13b55c110571a9977e1be98a1ac86fceb3d3c14845232da72cde931b02edda83",
+      "redactions": 0,
+      "bytes": 75967
+    },
+    {
+      "from": "evidence/helios/progress.json",
+      "to": "data/source/helios-progress.json",
+      "sha256": "44d9fd51367c85aaa06717384f6fcae1c3d0bcb8690f74c80868af8ab9d6bd85",
+      "sha256_in_reading_project": "44d9fd51367c85aaa06717384f6fcae1c3d0bcb8690f74c80868af8ab9d6bd85",
+      "redactions": 0,
+      "bytes": 2184
+    },
+    {
+      "from": "formal/standalone/WindowLogic.lean",
+      "to": "lean/Reading/WindowLogic.lean",
+      "sha256": "cd648265b6aa58d8889703340025bbb747023004fe3c612ff5e3158d598945ac",
+      "sha256_in_reading_project": "cd648265b6aa58d8889703340025bbb747023004fe3c612ff5e3158d598945ac",
+      "redactions": 0,
+      "bytes": 1551
+    },
+    {
+      "from": "formal/behrend/BehrendSphere.lean",
+      "to": "lean/Reading/BehrendSphere.lean",
+      "sha256": "a026ef4bc8c5eee79581e3e58c9496db5e77d5c2c0b8d2cc9a50eb739cce4f66",
+      "sha256_in_reading_project": "a026ef4bc8c5eee79581e3e58c9496db5e77d5c2c0b8d2cc9a50eb739cce4f66",
+      "redactions": 0,
+      "bytes": 4140
+    },
+    {
+      "from": "formal/window-bridge/WindowBridge.lean",
+      "to": "references/archive-bridges/WindowBridge.lean",
+      "sha256": "e77eb05549e7622bf0949453b1e5ad876747184c3c0b4c907e3844b3eb19edaa",
+      "sha256_in_reading_project": "e77eb05549e7622bf0949453b1e5ad876747184c3c0b4c907e3844b3eb19edaa",
+      "redactions": 0,
+      "bytes": 3068
+    },
+    {
+      "from": "formal/window-bridge/GeometricTransport.lean",
+      "to": "references/archive-bridges/GeometricTransport.lean",
+      "sha256": "f6213d4c45e70a1a80f0dc5c5b6b09665f8a1a0aa85e2c38a78842e9af298f53",
+      "sha256_in_reading_project": "f6213d4c45e70a1a80f0dc5c5b6b09665f8a1a0aa85e2c38a78842e9af298f53",
+      "redactions": 0,
+      "bytes": 567
+    },
+    {
+      "from": "formal/dirichlet-bridge/DirichletBridge.lean",
+      "to": "references/archive-bridges/DirichletBridge.lean",
+      "sha256": "59d543a5550f953b870b23cec00f98a66cd927e7c50bbc5b7e3fba5bee6181f0",
+      "sha256_in_reading_project": "59d543a5550f953b870b23cec00f98a66cd927e7c50bbc5b7e3fba5bee6181f0",
+      "redactions": 0,
+      "bytes": 1630
+    },
+    {
+      "from": "formal/upstream/EndpointAudit.lean",
+      "to": "references/archive-bridges/EndpointAudit.lean",
+      "sha256": "7946558ed7e5f2da236bc639566453da21781014256853293fcf3ae4c6c5dcde",
+      "sha256_in_reading_project": "7946558ed7e5f2da236bc639566453da21781014256853293fcf3ae4c6c5dcde",
+      "redactions": 0,
+      "bytes": 745
+    }
+  ]
+}

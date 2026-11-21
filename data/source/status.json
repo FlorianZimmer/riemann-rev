@@ -1,0 +1,432 @@
+{
+  "headline": "Two independent kernels accepted the complete proof, and all five theorems matched the canonical Mathlib challenge.",
+  "detail": "The first theorem has Mathlib’s type RiemannHypothesis. The other endpoints give the zeta zero statement and the half-plane and critical-strip results for Dirichlet characters at every positive modulus. The arithmetic proof constructs the windows it needs for a prescribed character. Each exported proof uses precisely the three standard explicit axioms.",
+  "external": "Andrew Sutherland and Simon DeDeo each report independently building and replaying all 175,187 original modules with Lean 4.33.1. DeDeo reports zero errors and crashes. Sutherland additionally records a con-leche comparison of the five targets and a lean4lean check of every original module. Five modules required higher reduction limits. The individual logs identify the names, flags and successful reruns.",
+  "native": "At Lean 4.33.1 we checked 24 named original results and 21 reading deductions across 2,244 distinct original modules. We also checked five endpoint equivalences and an Euler-factor boundary example. The one-sided prime-window implication passed fresh Lean replay with Mathlib and a second kernel on a portable proof of 61,697 declarations. The two-input deduction of ordinary RH and Dirichlet GRH, four steps from finite character comparison to the prime-sum bound and the auxiliary-prime theorem for three changing quadratic twists all passed. LemmaK, FixedIn and TwoIn yield one record of cohomological window constants for every cutoff exponent Ct ≥ 1. From Poitou–Tate duality, local finiteness and local Tate duality, a tower gives its cohomological bound. Adding Ferrero–Washington and LemmaK yields the joint window under those same hypotheses. Eight further teaching declarations use Lean 4.35.0. At each fixed primitive character, TopG and just its own cohomological estimate yield a cyclic-family bound with coefficient one. For the principal character modulo one this is the exact centered ordinary prime sum. The archive supplies the ordinary first moment unconditionally. Fresh kernel replay establishes that Schoenfeld’s RH-to-Chebyshev estimate suffices for the converse from RH to the window bound.",
+  "job_id": "26647685",
+  "reductions": "passed",
+  "full": "Building the original library targets and Main with 48 Lake workers and persistent group objects",
+  "allocation": {
+    "cluster": "Helios",
+    "cpus": 64,
+    "cumulative_wall_seconds": 43200,
+    "group_storage_limit_gib": 250
+  },
+  "receipts": [
+    {
+      "label": "Two explanatory implications with empty axiom sets",
+      "file": "evidence/standalone-axioms.json",
+      "asset_name": "standalone-native.json"
+    },
+    {
+      "label": "Integer-sphere proof and axiom receipt",
+      "file": "formal/behrend/receipts/receipt.json",
+      "asset_name": "sphere-native.json"
+    },
+    {
+      "label": "Three original deductions and their axiom sets",
+      "file": "evidence/helios/26639692/reductions-axioms.json"
+    },
+    {
+      "label": "Original compiled reduction objects",
+      "file": "evidence/helios/26639692/reductions-objects.tar.gz"
+    },
+    {
+      "label": "Exact versions of nine checked dependencies",
+      "file": "evidence/helios/26639692/dependencies.tsv"
+    },
+    {
+      "label": "Five original analytic and Behrend declarations",
+      "file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+      "asset_name": "analytic-and-behrend-native.json"
+    },
+    {
+      "label": "Verified implication from prime windows to Mathlib RH",
+      "file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+      "asset_name": "window-implication-native.json"
+    },
+    {
+      "label": "Three transitive axiom reports for the window implication",
+      "file": "evidence/helios/26639692/window-bridge-v2/audit.log",
+      "asset_name": "window-implication-axioms.log"
+    },
+    {
+      "label": "Geometric prime-sum normalization and conditional RH",
+      "file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+      "asset_name": "geometric-implication-native.json"
+    },
+    {
+      "label": "Two original arithmetic window-selection theorems",
+      "file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+      "asset_name": "cohomology-windows-native.json"
+    },
+    {
+      "label": "Original local minor-divisibility theorem",
+      "file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+      "asset_name": "local-minor-native.json"
+    },
+    {
+      "label": "Fresh kernel replay of the conditional zeta proof including its Mathlib imports",
+      "file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+      "asset_name": "fresh-window-native.json"
+    },
+    {
+      "label": "Auxiliary primes and simultaneous estimates for their quadratic twists",
+      "file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+      "asset_name": "auxiliary-primes-native.json"
+    },
+    {
+      "label": "Ordinary RH and Dirichlet GRH from the two specified arithmetic inputs",
+      "file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+      "asset_name": "dirichlet-implication-native.json"
+    },
+    {
+      "label": "From the finite character discrepancy to the prime estimate on a window",
+      "file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+      "asset_name": "prime-comparison-native.json"
+    },
+    {
+      "label": "Independent Rust kernel verification of the one-sided prime-window implication",
+      "file": "evidence/helios/26647685/independent-window/receipt.json",
+      "asset_name": "rust-window-native.json",
+      "seal_sha256": "87e1a3ef906f95f65bc5f3c394ee950e0550592d269e0f3356308721a3fc5e41"
+    },
+    {
+      "label": "A second Rust replay of the distributed conditional proof on macOS arm64",
+      "file": "evidence/macos/independent-window/receipt.json",
+      "asset_name": "macos-rust-window.json"
+    },
+    {
+      "label": "Five independently formulated endpoint equivalences and an explicit boundary zero",
+      "file": "evidence/helios/26647685/endpoint-semantics-v4/receipt.json",
+      "asset_name": "endpoint-semantics-native.json",
+      "seal_sha256": "440a4d158e64c01eaf81333320ff832cf704c6de666b0710431600d2c49ddbb6"
+    },
+    {
+      "label": "Cohomology window assembly with one choice of constants for every cutoff",
+      "file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+      "asset_name": "cohomology-assembly-native.json",
+      "seal_sha256": "dad9d20c6b6869e182c097d0c8d24d1deed52c3598c97913c9ce63c25a66169b"
+    },
+    {
+      "label": "Tower cohomology and the uniform window from the named duality, finiteness and arithmetic hypotheses",
+      "file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+      "asset_name": "tower-suppliers-native.json",
+      "seal_sha256": "1f110a29b07e8e8261dd2ad3ed47d8cbaf8da0c5e46fdf9d58f968d42ea7569c"
+    },
+    {
+      "label": "Exact types and proof expressions of 51 theorems in byte-different compiled objects",
+      "file": "evidence/helios/26647685/paired-terms-v1/receipt.json",
+      "asset_name": "paired-theorem-terms.json"
+    },
+    {
+      "label": "Five-theorem register and matched native transcripts",
+      "file": "evidence/full-proof.json",
+      "asset_name": "full-proof.json"
+    },
+    {
+      "label": "Complete independent Rust run with the named theorems",
+      "file": "evidence/helios/26647685/published-full-rust-v1/receipt.json",
+      "asset_name": "full-rust-native.json"
+    },
+    {
+      "label": "Five theorem declarations as printed by the Rust kernel",
+      "file": "evidence/helios/26647685/published-full-rust-v1/rust.stdout",
+      "asset_name": "full-rust-transcript.txt"
+    },
+    {
+      "label": "Each of five proof values reaches the same three explicit axioms",
+      "file": "formal/export-axioms/evidence/summary.json",
+      "asset_name": "exported-axiom-closures.json"
+    },
+    {
+      "label": "Official comparison of the five canonical targets",
+      "file": "evidence/helios/26647685/official-full-statements/receipt.json",
+      "asset_name": "official-five-statements.json"
+    },
+    {
+      "label": "Original five-target comparison verdict",
+      "file": "evidence/helios/26647685/official-full-statements/official-phase.stdout",
+      "asset_name": "official-five-transcript.txt"
+    },
+    {
+      "label": "Fresh reconstruction of the complete canonical challenge from Mathlib",
+      "file": "evidence/helios/26647685/clean-challenge-v1/receipt.json",
+      "asset_name": "rebuilt-canonical-challenge.json"
+    },
+    {
+      "label": "Fresh compilation of the original four project statement definitions",
+      "file": "evidence/helios/26647685/published-endpoints-fresh-statements/receipt.json",
+      "asset_name": "fresh-original-statements.json"
+    },
+    {
+      "label": "Verified-mode kernel acceptance of the full solution and all five theorems",
+      "file": "evidence/helios/26647685/con-leche-full-v1/receipt.json",
+      "asset_name": "combined-five-proofs.json"
+    },
+    {
+      "label": "Individual native verdict for each canonical theorem",
+      "file": "evidence/helios/26647685/con-leche-full-v1/complete.stdout",
+      "asset_name": "combined-five-transcript.txt"
+    },
+    {
+      "label": "One fixed character’s arithmetic inputs supply entire windows with coefficient one",
+      "file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+      "asset_name": "arithmetic-windows-native.json"
+    },
+    {
+      "label": "The original first moment and the ordinary prime-window converse from Schoenfeld’s estimate",
+      "file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+      "asset_name": "ordinary-window-converse-native.json"
+    }
+  ],
+  "as_of": "2026-11-20T23:51:25Z",
+  "external_record": "research/agents/referee/public-update-2300.json",
+  "external_time": "23:00 UTC",
+  "external_sources": [
+    {
+      "label": "Private download of the complete checked proof",
+      "url": "private://reading-project"
+    },
+    {
+      "label": "Sutherland’s five named con-leche results",
+      "url": "https://math.mit.edu/~drew/grh/con-leche-compare.log"
+    },
+    {
+      "label": "Sutherland’s five raised-fuel lean4lean reruns",
+      "url": "https://math.mit.edu/~drew/grh/lean4lean-raised-fuel.log"
+    },
+    {
+      "label": "Full solution and dated operator report",
+      "url": "https://math.mit.edu/~drew/grh/"
+    },
+    {
+      "label": "Second complete original-toolchain replay",
+      "url": "https://photos.proofsandreasons.io/wright/alp-replay.json"
+    },
+    {
+      "label": "Five individual axiom lists",
+      "url": "https://math.mit.edu/~drew/grh/audit.log"
+    },
+    {
+      "label": "Rust process log",
+      "url": "https://math.mit.edu/~drew/grh/nanoda.log"
+    },
+    {
+      "label": "Download checksums",
+      "url": "https://math.mit.edu/~drew/grh/SHA256SUMS"
+    },
+    {
+      "label": "Earlier challenge comparison",
+      "url": "https://leanprover.zulipchat.com/#narrow/channel/113488-general/topic/Discussion.3A.20Alp.C3.B6ge.20Proves.20the.20Riemann.20Hypothesis/near/642313194"
+    },
+    {
+      "label": "Independent five-target comparison",
+      "url": "https://leanprover.zulipchat.com/#narrow/channel/113488-general/topic/Discussion.3A.20Alp.C3.B6ge.20Proves.20the.20Riemann.20Hypothesis/near/642338051"
+    },
+    {
+      "label": "Independent rebuild with a separately generated proof export",
+      "url": "https://github.com/Infatoshi/rh-verification-receipts/blob/ac99f18cef21952de094234fab95db342ed16638/VERIFICATION_RESULT.txt"
+    }
+  ],
+  "independent_window": {
+    "proof_file": "artifacts/prime-window-proof.ndjson.gz",
+    "compressed_sha256": "125bdd7041764c898f4d5b31653f3794abb61be09e484c1b791150f86cc084d0",
+    "raw_bytes": 436362868,
+    "compressed_bytes": 89615680,
+    "declarations": 61697,
+    "solution_sha256": "8cf5117156684b8c3c7ad92555786742b3a2dc23ac2f02840d45fd346d78c2be",
+    "receipt": "evidence/helios/26647685/independent-window/receipt.json",
+    "macos_receipt": "evidence/macos/independent-window/receipt.json"
+  },
+  "reported_full_export": {
+    "raw_bytes": 61570595788,
+    "raw_sha256": "5ea74b912147c5c93cc2b6d70cc727cf908df2f62ac6a20480a3fa02f6be244e",
+    "builder": "Andrew Sutherland",
+    "public_snapshot": "research/agents/referee/public-update-2000.json",
+    "local_hash_or_replay": true,
+    "compressed_bytes": 7699933588,
+    "compressed_sha256": "61a8938ad5f5e57397c1c0e3b954916af546d9004ade01c3555744a681b05381",
+    "download": "https://math.mit.edu/~drew/grh/solution.ndjson.zst",
+    "local_hash": true,
+    "local_rust_accepted": true,
+    "local_raw_receipt": "evidence/helios/26647685/full-export-intake/solution.json",
+    "local_clean_receipt": "evidence/helios/26647685/full-export-intake/challenge-v2.json",
+    "local_rust_receipt": "evidence/helios/26647685/published-full-rust-v1/receipt.json",
+    "local_canonical_statement_phase": true,
+    "local_canonical_receipt": "evidence/helios/26647685/official-full-statements/receipt.json",
+    "local_verified_combined": true,
+    "local_verified_combined_receipt": "evidence/helios/26647685/con-leche-full-v1/receipt.json"
+  },
+  "full_verification": [
+    {
+      "stage": "Combined kernel and challenge check",
+      "operator": "Helios reading project",
+      "outcome": "All five named proofs justified",
+      "detail": "In verified comparison mode con-leche checked 1,468,418 solution declaration records, accepted the 51,692-record challenge and individually justified its five theorems. The run used both full, hash-identified canonical inputs.",
+      "file": "evidence/helios/26647685/con-leche-full-v1/receipt.json",
+      "asset_name": "combined-five-proofs.json"
+    },
+    {
+      "stage": "Official comparison with the independent Mathlib challenge",
+      "operator": "Helios reading project",
+      "outcome": "All five canonical statements matched",
+      "detail": "Lean 4.36.0 compared the exact challenge and solution, checked the target types, compared their referenced declarations and enforced the permitted axioms. The independent Rust run checks the proof terms in this same solution.",
+      "file": "evidence/helios/26647685/official-full-statements/receipt.json",
+      "asset_name": "official-five-statements.json"
+    },
+    {
+      "stage": "Recreate the reference from the five handwritten Mathlib statements",
+      "operator": "Helios reading project",
+      "outcome": "All 350,862,311 bytes identical",
+      "detail": "We compiled the independent challenge source with the original compiler. Only Init and the pinned Mathlib were direct imports. The resulting export reproduced the exact canonical challenge digest.",
+      "file": "evidence/helios/26647685/clean-challenge-v1/receipt.json",
+      "asset_name": "rebuilt-canonical-challenge.json"
+    },
+    {
+      "stage": "Rebuild the four closed definitions in Statements.lean",
+      "operator": "Helios reading project",
+      "outcome": "Fresh original object byte-identical",
+      "detail": "The original Statements.lean was freshly elaborated with the pinned Mathlib, and Lean replayed the module. All four project propositions were recovered. The object matches both independently published builds.",
+      "file": "evidence/helios/26647685/published-endpoints-fresh-statements/receipt.json",
+      "asset_name": "fresh-original-statements.json"
+    },
+    {
+      "stage": "Fresh Rust verification of the complete proof",
+      "operator": "Helios reading project",
+      "outcome": "1,484,733 declarations accepted",
+      "detail": "NanoDA 0.4.17 printed five theorem names and their root propositions, enforced the three standard axioms and exited successfully after 39 minutes. The receipt hashes the same bytes sent into the kernel.",
+      "file": "evidence/helios/26647685/published-full-rust-v1/receipt.json",
+      "asset_name": "full-rust-native.json"
+    },
+    {
+      "stage": "Exact axiom set of each exported proof",
+      "operator": "Helios reading project",
+      "outcome": "15 of 15 paths witnessed",
+      "detail": "Each of five theorem values reaches propext, Classical.choice and Quot.sound. A scan of the full export found exactly those three ordinary axiom declarations. The selected paths cover 65 distinct value references.",
+      "file": "formal/export-axioms/evidence/summary.json",
+      "asset_name": "exported-axiom-closures.json"
+    },
+    {
+      "stage": "Second full original Lean kernel replay",
+      "operator": "Simon DeDeo",
+      "outcome": "175,187 of 175,187 accepted",
+      "detail": "The source-bound independent builder reports zero failed modules, zero crashes and zero remaining. The native replay ran for 3 h 22 min 16 s and finished at 22:00:36 UTC.",
+      "file": "research/agents/referee/dedeo-20261120T2202Z/replay.json",
+      "asset_name": "second-native-replay-2200.json",
+      "url": "https://photos.proofsandreasons.io/wright/alp-replay.json"
+    },
+    {
+      "stage": "Independent rebuild and separately generated export",
+      "operator": "Elliot Arledge",
+      "outcome": "1,484,729 declarations accepted",
+      "detail": "His source archive and Mathlib match this edition. His 61,571,290,481-byte export has SHA-256 4301ce48…72e7e. It passed his Rust run and his native five-statement checks. Its byte length and declaration count distinguish it from the MIT export used on Helios.",
+      "url": "https://github.com/Infatoshi/rh-verification-receipts/blob/ac99f18cef21952de094234fab95db342ed16638/VERIFICATION_RESULT.txt"
+    },
+    {
+      "stage": "Original Lean build",
+      "operator": "Andrew Sutherland",
+      "outcome": "Accepted",
+      "detail": "All 175,187 original modules compiled, including Main. The submitted archive digest matches ours.",
+      "url": "https://math.mit.edu/~drew/grh/"
+    },
+    {
+      "stage": "Original module kernel replay",
+      "operator": "Andrew Sutherland",
+      "outcome": "Accepted",
+      "detail": "leanchecker replayed every one of the 175,187 original modules. The operator reports zero rejections.",
+      "url": "https://math.mit.edu/~drew/grh/"
+    },
+    {
+      "stage": "Five transitive axiom lists",
+      "operator": "Andrew Sutherland",
+      "outcome": "All five published",
+      "detail": "Each named endpoint has exactly the three allowed foundational axioms.",
+      "url": "https://math.mit.edu/~drew/grh/audit.log"
+    },
+    {
+      "stage": "Independent Rust kernel",
+      "operator": "Andrew Sutherland",
+      "outcome": "Accepted",
+      "detail": "NanoDA checked the 61,570,595,788-byte solution and exited successfully. The full digest is published.",
+      "url": "https://math.mit.edu/~drew/grh/nanoda.log"
+    },
+    {
+      "stage": "Five expected statements and permitted axioms",
+      "operator": "Andrew Sutherland",
+      "outcome": "Passed with earlier challenge",
+      "detail": "The comparison reached the Lean paranoid kernel. The builder says the earlier challenge differs in its placeholder proofs.",
+      "url": "https://leanprover.zulipchat.com/#narrow/channel/113488-general/topic/Discussion.3A.20Alp.C3.B6ge.20Proves.20the.20Riemann.20Hypothesis/near/642313194"
+    },
+    {
+      "stage": "End-to-end Comparator in Sutherland’s 19:45 UTC snapshot",
+      "operator": "Andrew Sutherland",
+      "outcome": "In progress",
+      "detail": "The clean challenge has the canonical digest. End-to-end Comparator and the default and paranoid export kernels were in progress at the 19:45 UTC builder cutoff.",
+      "url": "https://math.mit.edu/~drew/grh/"
+    },
+    {
+      "stage": "Early runs of con-leche and con-ron",
+      "operator": "Sutherland and Jack McCarthy",
+      "outcome": "Two checkers stopped",
+      "detail": "The versions tried at this stage stopped at a mutually inductive certificate. McCarthy reproduced the diagnostic on a small example.",
+      "url": "https://github.com/Deicyde/riemann-hypothesis/blob/712a6aef8fe265fb6f3a5fa1f3101a017aec8fe9/verification/NOTES.md#L145-L161"
+    },
+    {
+      "stage": "Five theorems justified by con-leche in verified mode",
+      "operator": "Szymon Teżewski",
+      "outcome": "Accepted by this operator",
+      "detail": "The operator identifies con-leche revision 5dc36dc, gives a solution digest prefix and suffix matching this edition, and reports five justified names and 1,468,418 solution records. His public post omits the full solution digest and challenge digest.",
+      "url": "https://leanprover.zulipchat.com/#narrow/channel/113488-general/topic/Discussion.3A.20Alp.C3.B6ge.20Proves.20the.20Riemann.20Hypothesis/near/642355040"
+    },
+    {
+      "stage": "Object hashes from two complete builds",
+      "operator": "This reading project",
+      "outcome": "Compared 175,187 pairs",
+      "detail": "The two manifests match on 76,968 objects, including Main and Statements. The remaining 98,219 pairs have different bytes. The discrepancy does not identify a difference in theorem statements or proof terms.",
+      "url": "https://math.mit.edu/~drew/grh/project-oleans.sha256",
+      "file": "evidence/builders/objects/receipt.json",
+      "asset_name": "published-object-comparison.json"
+    },
+    {
+      "stage": "Physical solution and clean challenge",
+      "operator": "Helios reading project",
+      "outcome": "Both hashes match",
+      "detail": "Both compressed downloads and both expanded inputs match the published checksums. The solution contains 61,570,595,788 raw bytes and the canonical challenge contains 350,862,311.",
+      "url": "https://math.mit.edu/~drew/grh/SHA256SUMS",
+      "file": "evidence/helios/26647685/full-export-intake/solution.json",
+      "asset_name": "published-solution-intake.json"
+    },
+    {
+      "stage": "Stored terms from differing native objects",
+      "operator": "Helios reading project",
+      "outcome": "51 of 51 proof terms agree",
+      "detail": "The exact Lean 4.33.1 reader compared our native objects with DeDeo’s. In this source-defined sample all 51 named types and proof bodies match structurally. This measurement covers one selected theorem in each object.",
+      "file": "evidence/helios/26647685/paired-terms-v1/receipt.json",
+      "asset_name": "paired-theorem-terms.json"
+    },
+    {
+      "stage": "Auxiliary geometry in the actual proof terms",
+      "operator": "Helios reading project",
+      "outcome": "40 endpoint-to-declaration paths",
+      "detail": "The five root values reach eight selected declarations through recorded constant references. The original predicate has exactly three arguments followed by True. Some references occur in binder types within a proof value.",
+      "file": "formal/export-paths/evidence/summary.json",
+      "asset_name": "geometry-term-summary.json"
+    }
+  ],
+  "scope_counts": {
+    "pinned_original_declarations": 24,
+    "pinned_reading_deductions": 21,
+    "pinned_reference_and_boundary_results": 6,
+    "other_teaching_declarations": 8,
+    "original_import_modules": 2244
+  },
+  "published_objects": {
+    "receipt": "evidence/builders/objects/receipt.json",
+    "sutherland_sha256": "375cbee2fc3fc0f5088ef2e6dc9a5ac5530924310dc62422ec65aac9dc4c1d25",
+    "dedeo_gzip_sha256": "3fc17104ddfbc1cc847b9ea15adb4bac580e4323be009ed3911f3803e811c7f0",
+    "modules": 175187,
+    "same": 76968,
+    "different": 98219
+  }
+}

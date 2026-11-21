@@ -1,0 +1,15 @@
+name = "RiemannAtlas"
+version = "0.1.0"
+defaultTargets = ["Atlas", "Reading", "AtlasAudit"]
+
+[[lean_lib]]
+name = "Atlas"
+
+[[lean_lib]]
+name = "Reading"
+
+# The audit module prints the axioms of every theorem; its build log is parsed into
+# verification/logs/axioms.json by scripts/lean_audit.py.
+[[lean_lib]]
+name = "AtlasAudit"
+roots = ["Atlas.Audit"]

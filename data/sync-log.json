@@ -1,0 +1,20 @@
+[
+  {
+    "imported_utc": "2026-11-20T19:21:04+00:00",
+    "source_commit": "3d2f5677dfdc66ea291fd77e793e874211cd17e8",
+    "status_as_of": "2026-11-20T19:02:07.124647+00:00",
+    "headline": "A complete native Lean build has been reported for this archive. Our full endpoint replay continues."
+  },
+  {
+    "imported_utc": "2026-11-20T21:39:24+00:00",
+    "source_commit": "e95b08959f8e87d945644b929ae21e75298147cc",
+    "status_as_of": "2026-11-20T21:33:00+00:00",
+    "headline": "A full Lean replay and an independent Rust check support the five unconditional theorems. The proof export is now public."
+  },
+  {
+    "imported_utc": "2026-11-21T00:17:58+00:00",
+    "source_commit": "348ec48748e0ea536aba7d64351b2ee2f7d116d7",
+    "status_as_of": "2026-11-20T23:51:25Z",
+    "headline": "Two independent kernels accepted the complete proof, and all five theorems matched the canonical Mathlib challenge."
+  }
+]

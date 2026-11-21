@@ -1,0 +1,746 @@
+% !TEX program = lualatex
+% ---------------------------------------------------------------------------------------------
+%  A guide to the architecture of the proof of RH announced by L. Alpöge  (riemann-rev)
+%
+%  Build:  python3 -B scripts/build_guide.py     (writes data.tex, runs LuaLaTeX, checks the layout)
+%  The prose is hand-written. Numbers from the evidence, the status time and every link come from
+%  data.tex. Each mathematical statement about the archive was checked against the Lean source
+%  (pinned at commit 40e56bab); the declarations are named in the "Lean" line that closes a section.
+%
+%  Layout (reading edition): 11 pt Libertinus on a 140 mm measure, about 88 characters to the line;
+%  formulas are displayed, enumerations are lists, section numbers hang in the margin. Only the
+%  diagram is wider than the text. The page count is fixed in scripts/build_guide.py.
+%
+%  Rule of the text: every symbol and every name is explained where it first appears and listed
+%  again in the notation on the last page; no letter has two meanings. Letters differ from the
+%  archive's where the archive reuses one (its twist e is h here, its rank k is n_0, its Hecke
+%  characters mu_j are xi_j, its family weights a are c).
+% ---------------------------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+\ifdefined\pdfvariable\pdfvariable suppressoptionalinfo \numexpr 1+2+4+8\relax\fi
+\usepackage[a4paper,hmargin=35mm,top=22mm,bottom=27mm,footskip=12mm,nohead]{geometry}
+
+\usepackage{fontspec}
+\directlua{
+  luaotfload.add_fallback("gfallback", {"STIXTwoMath-Regular.otf:mode=node;", "DejaVuSans.ttf:mode=node;"})
+  luaotfload.add_fallback("gmonofallback", {"DejaVuSansMono.ttf:mode=node;", "STIXTwoMath-Regular.otf:mode=node;"})
+}
+\setmainfont{LibertinusSerif}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-Semibold,BoldItalicFont=*-SemiboldItalic,RawFeature={fallback=gfallback}]
+\setsansfont{Inter}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,RawFeature={fallback=gfallback}]
+\setmonofont{JetBrainsMono}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,Scale=MatchLowercase,
+  RawFeature={-calt;-liga;fallback=gmonofallback}]
+\usepackage{amsmath}
+\usepackage[math-style=TeX]{unicode-math}
+\setmathfont{LibertinusMath-Regular.otf}
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,positioning,backgrounds}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+
+\definecolor{ink}{HTML}{0F172A}
+\definecolor{inksoft}{HTML}{475569}
+\definecolor{inkfaint}{HTML}{94A3B8}
+\definecolor{rulegrey}{HTML}{CBD5E1}
+\definecolor{arith}{HTML}{C2410C}
+\definecolor{est}{HTML}{7C3AED}
+\definecolor{ana}{HTML}{0891B2}
+\definecolor{dest}{HTML}{E11D48}
+\definecolor{ok}{HTML}{047857}
+\definecolor{leancol}{HTML}{3730A3}
+
+\title{The proof of the Riemann hypothesis announced by L. Alpöge: a guide to its architecture}
+\author{riemann-rev}
+\date{}
+
+\input{data.tex}
+
+% ------------------------------------------------------------------------------------- page
+\linespread{1.08}                       % 11 pt on 14.7 pt
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5.5pt plus 1.5pt minus 0.5pt}
+\setlength{\abovedisplayskip}{7.5pt plus 2pt minus 3pt}
+\setlength{\belowdisplayskip}{7.5pt plus 2pt minus 3pt}
+\setlength{\abovedisplayshortskip}{3pt plus 2pt}
+\setlength{\belowdisplayshortskip}{6pt plus 2pt minus 2pt}
+\emergencystretch=1.5em
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\relpenalty=7000 \binoppenalty=9000     % keep short formulas on one line
+\raggedbottom
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\sffamily\fontsize{7.6}{9}\selectfont\color{inkfaint}\thepage\,/\,\pageref*{LastPage}}
+
+\setlist{topsep=2pt,partopsep=0pt,parsep=0pt,itemsep=5pt,leftmargin=2.1em,labelsep=0.55em}
+
+% ------------------------------------------------------------------------------------- macros
+\newcommand{\leanfont}{\ttfamily\fontsize{8.6}{10.5}\selectfont\color{leancol}}
+\newcommand{\lean}[1]{\csname LN@#1\endcsname}
+\newcommand{\Sha}{\text{\normalfont Ш}}
+\newcommand{\eps}{\varepsilon}
+\AtBeginDocument{\renewcommand{\Re}{\operatorname{Re}}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\LL}[1]{\frac{L'}{L}(#1)}
+\newcommand{\chid}{\chi_{-d}}
+\newcommand{\chiq}{\chi_{-q}}
+\newcommand{\len}{\operatorname{len}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\kw}[1]{\emph{#1}}
+\newcommand{\m}[1]{\mbox{$#1$}}        % a short formula that must not be broken across lines
+\newcommand{\keep}{\par\nopagebreak}    % new paragraph, kept on the page of the previous one
+% a section number in a coloured disc: #1 number, #2 colour, #3 diameter, #4 font size
+\newcommand{\disc}[4]{\tikz[baseline=(n.base)]\node[circle,fill=#2,inner sep=0pt,minimum size=#3,
+  text=white,font=\sffamily\bfseries\fontsize{#4}{#4}\selectfont](n){#1};}
+\newcommand{\dotnum}[2]{\disc{#1}{#2}{12.4pt}{7.6}}
+% numbered section: the disc hangs in the left margin, the title starts at the text edge
+\newcommand{\sect}[3]{\par\addvspace{17pt plus 4pt minus 2pt}\Needspace{6\baselineskip}%
+  \noindent\llap{\dotnum{#1}{#2}\hspace{7pt}}{\fontsize{13.2}{16}\selectfont\bfseries\color{ink}#3}\par\nopagebreak\vspace{-1pt}}
+\newcommand{\head}[1]{\par\addvspace{17pt plus 4pt minus 2pt}\Needspace{6\baselineskip}%
+  \noindent{\fontsize{13.2}{16}\selectfont\bfseries\color{ink}#1}\par\nopagebreak\vspace{-1pt}}
+% the line that closes a section: where its statements live in the Lean archive
+\newcommand{\leantag}{{\sffamily\bfseries\fontsize{6.3}{8}\selectfont\color{leancol}\addfontfeatures{LetterSpace=7}LEAN}}
+\newcommand{\sep}{\unskip\nobreak\hspace{5pt}{\color{inkfaint}\textperiodcentered}\hspace{5pt plus 2pt}\ignorespaces}
+\newcommand{\leanline}[1]{\par\nopagebreak\vspace{1pt}{\fontsize{8.9}{12.4}\selectfont\color{inksoft}\raggedright
+  \noindent\llap{\leantag\hspace{7pt}}#1\par}}
+\newcommand{\leanin}[1]{\par\vspace{3.5pt}{\fontsize{8.9}{12.4}\selectfont\color{inksoft}\raggedright
+  \noindent\leantag\hspace{7pt}#1\par}}
+% a displayed statement in a tinted box: #1 colour, #2 text
+\newcommand{\statement}[2]{\par\addvspace{7pt}\begingroup\setlength{\fboxsep}{8.5pt}\setlength{\fboxrule}{0.6pt}%
+  \noindent\fcolorbox{#1!30!white}{#1!3!white}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{#2}}%
+  \endgroup\par\addvspace{7pt}}
+% diagram: title line of a box (disc with the section number, coloured sans-serif title)
+\newcommand{\bt}[3]{{\sffamily\bfseries\fontsize{7.4}{9.4}\selectfont\color{#2!82!black}%
+  \mbox{\disc{#1}{#2}{10.4pt}{6.6}\hspace{2.6pt}#3}}\\[2pt]}
+\newcommand{\nt}[2]{\par\noindent\hangindent=1.1em\hangafter=1 #1\enspace{\color{inksoft}#2}\par\vspace{1pt}}
+\newcommand{\legdot}[1]{\tikz[baseline=-0.62ex]\fill[#1] (0,0) circle (2.5pt);\hspace{3pt}}
+
+\begin{document}
+\color{ink}
+
+% ------------------------------------------------------------------------------------- title
+{\raggedright
+{\fontsize{21.5}{25.5}\selectfont\bfseries The proof of the Riemann hypothesis\\ announced by L.\,Alpöge\par}
+\vspace{5pt}
+{\fontsize{12.4}{16}\selectfont\itshape\color{inksoft} Its architecture: the statements, the flow, and why each idea calls for
+the next\par}}
+\vspace{8pt}
+{\color{rulegrey}\hrule height 0.6pt}
+\vspace{7pt}
+\thispagestyle{empty}\enlargethispage{12mm}
+
+\textbf{One hard estimate and two classical transformations of it.} Arithmetic geometry bounds a smoothed sum over
+primes \emph{from above}, by a square root, on sparse but long intervals. A localized form of Landau's theorem
+turns this one-sided, sparse information into a zero-free half-plane, and functional equations carry the half-plane to
+the critical line. The text reads the proof backwards from the theorem; the diagram shows the same flow forwards.
+
+% ------------------------------------------------------------------------------------- diagram
+\par\vspace{6pt}
+\noindent\makebox[\linewidth][c]{%
+\begin{tikzpicture}[x=1cm,y=1cm,
+  box/.style 2 args={draw=#1!55!white,line width=0.6pt,rounded corners=3pt,fill=#1!4!white,
+    minimum height=1.8cm,text width=#2,inner xsep=4.5pt,inner ysep=4pt,align=flush left,
+    font=\fontsize{7.9}{9.6}\selectfont},
+  low/.style={minimum height=1.52cm},
+  flow/.style={-{Stealth[length=4.8pt,width=4.1pt]},line width=0.8pt,draw=ink!78},
+  lab/.style={font=\sffamily\fontsize{6.9}{8}\selectfont,text=ink!85,inner sep=1.5pt,fill=white},
+  cut/.style={dash pattern=on 2.8pt off 2.2pt,line width=0.65pt,draw=ok},
+  cutlab/.style={font=\sffamily\fontsize{6.9}{8.6}\selectfont,text=ok,inner sep=1pt}]
+  % upper row: four stations (3.52 cm wide, 1.18 cm apart)
+  \node[box={arith}{3.2cm}] (B1) at (1.775,0)  {\bt{7}{arith}{Automorphic input}Galois representations
+     $\rho_\pi$ over CM fields; Siegel--Weil formula; local Langlands};
+  \node[box={est}{3.2cm}]   (B2) at (6.475,0)  {\bt{4}{est}{Chain of theta lifts}$U(X_0)\to\cdots\to U(X_m)$,
+     $m\asymp\sqrt x$; divisibility; Bost's slope inequality};
+  \node[box={est}{3.2cm}]   (B3) at (11.175,0) {\bt{5}{est}{Character averaging}Fourier analysis on
+     $\operatorname{Gal}(E/\Q)$; positive weights; twists discarded};
+  \node[box={ana}{3.2cm}]   (B4) at (15.875,0) {\bt{2}{ana}{\hspace{-1pt}\disc{3}{ana}{10.4pt}{6.6}\hspace{2.6pt}Localized Landau}positive
+     residues; high derivatives on windows; $\theta$ after the zero, $\eps$ after $\theta$};
+  % lower row
+  \node[box={arith}{7.9cm},low] (C1) at (4.125,-2.52) {\bt{6}{arith}{Iwasawa theory}total length of the groups $\Sha^1_\ell(E,h)$ at most
+     $\exp(x^{\eps}/2)$ on a whole window $[Y,Y^2]$; Ferrero--Washington; interval lemma};
+  \node[box={est}{3.2cm},low]   (C2) at (11.175,-2.52) {\bt{5}{est}{Hosts}CM fields $E$ in a cyclotomic
+     tower over $K_\psi(\sqrt{-q},\sqrt{-d})$; $q$, $d$ by mean squares};
+  \node[box={dest}{3.2cm},low]  (C3) at (15.875,-2.52) {\bt{1}{dest}{Reflection}Euler factors, functional
+     equations: RH and GRH for Dirichlet $L$-functions};
+  % the two verified cuts
+  \draw[cut] (8.825,1.08) -- (8.825,-3.5);
+  \draw[cut] (13.525,1.08) -- (13.525,-3.5);
+  \node[cutlab,anchor=north east,align=right] at (8.73,-3.44)
+    {\textbf{\checkmark\ Lean kernel:}\ \ \texttt{TopG} $\wedge$ $\forall\psi$ \texttt{VWinAt}\,$\psi$\,401 $\Longrightarrow$ Theorem};
+  \node[cutlab,anchor=north west,align=left] at (13.62,-3.44)
+    {\textbf{\checkmark\checkmark\ Lean and an independent}\\\textbf{Rust kernel:}\ \ $(\star)$ for $\zeta$ $\Longrightarrow$ RH};
+  % arrows
+  \draw[flow] (B1.east) -- (B2.west) node[midway,above=2.6pt,lab]{periods};
+  \draw[flow] (B2.east) -- (B3.west) node[midway,above=2.6pt,lab]{\texttt{TopG}};
+  \draw[flow] (B3.east) -- (B4.west) node[midway,above=2.6pt,lab]{$(\star)$};
+  \draw[flow] (B4.south) -- (C3.north) node[midway,right=2pt,lab]{$\Re s>\frac12$};
+  \draw[flow] (B1.south) -- (B1.south |- C1.north) node[midway,right=2pt,lab]{$\rho_\pi$, base change};
+  \draw[flow] (B2.south |- C1.north) -- (B2.south) node[midway,right=2pt,lab]{loss of divisibility};
+  \draw[flow] (C1.east) -- (C2.west) node[midway,above=2.6pt,lab]{\texttt{VWinAt}};
+  \draw[flow] (C2.north) -- (B3.south) node[midway,right=2pt,lab]{hosts};
+  % legend of the four strata
+  \node[anchor=south west,inner sep=0pt,font=\sffamily\fontsize{6.9}{8}\selectfont,text=inksoft] at (0.02,1.2)
+    {\legdot{arith}arithmetic supply\hspace{11pt}\legdot{est}the estimate\hspace{11pt}\legdot{ana}the
+     analytic engine\hspace{11pt}\legdot{dest}the destination};
+\end{tikzpicture}}\par
+\vspace{4pt}
+{\fontsize{9}{12}\selectfont\itshape\color{inksoft} The flow of the argument; circled numbers refer to the sections
+below. Everything to the right of a dashed line has been machine-checked as an implication from the statements that
+cross the line.\par}
+
+% ------------------------------------------------------------------------------------- theorem
+\statement{dest}{\textbf{Theorem.}\enspace\emph{Let $\chi$ be a Dirichlet character of modulus $N\ge1$. Then
+$L(s,\chi)\neq0$ for $\Re s>\frac12$, except at the pole $s=1$ of a principal character. Consequently every zero of
+$L(s,\chi)$ with $0<\Re s<1$ lies on the critical line $\Re s=\frac12$; for $N=1$, where $L(s,\chi)=\zeta(s)$, this is
+the Riemann hypothesis.}%
+\leanin{\lean{main-right}\sep\lean{main-strip}\sep\lean{main-rh}, a term of Mathlib's {\leanfont RiemannHypothesis}}}
+{\fontsize{8.9}{12.2}\selectfont\color{inksoft}\noindent Lines marked \leantag\ link to the Lean archive, the formal
+proof; Lean and all notation are explained at the end.\par}
+
+\head{The shape of the argument: Stepanov over $\Z$}
+RH is square-root cancellation among the primes. For curves over a finite field~$\F$, Stepanov obtained it from an
+auxiliary function vanishing to high order at the rational points: comparing zeros with the degree bounds the number
+of points from \emph{above}, and upper bounds over all finite extensions of~$\F$ suffice.
+
+The announcement calls its argument ``a descendant of Stepanov's'', each theta lift ``\mbox{mimicking} multiplicity'',
+with $\sqrt X$ lifts for the von Mangoldt sum of length~$X$.
+
+\begingroup\par\nopagebreak\vspace{-2pt}\fontsize{10.4}{13.8}\selectfont
+\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.34\linewidth}@{\hspace{0.025\linewidth}}c@{\hspace{0.025\linewidth}}>{\raggedright\arraybackslash}p{0.565\linewidth}@{}}
+\toprule
+{\sffamily\fontsize{7.6}{10}\selectfont\color{inksoft}STEPANOV, FOR CURVES OVER $\F$} & &
+{\sffamily\fontsize{7.6}{10}\selectfont\color{inksoft}THE ANNOUNCED PROOF, OVER $\Z$}\\
+\midrule
+vanishing to order $m$ & $\longrightarrow$ & divisibility of an $m$-fold iterated theta lift (§4)\\
+counting degrees & $\longrightarrow$ & Bost's slope inequality (§4)\\
+the finite extensions of $\F$ & $\longrightarrow$ & the layers of a cyclotomic tower of fields (§4)\\
+``upper bounds suffice'' & $\longrightarrow$ & a theorem of Landau type (§3)\\
+\bottomrule
+\end{tabular}\par\endgroup
+
+% ------------------------------------------------------------------------------------- 1
+\sect{1}{dest}{Reflection}
+Let $\chi$ be a Dirichlet character modulo~$N$ and $\chi^*$ the primitive character that induces it. Then
+\[
+L(s,\chi)=L(s,\chi^*)\prod_{p\mid N}\bigl(1-\chi^*(p)\,p^{-s}\bigr),
+\]
+the product running over the primes~$p$ dividing~$N$, and no factor of the product vanishes for $\Re s>0$.
+
+For primitive~$\chi$ let $\Lambda(s,\chi)$ be the completed $L$-function, that is, $L(s,\chi)$ multiplied by its Gamma
+factor and a power of the modulus, and let $W(\chi)$ be the root number, a complex number of absolute value~$1$. With
+$\bar\chi$ the complex conjugate character, the functional equation
+\[
+\Lambda(s,\chi)=W(\chi)\,\Lambda(1-s,\bar\chi)
+\]
+sends a zero in the critical strip \m{0<\Re s<1} with \m{\Re s<\frac12} to a zero of $L(\,\cdot\,,\bar\chi)$ with
+\m{\Re s>\frac12}.
+\keep
+So it suffices to prove \m{L(s,\psi)\neq0} for \m{\Re s>\frac12} and every primitive character~$\psi$, the trivial
+one, for which $L=\zeta$, included.
+\leanline{all characters \lean{imprimitive}\sep reflection \lean{strip}\sep reflection for $\zeta$ \lean{rh-right}}
+
+% ------------------------------------------------------------------------------------- 2
+\sect{2}{ana}{The statistic}
+Let $\Lambda(n)$ be the von Mangoldt function, equal to $\log p$ if $n$ is a power of the prime~$p$ and to $0$
+otherwise, and let $\gamma$ be Euler's constant. For a real number \m{y\ge1} and a primitive character \m{\chi\ne1} put
+\begin{align*}
+G(y)&=\sum_{n\le y}\Lambda(n)\Bigl(\frac yn-1\Bigr)-y\,(\log y-1-\gamma),\\
+g_\chi(y)&=\sum_{n\le y}\Lambda(n)\,\chi(n)\Bigl(\frac yn-1\Bigr)+y\,\LL{1,\chi}.
+\end{align*}
+The weight $(y/n-1)_+$, where \m{(u)_+:=\max(u,0)}, is a \kw{ramp}: it vanishes at \m{n=y} and grows as $n$ decreases.
+The last term of each line is the \kw{centring}; it is what makes the transform below regular at \m{s=1}.
+
+The \kw{Mellin transform} of a function~$f$ on $[1,\infty)$ is the function
+\m{s\mapsto\int_1^\infty f(y)\,y^{-s-1}\,dy}. That of the ramp $(y/n-1)_+$ is $n^{-s}/(s(s-1))$, so summation
+over~$n$ gives, for \m{\Re s>1},
+\[
+\int_1^\infty g_\chi(y)\,y^{-s-1}\,dy=-\frac{1}{s(s-1)}\Bigl[\LL{s,\chi}-s\,\LL{1,\chi}\Bigr],
+\]
+and a similar formula for~$G$, with $\zeta$ in place of $L(\,\cdot\,,\chi)$. These transforms continue to \m{\Re s>0},
+where their only singularities are simple poles at the zeros~$\rho$ of the $L$-function: if $\rho$ is a zero of
+multiplicity $m_\chi(\rho)$, the residue is $-m_\chi(\rho)/(\rho(\rho-1))$. Read backwards, this is the explicit formula
+\[
+G(y)=\log2\pi-\sum_\rho\frac{y^\rho}{\rho(\rho-1)}+O(y^{-2}),
+\]
+in which $\rho$ runs over the zeros of~$\zeta$ in the critical strip, with multiplicity. Hence RH gives
+\m{\lvert G(y)-\log2\pi\rvert\le\RHband\,\sqrt y+O(y^{-2})}, the constant being \m{2+\gamma-\log4\pi}. Numerically one
+finds \m{\lvert G(y)-\log2\pi\rvert<\Rmax\sqrt y} for \m{10\le y\le10^7}.
+\keep
+The proof needs far less: an upper bound, on windows.
+\leanline{the two sums \lean{G}\sep transform of the ramp \lean{mellin}\sep poles and residues \lean{pole}}
+
+% ------------------------------------------------------------------------------------- 3
+\sect{3}{ana}{A localized Landau theorem}
+Landau's theorem says that the Mellin transform of a function of constant sign has a singularity at the real point
+of its abscissa of convergence. Applied to \m{Cy^{\theta}-G(y)} it shows that a bound \m{G(y)\le Cy^{\theta}}
+\emph{for all large~$y$} would exclude zeros of~$\zeta$ with \m{\Re s>\theta}. The arithmetic of §4--6 yields such a
+bound only on certain intervals, and only for several characters together. So the theorem has to be localized, and
+the zeros of different $L$-functions must be kept from cancelling.
+
+A \kw{positive family} $F$ is a finite set of Dirichlet characters, each either non-principal or the trivial character
+of modulus one, with weights \m{c_\chi>0}. Put
+\[
+G_F(y)=\sum_{\chi\in F}c_\chi\,\Re g_\chi(y),\qquad\text{with }g_1:=G\text{ for the trivial character.}
+\]
+A \kw{window} is an interval $[Y,Y^{1+\delta}]$ with \m{\delta>0}.
+
+\statement{ana}{\textbf{Proposition.}\enspace\emph{Let $F$ be a positive family, $0<\theta<1$ and $\delta>0$. Suppose
+that some $L(s,\chi)$ with $\chi\in F$ has a zero with $\Re s>\theta$. Then for every real number~$C$ there is $Y_0$
+such that every window $[Y,Y^{1+\delta}]$ with $Y\ge Y_0$ contains a point~$y$ with $G_F(y)>C\,y^{\theta}$.}}
+
+Thus a zero shows itself, with a definite sign, in every late window. Three ideas make this work.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item \kw{Zeros cannot cancel.} By §2, and because \m{\Re g_\chi=\frac12(g_\chi+g_{\bar\chi})}, the transform of
+$G_F$ has at a zero~$\rho$ the residue $-S(\rho)/(\rho(\rho-1))$, where
+\[
+S(\rho)=\tfrac12\sum_{\chi\in F}c_\chi\bigl(m_\chi(\rho)+m_{\bar\chi}(\rho)\bigr)>0.
+\]
+As all weights are positive, the contributions of the different characters add up. At a real zero the residue is
+positive, which covers possible real zeros close to~$1$ (Siegel zeros).
+\item \kw{High derivatives localize.} Put \m{g(u)=G_F(e^u)} and let \m{\widehat g(s)=\int_0^\infty g(u)\,e^{-su}\,du}
+be its Laplace transform; this is the transform of §2 in the variable \m{u=\log y}. For an integer \m{k\ge0},
+\[
+A_k(s):=\frac{(-1)^k}{k!}\,\widehat g^{\,(k)}(s)=\int_0^\infty g(u)\,\frac{u^k}{k!}\,e^{-su}\,du.
+\]
+Write \m{\beta=\Re s}. The weight $u^ke^{-\beta u}/k!$ is a bump centred at \m{u=k/\beta}, of relative width
+$k^{-1/2}$. Taking \m{k=\lceil(1+\delta/2)\,\beta\log Y\rceil} places it on the window, where
+\m{\log Y\le u\le(1+\delta)\log Y}.
+\item \kw{One side suffices.} With \m{g^+=\max(g,0)} one has \m{\lvert g\rvert+g=2g^+}. So an upper bound
+\m{g(u)\le Ce^{\theta u}} on the window gives, for every \m{\eta>0} and a constant $C_\eta$,
+\[
+\lvert A_k(s)\rvert+A_k(\beta)\ \le\ C_\eta\,Y^{\eta}(\beta-\theta)^{-k}.
+\]
+On the other hand a pole of $\widehat g$ closer to~$s$ than \m{\beta-\theta} makes the left side grow faster in~$k$
+than $(\beta-\theta)^{-k}$: through the first term if the pole is not real, and through the second, with the right sign
+by~(i), if it is. For large~$k$ the two statements are incompatible.
+\end{enumerate}
+
+\vspace{3pt}
+\textbf{The order of choices.} Let $\psi$ be a primitive character of order~$o$, that is, \m{\psi^o=1} and no smaller
+power is trivial. Let $P(\psi)$ be the positive family formed by the primitive characters inducing the $o$ powers
+of~$\psi$, with weight~$1$ on the trivial character and $1/(3o+1)$ on each of the others; write
+\m{G_\psi=G_{P(\psi)}}. The reason for these weights is in §5. The arithmetic half of the proof is:
+
+\statement{est}{\textbf{Statement $(\star)$.}\enspace\emph{There is $\eps_1>0$ such that for every $0<\eps<\eps_1$
+there are arbitrarily large~$Y$ with}\par\vspace{5pt}
+\centerline{$G_\psi(x)\le x^{1/2+9\eps}$\quad\emph{for all}\quad$x\in[Y,Y^{3/2}]$.}}
+
+Suppose $L(s,\psi)$ had a zero~$\rho$ with \m{\Re\rho>\frac12}. Choose $\theta$ with \m{\frac12<\theta<\Re\rho}, and
+then $\eps$ with \m{\frac12+9\eps\le\theta}. By $(\star)$ there are arbitrarily late windows $[Y,Y^{3/2}]$ on which
+\m{G_\psi(x)\le x^{\theta}}. This contradicts the Proposition for the family $P(\psi)$, with \m{\delta=\frac12} and
+\m{C=1}.
+\keep
+So $\theta$ is chosen after the zero and $\eps$ after~$\theta$. No bound at \m{\eps=0} and no uniformity in~$\eps$ is
+needed, and the windows may depend on everything.
+\leanline{the Proposition \lean{landau}\sep the order of choices \lean{window-consumer}, \lean{zero-top}}
+
+% ------------------------------------------------------------------------------------- 4
+\sect{4}{est}{The estimate, I: a slope inequality for a chain of theta lifts}
+\textbf{The principle, in its simplest case.} Let $K$ be an imaginary quadratic field and $\vartheta$ a theta function
+on an elliptic curve with complex multiplication by~$K$, with period~$\Omega$ and invariant derivation~$D$. The
+announcement records (entry~2) that for every prime~$p$ inert in~$K$ and every integer \m{a\ge1} the number
+$D^a\vartheta(0)/\Omega^a$ is divisible by
+\[
+p^{\,a/p+a/p^3+\cdots-O(\log a)},
+\]
+much as $a!$ is divisible by $p^{\lfloor a/p\rfloor+\lfloor a/p^2\rfloor+\cdots}$. Now a non-zero algebraic integer
+that is divisible by many primes cannot be small: by the product formula, the sum of $\log p$ times these exponents,
+over the inert primes, is at most the logarithm of its size at the infinite places. The left side of this
+inequality is a sum over primes weighted by a ramp, as in §2; the right side can be computed. So one obtains an
+\emph{upper} bound for a prime sum. The rest of this section makes the error terms small enough: the single
+derivative becomes a chain of $m$ theta lifts, and the product formula becomes a slope inequality.
+
+\textbf{The setting.} Fix a primitive character~$\psi$ of order~$o$, a small \m{\eps>0} and a \kw{scale}~$x$, a large
+real number: the aim is $(\star)$ at the point~$x$. Choose two auxiliary primes $q$ and~$d$, subject to conditions
+given in §5, and put \m{K=\Q(\sqrt{-d})}. Let $\chid$ be the quadratic Dirichlet character of~$K$: \m{\chid(p)=1}
+if the prime~$p$ splits in~$K$, $-1$ if it is inert, and $0$ if \m{p=d}. Define $\chiq$ likewise for
+$\Q(\sqrt{-q})$.
+
+\textbf{The host field.} Let $e$ be an integer with \m{x^{2+8\eps}\le2^e\le2x^{2+8\eps}}. The \kw{host} is the abelian
+number field
+\[
+E=\Q(\zeta_{2^{e+2}})^{+}\cdot K_\psi\cdot\Q(\sqrt{-q},\sqrt{-d}).
+\]
+Here $\zeta_n$ is a primitive $n$-th root of unity, the superscript~$+$ denotes the maximal real subfield, and
+$K_\psi$ is the field cut out by~$\psi$, that is, the fixed field of the kernel of~$\psi$; it is cyclic of degree~$o$
+over~$\Q$. The field~$E$ is a CM field: a totally imaginary quadratic extension of a totally real field~$E^+$, with
+complex conjugation~$c$. As $x$ grows, the first factor climbs the tower
+\m{\Q\subset\Q(\zeta_8)^+\subset\Q(\zeta_{16})^+\subset\cdots}. This cyclotomic tower plays the part of the finite
+extensions of~$\F$ in Stepanov's proof.
+
+\textbf{The chain.} Let \m{X_0,X_1,\dots,X_m} be Hermitian spaces over~$E$, for the conjugation~$c$, that are positive
+definite at every real place of~$E^+$ (``totally definite'' in the announcement), with
+\[
+\dim X_j=n_0+j\,(t+1),\qquad n_0\asymp x^{9/2+10\eps}\ \text{even},\qquad t\ \text{odd},\ \ n_0<t\le x^{400}.
+\]
+Let $U(X_j)$ be the unitary group of~$X_j$. Because $X_j$ is definite, $U(X_j)$ is compact at the infinite places, and
+an automorphic form on it, of fixed level and weight, is simply a function~$f$ on a finite set: the classes~$M$ of
+Hermitian lattices in a genus, each counted with the weight $1/\lvert\operatorname{Aut}M\rvert$.
+
+The \kw{theta correspondence} for the pair $U(X_j)$, $U(X_{j+1})$, together with a Hecke character $\xi_j$ of~$E$,
+provides a linear map from forms on $U(X_j)$ to forms on $U(X_{j+1})$, the \kw{theta lift}
+\[
+(\Theta_jf)(M')=\sum_{M}\frac{\vartheta_j(M,M')}{\lvert\operatorname{Aut}M\rvert}\,f(M),
+\]
+where $M$ and $M'$ run over the classes of lattices in $X_j$ and $X_{j+1}$, and $\vartheta_j$ is a theta kernel
+twisted by~$\xi_j$. The \kw{chain} is the composite \m{\Theta=\Theta_{m-1}\circ\cdots\circ\Theta_0}. In terms of
+automorphic representations each lift adjoins to a representation~$\pi$ a block attached to~$\xi_j$; the announcement
+writes \m{\pi\mapsto\pi\boxplus\mu_j[t]} (entry~8, with $\mu_j$ for our~$\xi_j$), where $\boxplus$ is the isobaric sum.
+The number~$m$ of lifts is the parameter to be optimized.
+
+Three computations enter the slope inequality.
+\begin{enumerate}[label=\textit{(\alph*)}]
+\item \kw{Finite places: divisibility.} The forms with integral values make up a lattice in each space of forms. The
+theta kernels are integral and the factors $1/\lvert\operatorname{Aut}M\rvert$ have bounded denominators, so the
+chain maps integral forms to integral forms after multiplication by an explicit integer. The point is that the image
+is far more divisible than that, at the primes inert in~$K$, as in the simplest case above. The local source of this
+divisibility is a statement on minors: if \m{\varpi^2=p} in a commutative ring, then $\varpi$ divides a certain
+$2\times2$ minor formed from two rows of the lifted data.
+
+Each prime being weighted by its logarithm, the divisibility gained at \kw{height} \m{a>0}, the analogue of the
+order~$a$ of the derivative, is
+\[
+\mathrm{ASK}(a)=\sum_{n\ge1}\Lambda(n)\,\bigl(1-\chid(n)\bigr)\Bigl(\frac an-w_n\Bigr)_{\!+}.
+\]
+The factor $1-\chid(n)$ equals $2$ at the odd powers of primes inert in~$K$, $1$ at the powers of~$d$, and $0$ at all
+other prime powers. The \kw{weights} are the values of a positive function~$w$ on $\Phi:=\Gal(E/K)$, and $w_n$ is its
+value at an element determined by the Frobenius class of~$n$ (for \m{n=p^i}, the $i$-th power of the Frobenius
+element of~$p$ in $\Gal(E/\Q)$). The weights that matter are close to a common value \m{b:=\exp(x^{\eps})}, and the heights that occur satisfy
+\m{a/b\approx x}. Since \m{(a/n-w)_+=w\,(y/n-1)_+} for \m{y=a/w}, each term is $w$
+times the ramp of §2 at a point~$y$ close to~$x$.
+\item \kw{The product formula: slopes.} A \kw{Euclidean lattice}~$\mathcal L$ is a free abelian group of finite rank
+with a positive definite quadratic form. Its \kw{slope} is
+\m{\mu(\mathcal L)=-\log\operatorname{covol}(\mathcal L)/\operatorname{rk}(\mathcal L)}, and $\mu_{\max}(\mathcal L)$
+is the largest slope of a non-zero sublattice. For an injective homomorphism
+\m{\varphi\colon\mathcal L\to\mathcal L'} of Euclidean lattices, with operator norm $\lVert\varphi\rVert$, Bost's
+slope inequality reads
+\[
+\mu(\mathcal L)\le\mu_{\max}(\mathcal L')+\log\lVert\varphi\rVert.
+\]
+It is applied to the lattices of integral forms and to the map between them given by the chain. What the map gains
+at the finite places, through divisibility, it must pay at the infinite ones, through its norm.
+\item \kw{Infinite places: periods.} The size of the chain at the infinite places is computed exactly. The
+announcement names the tools (entries 9, 12 and~18): a seesaw identity with the Rallis inner product formula for the
+norms of the lifts, Siegel's mass formula, Weyl's formula, and the Chowla--Selberg formula for the periods at the
+points with complex multiplication. For an elliptic curve with complex multiplication by~$K$ and its suitably
+normalized period~$\Omega$, the last one reads
+\[
+\log\Omega=\gamma+\log\frac{2\pi}{\sqrt d}-\LL{1,\chid}.
+\]
+Together with the growth \m{a\log a-a} of derivatives of order~$a$ (Stirling's formula), this produces the main
+term
+\[
+\mathrm{MAIN}(a)=a\,\Bigl(\log a-1-\gamma+\LL{1,\chid}-\overline{\log w}\,\Bigr),
+\]
+where $\overline{\log w}$ is the mean value of $\log w$ over~$\Phi$.
+\end{enumerate}
+
+\textbf{The outcome.} Applied to the chain, divided by the common weight~$b$ and averaged over the $m$ lifts, the
+slope inequality becomes
+\[
+\frac1b\,\Bigl(\mathrm{ASK}(a)-\mathrm{MAIN}(a)\Bigr)\ \le\ x^{O(\eps)}\Bigl(\frac xm+m+\sqrt x\Bigr).
+\]
+On the right, the errors of the whole chain are shared among its $m$ lifts, which gives $x/m$; each lift has a cost
+that grows with the length of the chain, which gives~$m$; the third term does not depend on~$m$. A short chain gains
+too little and a long one costs too much: the optimum is \m{m\asymp\sqrt x}. In the archive
+\m{\sqrt{x\delta_1}\le m\le2\sqrt{x\delta_1}} with \m{\delta_1=x^{-\eps/8}}.
+
+On the left, suppose for a moment that all weights are equal to one number~$w$, and put \m{y=a/w}. The definitions
+of §2 then give at once
+\[
+\mathrm{ASK}(a)-\mathrm{MAIN}(a)=w\,\bigl(G(y)-g_{\chid}(y)\bigr).
+\]
+\emph{The centring of $G$ and of the $g_\chi$, Euler's constant included, is the archimedean side of a slope
+inequality.} So the outcome is an upper bound of size about $\sqrt x$, at \m{y\approx x}, for a combination of the
+centred sums of §2. It is not yet $(\star)$: the combination involves $\chid$ instead of~$\psi$, and with a minus
+sign. Unequal weights repair this, in §5.
+
+In the archive the outcome of this section is a single proposition, {\leanfont TopG}: whenever hosts exist on
+arbitrarily late windows and satisfy the cohomological bound of §6, they carry chains for which the inequality
+holds, with the exponents hidden in $x^{O(\eps)}$ fixed before~$\eps$ is chosen.
+\leanline{hosts \lean{ischifield}\sep integrality \lean{chainint}\sep local divisibility \lean{minor}\sep slopes
+\lean{slope}\sep periods \lean{chowla}\sep the two sides \lean{ask}\sep sizes \lean{rank}\sep the outcome \lean{topg}}
+
+% ------------------------------------------------------------------------------------- 5
+\sect{5}{est}{The estimate, II: from the slope inequality to $(\star)$}
+\textbf{The characters of the host.} The extension $E/\Q$ is abelian, and
+\[
+\Gal(E/\Q)\cong(\Z/2)^2\times A,\qquad A=\Gal\bigl(\Q(\zeta_{2^{e+2}})^+K_\psi/\Q\bigr),
+\]
+the two factors $\Z/2$ being the Galois groups of $\Q(\sqrt{-q})$ and of~$K$. The characters of $\Gal(E/\Q)$ are
+Dirichlet characters: the products $\chiq^{\,i}\,\chid^{\,j}\,\omega$ with \m{i,j\in\{0,1\}} and $\omega$ a character
+of~$A$. Let \m{A_0\subset A} be the subgroup that fixes~$K_\psi$. The characters of~$A$ that are trivial on~$A_0$ are
+exactly the $o$ powers of~$\psi$.
+
+\textbf{What unequal weights do.} For general weights the difference $\mathrm{ASK}-\mathrm{MAIN}$ is a finite Fourier
+sum of centred sums. Write $w_\sigma$ for the weight attached to an element~$\sigma$ of $\Gal(E/\Q)$ outside~$\Phi$.
+Then
+\[
+\mathrm{ASK}(a)-\mathrm{MAIN}(a)=\frac1{\lvert\Phi\rvert}\ \sum_{\chi}\ \sum_{\sigma\notin\Phi}\,
+\overline{\chi(\sigma)}\;w_\sigma\;g_\chi\Bigl(\frac a{w_\sigma}\Bigr),
+\]
+where $\chi$ runs over all characters of $\Gal(E/\Q)$, with \m{g_1=G}. For equal weights only \m{\chi=1} and
+\m{\chi=\chid} survive, and this is the formula of §4. In general the weights decide with which coefficient each
+character occurs.
+
+The construction of §4 comes as a family. Its members are indexed by the elements~$\tau$ of a finite set
+\m{T\subset A}, called tops in the archive, and by translations by the elements of~$A_0$. Passing from one member to
+another moves the weights along the group, and so multiplies the coefficient of each character~$\chi$ by a value
+of~$\chi$. Three steps turn the family of inequalities into~$(\star)$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item \kw{Averaging over $A_0$.} Adding the inequalities over all translations by~$A_0$ annihilates every character
+that is non-trivial on~$A_0$, by the orthogonality of characters. There remain $4o$ characters: the powers of~$\psi$
+and their products with $\chiq$, $\chid$ and $\chiq\chid$.
+\item \kw{Positivity by design.} The $o$ powers of~$\psi$ are the characters wanted: the primitive characters
+inducing them form~$P(\psi)$. After averaging over \m{\tau\in T}, a power $\psi'$ of~$\psi$ carries the coefficient
+\m{\lvert T\rvert^{-1}\sum_{\tau\in T}\psi'(\tau)}. The set~$T$ is chosen so that the proportion of its elements lying
+in~$A_0$ is $4/(3o+1)$, and the proportion in each of the other \m{o-1} cosets of~$A_0$ is $3/(3o+1)$, up to a
+negligible error. The coefficient is then $1$ for \m{\psi'=1} and $1/(3o+1)$ for \m{\psi'\ne1}. These are the positive
+weights of $P(\psi)$ in §3.
+\item \kw{Twisting.} The other $3o$ characters occur with coefficients of no definite sign. They are removed one at a
+time by means of the bound \m{\lvert g_\chi(x)\rvert\le x^{1/2+\eps}}. For a given character such a bound is as hard
+as the theorem itself; but the primes $q$ and~$d$ are ours to choose. An averaging argument over the candidate primes
+(a mean-square bound) shows that for every window some pair $(q,d)$ satisfies the bound for all $3o$ twisted
+characters, at every point of the window.
+\end{enumerate}
+
+\textbf{The auxiliary primes.} For a window beginning at~$Y$ put \m{z=Y^{\eps/5}}. The primes $q$ and~$d$ are
+required to satisfy \m{\frac z2<\log q\le z}, \m{\frac z2(\log Y)^2<\log d\le z(\log Y)^2},
+\[
+q\equiv3\pmod 8,\qquad d\equiv7\pmod{16},\qquad q\mid d+1,
+\]
+and every odd prime \m{p\le z} must divide \m{d+1}. These conditions make $2$, $q$ and every odd prime up to~$z$
+split in~$K$, so none of them occurs in $\mathrm{ASK}$. As the pair $(q,d)$ depends on the window, so does the host~$E$: hosts are rebuilt at every scale.
+
+\textbf{The thick set.} The family involves one more finite set, a subset $T_2$ of~$A_0$ that the archive calls
+thick. It must contain at least the proportion $x^{-\eps}$ of~$A$ and be free of short linear relations. Such sets come
+from Behrend's construction, which uses the integer points on a sphere: for integers \m{Q\ge1} and \m{H\ge2} there
+are at least \m{Q\exp(-\kappa\sqrt{\log Q\,\log H})/H} non-negative integers below $Q/(4H)$, with an absolute
+constant~$\kappa$, no three distinct ones $s_1$, $s_2$, $s_3$ of which satisfy
+\[
+j\,(s_2-s_1)=i\,(s_3-s_1)\qquad\text{with }i\ne j\text{ and }0<\lvert i\rvert,\lvert j\rvert\le H.
+\]
+For \m{(i,j)=(1,2)} this excludes three-term arithmetic progressions. It is applied with \m{Q=\lvert A_0\rvert}
+and $H$ of the size of $\log x$. As a consequence, the orbit of a point under a Frobenius element meets a translate
+of~$T_2$ at most twice in any $H$ consecutive steps.
+
+\textbf{Bookkeeping.} In units of~$\eps$, the exponent lost is $\frac{13}8$ in the sizes of~$m$ and of the family, $5$
+in the error terms of the slope inequality, $1$ in the density of the thick set, $\frac38$ in constants, and $1$ in
+removing the twisted characters. The sum is \m{\frac{13}{8}+5+1+\frac38+1=9}, the $9$ of~$(\star)$.
+\leanline{Fourier identity \lean{chbalance}\sep weights \lean{shares}\sep twisted characters \lean{bounded}\sep
+auxiliary primes \lean{pairex}\sep hosts at every scale \lean{supply}\sep the thick set \lean{behrend}\sep conclusion
+\lean{core-gm}}
+
+% ------------------------------------------------------------------------------------- 6
+\sect{6}{arith}{The price of divisibility: Iwasawa theory}
+The divisibility of §4(a) holds only up to a loss at each lift, and the loss is governed by Galois cohomology. For a
+prime~$\ell$ and an integer~$h$, let $\Q_\ell/\Z_\ell(-h)$ be the group $\Q_\ell/\Z_\ell$ on which Galois groups act
+through the $(-h)$-th power of the $\ell$-adic cyclotomic character, and let $G_{E,\ell}$ be the Galois group of the
+maximal extension of~$E$ unramified outside~$\ell$. Put
+\[
+\Sha^1_\ell(E,h)=\ker\Bigl(H^1\bigl(G_{E,\ell},\Q_\ell/\Z_\ell(-h)\bigr)\longrightarrow
+\prod_{v\mid\ell}H^1\bigl(E_v,\Q_\ell/\Z_\ell(-h)\bigr)\Bigr),
+\]
+the group of classes that are trivial at every place~$v$ of~$E$ above~$\ell$, where $E_v$ is the completion of~$E$
+at~$v$. Write $\len$ for the length of a $\Z_\ell$-module. By Poitou--Tate duality $\Sha^1_\ell(E,h)$ has the same
+length as the analogous group $\Sha^2$ with coefficients $\Z_\ell(h+1)$.
+
+Vandiver's conjecture, that $\ell$ does not divide the class number of $\Q(\zeta_\ell)^+$, is a statement on the
+vanishing of groups of this kind; the announcement speaks of ``a significant weakening of Vandiver''. What is used is
+not a vanishing but a bound for the total length, on a whole window:
+
+\statement{arith}{\textbf{Statement} ({\leanfont VWinAt}\,$\psi$\,{\leanfont 401}).\enspace\emph{For every
+$0<\eps<\frac1{52}$ there is $J\ge1$ such that for all sufficiently large~$Z$, and every pair of primes $(q,d)$
+satisfying the conditions of §5 with $Z^{1/J}$ in place of~$Y$, there is $Y$ with $Z^{1/J}\le Y\le Z^{1/2}$ such that
+for every $x\in[Y,Y^2]$ the host~$E$ at scale~$x$ satisfies}\par\vspace{5pt}
+\centerline{$\displaystyle\sum_{\ell}\,\log\ell\!\!\sum_{1\le h<x^{401}}\!\!\len\,\Sha^1_\ell(E,h)\ \le\
+\exp\bigl(x^{\eps}/2\bigr)$,}\par\vspace{4pt}
+\emph{the outer sum running over all primes~$\ell$.}}
+
+\textbf{Why such a window exists.} Fix~$\ell$. Along a cyclotomic tower these lengths are the lengths of the
+cokernels of an operator, twisted by~$h$, on an Iwasawa module; by the theorem of Ferrero and Washington the module
+is finitely generated over~$\Z_\ell$. Let $R$ bound its rank. Then there are at most $R$ numbers \m{c_1,\dots,c_R} in
+$\Z_\ell$, the \kw{centres}, with
+\[
+\len\,\Sha^1_\ell(E,h)\ \le\ \sum_{i=1}^{R}v_\ell(c_i-h)\ +\ (\text{terms depending only on the layer}),
+\]
+where $v_\ell$ is the $\ell$-adic valuation. So a twist~$h$ is expensive only if it is $\ell$-adically very close to
+a centre. For a bound \m{\ell^{k}\le Z^{401}<\ell^{k+1}}, call an integer \m{1\le h\le Z^{401}} \kw{exceptional} if
+\m{v_\ell(c_i-h)>k} for some~$i$. Two exceptional integers at the same centre differ by a multiple of~$\ell^{k+1}$,
+which exceeds $Z^{401}$, so they are equal. Each centre therefore accounts for at most one exceptional twist: there
+are at most~$R$ of them, whatever~$Z$.
+
+An exceptional twist~$h$ does no harm at a scale~$x$ where it is out of range, \m{h>x^{401}}, or small,
+\m{h\le x^{\nu}} for a fixed small \m{\nu>0}. In the variable $\log x$ it therefore forbids one interval
+$[\lambda,B\lambda)$, with \m{\lambda=\frac1{401}\log h} and \m{B=401/\nu}.
+
+\statement{arith}{\textbf{Interval lemma.}\enspace\emph{Let $B\ge1$ and $V>0$. For any $R$ intervals
+$[\lambda_i,B\lambda_i)$ there is an interval $[V',2V']$ disjoint from all of them, with}\quad
+$\dfrac{V}{2^{R+2}B^{R}}\le V'$\quad\emph{and}\quad$2V'\le V$.}
+
+With \m{V=\log Z} and \m{Y=\exp(V')}, the interval $[Y,Y^2]$ contains no forbidden scale and
+\m{Z^{1/J}\le Y\le Z^{1/2}} for \m{J=4\,(2B)^R}. This is the window.
+\leanline{the window \lean{vwin-def}\sep interval lemma \lean{window1}}
+
+% ------------------------------------------------------------------------------------- 7
+\sect{7}{arith}{The automorphic foundation}
+Both branches of the diagram start from Galois representations attached to automorphic forms: the cohomological bound
+of §6 is deduced from them, by base change, and so are inputs of §4. The archive constructs them in the following
+generality. Let $E$ be any CM field, \m{n\ge1}, $\mathbb A_E$ the ring of adèles of~$E$, and $\pi$ a cuspidal
+automorphic representation of $\mathrm{GL}_n(\mathbb A_E)$ that is
+\begin{itemize}[label={\color{arith}\textbullet}]
+\item \kw{regular algebraic}: at each infinite place its infinitesimal character is that of an irreducible algebraic
+representation of~$\mathrm{GL}_n$, so that its exponents are distinct and lie in \m{\frac{n-1}2+\Z};
+\item \kw{polarized}: it is conjugate self-dual up to a twist, \m{\pi^c\cong\pi^\vee\otimes(\chi\circ N_{E/E^+})},
+for a Hecke character~$\chi$ of~$E^+$ of the appropriate parity, where $N_{E/E^+}$ is the norm.
+\end{itemize}
+Fix a prime~$\ell$ and an isomorphism \m{\iota\colon\overline{\Q}_\ell\cong\mathbb C}. Then there is a continuous
+semisimple representation
+\[
+r_\pi\colon\Gal(\overline E/E)\longrightarrow\mathrm{GL}_n(\overline{\Q}_\ell)
+\]
+which, at all but finitely many places~$v$ of~$E$, is unramified and satisfies
+\[
+\iota\,\operatorname{charpoly}\,r_\pi(\mathrm{Frob}_v^{-1})=\prod_{\alpha}\bigl(X-q_v^{(n-1)/2}\alpha\bigr).
+\]
+Here $\mathrm{Frob}_v$ is a Frobenius element at~$v$, $q_v$ is the number of elements of the residue field, and
+$\alpha$ runs over the Satake parameters of the local component~$\pi_v$, the $n$ complex numbers that determine an
+unramified~$\pi_v$. In addition, $r_\pi$ corresponds to~$\pi_v$ under the local Langlands correspondence at the
+places \m{v\nmid\ell}, in the cases specified there; and at the places \m{v\mid\ell} it is de~Rham, and crystalline
+where $\pi_v$ is unramified, with Hodge--Tate weights given by the infinitesimal character of~$\pi$ (these are the
+conditions of $p$-adic Hodge theory satisfied by representations that come from geometry). These are the
+properties known from the work of Harris--Taylor, Shin, Chenevier--Harris, Caraiani and others; the archive contains
+its own formal proof of the statement it uses.
+
+The construction starts from two inputs, a geometric one resting on a holomorphic Lefschetz fixed-point formula, and
+a theorem on theta lifts. It proceeds by congruences and limits of traces (pseudocharacters). It first treats CM
+fields containing an imaginary quadratic field, under further conditions, and then removes these: $\pi$ is twisted
+to adjust the polarization and transferred by base change to infinitely many quadratic CM extensions
+$E(\sqrt{-p})$, and the representations obtained there are patched into~$r_\pi$ by comparing traces.
+
+The final assembly of the theorem has seven groups of hypotheses, the ``seven inputs'': facts on the unitary group at
+an auxiliary place, local theta correspondences, the agreement of theta integrals, a local matching statement, a
+covolume bound, the existence of local Langlands parameters, and the cohomological window of §6.
+\leanline{the Galois representations \lean{row-def}, \lean{row-prod}\sep the final assembly \lean{seven}}
+
+% ------------------------------------------------------------------------------------- synthesis
+\head{Why each idea calls for the next}
+\begin{list}{}{\setlength{\leftmargin}{3.3em}\setlength{\labelwidth}{2.75em}\setlength{\labelsep}{0.55em}%
+  \setlength{\itemsep}{5pt}\setlength{\parsep}{0pt}\setlength{\topsep}{3pt}\setlength{\partopsep}{0pt}}
+\item[\dotnum{2}{ana}\hspace{1.5pt}\dotnum{3}{ana}\hfill] A proof by upper bounds needs a statistic whose transform
+sees every zero with one sign: hence ramps, centring and positive families.
+\item[\dotnum{4}{est}\hfill] Geometry yields upper bounds through slopes, and slopes see primes through divisibility.
+Divisibility in bulk needs multiplicity, which iterated theta lifts supply at a price that fixes their number at
+$\sqrt x$, and whose archimedean side reproduces the centring.
+\item[\dotnum{5}{est}\hfill] Theta lifts live on unitary groups of CM fields, so the bound arrives for a whole Galois
+group of characters at once: hence averaging, positivity by design, and twisting.
+\item[\dotnum{6}{arith}\hspace{1.5pt}\dotnum{7}{arith}\hfill] Divisibility has a cohomological defect, tamed by Iwasawa
+theory in the very tower that carries the averaging; both rest on the Galois representations of the forms involved.
+\item[\dotnum{3}{ana}\hfill] Such a construction exists only at special scales, so the analytic theorem must be local
+in~$y$.
+\end{list}
+
+% ------------------------------------------------------------------------------------- status
+\par\addvspace{12pt plus 4pt}
+\Needspace{10\baselineskip}
+\begingroup
+\renewcommand{\leanfont}{\ttfamily\fontsize{7.9}{10}\selectfont\color{leancol}}
+\setlength{\fboxsep}{9pt}\setlength{\fboxrule}{0.6pt}
+\noindent\fcolorbox{rulegrey}{ink!2!white}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+\fontsize{9.4}{12.8}\selectfont
+{\bfseries What is machine-checked}\quad{\color{inksoft}records of \AsOf}\par\vspace{3pt}
+{\color{inksoft}Lean is a proof assistant: a proof is a formal object, and a small program, the kernel, checks it.
+Mathlib is Lean's library of mathematics; {\leanfont RiemannHypothesis} is its statement of RH. NanoDA is an
+independent kernel, written in Rust.\par}\vspace{4pt}
+\begin{list}{}{\setlength{\leftmargin}{2.1em}\setlength{\labelwidth}{1.6em}\setlength{\labelsep}{0.5em}%
+  \setlength{\itemsep}{3pt}\setlength{\parsep}{0pt}\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}}
+\item[\textcolor{ok}{\checkmark\checkmark}\hfill] $(\star)$ for $\psi=1$ $\Rightarrow$ {\leanfont RiemannHypothesis}:
+Lean kernel and NanoDA (\NanodaDecls{} declarations).
+\item[\textcolor{ok}{\checkmark}\hfill] {\leanfont TopG} (§4) and {\leanfont VWinAt}\,$\psi$\,{\leanfont 401} for
+every~$\psi$ (§6) $\Rightarrow$ Theorem: Lean kernel (\DirichletModules{} modules).
+\item[\FullProofIcon\hfill] The five theorems themselves, in the Lean archive of L.\,Alpöge (with Claude):
+\FullProofLine
+\item[\textcolor{inksoft}{$\circ$}\hfill] §§4--7 are read here from the Lean source and from the announcement, not
+re-derived.
+\item[\textcolor{ok}{\checkmark}\hfill] Checked in this repository: the logical skeleton of the guide
+({\leanfont lean/Atlas/Architecture.lean}, no axioms) and §1 for $\zeta$ against Mathlib at the archive's pin
+({\leanfont lean-mathlib/AtlasZeta.lean}).
+\end{list}}}
+\endgroup
+
+% ------------------------------------------------------------------------------------- notation
+\newpage
+\head{Notation}
+{\fontsize{9.6}{12.6}\selectfont\color{inksoft}\noindent The symbols of the text, in the order of their first
+appearance. Bound variables of sums and products ($n$, $p$, $i$, $j$) are omitted; a letter in brackets is the one
+used in the archive or in the announcement.\par}
+\vspace{4pt}
+\begingroup\fontsize{8.6}{10.9}\selectfont\raggedright
+\renewcommand{\leanfont}{\ttfamily\fontsize{7.6}{10}\selectfont\color{leancol}}
+\setlength{\columnsep}{9mm}
+\begin{multicols}{2}
+\nt{$s$, $y$}{complex variable, $\Re s$ its real part; real variable \m{y\ge1}}
+\nt{$O(\cdot)$, $\asymp$, $\approx$}{at most a constant times; of the same order; close to}
+\nt{$\F$, $X$}{a finite field; in the announcement's sentence on page~1, the length of the prime sum}
+\nt{$\chi$, $\bar\chi$, $\chi^*$}{a Dirichlet character, its complex conjugate, the primitive character inducing it; $N$ its modulus}
+\nt{$L(s,\chi)$, $\zeta(s)$}{Dirichlet $L$-function; the case $N=1$}
+\nt{$\Lambda(s,\chi)$, $W(\chi)$}{completed $L$-function, root number (§1)}
+\nt{$\psi$, $o$}{the primitive character under study; its order}
+\nt{$\Lambda(n)$, $\gamma$}{von Mangoldt function; Euler's constant (§2)}
+\nt{$(u)_+$}{$\max(u,0)$}
+\nt{$G(y)$, $g_\chi(y)$}{centred ramp sums of $\zeta$ and of~$\chi$ (§2)}
+\nt{$\rho$, $m_\chi(\rho)$}{a zero; its multiplicity as a zero of $L(s,\chi)$}
+\nt{$F$, $c_\chi$, $G_F$}{positive family, its weights, its sum (§3) [weights $a$ in the archive]}
+\nt{$\theta$, $\delta$, $Y$, $C$}{exponent under test; width and left end of a window $[Y,Y^{1+\delta}]$; a constant}
+\nt{$S(\rho)$}{weighted multiplicity of~$\rho$ in a family (§3)}
+\nt{$g(u)$, $\widehat g$, $A_k$, $\beta$}{$G_F(e^u)$; its Laplace transform; its normalized $k$-th derivative; $\Re s$ (§3)}
+\nt{$\eta$, $C_\eta$}{an arbitrarily small exponent and its constant (§3)}
+\nt{$P(\psi)$, $G_\psi$}{the family of the powers of~$\psi$; its sum (§3)}
+\nt{$\eps$, $\eps_1$}{small exponent, chosen after~$\theta$; its upper limit}
+\nt{$x$}{the scale: the point at which $(\star)$ is proved}
+\nt{$(\star)$}{the arithmetic statement (§3)}
+\nt{$\vartheta$, $D$, $\Omega$}{theta function, invariant derivation, period of a CM elliptic curve (§4)}
+\nt{$a$}{height: order of derivative, then the parameter of $\mathrm{ASK}$ and $\mathrm{MAIN}$}
+\nt{$q$, $d$, $z$}{auxiliary primes (§4, §5); $z=Y^{\eps/5}$, the size of $\log q$}
+\nt{$K$, $\Phi$, $\chid$, $\chiq$}{$\Q(\sqrt{-d})$; $\Gal(E/K)$; the quadratic characters of $K$ and of $\Q(\sqrt{-q})$}
+\nt{$e$}{integer fixing the layer: $2^e\asymp x^{2+8\eps}$ (in $e^u$ it is the usual constant)}
+\nt{$E$, $E^+$, $c$}{host field, its maximal real subfield, complex conjugation (§4)}
+\nt{$\zeta_n$, $K_\psi$}{primitive $n$-th root of unity; field cut out by~$\psi$}
+\nt{$X_j$, $U(X_j)$}{Hermitian spaces over~$E$ and their unitary groups (§4)}
+\nt{$n_0$, $t$, $m$, $\delta_1$}{$\dim X_0$ [$k$ in the archive]; odd integer with $\dim X_{j+1}-\dim X_j=t+1$; number of lifts; $x^{-\eps/8}$}
+\nt{$M$, $f$}{class of Hermitian lattices; automorphic form}
+\nt{$\xi_j$, $\vartheta_j$, $\Theta_j$, $\Theta$}{Hecke characters [$\mu_j$], theta kernels, theta lifts, the chain}
+\nt{$\pi$, $\pi^c$, $\pi^\vee$, $\boxplus$}{automorphic representation, its conjugate, its contragredient; isobaric sum}
+\nt{$\varpi$}{an element with $\varpi^2=p$ (§4a)}
+\nt{$\mathrm{ASK}$, $\mathrm{MAIN}$}{the finite and the archimedean side of the slope inequality (names of the archive)}
+\nt{$w$, $w_n$, $w_\sigma$, $b$}{weights; their common size $\exp(x^{\eps})$}
+\nt{$\mathcal L$, $\mu$, $\mu_{\max}$, $\lVert\varphi\rVert$}{Euclidean lattice, slope, maximal slope, operator norm (§4b)}
+\nt{$A$, $A_0$, $\omega$, $\sigma$}{$\Gal(\Q(\zeta_{2^{e+2}})^+K_\psi/\Q)$; its subgroup fixing~$K_\psi$; a character of~$A$; an element of $\Gal(E/\Q)$ (§5)}
+\nt{$T$, $\tau$, $T_2$}{the set of tops, one of its elements; the thick set (§5)}
+\nt{$Q$, $H$, $\kappa$}{size and relation bound in Behrend's construction, its constant (§5)}
+\nt{$\ell$, $h$, $v$}{a prime; a Tate twist [$e$ in the archive]; a place of~$E$}
+\nt{$G_{E,\ell}$, $E_v$, $H^1$}{Galois group unramified outside~$\ell$; completion; Galois cohomology}
+\nt{$\Sha^1_\ell(E,h)$, $\len$}{locally trivial classes (§6); length over $\Z_\ell$}
+\nt{$Z$, $J$}{large parameter; exponent with $Z^{1/J}\le Y$ (§6)}
+\nt{$c_i$, $R$, $v_\ell$}{centres, a bound for their number, $\ell$-adic valuation}
+\nt{$\nu$, $B$, $\lambda_i$, $V$, $V'$}{quantities of the interval lemma (§6)}
+\nt{$n$, $\mathbb A_E$}{rank; adèles of~$E$ (§7)}
+\nt{$r_\pi$, $\iota$}{Galois representation of~$\pi$; fixed isomorphism $\overline{\Q}_\ell\cong\mathbb C$}
+\nt{$\mathrm{Frob}_v$, $q_v$, $\alpha$}{Frobenius element, size of the residue field, Satake parameters}
+\nt{{\leanfont TopG}}{the outcome of §4 as one proposition of the archive}
+\nt{{\leanfont VWinAt}\,$\psi$\,{\leanfont 401}}{the cohomological window of §6}
+\end{multicols}
+\endgroup
+
+\end{document}

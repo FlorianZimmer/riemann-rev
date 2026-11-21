@@ -1,0 +1,2009 @@
+[
+  {
+    "id": "standalone",
+    "title": "Abstract window and reflection deductions",
+    "assumption": "The stated window and reflection premises.",
+    "conclusion": "Zero exclusion and the critical-line deduction for abstract predicates.",
+    "authority": "Independent reading proof",
+    "declarations": [
+      {
+        "name": "Reading.excludeZeroByWindows",
+        "axioms": [],
+        "assumption": "Arbitrarily late good windows exist, a zero makes every late window bad, and good and bad are incompatible.",
+        "conclusion": "The zero is excluded.",
+        "authority": "Independent reading proof"
+      },
+      {
+        "name": "Reading.criticalLineByReflection",
+        "axioms": [],
+        "assumption": "Trichotomy, reflection of left-hand zeros, and exclusion on the right.",
+        "conclusion": "Every zero lies on the designated line.",
+        "authority": "Independent reading proof"
+      }
+    ],
+    "original_project_module_count": 0,
+    "receipt_file": "evidence/standalone-axioms.json",
+    "receipt_asset": "standalone-native.json",
+    "transcript_file": "evidence/standalone.log",
+    "kernel_modules": [],
+    "lean_version": "4.35.0",
+    "additional_original_project_modules": 0,
+    "previously_audited_declarations": [],
+    "overlaps": []
+  },
+  {
+    "id": "sphere",
+    "title": "Integer-sphere proof",
+    "assumption": "Integer vectors in one finite dimension have the same squared norm. Their relation is j(v−u)=i(w−u), with j≠0 and i≠j.",
+    "conclusion": "Positive squared distance, the chord identity, and exclusion of three distinct collinear lattice points.",
+    "authority": "Independent reading proof",
+    "declarations": [
+      {
+        "name": "BehrendReading.normSq_nonneg",
+        "axioms": [
+          "propext"
+        ],
+        "assumption": "Any integer vector in finite dimension.",
+        "conclusion": "Its sum of coordinate squares is nonnegative.",
+        "authority": "Independent reading proof"
+      },
+      {
+        "name": "BehrendReading.coordinates_zero_of_normSq_zero",
+        "axioms": [
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Its squared norm equals zero.",
+        "conclusion": "Every coordinate is zero.",
+        "authority": "Independent reading proof"
+      },
+      {
+        "name": "BehrendReading.distance_pos_of_ne",
+        "axioms": [
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Two finite-dimensional integer vectors differ.",
+        "conclusion": "Their squared distance is positive.",
+        "authority": "Independent reading proof"
+      },
+      {
+        "name": "BehrendReading.chord_identity",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "j(v−u)=i(w−u) coordinatewise.",
+        "conclusion": "j(j−i)Q(v−u)=i²(Q(w)−Q(u))−ij(Q(v)−Q(u)), where Q is squared norm.",
+        "authority": "Independent reading proof"
+      },
+      {
+        "name": "BehrendReading.sphere_rel",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Integer vectors in one finite dimension have the same squared norm. Their relation is j(v−u)=i(w−u), with j≠0 and i≠j.",
+        "conclusion": "The second vector equals the first.",
+        "authority": "Independent reading proof"
+      },
+      {
+        "name": "BehrendReading.sphere_midpoint",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Integer vectors in one finite dimension have the same squared norm. Also 2v=u+w.",
+        "conclusion": "All three points coincide.",
+        "authority": "Independent reading proof"
+      }
+    ],
+    "original_project_module_count": 0,
+    "receipt_file": "formal/behrend/receipts/receipt.json",
+    "receipt_asset": "sphere-native.json",
+    "transcript_file": "formal/behrend/receipts/types-and-axioms.log",
+    "kernel_modules": [
+      "BehrendSphere"
+    ],
+    "lean_version": "4.35.0",
+    "additional_original_project_modules": 0,
+    "previously_audited_declarations": [],
+    "overlaps": []
+  },
+  {
+    "id": "reductions",
+    "title": "Closing deductions",
+    "assumption": "Right-half-plane nonvanishing of zeta or of all Dirichlet L-functions, as specified.",
+    "conclusion": "The corresponding zeta RH or all-character strip statement follows.",
+    "authority": "Original archive",
+    "declarations": [
+      {
+        "name": "Claim.strip",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Every Dirichlet character has a nonzero L-function for Re(s)>½, with the principal pole excluded.",
+        "conclusion": "Every zero of any Dirichlet character in 0<Re(s)<1 has real part ½.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Claim.zeta",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Every Dirichlet character has a nonzero L-function for Re(s)>½, with the principal pole excluded.",
+        "conclusion": "Every zeta zero away from the trivial zeros and the pole has real part ½.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Formalism.VW.rh_of_right",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Zeta has no zero for Re(s)>½ away from s=1.",
+        "conclusion": "Mathlib’s RiemannHypothesis follows.",
+        "authority": "Original archive"
+      }
+    ],
+    "original_project_module_count": 4,
+    "receipt_file": "evidence/helios/26639692/reductions-axioms.json",
+    "receipt_asset": "reductions-axioms.json",
+    "transcript_file": "evidence/helios/26639692/reductions-axioms.log",
+    "kernel_modules": [
+      "Formalism.GammaFactorNonvanishing.RhOfRight",
+      "Development.AutomorphicArithmetic.CharacterBoxes.ClaimStrip"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 4,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 3,
+        "declarations": [
+          "Claim.strip",
+          "Claim.zeta"
+        ]
+      },
+      {
+        "scope": "endpoint-semantics",
+        "receipt_file": "evidence/helios/26647685/endpoint-semantics-v4/receipt.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 1,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "landmarks-quick",
+    "title": "Analytic and Behrend landmarks",
+    "assumption": "Separate hypotheses for each selected result, given in the theorem table.",
+    "conclusion": "Pole data for finite character families and a zero-free criterion from a uniform window bound. Relation avoidance on digit spheres and a quantitative large-set construction.",
+    "authority": "Original archive",
+    "declarations": [
+      {
+        "name": "Deduction.zeroFree_of_rpow_window",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Fix a finite admissible positively weighted character family, 0<θ<1 and δ>0. A single C bounds its centered sum by C·y^θ throughout arbitrarily late [Y,Y^(1+δ)].",
+        "conclusion": "Every L-function in the family is nonzero for Re(s)>θ.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Deduction.poleData",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "A finite admissible character family with positive weights.",
+        "conclusion": "Its logarithmic prime-sum transform has the stated Laplace representation and a simple pole with nonzero residue at each marked zero.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Formalism.FrobeniusOrbits.ThickExists.sphere_rel",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Integer vectors in one finite dimension have the same squared norm. Their relation is j(v−u)=i(w−u), with j≠0 and i≠j.",
+        "conclusion": "The two indicated vectors coincide in the archive’s finite-sum normalization.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Formalism.FrobeniusOrbits.ThickExists.noRel_image",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Base 4Ld encoding of a digit sphere, L≥1.",
+        "conclusion": "Three distinct encoded elements avoid j(s₂−s₁)=i(s₃−s₁) for distinct nonzero coefficients bounded by L in absolute value.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Formalism.FrobeniusOrbits.hostThickExists",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Natural n and L with L≥2.",
+        "conclusion": "One absolute C supplies a set of size at least (n/L)exp(−C√(log n·log L)), with 4Ls<n for each s and the stated relation avoidance.",
+        "authority": "Original archive"
+      }
+    ],
+    "original_project_module_count": 38,
+    "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+    "receipt_asset": "analytic-and-behrend-native.json",
+    "transcript_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/types-and-axioms.log",
+    "kernel_modules": [
+      "Formalism.FrobeniusOrbits.FrobeniusOrbitsProofs.ThickExists",
+      "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.poleData",
+      "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.ZeroFreeOfRpowWindow"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 38,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 36,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 3,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 6,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 5,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 38,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 36,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 8,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 8,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 38,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "core",
+    "title": "Zeta prime-window implication",
+    "assumption": "For every ½ < θ < 1, one constant C bounds the named statistic by C·y^θ at every y in [Y,Y^(3/2)] for arbitrarily large Y. The statistic is Deduction.G.",
+    "conclusion": "The singleton family identifies the analytic prime sum, and its bound implies ordinary RH.",
+    "authority": "Reading proof using the original archive",
+    "declarations": [
+      {
+        "name": "Reading.WindowBridge.gm_zetaFamily",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The singleton family has the character modulo one and weight one.",
+        "conclusion": "Its weighted statistic is Deduction.G at every real argument.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.WindowBridge.riemannHypothesis_of_prime_windows",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "For every ½ < θ < 1, one constant C bounds the named statistic by C·y^θ at every y in [Y,Y^(3/2)] for arbitrarily large Y. The statistic is Deduction.G.",
+        "conclusion": "Mathlib’s RiemannHypothesis follows.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.WindowBridge.riemannHypothesis_of_identified_windows",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "For every ½ < θ < 1, one constant C bounds the named statistic by C·y^θ at every y in [Y,Y^(3/2)] for arbitrarily large Y. The input statistic agrees pointwise with Deduction.G.",
+        "conclusion": "Mathlib’s RiemannHypothesis follows.",
+        "authority": "Reading proof using the original archive"
+      }
+    ],
+    "original_project_module_count": 31,
+    "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+    "receipt_asset": "window-implication-native.json",
+    "transcript_file": "evidence/helios/26639692/window-bridge-v2/audit.log",
+    "kernel_modules": [
+      "WindowBridge",
+      "Formalism.GammaFactorNonvanishing.RhOfRight",
+      "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.ZeroFreeOfRpowWindow"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 0,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "reductions",
+        "receipt_file": "evidence/helios/26639692/reductions-axioms.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": [
+          "Reading.WindowBridge.gm_zetaFamily",
+          "Reading.WindowBridge.riemannHypothesis_of_identified_windows",
+          "Reading.WindowBridge.riemannHypothesis_of_prime_windows"
+        ]
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 2,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "geometric",
+    "title": "Geometric prime-window implication",
+    "assumption": "For every ½ < θ < 1, one constant C bounds the named statistic by C·y^θ at every y in [Y,Y^(3/2)] for arbitrarily large Y. The statistic is Formalism.Gz.",
+    "conclusion": "An original pointwise normalization identity transfers the estimate and yields ordinary RH.",
+    "authority": "Original comparison and reading proof",
+    "declarations": [
+      {
+        "name": "UpperTheory.Comparison₂.Gz_eq",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Any real argument y.",
+        "conclusion": "Formalism.Gz y = Formalism.HC.An.G y = Deduction.G y.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Reading.WindowBridge.riemannHypothesis_of_geometric_windows",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "For every ½ < θ < 1, one constant C bounds the named statistic by C·y^θ at every y in [Y,Y^(3/2)] for arbitrarily large Y. The statistic is Formalism.Gz.",
+        "conclusion": "Mathlib’s RiemannHypothesis follows.",
+        "authority": "Reading proof using the original archive"
+      }
+    ],
+    "original_project_module_count": 130,
+    "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+    "receipt_asset": "geometric-implication-native.json",
+    "transcript_file": "evidence/helios/26639692/geometric-transport-v2/audit.log",
+    "kernel_modules": [
+      "GeometricTransport",
+      "Development.AutomorphicArithmetic.PrimitiveCosets.GzEq"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 93,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "reductions",
+        "receipt_file": "evidence/helios/26639692/reductions-axioms.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 36,
+        "declarations": []
+      },
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 10,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 28,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 23,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 129,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 129,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 46,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 46,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 130,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 44,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "cohom-quick",
+    "title": "Exceptional-twist windows",
+    "assumption": "Finite exceptional sets and the stated scale inequalities.",
+    "conclusion": "A whole interval simultaneously controls every exceptional twist.",
+    "authority": "Original archive",
+    "declarations": [
+      {
+        "name": "UpperTheory.V.Win.window1",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "B≥1, U>0 and at most R real starting points a.",
+        "conclusion": "A closed [y,2y] inside [U/(2^(R+2)B^R),U] avoids each [a,Ba).",
+        "authority": "Original archive"
+      },
+      {
+        "name": "UpperTheory.V.Win.window",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "X>1, 0<η≤Ct and at most R exceptional natural numbers.",
+        "conclusion": "For J=2^(R+2)(Ct/η)^R there is [Y,Y²] inside [X^(1/J),X] on which h≤x^Ct implies h≤x^η for every exception.",
+        "authority": "Original archive"
+      }
+    ],
+    "original_project_module_count": 32,
+    "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+    "receipt_asset": "cohomology-windows-native.json",
+    "transcript_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/types-and-axioms.log",
+    "kernel_modules": [
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.Window",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.Window1"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 22,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 3,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 10,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 14,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 20,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 20,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 19,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 32,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 32,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 20,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 2,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "landmarks-minor",
+    "title": "Local minor divisibility",
+    "assumption": "A commutative ring, prime p, w²=p, two input rows supported at coordinate zero modulo w, and M^(p^e)≡N′ modulo p entrywise.",
+    "conclusion": "The specified two-by-two minor of the transformed rows is divisible by w.",
+    "authority": "Original archive",
+    "declarations": [
+      {
+        "name": "Formalism.MainNotions.ColumnSystems.Pf.key_minor_dvd",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "A commutative ring, prime p, w²=p, two input rows supported at coordinate zero modulo w, and M^(p^e)≡N′ modulo p entrywise.",
+        "conclusion": "The specified two-by-two minor of the transformed rows is divisible by w.",
+        "authority": "Original archive"
+      }
+    ],
+    "original_project_module_count": 509,
+    "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+    "receipt_asset": "local-minor-native.json",
+    "transcript_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/types-and-axioms.log",
+    "kernel_modules": [
+      "Formalism.SharpRestriction.GrowthBounds.CoarseMultiplicity.KeyMinorDvd"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 472,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 6,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 28,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 14,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 14,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 298,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 193,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 214,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 214,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 298,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "fresh-core",
+    "title": "Fresh kernel replay of the zeta prime-window implication",
+    "assumption": "For every ½ < θ < 1, one constant C bounds the named statistic by C·y^θ at every y in [Y,Y^(3/2)] for arbitrarily large Y. The statistic is Deduction.G.",
+    "conclusion": "The same three reading declarations were rechecked from an empty kernel environment, including the safe non-partial constants imported from Mathlib.",
+    "authority": "Reading proof using the original archive",
+    "declarations": [
+      {
+        "name": "Reading.WindowBridge.gm_zetaFamily",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The singleton family has the character modulo one and weight one.",
+        "conclusion": "Its weighted statistic is Deduction.G at every real argument.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.WindowBridge.riemannHypothesis_of_prime_windows",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "For every ½ < θ < 1, one constant C bounds the named statistic by C·y^θ at every y in [Y,Y^(3/2)] for arbitrarily large Y. The statistic is Deduction.G.",
+        "conclusion": "Mathlib’s RiemannHypothesis follows.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.WindowBridge.riemannHypothesis_of_identified_windows",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "For every ½ < θ < 1, one constant C bounds the named statistic by C·y^θ at every y in [Y,Y^(3/2)] for arbitrarily large Y. The input statistic agrees pointwise with Deduction.G.",
+        "conclusion": "Mathlib’s RiemannHypothesis follows.",
+        "authority": "Reading proof using the original archive"
+      }
+    ],
+    "original_project_module_count": 31,
+    "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+    "receipt_asset": "fresh-window-native.json",
+    "transcript_file": "evidence/helios/26647685/fresh-window-v2/core/audit.log",
+    "kernel_modules": [
+      "WindowBridge"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 0,
+    "previously_audited_declarations": [
+      "Reading.WindowBridge.gm_zetaFamily",
+      "Reading.WindowBridge.riemannHypothesis_of_identified_windows",
+      "Reading.WindowBridge.riemannHypothesis_of_prime_windows"
+    ],
+    "overlaps": [
+      {
+        "scope": "reductions",
+        "receipt_file": "evidence/helios/26639692/reductions-axioms.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": [
+          "Reading.WindowBridge.gm_zetaFamily",
+          "Reading.WindowBridge.riemannHypothesis_of_identified_windows",
+          "Reading.WindowBridge.riemannHypothesis_of_prime_windows"
+        ]
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 2,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "suppliers-primes",
+    "title": "Auxiliary primes and their twists",
+    "assumption": "A positive integer M, 0<ε<1/52 and A≥1.",
+    "conclusion": "Every sufficiently large Y admits a pair of primes with the required congruences, smoothed prime-sum and derivative bounds on [Y,Y^A], and finite zero-free boxes for the specified nontrivial quadratic twists.",
+    "authority": "Original archive",
+    "declarations": [
+      {
+        "name": "QH.pairEx",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "A positive integer M, 0<ε<1/52 and A≥1.",
+        "conclusion": "Every sufficiently large Y admits a pair of primes with the required congruences, smoothed prime-sum and derivative bounds on [Y,Y^A], and finite zero-free boxes for the specified nontrivial quadratic twists.",
+        "authority": "Original archive"
+      }
+    ],
+    "original_project_module_count": 293,
+    "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+    "receipt_asset": "auxiliary-primes-native.json",
+    "transcript_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/types-and-axioms.log",
+    "kernel_modules": [
+      "Development.AutomorphicArithmetic.MeanSquareBounds.pairEx"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 260,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 5,
+        "declarations": []
+      },
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 2,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 23,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 20,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 14,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 2,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 293,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 32,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 21,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 21,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 293,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 116,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "dirichlet",
+    "title": "Conditional zeta and Dirichlet endpoints",
+    "assumption": "The archive’s TopG family estimate and its VWinAt cohomological bound with cutoff 401 for each primitive character.",
+    "conclusion": "The common host construction, conductor reduction and reflection imply ordinary RH and both all-character endpoints.",
+    "authority": "Original deductions and reading proof",
+    "declarations": [
+      {
+        "name": "UpperTheory.Top.supplyChi",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "A primitive character ψ and its VWinAt ψ 401 cohomological window bound.",
+        "conclusion": "Arithmetic hosts exist for ψ at the common width 3/2.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "UpperTheory.Top.zeroFreeAll_of_topG",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "A width λ>1, TopG, and hosts of width λ for every primitive character.",
+        "conclusion": "Every primitive character satisfies the archive’s right-half-plane nonvanishing condition.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "UpperTheory.Top.imprimitive",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The archive’s nonvanishing assertion for every primitive character.",
+        "conclusion": "Every Dirichlet character has a nonzero L-function for Re(s)>½, with the principal pole excluded.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Claim.zeta",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Every Dirichlet character has a nonzero L-function for Re(s)>½, with the principal pole excluded.",
+        "conclusion": "Every zeta zero away from the trivial zeros and the pole has real part ½.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Claim.strip",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Every Dirichlet character has a nonzero L-function for Re(s)>½, with the principal pole excluded.",
+        "conclusion": "Every zero of any Dirichlet character in 0<Re(s)<1 has real part ½.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Reading.DirichletBridge.primitiveZeroFree_of_topG_vWin401",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The archive’s TopG family estimate and its VWinAt cohomological bound with cutoff 401 for each primitive character.",
+        "conclusion": "The source’s ZeroFreeAll predicate holds for primitive characters.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.DirichletBridge.endpoints_of_topG_vWin401",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The archive’s TopG family estimate and its VWinAt cohomological bound with cutoff 401 for each primitive character.",
+        "conclusion": "Mathlib RH holds, and every character of positive modulus satisfies the half-plane and open-strip conclusions with their stated side conditions.",
+        "authority": "Reading proof using the original archive"
+      }
+    ],
+    "original_project_module_count": 1421,
+    "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+    "receipt_asset": "dirichlet-implication-native.json",
+    "transcript_file": "evidence/helios/26647685/dirichlet-bridge/audit.log",
+    "kernel_modules": [
+      "Development.AutomorphicArithmetic.CharacterBoxes.SupplyChi",
+      "Development.AutomorphicArithmetic.CharacterBoxes.ZeroFreeAllOfTopG",
+      "Development.AutomorphicArithmetic.CharacterBoxes.Imprimitive",
+      "Development.AutomorphicArithmetic.CharacterBoxes.ClaimStrip",
+      "Statements",
+      "DirichletBridge"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 756,
+    "previously_audited_declarations": [
+      "Claim.strip",
+      "Claim.zeta"
+    ],
+    "overlaps": [
+      {
+        "scope": "reductions",
+        "receipt_file": "evidence/helios/26639692/reductions-axioms.json",
+        "original_modules": 3,
+        "declarations": [
+          "Claim.strip",
+          "Claim.zeta"
+        ]
+      },
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 38,
+        "declarations": []
+      },
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 129,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 20,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 298,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 293,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 316,
+        "declarations": []
+      },
+      {
+        "scope": "endpoint-semantics",
+        "receipt_file": "evidence/helios/26647685/endpoint-semantics-v4/receipt.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 500,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 500,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 1417,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 147,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "comparison",
+    "title": "Finite character balance and prime windows",
+    "assumption": "The source's character estimates, size and norm inequalities, and compatible hosts on the window.",
+    "conclusion": "Four deductions transfer the theta discrepancy to a weighted prime-sum upper bound with an explicit exponent.",
+    "authority": "Original archive",
+    "declarations": [
+      {
+        "name": "Deduction.ch_top",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "At one scale, the finite theta data satisfy the main-term identification, size, error, norm and large-x bounds.",
+        "conclusion": "Each host row's discrepancy is bounded by the explicit error bracket times x^(CErr·ε).",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Deduction.ch_core",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The finite group and characters obey the stated host, size, density and cost conditions, and every row in the subgroup satisfies the discrepancy bound.",
+        "conclusion": "The retained prime sum is at most x^(½+(C+3)ε) plus the discarded-character contribution.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "UpperTheory.Comparison₂.core_gm",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Fix the level, constants and ε>0. At each sufficiently large x assume EAtH and CoreAtH for the same frame, host and set of classes.",
+        "conclusion": "The weighted level sum is at most x^(½+(eD+eL+7)ε).",
+        "authority": "Original archive"
+      },
+      {
+        "name": "UpperTheory.Comparison₂.windowInequality_of_artinInputs",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Tied data for a family and scale supply at least one controlled host there.",
+        "conclusion": "The uniform Chebyshev inequality holds at each sufficiently large scale of the specified windows, subject to the level and tie conditions.",
+        "authority": "Original archive"
+      }
+    ],
+    "original_project_module_count": 316,
+    "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+    "receipt_asset": "prime-comparison-native.json",
+    "transcript_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/types-and-axioms.log",
+    "kernel_modules": [
+      "Development.AutomorphicArithmetic.PrimitiveCosets.WindowInequalityOfArtinInputs",
+      "Development.AutomorphicArithmetic.PrimitiveCosets.CoreGm",
+      "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.ChCore",
+      "Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.ChTop"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 0,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 36,
+        "declarations": []
+      },
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 129,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 19,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 193,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 32,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 316,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 209,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 209,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 316,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 43,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "endpoint-semantics",
+    "title": "The mathematical language of the five endpoints",
+    "assumption": "Definitions of zeta, Dirichlet L-functions, positive levels and open strips.",
+    "conclusion": "Five statement equivalences and a concrete level-two boundary zero.",
+    "authority": "Reading proof using the original archive",
+    "declarations": [
+      {
+        "name": "Reading.Reference.mathlib_iff_reference",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The pinned Mathlib zeta definition and the independently written positive-index zeta proposition.",
+        "conclusion": "Mathlib’s RH and the reference are logically equivalent.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.Reference.zeta_iff_reference",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The explicit archived zeta zero statement.",
+        "conclusion": "Its exclusion of the negative even integers is equivalent to excluding −2k for every positive natural k.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.Reference.right_iff_reference",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The archive’s all-character right-half-plane statement.",
+        "conclusion": "It is equivalent to the positive-level statement with the single exception that the character is principal and s=1.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.Reference.strip_iff_reference",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The archive’s all-character zero assertion.",
+        "conclusion": "It quantifies equivalently over every level m+1 and the open strip 0<Re(s)<1.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.Reference.primitive_iff_reference",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The archive’s primitive-character zero assertion.",
+        "conclusion": "It is equivalent to the positive-level statement with primitivity and both open-strip inequalities imposed together.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.Reference.boundary_example",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The principal character modulo 2, evaluated at s=0.",
+        "conclusion": "Its L-function vanishes but ζ(0) is nonzero, demonstrating the role of the strict left boundary.",
+        "authority": "Reading proof using the original archive"
+      }
+    ],
+    "original_project_module_count": 1,
+    "receipt_file": "evidence/helios/26647685/endpoint-semantics-v4/receipt.json",
+    "receipt_asset": "endpoint-semantics-native.json",
+    "transcript_file": "evidence/helios/26647685/endpoint-semantics-v4/type-and-axiom.log",
+    "kernel_modules": [
+      "Reference",
+      "StatementComparison"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 0,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "reductions",
+        "receipt_file": "evidence/helios/26639692/reductions-axioms.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 1,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "cohom-assembly",
+    "title": "Arithmetic window assembly",
+    "assumption": "An exponent satisfying LemmaK, the fixed odd-prime tower bounds FixedIn, and the uniform two-adic tower bound TwoIn.",
+    "conclusion": "One record of constants K gives the joint arithmetic window ThmBab K Ct for every Ct≥1.",
+    "authority": "Original archive",
+    "declarations": [
+      {
+        "name": "UpperTheory.V.Win.thmBab_of",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "An exponent satisfying LemmaK, the fixed odd-prime tower bounds FixedIn, and the uniform two-adic tower bound TwoIn.",
+        "conclusion": "One record of constants K gives the joint arithmetic window ThmBab K Ct for every Ct≥1.",
+        "authority": "Original archive"
+      }
+    ],
+    "original_project_module_count": 659,
+    "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+    "receipt_asset": "cohomology-assembly-native.json",
+    "transcript_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/types-and-axioms.log",
+    "kernel_modules": [
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.ThmBabOf"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 147,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 8,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 46,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 32,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 214,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 21,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 500,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 209,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 659,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 500,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 3,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "suppliers-towers",
+    "title": "Inputs to the arithmetic tower window",
+    "assumption": "The exact duality, finiteness, tower, Ferrero–Washington and growth premises specified for each theorem.",
+    "conclusion": "A cohomological tower bound and a simultaneous choice of arithmetic windows.",
+    "authority": "Original archive",
+    "declarations": [
+      {
+        "name": "UpperTheory.V.PropA.aBound_of_isTower",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The stated Poitou–Tate, local finiteness and local Tate-duality properties, a prime, a number field and its IsTower witness.",
+        "conclusion": "The cohomological bound ABound holds for that prime, rank bound and field.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "UpperTheory.V.Win.thmBab_of_lemmaK",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Poitou–Tate duality, local finiteness, local Tate duality, the archive’s Ferrero–Washington property, and an exponent satisfying LemmaK.",
+        "conclusion": "One record K supplies the simultaneous tower window for every cutoff exponent Ct≥1.",
+        "authority": "Original archive"
+      }
+    ],
+    "original_project_module_count": 1111,
+    "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+    "receipt_asset": "tower-suppliers-native.json",
+    "transcript_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/types-and-axioms.log",
+    "kernel_modules": [
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.ThmBabOfLemmaK",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfIsTower"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 452,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 8,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 46,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 32,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 214,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 21,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 500,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 209,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 659,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 500,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 3,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "ordinary-windows-from-arithmetic",
+    "title": "The arithmetic source of the windows",
+    "assumption": "Assume TopG and VWinAt ψ 401 for the prescribed primitive character.",
+    "conclusion": "The cyclic family's sum is at most y^θ on whole late windows. For the character modulo one this sum equals G(y).",
+    "authority": "Reading proof using the original archive",
+    "declarations": [
+      {
+        "name": "Reading.ArithmeticWindows.level_windows",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Fix a primitive character ψ. Assume TopG and VWinAt ψ 401 and take θ>½.",
+        "conclusion": "On arbitrarily late intervals [Y,Y^(3/2)], the centered sum of ψ’s cyclic family is at most y^θ for every y in the interval.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.ArithmeticWindows.trivial_level_eq",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Take the cyclic family generated by the primitive character modulo one.",
+        "conclusion": "Its centered sum at every real y equals Deduction.G y.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.ArithmeticWindows.zeta_windows",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "TopG and the single cohomological bound VWinAt PChar.one 401.",
+        "conclusion": "The actual centered ordinary prime sum satisfies all its required windows. The proof uses coefficient one.",
+        "authority": "Reading proof using the original archive"
+      }
+    ],
+    "original_project_module_count": 1418,
+    "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+    "receipt_asset": "arithmetic-windows-native.json",
+    "transcript_file": "evidence/helios/26647685/arithmetic-window-v1/type-and-axiom.log",
+    "kernel_modules": [
+      "ArithmeticWindows"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 0,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "reductions",
+        "receipt_file": "evidence/helios/26639692/reductions-axioms.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 38,
+        "declarations": []
+      },
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 130,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 20,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-minor",
+        "receipt_file": "evidence/helios/26639692/landmarks/minor-upwxppaj/receipt.json",
+        "original_modules": 298,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 293,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 1417,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 316,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 500,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 500,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-window-converse",
+        "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+        "original_modules": 148,
+        "declarations": []
+      }
+    ]
+  },
+  {
+    "id": "ordinary-window-converse",
+    "title": "The converse for the ordinary zeta window",
+    "assumption": "The reverse implication uses Schoenfeld's RH-to-Chebyshev estimate.",
+    "conclusion": "The archive supplies the first moment. Finite Abel summation and integration on a half-line connect its actual prime sum to the window bound.",
+    "authority": "Original moment theorem and reading deductions",
+    "declarations": [
+      {
+        "name": "Reading.PrimeTail.scaled_tail_bound",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "For x>0 and θ<1, |f(t)|≤C·t^(θ−2) for every t>x.",
+        "conclusion": "The absolute scaled tail x·|∫ f| is at most C·x^θ/(1−θ).",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeTail.chebyshev_power_bound",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "An eventual error bound K√t log²t for ψ(t)−t, K≥0, and θ>½.",
+        "conclusion": "Eventually |ψ(t)−t|/t²≤K·t^(θ−2).",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeTail.windows_of_schoenfeld_and_centering",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The eventual Chebyshev error estimate and the explicit centered tail identity.",
+        "conclusion": "The archive's ordinary prime sum satisfies all the required one-sided windows.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeSummation.ramp_eq_integral_psi",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "A real cutoff x≥1 and the archive's ramp for the constant function one.",
+        "conclusion": "Its real part equals x times the integral of ψ(t)/t² from 1 to x.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeSummation.centered_finite_integral",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "A real cutoff x≥1 with the original normalization of G.",
+        "conclusion": "G(x) equals x times the integral of (ψ(t)−t)/t² from 1 to x, plus (1+γ)x.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeSummation.error_integrable_of_schoenfeld",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "An eventual Chebyshev error at most K√t log²t with K≥0.",
+        "conclusion": "The function (ψ(t)−t)/t² is absolutely integrable on (1,∞).",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeSummation.tail_identity_of_moment",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Absolute integrability of the centered error and a first moment equal to −1−γ.",
+        "conclusion": "For every x≥1, G(x) is −x times the remaining tail integral.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeSummation.windows_iff_rh_of_classical_inputs",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "Assume RH supplies the Chebyshev estimate and the specified first moment.",
+        "conclusion": "The one-sided window property for the actual G is equivalent to ordinary RH.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Formalism.HermitianLattices.GL2a2.psi_zero_integral_constant",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The modulus-one von Mangoldt sum in the original source.",
+        "conclusion": "Its centered first moment from 1 to U tends to −1−γ as U grows.",
+        "authority": "Original archive"
+      },
+      {
+        "name": "Reading.PrimeEstimate.psumR_eq_psi",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "An arbitrary real cutoff.",
+        "conclusion": "The archive's positive-index von Mangoldt sum equals Mathlib's Chebyshev ψ at that cutoff.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeEstimate.first_moment",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The centered ψ(t) error divided by t² is integrable on (1,∞).",
+        "conclusion": "Its integral is −1−γ, by the original archive's theorem and uniqueness of the limit.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeEstimate.windows_of_chebyshev_estimate",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The eventual Chebyshev error estimate K√t log²t with K≥0.",
+        "conclusion": "The source's first moment and the finite-sum identity give the complete ordinary window property.",
+        "authority": "Reading proof using the original archive"
+      },
+      {
+        "name": "Reading.PrimeEstimate.windows_iff_riemannHypothesis_of_schoenfeld",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "assumption": "The sole premise is that ordinary RH gives the published Chebyshev error estimate.",
+        "conclusion": "The archive's one-sided ordinary windows and Mathlib's Riemann hypothesis are equivalent.",
+        "authority": "Reading proof using the original archive"
+      }
+    ],
+    "original_project_module_count": 148,
+    "receipt_file": "evidence/helios/26647685/zeta-converse-v1/receipt.json",
+    "receipt_asset": "ordinary-window-converse-native.json",
+    "transcript_file": "evidence/helios/26647685/zeta-converse-v1/type-and-axiom.log",
+    "kernel_modules": [
+      "ConverseFromPrimeEstimate"
+    ],
+    "lean_version": "4.33.1",
+    "additional_original_project_modules": 0,
+    "previously_audited_declarations": [],
+    "overlaps": [
+      {
+        "scope": "reductions",
+        "receipt_file": "evidence/helios/26639692/reductions-axioms.json",
+        "original_modules": 1,
+        "declarations": []
+      },
+      {
+        "scope": "landmarks-quick",
+        "receipt_file": "evidence/helios/26639692/landmarks/quick-yogzq3cj/receipt.json",
+        "original_modules": 30,
+        "declarations": []
+      },
+      {
+        "scope": "core",
+        "receipt_file": "evidence/helios/26639692/window-bridge-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "geometric",
+        "receipt_file": "evidence/helios/26639692/geometric-transport-v2/receipt.json",
+        "original_modules": 44,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-quick",
+        "receipt_file": "evidence/helios/26639692/cohomology/quick-gq7_6_08/receipt.json",
+        "original_modules": 2,
+        "declarations": []
+      },
+      {
+        "scope": "fresh-core",
+        "receipt_file": "evidence/helios/26647685/fresh-window-v2/receipt.json",
+        "original_modules": 31,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-primes",
+        "receipt_file": "evidence/helios/26647685/suppliers/primes-u7vs947e/receipt.json",
+        "original_modules": 116,
+        "declarations": []
+      },
+      {
+        "scope": "dirichlet",
+        "receipt_file": "evidence/helios/26647685/dirichlet-bridge/receipt.json",
+        "original_modules": 147,
+        "declarations": []
+      },
+      {
+        "scope": "comparison",
+        "receipt_file": "evidence/helios/26647685/prime-comparison/comparison-_jo0ocm6/receipt.json",
+        "original_modules": 43,
+        "declarations": []
+      },
+      {
+        "scope": "cohom-assembly",
+        "receipt_file": "evidence/helios/26647685/cohomology/assembly-e_imbya_/receipt.json",
+        "original_modules": 3,
+        "declarations": []
+      },
+      {
+        "scope": "suppliers-towers",
+        "receipt_file": "evidence/helios/26647685/suppliers/towers-s1f52dfr/receipt.json",
+        "original_modules": 3,
+        "declarations": []
+      },
+      {
+        "scope": "ordinary-windows-from-arithmetic",
+        "receipt_file": "evidence/helios/26647685/arithmetic-window-v1/receipt.json",
+        "original_modules": 148,
+        "declarations": []
+      }
+    ]
+  }
+]
