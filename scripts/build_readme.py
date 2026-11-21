@@ -346,24 +346,29 @@ def build() -> str:
         more = f", and {len(mine) - 1} more" if len(mine) > 1 else ""
         return f'**{name}**: {mine[0]["stage"]} — {mine[0]["outcome"]}{more} ([source]({mine[0]["url"]}))'
 
+    def listing(items) -> str:
+        """Several records in one table cell, one per line."""
+        items = list(items)
+        return items[0] if len(items) == 1 else "<br>".join("• " + x for x in items)
+
     rows = []
     rows.append(["Do the formal statements really say RH and GRH?",
                  "✅ **Yes, as far as a machine can tell.** The first theorem has Mathlib's own type "
                  "`RiemannHypothesis`, and the five statements were compared with a challenge written independently "
                  "of the proof." if compare else "🔵 Read at the source; see the theorem below.",
-                 "<br>".join(x for x in (cite(compare), cite(rebuilt), cite(first(stages, "Five theorems justified"))) if x)])
+                 listing(x for x in (cite(compare), cite(rebuilt), cite(first(stages, "Five theorems justified"))) if x)])
     rows.append(["Does a proof checker accept the complete proof?",
                  ("✅ **Yes, two independent ones.** " if two else "↗️ **Reported by an external builder.** ")
                  + "Lean's kernel checks every step; NanoDA is a second kernel, written independently in Rust.",
-                 "<br>".join(x for x in (cite(rust), cite(combined)) if x)])
+                 listing(x for x in (cite(rust), cite(combined)) if x)])
     rows.append(["Has anyone else reproduced that?",
                  f"✅ **Yes.** {len(independent_people)} parties outside the reading project report accepting runs "
                  "of their own, from their own builds." if independent_people else "⏳ Not recorded.",
-                 "<br>".join(person(n) for n in independent_people)])
+                 listing(person(n) for n in independent_people)])
     rows.append(["Which axioms does the proof rest on?",
                  "✅ **Only the three standard axioms of Lean**: `propext`, `Classical.choice`, `Quot.sound`. No "
                  "additional assumption about primes or zeros is hidden anywhere.",
-                 "<br>".join(x for x in (cite(axioms), cite(first(stages, "Five transitive axiom lists"))) if x)])
+                 listing(x for x in (cite(axioms), cite(first(stages, "Five transitive axiom lists"))) if x)])
     rows.append(["Is the mathematics understood and refereed?",
                  "⏳ **Not yet.** A kernel certifies that the theorem follows from the axioms. It does not explain "
                  "why, and it is no substitute for mathematicians reading the argument. No human-readable proof "
@@ -465,8 +470,8 @@ def build() -> str:
         typ = n["excerpt"].split(":", 1)[1].split(":=")[0].strip()
         stmt = next((x for x in model["nodes"] if x.get("declaration") == typ), None)
         typ_link = f"[`{typ}`]({stmt['url']})" if stmt else (f"[`{typ}`]({mathlib_rh}) (Mathlib)" if mathlib_rh else f"`{typ}`")
-        endpoint_rows.append([f"[`{n['declaration']}`]({n['url']})", typ_link, words[nid], tier_text(n["tier"])])
-    add(table(["Lean theorem", "Its type", "In words", "Status"], endpoint_rows) + "\n")
+        endpoint_rows.append([f"[`{n['declaration']}`]({n['url']})<br>of type {typ_link}", words[nid], tier_text(n["tier"])])
+    add(table(["Lean theorem and its type", "In words", "Status"], endpoint_rows) + "\n")
     add("<details>\n<summary><b>The formal definitions, quoted from the archive</b></summary>\n")
     for nid in ("stmt-zeta", "stmt-right", "stmt-strip", "stmt-prim"):
         n = nodes[nid]
@@ -752,15 +757,24 @@ def build() -> str:
     return "\n".join(L)
 
 
+BLACKBOARD = {"C": "ℂ", "N": "ℕ", "Q": "ℚ", "R": "ℝ", "Z": "ℤ"}
+
+
 def mathsafe(text: str) -> str:
     """Adapt the mathematics to GitHub's renderer, which turns TeX into MathML and lets the browser
     draw it: < and > as \\lt and \\gt (some are otherwise escaped twice); no \\operatorname, which
     GitHub refuses ("macro not allowed"); and an explicit thin space after a function name such as
-    \\log when a letter, digit or symbol follows, because browsers put no space there."""
+    \\log when a letter, digit or symbol follows, because browsers put no space there; the letters
+    of \\mathbb as Unicode characters (browsers ignore the variant of a plain letter); and a strut
+    under a radical over a single letter, which is otherwise drawn too small."""
     def fix(m):
         seg = m.group(0).replace("<", "\\lt ").replace(">", "\\gt ")
         seg = re.sub(r"\\operatorname\{([A-Za-z]+)\}(?=[A-Za-z])", r"\\mathrm{\1}\\,", seg)
         seg = re.sub(r"\\operatorname\{([A-Za-z]+)\}", r"\\mathrm{\1}", seg)
+        seg = re.sub(r"\\mathbb\s*(?:\{([A-Z])\}|([A-Z]))",
+                     lambda b: " " + BLACKBOARD[b.group(1) or b.group(2)], seg)
+        seg = re.sub(r"\\sqrt\s*(?:\{([a-z])\}|([a-z])(?![A-Za-z]))",
+                     lambda r: "\\sqrt{\\mathstrut " + (r.group(1) or r.group(2)) + "}", seg)
         return re.sub(r"\\(log|exp|max|min)(?![A-Za-z])\s*(?=[A-Za-z0-9]|\\(?!bigl|Bigl|left|lvert|,|;|!)[A-Za-z])",
                       r"\\\1\\,", seg)
     text = re.sub(r"```math\n.*?\n```", fix, text, flags=re.S)
@@ -773,6 +787,10 @@ def problems(text: str) -> list[str]:
     refused = sorted(set(re.findall(r"\\(?:operatorname|href|require|newcommand|def|unicode|class|style)\b", text)))
     if refused:
         out.append("TeX macros that GitHub refuses: " + ", ".join(refused))
+    formulas = re.findall(r"```math\n(.*?)\n```", text, flags=re.S) + re.findall(r"\$`([^`]*)`\$", text)
+    for f in formulas:
+        if f.count("{") - f.count("\\{") != f.count("}") - f.count("\\}"):
+            out.append("unbalanced braces in the formula " + f[:60])
     if re.search(r"private:" + "//", text):
         out.append("a link into a private place")
     for target in sorted(set(re.findall(r"\]\((?!https?://|#)([^)\s]+)\)", text) + re.findall(r'(?:src|href)="(?!https?://|#)([^"]+)"', text))):
