@@ -109,6 +109,16 @@ def main() -> int:
             warnings.append("GIF of the guide not built (guide/proof-guide.gif)")
     else:
         warnings.append("guide not built (guide/proof-guide.pdf)")
+    digest = ROOT / "digests/tower-bound/tower-bound.pdf"
+    if digest.exists():
+        info = subprocess.run(["pdfinfo", "-url", str(digest)], capture_output=True, text=True).stdout
+        urls = re.findall(r"https?://\S+", info)
+        mirror_tree = MIRROR.replace("/blob/", "/tree/")
+        ok = ("https://nasqret.github.io/riemann-proof-atlas/",)
+        check(len(urls) >= 60 and all(u.startswith((MIRROR, mirror_tree) + ok) for u in urls),
+              "the digest has unpinned links")
+    else:
+        warnings.append("digest not built (digests/tower-bound/tower-bound.pdf)")
     expected = [("blueprint/atlas-blueprint.pdf", "blueprint PDF"), ("book/_build/html/index.html", "Jupyter Book")]
     if (ROOT / "scripts/build_vault.py").exists():      # the knowledge base belongs to the working copy only
         expected.append(("vault/Home.md", "Obsidian vault"))

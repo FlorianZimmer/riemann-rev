@@ -1,0 +1,685 @@
+{
+ "what": "the declarations of the unit of the reading project's ledger that this note is the note of",
+ "ledger": 1,
+ "unit": 5992,
+ "archive_commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+ "structured_proofs": {
+  "proofs": 58,
+  "lines": 1259,
+  "leaf_steps": 452,
+  "leaf_steps_quoting_their_lines": 452,
+  "lines_no_step_accounts_for": 0
+ },
+ "members": [
+  {
+   "name": "UpperTheory.V.PropA.Descends",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
+   "lines": [
+    16,
+    18
+   ],
+   "kind": "def",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.mem_levU_one",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
+   "lines": [
+    22,
+    28
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.Descends.eq_twLen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
+   "lines": [
+    30,
+    34
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.aBound_of_descends",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
+   "lines": [
+    36,
+    55
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.aBound_of_isTower",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfIsTower.lean",
+   "lines": [
+    7,
+    11
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.cokL",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLen.lean",
+   "lines": [
+    6,
+    41
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.GenBy",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    9,
+    10
+   ],
+   "kind": "def",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.jZero",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    12,
+    12
+   ],
+   "kind": "abbrev",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.vl",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    14,
+    14
+   ],
+   "kind": "abbrev",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.IsLevel",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    16,
+    16
+   ],
+   "kind": "def",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.cokLen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    20,
+    20
+   ],
+   "kind": "def",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.InPow",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    22,
+    22
+   ],
+   "kind": "def",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.Unip",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    24,
+    24
+   ],
+   "kind": "def",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.twLen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    26,
+    26
+   ],
+   "kind": "def",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.cokLen_le_of_range_le",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    28,
+    30
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.descends",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Descends.lean",
+   "lines": [
+    8,
+    15
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.detBound",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DetBound.lean",
+   "lines": [
+    9,
+    34
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.detFactor",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DetFactor.lean",
+   "lines": [
+    6,
+    49
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.dualDiv",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualDiv.lean",
+   "lines": [
+    8,
+    31
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.dualUnip",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualUnip.lean",
+   "lines": [
+    9,
+    34
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.twLen_le_growth",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    17,
+    21
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.exists_centres_level",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    23,
+    32
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.exists_centres",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    34,
+    49
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.vl_le_of_norm",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    51,
+    55
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.exists_centres_norm",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    57,
+    69
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.genLevel",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/GenLevel.lean",
+   "lines": [
+    11,
+    31
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.growth",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Growth.lean",
+   "lines": [
+    11,
+    56
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.helly",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Helly.lean",
+   "lines": [
+    6,
+    25
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.frob",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Imports.lean",
+   "lines": [
+    6,
+    36
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.lift",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsAlt.lean",
+   "lines": [
+    7,
+    44
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.mono",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsBis.lean",
+   "lines": [
+    6,
+    13
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.twist",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsFurther.lean",
+   "lines": [
+    7,
+    50
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.step",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsMore.lean",
+   "lines": [
+    9,
+    22
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.phi",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsTer.lean",
+   "lines": [
+    7,
+    46
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "norm_le_of_dvd'",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
+   "lines": [
+    7,
+    10
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "norm_eq_of_addVal",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
+   "lines": [
+    12,
+    17
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.lteNorm",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
+   "lines": [
+    19,
+    94
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "nilLen_range_succ",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
+   "lines": [
+    6,
+    9
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "nilLen_lt",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
+   "lines": [
+    11,
+    27
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.nilLen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
+   "lines": [
+    29,
+    59
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "dvd_of_norm_le'",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
+   "lines": [
+    6,
+    19
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "vl_prod",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
+   "lines": [
+    21,
+    28
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.normVal",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
+   "lines": [
+    30,
+    46
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "padic_units_distance_le_max",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PadicUnitsDistanceLeMax.lean",
+   "lines": [
+    8,
+    35
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.ball",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PadicUnitsDistanceLeMax.lean",
+   "lines": [
+    37,
+    63
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.powIn",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PowIn.lean",
+   "lines": [
+    6,
+    29
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.qzInj",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/QzInj.lean",
+   "lines": [
+    8,
+    27
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.shaLeV",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ShaLeV.lean",
+   "lines": [
+    7,
+    16
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.torsFin",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/TorsFin.lean",
+   "lines": [
+    9,
+    84
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.unipPow",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/UnipPow.lean",
+   "lines": [
+    8,
+    46
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.PropA.xUnip",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/XUnip.lean",
+   "lines": [
+    9,
+    27
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.cokerDual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CokerDual.lean",
+   "lines": [
+    8,
+    19
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.cycRange",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CycRange.lean",
+   "lines": [
+    9,
+    62
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.dualKer",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/DualKer.lean",
+   "lines": [
+    7,
+    40
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.step0",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ExistsDescends.lean",
+   "lines": [
+    26,
+    46
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.layerGen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerGen.lean",
+   "lines": [
+    10,
+    39
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "lu_key",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerUniq.lean",
+   "lines": [
+    11,
+    23
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.layerUniq",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerUniq.lean",
+   "lines": [
+    25,
+    43
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "le_dual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
+   "lines": [
+    10,
+    37
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "exact_dual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
+   "lines": [
+    39,
+    47
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "simple_dual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
+   "lines": [
+    49,
+    109
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.lenDual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
+   "lines": [
+    111,
+    137
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "pg_emult",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
+   "lines": [
+    13,
+    22
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "pg_index",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
+   "lines": [
+    24,
+    30
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "pg_exists",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
+   "lines": [
+    32,
+    47
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.princGen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
+   "lines": [
+    49,
+    117
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  },
+  {
+   "name": "UpperTheory.V.Tower.qzSep",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/QzSep.lean",
+   "lines": [
+    47,
+    66
+   ],
+   "kind": "theorem",
+   "scope": "used"
+  }
+ ]
+}

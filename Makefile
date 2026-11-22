@@ -6,6 +6,8 @@
 #   pdf      compile the illustrated LaTeX blueprint
 #   guide    compile the guide to the proof (guide/proof-guide.pdf: every symbol defined, notation page)
 #   guide-gif  the same guide as an animated GIF, one frame per page (guide/proof-guide.gif)
+#   digest   compile the deformalization digests (digests/tower-bound/tower-bound.pdf: one cluster of the
+#            archive as mathematics; Lean concordance and examples are generated and checked)
 #   readme   regenerate README.md, the public dashboard, from the data
 #   site     assemble the web site in _site/ (home page, atlas, guide, blueprint, book)
 #   book     build the Jupyter Book (executes the notebooks)
@@ -13,9 +15,9 @@
 #   mathlib  the Mathlib instantiation of the destination layer (runs on a cluster, see BUILDING.md)
 PY := python3 -B
 
-.PHONY: all data model figures lean atlas pdf guide guide-gif book vault readme site check selftest mathlib clean
+.PHONY: all data model figures lean atlas pdf guide guide-gif digest census watch book vault readme site check selftest mathlib clean
 
-all: model figures lean atlas pdf guide guide-gif book vault readme
+all: model figures lean atlas pdf guide guide-gif digest book vault readme
 
 data:
 	$(PY) scripts/import_sources.py
@@ -45,6 +47,17 @@ guide: model figures
 guide-gif: guide
 	$(PY) scripts/build_guide_gif.py
 
+digest: model
+	$(PY) scripts/build_digest.py
+
+# reads the whole archive once (about two minutes); not part of `all`
+census: model
+	$(PY) scripts/archive_census.py
+
+# compares the Lean files behind every digest with upstream main and the open upstream pull requests (network, gh)
+watch:
+	$(PY) scripts/watch_upstream.py
+
 readme: model
 	$(PY) scripts/build_readme.py
 
@@ -69,6 +82,9 @@ check: selftest
 	$(PY) scripts/import_sources.py --check
 	$(PY) scripts/check_project.py
 	$(PY) scripts/build_readme.py --check
+	$(PY) scripts/build_digest.py --check
+	$(PY) scripts/archive_census.py --check
+	$(PY) scripts/watch_upstream.py --check
 
 clean:
-	rm -rf book/_build blueprint/build guide/build lean/.lake
+	rm -rf book/_build blueprint/build guide/build digests/*/build lean/.lake

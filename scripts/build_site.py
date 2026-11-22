@@ -7,6 +7,7 @@
     _site/index.html                    the home page, generated here from data/model.json
     _site/atlas/index.html              the atlas (a copy; links that leave the site go to the repository)
     _site/guide/proof-guide.{pdf,gif}   the guide
+    _site/digests/tower-bound.pdf       the first deformalization digest
     _site/blueprint/atlas-blueprint.pdf the illustrated blueprint
     _site/book/                         the Jupyter Book (book/_build/html)
 
@@ -103,6 +104,10 @@ def home(has_book: bool) -> str:
                              "theorem, the steps, and why each idea calls for the next. Every symbol is defined.",
          "guide/proof-guide.pdf", "Read the guide (PDF)"),
     ]
+    n_digest = len(load("digests/tower-bound/concordance.json")["declarations"])
+    cards.append(("arith", "Deformalization 1", "Twisted cokernels in a cyclotomic tower: one cluster of the archive "
+                  f"rewritten as ordinary mathematics, with complete proofs of its algebra and a concordance of "
+                  f"{n_digest} Lean declarations.", "digests/tower-bound.pdf", "Read the note (PDF)"))
     if has_book:
         cards.append(("ana", "The book", f"{chapters} chapters with formulas, figures and computations that are "
                                          "executed every time the site is built.", "book/", "Open the book"))
@@ -202,12 +207,13 @@ def main() -> int:
         return 1
     if OUT.exists():
         shutil.rmtree(OUT)
-    for sub in ("atlas", "guide", "blueprint"):
+    for sub in ("atlas", "guide", "blueprint", "digests"):
         (OUT / sub).mkdir(parents=True)
     (OUT / ".nojekyll").write_text("", encoding="utf-8")                 # the book has folders that begin with "_"
     (OUT / "atlas" / "index.html").write_text(site_atlas(), encoding="utf-8")
     for rel in ("guide/proof-guide.pdf", "guide/proof-guide.gif", "blueprint/atlas-blueprint.pdf"):
         shutil.copy2(ROOT / rel, OUT / rel)
+    shutil.copy2(ROOT / "digests/tower-bound/tower-bound.pdf", OUT / "digests" / "tower-bound.pdf")
     if has_book:
         shutil.copytree(book, OUT / "book", ignore=shutil.ignore_patterns(".doctrees", ".buildinfo"))
     (OUT / "index.html").write_text(home(has_book), encoding="utf-8")

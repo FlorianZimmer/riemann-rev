@@ -612,12 +612,18 @@ def build() -> str:
     add("</details>\n")
 
     # ------------------------------------------------------------------ contents
+    n_digest = len(load("digests/tower-bound/concordance.json")["declarations"])
     add("## What is in this repository\n")
     add(table(["", "What", "Where"], [
         ["📄", "**The guide.** The whole argument in standard mathematical terminology: flow diagram, the theorem, the "
                "seven steps, and why each idea calls for the next. Every symbol is defined, and there is a page of notation.",
          f"[**read online**]({SITE}/guide/proof-guide.pdf) · [`guide/proof-guide.pdf`](guide/proof-guide.pdf) · "
          "[animated preview](guide/proof-guide.gif)"],
+        ["🔬", f"**Deformalization 1: twisted cokernels in a cyclotomic tower.** One cluster of the archive rewritten as "
+               f"ordinary mathematics: the statements in standard terms, complete proofs of the algebra, a concordance of "
+               f"{n_digest} Lean declarations with their source lines, and computed examples.",
+         f"[**read online**]({SITE}/digests/tower-bound.pdf) · "
+         "[`digests/tower-bound/tower-bound.pdf`](digests/tower-bound/tower-bound.pdf)"],
         ["🗺️", f"**The atlas.** An interactive map: the {len(comps)} components, a guided tour, the blueprint graph of "
                f"{n_decl} declarations with their dependencies, illustrated ideas and the verification ledger. One "
                "self-contained HTML file.",

@@ -1,0 +1,1241 @@
+% !TEX program = lualatex
+% ---------------------------------------------------------------------------------------------
+%  Deformalization 1: twisted cokernels in a cyclotomic tower   (riemann-rev)
+%
+%  Build:  python3 -B scripts/build_digest.py    (writes data.tex and figure.tex, runs LuaLaTeX, checks)
+%
+%  One cluster of the Lean archive behind L. Alpöge's announced proof of RH, rewritten as ordinary
+%  mathematics. The prose is hand-written. Lean names, line ranges, counts and the numbers of the
+%  examples come from data.tex; the quoted Lean statements are copied from the archive by the script.
+%  Each statement was compared with the Lean source at the pinned commit (Appendix A).
+%
+%  Rules of the text: standard terminology; every symbol is explained where it first appears and
+%  listed again in the notation at the end; no letter has two meanings (v and v_l are the same valuation). Letters differ from the
+%  archive's where that helps: its twist e is h here (as in the guide), its centres s_i are c_i,
+%  its level c is a, its reference layer jZero is m_0.
+%
+%  Layout: the reading edition of the guide (11 pt Libertinus on a 140 mm measure).
+% ---------------------------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+\ifdefined\pdfvariable\pdfvariable suppressoptionalinfo \numexpr 1+2+4+8\relax\fi
+\usepackage[a4paper,hmargin=35mm,top=22mm,bottom=27mm,footskip=12mm,nohead]{geometry}
+
+\usepackage{fontspec}
+\directlua{
+  luaotfload.add_fallback("gfallback", {"STIXTwoMath-Regular.otf:mode=node;", "DejaVuSans.ttf:mode=node;"})
+  luaotfload.add_fallback("gmonofallback", {"DejaVuSansMono.ttf:mode=node;", "STIXTwoMath-Regular.otf:mode=node;"})
+}
+\setmainfont{LibertinusSerif}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-Semibold,BoldItalicFont=*-SemiboldItalic,RawFeature={fallback=gfallback}]
+\setsansfont{Inter}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,RawFeature={fallback=gfallback}]
+\setmonofont{JetBrainsMono}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,Scale=MatchLowercase,
+  RawFeature={-calt;-liga;fallback=gmonofallback}]
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[math-style=TeX]{unicode-math}
+\setmathfont{LibertinusMath-Regular.otf}
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,positioning,backgrounds}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+
+\definecolor{ink}{HTML}{0F172A}
+\definecolor{inksoft}{HTML}{475569}
+\definecolor{inkfaint}{HTML}{94A3B8}
+\definecolor{rulegrey}{HTML}{CBD5E1}
+\definecolor{arith}{HTML}{C2410C}
+\definecolor{est}{HTML}{7C3AED}
+\definecolor{ana}{HTML}{0891B2}
+\definecolor{ok}{HTML}{047857}
+\definecolor{leancol}{HTML}{3730A3}
+
+\title{Twisted cokernels in a cyclotomic tower}
+\author{riemann-rev}
+\date{}
+
+% ------------------------------------------------------------------------------------- macros
+\newcommand{\leanfont}{\ttfamily\fontsize{8.6}{10.5}\selectfont\color{leancol}}
+\newcommand{\lean}[1]{\csname LN@#1\endcsname}
+\newcommand{\leanquote}[1]{\csname LQ@#1\endcsname}
+\input{data.tex}
+
+\linespread{1.08}                       % 11 pt on 14.7 pt
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5.5pt plus 1.5pt minus 0.5pt}
+\setlength{\abovedisplayskip}{7.5pt plus 2pt minus 3pt}
+\setlength{\belowdisplayskip}{7.5pt plus 2pt minus 3pt}
+\setlength{\abovedisplayshortskip}{3pt plus 2pt}
+\setlength{\belowdisplayshortskip}{6pt plus 2pt minus 2pt}
+\emergencystretch=1.5em
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\relpenalty=7000 \binoppenalty=9000
+\raggedbottom
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\sffamily\fontsize{7.6}{9}\selectfont\color{inkfaint}\thepage\,/\,\pageref*{LastPage}}
+\setlist{topsep=2pt,partopsep=0pt,parsep=0pt,itemsep=4pt,leftmargin=2.1em,labelsep=0.55em}
+
+\newcommand{\Sha}{\text{\normalfont Ш}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Qbar}{\overline{\Q}_\ell}
+\newcommand{\QZ}{\Q_\ell/\Z_\ell}
+\newcommand{\len}{\operatorname{len}}
+\newcommand{\cok}{\operatorname{cok}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\kw}[1]{\emph{#1}}
+\newcommand{\m}[1]{\mbox{$#1$}}        % a short formula that must not be broken across lines
+\newcommand{\flog}{\lfloor\log_\ell Z\rfloor}
+\newcommand{\head}[1]{\par\addvspace{17pt plus 4pt minus 2pt}\Needspace{6\baselineskip}%
+  \noindent{\fontsize{13.2}{16}\selectfont\bfseries\color{ink}#1}\par\nopagebreak\vspace{-1pt}}
+\newcommand{\sect}[2]{\refstepcounter{section}\label{#2}\par\addvspace{19pt plus 4pt minus 2pt}\Needspace{7\baselineskip}%
+  \noindent\llap{{\fontsize{13.2}{16}\selectfont\bfseries\color{inkfaint}\thesection}\hspace{9pt}}%
+  {\fontsize{13.2}{16}\selectfont\bfseries\color{ink}#1}\par\nopagebreak\vspace{-1pt}}
+\newcommand{\subhead}[1]{\par\addvspace{9pt plus 2pt}\Needspace{4\baselineskip}\noindent\textbf{#1}\enspace\ignorespaces}
+% where a statement lives in the Lean archive
+\newcommand{\leantag}{{\sffamily\bfseries\fontsize{6.3}{8}\selectfont\color{leancol}\addfontfeatures{LetterSpace=7}LEAN}}
+\newcommand{\sep}{\unskip\nobreak\hspace{5pt}{\color{inkfaint}\textperiodcentered}\hspace{5pt plus 2pt}\ignorespaces}
+\newcommand{\leanline}[1]{\par\nopagebreak\vspace{-2.5pt}{\fontsize{8.9}{12.4}\selectfont\color{inksoft}\raggedright
+  \noindent\llap{\leantag\hspace{9pt}}#1\par}\vspace{1pt}}
+% a displayed statement in a tinted box: #1 colour, #2 text
+\newcommand{\statement}[2]{\par\addvspace{7pt}\begingroup\setlength{\fboxsep}{8.5pt}\setlength{\fboxrule}{0.6pt}%
+  \noindent\fcolorbox{#1!30!white}{#1!3!white}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{#2}}%
+  \endgroup\par\addvspace{7pt}}
+\newcommand{\nt}[2]{\par\noindent\hangindent=1.1em\hangafter=1 #1\enspace{\color{inksoft}#2}\par\vspace{1pt}}
+\newcommand{\legdot}[1]{\tikz[baseline=-0.62ex]\fill[#1] (0,0) circle (2.5pt);\hspace{3pt}}
+\newcommand{\crow}[4]{\csname CS@#1\endcsname & #2 & \textcolor{inksoft}{#3} & \textcolor{inksoft}{#4}\\}
+\newcommand{\leanquoteline}[2]{\par\noindent\hangindent=\dimexpr#1\fontdimen2\font+2.2em\relax\hangafter=1
+  \hspace*{#1\fontdimen2\font}#2}
+\newcommand{\quoted}[1]{\par\vspace{3pt}{\ttfamily\fontsize{7.5}{10.4}\selectfont\color{leancol}\raggedright
+  \setlength{\parskip}{0pt}\leanquote{#1}\par}\vspace{4pt}}
+\newcommand{\bx}[3]{{\sffamily\bfseries\fontsize{7.3}{9.2}\selectfont\color{#1!82!black}#2}\\[1.5pt]#3}
+\newcommand{\cs}[2]{\expandafter\newcommand\csname CS@#1\endcsname{#2}}
+
+% theorems
+\newtheoremstyle{plainx}{7pt plus 2pt}{7pt plus 2pt}{\itshape}{}{\bfseries}{.}{0.5em}{}
+\newtheoremstyle{uprightx}{7pt plus 2pt}{7pt plus 2pt}{}{}{\bfseries}{.}{0.5em}{}
+\theoremstyle{plainx}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{uprightx}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\renewcommand{\qedsymbol}{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.5pt}\fbox{\rule{0pt}{0.46em}\hspace{0.46em}}}}
+\makeatletter
+\renewenvironment{proof}[1][Proof]{\par\pushQED{\qed}\normalfont\topsep0pt\partopsep0pt
+  \trivlist\item[\hskip\labelsep\itshape #1.]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+% where each declaration of the concordance is treated in the text
+\cs{GenBy}{§\ref{s:results}} \cs{jZero}{Def.~\ref{d:tau}} \cs{IsLevel}{Def.~\ref{d:level}}
+\cs{cokLen}{§\ref{s:results}} \cs{InPow}{§\ref{s:results}} \cs{Unip}{Def.~\ref{d:unip}} \cs{twLen}{Def.~\ref{d:tau}}
+\cs{range}{Lemma~\ref{l:len}} \cs{lenComp}{Lemma~\ref{l:len}} \cs{smith}{Lemma~\ref{l:smith}}
+\cs{lift}{Prop.~\ref{p:lift}}
+\cs{lte}{Lemma~\ref{l:lte}} \cs{lteNorm}{Lemma~\ref{l:lte}} \cs{units}{Lemma~\ref{l:units}}
+\cs{helly}{Lemma~\ref{l:helly}} \cs{ball}{Prop.~\ref{p:ball}} \cs{detFactor}{Lemma~\ref{l:eigen}}
+\cs{normVal}{Prop.~\ref{p:det}} \cs{detBound}{Prop.~\ref{p:det}} \cs{level}{Cor.~\ref{c:level}}
+\cs{cokL}{Lemma~\ref{l:small}} \cs{nilLen}{Lemma~\ref{l:small}} \cs{unipPow}{Lemma~\ref{l:unip}}
+\cs{frob}{Lemma~\ref{l:cong}} \cs{powIn}{Lemma~\ref{l:cong}} \cs{phi}{Lemma~\ref{l:step}}
+\cs{step}{Lemma~\ref{l:step}} \cs{mono}{Prop.~\ref{p:growth}} \cs{twist}{Lemma~\ref{l:unip}}
+\cs{growth}{Prop.~\ref{p:growth}} \cs{twgrowth}{Theorem~B} \cs{centres}{Theorem~A}
+\cs{centresnorm}{Cor.~C, the bound} \cs{near1}{Lemma~\ref{l:sep}} \cs{exc}{Cor.~C, the count}
+\cs{qzInj}{Prop.~\ref{p:dual}} \cs{dualDiv}{Prop.~\ref{p:dual}} \cs{torsFin}{Prop.~\ref{p:dual}}
+\cs{dualUnip}{Prop.~\ref{p:dual}}
+\cs{XDual}{§\ref{s:arith}, setting} \cs{IsTower}{Theorem~D} \cs{IsLayer}{§\ref{s:arith}, setting}
+\cs{shaInv}{§\ref{s:arith}, setting} \cs{VLen}{§\ref{s:arith}, setting} \cs{ABound}{Theorem~D}
+\cs{SecondBound}{Theorem~D\,(ii)} \cs{FirstBound}{Cor.~C, arithmetic form} \cs{dinfNil}{Input~1} \cs{xUnip}{Theorem~D, proof}
+\cs{step0}{Input~2, proof (§\ref{s:descent})} \cs{Descends}{Input~2} \cs{descends}{Input~2, proof (§\ref{s:descent})}
+\cs{cycRange}{Lemma~\ref{l:layers}(a)} \cs{genLevel}{Theorem~D, proof} \cs{shaLeV}{Input~3} \cs{aDesc}{Theorem~D} \cs{aTower}{Theorem~D}
+\cs{isTowerIff}{§\ref{s:use}} \cs{FW}{§\ref{s:use}} \cs{FWthm}{§\ref{s:use}} \cs{towerFixed}{§\ref{s:use}} \cs{fixedIn}{§\ref{s:use}}
+\cs{twoIn}{§\ref{s:use}} \cs{LemmaK}{§\ref{s:use}} \cs{window}{§\ref{s:use}} \cs{thmBab}{§\ref{s:use}}
+\cs{thmBabK}{§\ref{s:use}}
+\cs{vl}{§\ref{s:results}, conventions} \cs{normDvd}{Lemma~\ref{l:lte}, proof} \cs{normAddVal}{Lemma~\ref{l:lte}, proof}
+\cs{dvdNorm}{Prop.~\ref{p:det}, proof} \cs{vlProd}{Prop.~\ref{p:det}, proof} \cs{nilSucc}{Lemma~\ref{l:small}(b), proof}
+\cs{nilLt}{Lemma~\ref{l:small}(b), proof} \cs{vlNorm}{Cor.~C, the bound} \cs{memLev}{Theorem~D, proof}
+\cs{eqTwLen}{Theorem~D, proof} \cs{qzSep}{Lemma~\ref{l:char}(a)} \cs{qzAnn}{Lemma~\ref{l:char}(a), proof}
+\cs{exactDual}{Lemma~\ref{l:char}(b)} \cs{simpleDual}{Lemma~\ref{l:char}(c), proof} \cs{leDual}{Lemma~\ref{l:char}(c), proof}
+\cs{lenDual}{Lemma~\ref{l:char}(c)} \cs{dualKer}{Lemma~\ref{l:cokdual}} \cs{cokerDual}{Lemma~\ref{l:cokdual}}
+\cs{pgIndex}{Lemma~\ref{l:princ}(a)} \cs{pgExists}{Lemma~\ref{l:princ}(c), proof} \cs{pgEmult}{Lemma~\ref{l:princ}(b)}
+\cs{princGen}{Lemma~\ref{l:princ}} \cs{princClosed}{Lemma~\ref{l:princ}(c), proof} \cs{lteOdd}{Lemma~\ref{l:princ}(b), proof}
+\cs{lteSq}{Lemma~\ref{l:princ}(b), proof} \cs{cZero}{§\ref{s:arith}, setting} \cs{layU}{§\ref{s:descent}, layers}
+\cs{muQ}{§\ref{s:descent}, layers} \cs{galOfCyc}{§\ref{s:descent}, layers} \cs{galEmbTop}{Lemma~\ref{l:layers}(a), proof}
+\cs{luKey}{Lemma~\ref{l:layers}(b)} \cs{layerUniq}{Lemma~\ref{l:layers}(a), (b)} \cs{layerGen}{Lemma~\ref{l:layers}(a), (c)}
+\cs{IsGen}{Input~2} \cs{dTw}{§\ref{s:descent}, twists} \cs{xTw}{§\ref{s:descent}, twists} \cs{xTwApply}{§\ref{s:descent}, twists}
+\cs{ShaD}{Input~2a} \cs{desc}{Input~2a} \cs{shaLenInv}{Input~2a} \cs{shaDGen}{Input~2b}
+
+\begin{document}
+\color{ink}
+
+% ------------------------------------------------------------------------------------- title
+{\raggedright
+{\sffamily\bfseries\fontsize{7.2}{9}\selectfont\color{leancol}\addfontfeatures{LetterSpace=8}DEFORMALIZATION 1\par}
+\vspace{5pt}
+{\fontsize{21.5}{25.5}\selectfont\bfseries Twisted cokernels in a cyclotomic tower\par}
+\vspace{5pt}
+{\fontsize{12.4}{16}\selectfont\itshape\color{inksoft} One cluster of the Lean archive behind the proof of the Riemann
+hypothesis announced by L.\,Alpöge, read back into mathematics\par}}
+\vspace{8pt}
+{\color{rulegrey}\hrule height 0.6pt}
+\vspace{7pt}
+\thispagestyle{empty}
+
+\textbf{Summary.} Let $X$ be a module over the $\ell$-adic integers generated by $R$ elements, $\gamma$ an
+endomorphism of~$X$ that is unipotent modulo~$\ell$, and \m{u\ne1} an element of \m{1+\ell\Z_\ell} (of
+\m{1+4\Z_2} if \m{\ell=2}). We study the lengths $\tau(h,m)$ of
+the cokernels of $(u^h\gamma)^{\ell^m}-1$ as the \kw{twist}~$h$ and the \kw{layer}~$m$ vary. There are $R$ points
+\m{c_1,\dots,c_R} of~$\Z_\ell$, the \kw{centres}, such that $\tau(h,m)$ exceeds a quantity depending only on the layer by at most
+$\sum_i v_\ell(c_i-h)$, where $v_\ell$ is the $\ell$-adic valuation. Hence among the twists \m{1\le h\le Z} at most~$R$ are exceptional, however large $Z$ is.
+Applied to the Iwasawa module of the cyclotomic $\Z_\ell$-extension of a number field, this bounds the locally
+trivial cohomology of the Tate twists $\QZ(-h)$ along the tower. The proof is linear algebra over~$\Z_\ell$ and one
+compactness argument; it uses neither the structure theorem for Iwasawa modules nor the $\ell$-adic logarithm.
+
+\statement{leancol}{\fontsize{9.6}{13.2}\selectfont\textbf{What this note is.} On 20 November 2026 L.\,Alpöge
+announced a proof of the Riemann hypothesis, with a Lean archive \cite{Al}. That is a claim, and nothing here asserts
+that the hypothesis is proved. This note takes one cluster of the archive, the \ClusterSize{} declarations that the
+embedding atlas~\cite{At} groups as \href{\AtlasClusterUrl}{\emph{Assemble the arithmetic tower window}}, together
+with the directory on which they rest (\DirFiles{} files, \DirLines{} lines, \DirDecls{} theorems and lemmas), and
+rewrites it as mathematics. The algebra is proved in full (§\ref{s:len}--§\ref{s:exc} and
+Proposition~\ref{p:dual}). Of the three arithmetic inputs (§\ref{s:arith}), two are stated with a sketch, and the
+third, the descent to a layer of the tower, is proved in §\ref{s:descent} from two statements of a neighbouring
+directory. Every statement was
+compared with its formal counterpart at commit \href{\PinUrl}{{\leanfont\Pin}} of the public mirror; Appendix~A is
+the concordance of \ConcDecls{} declarations. Formal status: \NChecked{} of the \ClusterSize{} declarations were
+replayed by name by the reading project (type, axioms, kernel), the fourth lies in the closure of one of them. The complete proof, of which the cluster is a part, is the
+subject of the replays recorded in the ledger of this project.}
+
+% ------------------------------------------------------------------------------------- 1
+\sect{The question}{s:intro}
+In the announced argument a chain of theta lifts is compared with a sum over primes, and each lift loses a factor.
+For a prime~$\ell$ the loss is governed by groups of Galois cohomology: for a number field~$E$ and an integer
+\m{h\ge1}, by the length of the group $\Sha^1_\ell(E,h)$ of classes with coefficients $\QZ(-h)$ that are unramified
+outside~$\ell$ and trivial at the places above~$\ell$ (the definition is recalled in §\ref{s:arith}). The proof needs
+the total length over all twists \m{1\le h\le Z}, for a very large~$Z$, to be small on a whole range of scales;
+see §6 of the guide~\cite{Gu}. A bound for each $h$ that grows with $Z$ is useless. What one can hope for is a bound
+that holds for all twists except a set of \kw{exceptional} ones, \emph{whose number does not depend on~$Z$}.
+
+Along the cyclotomic tower over~$E$ these lengths are lengths of cokernels of one operator on one module. This note
+proves the statement about exceptional twists for such operators, in the generality in which the archive proves it.
+
+\subhead{The simplest case.} Let $X=\Z_\ell$, with $\ell$ odd, let $u=1+\ell$, and let $\gamma$ be multiplication by
+a principal unit, which we write as $u^{-c}$ with \m{c\in\Z_\ell}. For integers \m{h,m\ge0} the operator
+$(u^h\gamma)^{\ell^m}-1$ is multiplication by \m{u^{\ell^m(h-c)}-1}, an element of valuation \m{1+m+v_\ell(h-c)}.
+So the cokernel has length
+\[
+\tau(h,m)=1+m+v_\ell(h-c).
+\]
+It is large only when the integer $h$ is $\ell$-adically close to~$c$. Now two integers \m{1\le h<h'\le Z} cannot
+both satisfy \m{v_\ell(h-c)>\log_\ell Z}: their difference would be divisible by a power of~$\ell$ larger than~$Z$.
+So at most one twist \m{h\le Z} is exceptional, whatever~$Z$. The general case has $R$ eigenvalues in place of
+one, hence $R$ centres; the work lies in doing without a diagonal form, and in allowing torsion in~$X$.
+
+% ------------------------------------------------------------------------------------- 2
+\sect{Setting and results}{s:results}
+\subhead{Conventions.} Throughout, $\ell$ is a prime number, $\Z_\ell$ is the ring of $\ell$-adic integers,
+$\Q_\ell$ its field of fractions and $\Qbar$ an algebraic closure of~$\Q_\ell$. We write $v$, or $v_\ell$ when the
+prime is to be shown, for the $\ell$-adic valuation on~$\Qbar$, normalized by \m{v(\ell)=1}, with \m{v(0)=\infty}, and \m{|z|=\ell^{-v(z)}} for the absolute
+value. It is ultrametric: \m{|z+z'|\le\max(|z|,|z'|)}.
+
+All modules are modules over~$\Z_\ell$. The \kw{length} $\len M$ of a module~$M$ is the supremum of the lengths of
+its chains of submodules, a non-negative integer or~$\infty$; it is additive in short exact sequences, so the length
+of a submodule or of a quotient of~$M$ is at most $\len M$. A finite module of order $\ell^n$ has length~$n$.
+
+Let $X$ be a module. An integer \m{R\ge0} such that $X$ is generated by $R$ elements will be fixed; equivalently
+there is a surjection \m{\pi\colon\Z_\ell^R\to X}. We write $\End(X)$ for the ring of endomorphisms of~$X$, $1$ for
+the identity, and identify a scalar with the multiplication by it. For \m{f\in\End(X)} put
+\[
+\cok f=X/f(X),
+\]
+so that $\len\cok f$ is the length of the cokernel of~$f$. For \m{n\ge0} let $I_n$ be the set of
+\m{f\in\End(X)} with \m{f(X)\subseteq\ell^nX}. It is a two-sided ideal, \m{I_iI_j\subseteq I_{i+j}}, and it contains
+$\ell^n\End(X)$. We write \m{f\equiv g\pmod{\ell^n}} when \m{f-g\in I_n}. (If $X$ has torsion, $I_n$ can be larger
+than $\ell^n\End(X)$.)
+
+\begin{definition}\label{d:unip}
+An endomorphism $\gamma$ of $X$ is \kw{unipotent modulo~$\ell$} if \m{(\gamma-1)^N\equiv0\pmod\ell} for some
+\m{N\ge1}.
+\end{definition}
+
+\begin{definition}\label{d:level}
+An element $u$ of $\Z_\ell$ has \kw{level}~$a$, for an integer \m{a\ge1}, if \m{v(u-1)=a}, and \m{a\ge2} in case
+\m{\ell=2}. Such a $u$ is a unit, and it generates the group \m{1+\ell^a\Z_\ell} topologically: this group is the
+closure of the set of powers of~$u$ (Lemma~\ref{l:princ}).
+\end{definition}
+
+\begin{definition}\label{d:tau}
+Let \m{\gamma\in\End(X)} and \m{u\in\Z_\ell}. For integers \m{h,m\ge0}, the \kw{twisted length} at twist~$h$ and
+layer~$m$ is
+\[
+\tau(h,m)=\len\cok\bigl((u^h\gamma)^{\ell^m}-1\bigr)\ \in\ \{0,1,2,\dots,\infty\}.
+\]
+The \kw{reference layer} is \m{m_0=\lfloor\log_\ell R\rfloor+3} (and \m{m_0=3} if \m{R=0}).
+\end{definition}
+\leanline{\lean{vl} (the valuation)\sep\lean{GenBy}\sep\lean{cokLen}\sep\lean{InPow}\sep\lean{Unip}\sep\lean{IsLevel}\sep\lean{twLen}\sep\lean{jZero}}
+
+\subhead{Results.} In the next three statements $X$ is a module generated by $R$ elements, $\gamma$ is an
+endomorphism of~$X$ that is unipotent modulo~$\ell$, and $u\in\Z_\ell$ has level~$a$.
+
+\statement{arith}{\textbf{Theorem A} (centres).\enspace\emph{There are \m{c_1,\dots,c_R\in\Z_\ell} such that for
+all integers \m{h,m\ge0}}
+\[
+\tau(h,m)\ \le\ \sum_{i=1}^{R}\Bigl(\max(m,m_0)+a+v(c_i-h)\Bigr).
+\]
+\textbf{Theorem B} (growth).\enspace\emph{For all integers \m{h,m\ge0}}
+\[
+\tau(h,m)\ \le\ \tau(h,m_0)+R\cdot\max(m-m_0,0).
+\]}
+\statement{arith}{\textbf{Corollary C} (exceptional twists).\enspace\emph{Let \m{c_1,\dots,c_R} be as in Theorem~A
+and let \m{Z\ge1} be an integer. The set $\mathcal E_Z$ of integers \m{1\le h\le Z} such that
+\m{v(c_i-h)>\flog} for some~$i$ has at most $R$ elements. For every integer \m{1\le h\le Z} outside~$\mathcal E_Z$
+and every \m{m\ge0}}
+\[
+\tau(h,m)\ \le\ R\,\bigl(\max(m,m_0)+a+\flog\bigr).
+\]}
+\leanline{A \lean{centres}\sep B \lean{twgrowth}\sep C: the bound \lean{centresnorm}, with \lean{vlNorm}; the
+count, for the lengths of Theorem~D, \lean{exc}}
+
+The two theorems complement each other. Theorem~A is strong when $h$ is far from every centre, and says nothing
+when $h$ is a centre: then its right-hand side is infinite, and $\tau(h,m)$ may be infinite too
+(Example~\ref{e:one}). Theorem~B gives no information on any single layer, but it shows that all the layers are
+controlled by one of them, also at a centre. In the arithmetic application that one layer is bounded by a duality
+theorem, which is why both are needed.
+
+The arithmetic statement, for which the notation is set up in §\ref{s:arith}, reads as follows. Let $L$ be a
+number field containing the $\ell$-th roots of unity (the fourth roots if \m{\ell=2}), let $\ell^a$
+be the number of roots of unity of $\ell$-power order in~$L$, and let $L_m$ be the layer of degree~$\ell^m$ of the
+cyclotomic $\Z_\ell$-extension of~$L$. Let $X_\infty$ be the Galois group of the maximal abelian pro-$\ell$ extension
+of \m{L_\infty=\bigcup_mL_m} that is unramified everywhere and in which every prime above~$\ell$ splits completely.
+
+\statement{arith}{\textbf{Theorem D} (class groups in the tower).\enspace\emph{Suppose that $X_\infty$ is generated
+by \m{R\ge1} elements as a $\Z_\ell$-module. Then}
+\begin{enumerate}[label=\textup{(\roman*)},topsep=3pt,itemsep=1pt]
+\item \emph{there are \m{c_1,\dots,c_R\in\Z_\ell} such that for all integers \m{h\ge1} and \m{m,B\ge0} with
+\m{v(c_i-h)\le B} for all~$i$}
+\[
+\len\Sha^1_\ell(L_m,h)\ \le\ R\,\bigl(\max(m,m_0)+a+B\bigr);
+\]
+\item \emph{for all integers \m{h\ge1} and \m{m\ge0}}
+\[
+\len\Sha^1_\ell(L_m,h)\ \le\ \len H^2\bigl(G_{L_{m_0},\ell},\Z_\ell(h+1)\bigr)+R\cdot\max(m-m_0,0).
+\]
+\end{enumerate}}
+\leanline{\lean{aTower}\sep\lean{aDesc}\sep statement \lean{ABound} (a weaker form of (i), see §\ref{s:notes}),
+\lean{SecondBound}\sep hypothesis \lean{IsTower}}
+
+In the archive, (i) and (ii) are proved under three hypotheses on Galois cohomology (global duality of Poitou
+and Tate, local Tate duality, finiteness of local cohomology), which enter only through Input~3 of
+§\ref{s:arith}.
+
+\subhead{Plan of the proof.} The diagram shows the steps in the order in which they are used. The upper row
+produces the centres at one layer; the middle row compares the layers; the lower row is the dictionary with
+arithmetic.
+
+\par\vspace{5pt}
+\noindent\makebox[\linewidth][c]{%
+\begin{tikzpicture}[x=1cm,y=1cm,
+  box/.style 2 args={draw=#1!55!white,line width=0.6pt,rounded corners=3pt,fill=#1!4!white,minimum height=1.62cm,
+    text width=#2,inner xsep=4.5pt,inner ysep=3.5pt,align=flush left,font=\fontsize{7.9}{9.6}\selectfont},
+  flow/.style={-{Stealth[length=4.6pt,width=4pt]},line width=0.75pt,draw=ink!72}]
+  \node[box={est}{3.05cm}] (a1) at (0,0)     {\bx{est}{§3\quad Presentation}{cokernel length \m{\le} valuation of a determinant}};
+  \node[box={est}{3.05cm}] (a2) at (3.95,0)  {\bx{est}{§4\quad Eigenvalues}{\m{\det(tS-1)=\prod_i(tz_i-1)}}};
+  \node[box={est}{3.05cm}] (a3) at (7.9,0)   {\bx{est}{§4\quad One centre each}{exponent lifting, ultrametric inequality, compactness}};
+  \node[box={arith}{3.05cm}] (a4) at (11.85,0) {\bx{arith}{Theorem A, Corollary C}{one set of centres for all layers; at most $R$ exceptional twists (§6)}};
+  \node[box={ana}{3.05cm}] (b1) at (0,-2.05)    {\bx{ana}{§5\quad Unipotence}{\m{(\gamma-1)^R\equiv0} modulo~$\ell$; stable under twists}};
+  \node[box={ana}{3.05cm}] (b2) at (3.95,-2.05) {\bx{ana}{§5\quad Congruences}{\m{g^{\ell^n}\equiv1} modulo~$\ell^2$ from a small layer on}};
+  \node[box={ana}{3.05cm}] (b3) at (7.9,-2.05)  {\bx{ana}{§5\quad One step}{from layer $n$ to \m{n+1} the length grows by at most~$R$}};
+  \node[box={arith}{3.05cm}] (b4) at (11.85,-2.05) {\bx{arith}{Theorem B}{every layer is controlled by the layer~$m_0$}};
+  \node[box={inksoft}{3.05cm}] (c1) at (0,-4.1)    {\bx{inksoft}{§7\quad Dual module}{locally nilpotent on a discrete module, so unipotent on its dual}};
+  \node[box={inksoft}{3.05cm}] (c2) at (3.95,-4.1) {\bx{inksoft}{§7, §8\quad Descent}{\m{\len\Sha^1_\ell(L_m,h)=\tau(h,m)} on~$X_\infty$}};
+  \node[box={inksoft}{3.05cm}] (c3) at (7.9,-4.1)  {\bx{inksoft}{§7\quad Poitou--Tate}{\m{\len\Sha^1\le\len H^2} at the layer~$m_0$}};
+  \node[box={arith}{3.05cm}] (c4) at (11.85,-4.1)  {\bx{arith}{Theorem D}{class groups in the cyclotomic tower}};
+  \draw[flow] (a1) -- (a2); \draw[flow] (a2) -- (a3); \draw[flow] (a3) -- (a4);
+  \draw[flow] (b1) -- (b2); \draw[flow] (b2) -- (b3); \draw[flow] (b3) -- (b4);
+  \draw[flow] (c1) -- (c2); \draw[flow] (c2) -- (c3); \draw[flow] (c3) -- (c4);
+  \draw[flow] (b4) -- (a4); \draw[flow] (b4) -- (c4);
+  \draw[flow,rounded corners=3pt] (a4.east) -- ++(0.3,0) |- (c4.east);
+\end{tikzpicture}}
+\par\vspace{3pt}
+
+\subhead{The cluster on the map.} The embedding atlas~\cite{At} places the \AtlasDecls{} written theorems and lemmas
+of the archive on a map of mathematical subjects and groups them into \AtlasBundles{} clusters. The cluster treated
+here has \ClusterSize{} members: Theorem~D in two forms, and two statements that assemble it into the window of the
+guide (§\ref{s:use}). The \DirDecls{} theorems and lemmas of the directory that proves Theorem~D are filed by the
+atlas under \SubjectCount{} subjects:
+
+\par\vspace{2pt}
+{\fontsize{9.2}{12}\selectfont\noindent\hspace*{2.1em}\begin{tabular}{@{}l@{\hspace{14pt}}r@{}}
+\SubjectRows
+\end{tabular}\par}
+\vspace{2pt}
+
+The first two rows, more than half of the directory, are the algebra of §\ref{s:len}--§\ref{s:exc} and of
+Proposition~\ref{p:dual}. The statement is one of Galois cohomology and Iwasawa theory, and almost all of its
+proof is linear algebra and congruences. A map of subjects shows where the pieces lie; the
+order in which they are used is the diagram above. (Four of the algebraic lemmas of §\ref{s:growth} and
+§\ref{s:arith} are filed under automorphic representations, by the context of their module.)
+
+% ------------------------------------------------------------------------------------- 3
+\sect{Lengths and determinants}{s:len}
+\begin{lemma}\label{l:len}
+Let \m{f,g\in\End(X)}.
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item If \m{g(X)\subseteq f(X)}, then \m{\len\cok f\le\len\cok g}.
+\item \m{\len\cok(fg)\le\len\cok f+\len\cok g}.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) $\cok f$ is a quotient of $\cok g$. (b) The module $X/fg(X)$ has the submodule $f(X)/fg(X)$ with quotient
+$X/f(X)$, and $f$ induces a surjection of $X/g(X)$ onto $f(X)/fg(X)$.
+\end{proof}
+\leanline{\lean{range}\sep\lean{lenComp}}
+
+\begin{lemma}\label{l:smith}
+For a square matrix $A$ with entries in~$\Z_\ell$, of size~$R$,\quad
+\m{\len\,\Z_\ell^R/A\Z_\ell^R=v(\det A).}
+\end{lemma}
+\begin{proof}
+By the theory of elementary divisors there are invertible matrices $P$, $Q$ over~$\Z_\ell$ with
+\m{PAQ=\diag(d_1,\dots,d_R)}. The cokernel of~$A$ is isomorphic to \m{\bigoplus_i\Z_\ell/d_i\Z_\ell}, the module
+$\Z_\ell/d\Z_\ell$ has length $v(d)$, and \m{v(\det A)=\sum_iv(d_i)}. Both sides are infinite when \m{\det A=0}.
+\end{proof}
+\leanline{\lean{smith}}
+
+\begin{proposition}[presentation]\label{p:lift}
+Let $X$ be generated by $R$ elements and let \m{g\in\End(X)}. There is a square matrix $S$ over~$\Z_\ell$, of
+size~$R$, such that for every \m{t\in\Z_\ell}
+\[
+\len\cok(tg-1)\ \le\ v\bigl(\det(tS-1)\bigr).
+\]
+\end{proposition}
+\begin{proof}
+Let \m{\pi\colon\Z_\ell^R\to X} be a surjection. Lifting the images under \m{g\circ\pi} of the basis vectors gives a
+matrix $S$ with \m{\pi\circ S=g\circ\pi}. Then \m{\pi\circ(tS-1)=(tg-1)\circ\pi}, so $\pi$ maps the image of $tS-1$
+into the image of $tg-1$ and induces a surjection of \m{\Z_\ell^R/(tS-1)\Z_\ell^R} onto $\cok(tg-1)$. Apply
+Lemma~\ref{l:smith}.
+\end{proof}
+\leanline{\lean{lift}}
+
+\begin{remark}\label{r:fitting}
+The inequality is an equality when $X$ is free of rank~$R$, and can be far from one otherwise. For
+\m{X=\Z_\ell/\ell\Z_\ell}, \m{g=1} and \m{t\equiv1\pmod\ell} the left-hand side is~$1$ and the right-hand side, for the lift \m{S=1}, is
+\m{v(t-1)}. Determinants see a presentation of the module, not the module.
+\end{remark}
+
+% ------------------------------------------------------------------------------------- 4
+\sect{A centre for every eigenvalue}{s:centres}
+\begin{lemma}[lifting the exponent]\label{l:lte}
+Let $u$ have level~$a$. Then \m{v(u^n-1)=a+v(n)} for every integer~$n$. Consequently, for all integers
+\m{j,n,n'\ge0},
+\[
+\bigl|u^{\ell^jn}-u^{\ell^jn'}\bigr|=\ell^{-(j+a)}\,|n-n'|.
+\]
+\end{lemma}
+\begin{proof}
+Write \m{u=1+x}, so \m{v(x)=a}. If $\ell$ does not divide $n$, then \m{u^n-1=nx+x^2(\cdots)} has valuation~$a$.
+For \m{n=\ell},
+\[
+u^\ell-1=\ell x+\sum_{1<i<\ell}\binom{\ell}{i}x^i+x^\ell ,
+\]
+where the first term has valuation \m{a+1}, the middle terms have valuation at least \m{2a+1}, and the last has
+valuation~$\ell a$, which exceeds \m{a+1} because \m{(\ell-1)a>1}. This is where \m{a\ge2} is needed for \m{\ell=2}.
+So $u^\ell$ has level \m{a+1}, and induction on $v(n)$ gives the formula for \m{n>0}. For \m{n<0} use
+\m{u^n-1=-u^n(u^{-n}-1)}; for \m{n=0} both sides are infinite. The second formula follows from
+\m{u^{\ell^jn}-u^{\ell^jn'}=u^{\ell^jn'}(u^{\ell^j(n-n')}-1)}.
+\end{proof}
+\leanline{\lean{lte}\sep\lean{lteNorm}, with \lean{normDvd} and \lean{normAddVal}}
+
+\begin{lemma}\label{l:units}
+Let $t$, $t'$ be units of $\Z_\ell$ and \m{z\in\Qbar}. Then\quad \m{|t-t'|\le\max\bigl(|tz-1|,\,|t'z-1|\bigr).}
+\end{lemma}
+\begin{proof}
+We have \m{(tz-1)-(t'z-1)=(t-t')z}. If \m{|z|\ge1}, then \m{|t-t'|\le|(t-t')z|}, and the ultrametric inequality
+gives the claim. If \m{|z|<1}, then \m{|tz|<1}, so \m{|tz-1|=1\ge|t-t'|}.
+\end{proof}
+\leanline{\lean{units}}
+
+\begin{lemma}\label{l:helly}
+For \m{n=0,1,2,\dots} let \m{b_n\in\Z_\ell} and a real number \m{r_n\ge0} be given, such that
+\[
+|b_n-b_{n'}|\le\max(r_n,r_{n'})\qquad\text{for all }n,n'.
+\]
+Then there is \m{c\in\Z_\ell} with \m{|c-b_n|\le r_n} for all~$n$.
+\end{lemma}
+\begin{proof}
+The closed balls \m{\{y:|y-b_n|\le r_n\}} are closed subsets of the compact space~$\Z_\ell$. Any finitely many of
+them have a common point, namely the centre $b_n$ of one of smallest radius among them. Hence all of them have a
+common point.
+\end{proof}
+\leanline{\lean{helly}}
+
+\begin{proposition}[one centre]\label{p:ball}
+Let $u$ have level~$a$, let \m{j\ge0} be an integer and \m{z\in\Qbar}. There is \m{c\in\Z_\ell} such that for
+every integer \m{h\ge0}
+\[
+\ell^{-(j+a)}\,|c-h|\ \le\ \bigl|u^{\ell^jh}z-1\bigr|.
+\]
+\end{proposition}
+\begin{proof}
+Put \m{b_h=h} and \m{r_h=\ell^{j+a}\,|u^{\ell^jh}z-1|}. By Lemma~\ref{l:lte} and Lemma~\ref{l:units}, applied to
+the units $u^{\ell^jh}$ and $u^{\ell^jh'}$,
+\[
+|h-h'|=\ell^{j+a}\,\bigl|u^{\ell^jh}-u^{\ell^jh'}\bigr|\le\max(r_h,r_{h'}).
+\]
+Lemma~\ref{l:helly} gives~$c$.
+\end{proof}
+\leanline{\lean{ball}}
+
+The proposition says that the function \m{h\mapsto u^{\ell^jh}z-1}, on the integers, is bounded below by a
+multiple of the distance to one point. The function extends continuously to~$\Z_\ell$. If the extension has a
+zero~$c$, this zero is the only possible centre, and the inequality is an equality. In general there is no zero
+in~$\Z_\ell$; then the function is bounded away from zero, and the centre is not unique.
+
+\begin{lemma}\label{l:eigen}
+Let $S$ be a square matrix of size $R$ over an algebraically closed field, with eigenvalues \m{z_1,\dots,z_R}
+counted with multiplicity. Then \m{\det(tS-1)=\prod_{i=1}^R(tz_i-1)} for every element $t$ of the field.
+\end{lemma}
+\begin{proof}
+$S$ is conjugate to an upper triangular matrix with diagonal \m{z_1,\dots,z_R}, and then $tS-1$ is conjugate to an
+upper triangular matrix with diagonal \m{tz_1-1,\dots,tz_R-1}.
+\end{proof}
+\leanline{\lean{detFactor}}
+
+\begin{proposition}\label{p:det}
+Let $u$ have level~$a$, let \m{j\ge0}, and let $S$ be a square matrix of size $R$ over~$\Z_\ell$. There are
+\m{c_1,\dots,c_R\in\Z_\ell} such that for every integer \m{h\ge0}
+\[
+v\Bigl(\det\bigl(u^{\ell^jh}S-1\bigr)\Bigr)\ \le\ \sum_{i=1}^{R}\bigl(j+a+v(c_i-h)\bigr).
+\]
+\end{proposition}
+\begin{proof}
+Let \m{z_1,\dots,z_R\in\Qbar} be the eigenvalues of~$S$ and let $c_i$ be a centre for $z_i$ as in
+Proposition~\ref{p:ball}. By Lemma~\ref{l:eigen},
+\[
+\Bigl|\det\bigl(u^{\ell^jh}S-1\bigr)\Bigr|=\prod_{i=1}^{R}\bigl|u^{\ell^jh}z_i-1\bigr|\ \ge\
+\prod_{i=1}^{R}\ell^{-(j+a)}\,|c_i-h| ,
+\]
+and taking valuations gives the claim.
+\end{proof}
+\leanline{\lean{detBound}\sep\lean{normVal}, with \lean{dvdNorm} and \lean{vlProd}}
+
+\begin{corollary}[centres at one layer]\label{c:level}
+Let $X$ be generated by $R$ elements, let $\gamma$ be any endomorphism of~$X$, let $u$ have level~$a$ and let
+\m{j\ge0}. There are \m{c_1,\dots,c_R\in\Z_\ell} such that for every integer \m{h\ge0}
+\[
+\tau(h,j)\ \le\ \sum_{i=1}^{R}\bigl(j+a+v(c_i-h)\bigr).
+\]
+\end{corollary}
+\begin{proof}
+Since \m{(u^h\gamma)^{\ell^j}=u^{\ell^jh}\gamma^{\ell^j}}, Proposition~\ref{p:lift} for \m{g=\gamma^{\ell^j}}
+and \m{t=u^{\ell^jh}} bounds $\tau(h,j)$ by \m{v(\det(u^{\ell^jh}S-1))}, with a matrix $S$ that does not depend
+on~$h$. Apply Proposition~\ref{p:det}.
+\end{proof}
+\leanline{\lean{level}}
+
+Unipotence is not used here. But the matrix $S$, and with it the centres, depend on the layer~$j$. To have one
+set of centres for all layers, the layers must be compared. This is the purpose of the next section.
+
+% ------------------------------------------------------------------------------------- 5
+\sect{Growth along the tower}{s:growth}
+\begin{lemma}\label{l:small}
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item If $X$ is generated by $R$ elements, then \m{\len X/\ell X\le R}.
+\item A nilpotent endomorphism $f$ of a module $M$ of length at most $n$ satisfies \m{f^n=0}.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) $X/\ell X$ is a quotient of \m{(\Z_\ell/\ell\Z_\ell)^R}. (b) As long as \m{f^i\ne0}, the image of $f^{i+1}$ is
+strictly smaller than the image of~$f^i$: equality would give \m{f^i(M)=f^{i+j}(M)} for all~$j$, hence
+\m{f^i=0}. If \m{f^n\ne0}, the images of \m{f^0,f^1,\dots,f^n} and the zero module would form a chain of length
+\m{n+1}.
+\end{proof}
+\leanline{\lean{cokL}\sep\lean{nilLen}, with \lean{nilSucc} and \lean{nilLt}}
+
+\begin{lemma}\label{l:unip}
+Let $X$ be generated by $R$ elements and let $\gamma$ be unipotent modulo~$\ell$.
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item \m{(\gamma-1)^R\equiv0\pmod\ell}.
+\item For every \m{t\in\Z_\ell} with \m{t\equiv1\pmod\ell}, the endomorphism $t\gamma$ is unipotent modulo~$\ell$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) The endomorphism of $X/\ell X$ induced by \m{\gamma-1} is nilpotent, and $X/\ell X$ has length at most~$R$;
+apply Lemma~\ref{l:small}. (b) Write \m{t\gamma-1=(\gamma-1)+(t-1)\gamma}. The two summands commute and the second
+lies in~$I_1$. In the binomial expansion of \m{(t\gamma-1)^N} every term except \m{(\gamma-1)^N} contains the second
+summand, so it lies in the ideal~$I_1$; and \m{(\gamma-1)^N\in I_1} for a suitable~$N$.
+\end{proof}
+\leanline{\lean{unipPow}\sep\lean{twist}}
+
+\begin{lemma}[congruences]\label{l:cong}
+Let \m{g,w\in\End(X)} and let \m{k,n\ge0} be integers.
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item \m{(g-1)^{\ell^k}\equiv g^{\ell^k}-1\pmod\ell}.
+\item If \m{w\equiv1\pmod{\ell^n}}, then \m{w^i\equiv1\pmod{\ell^n}} for every \m{i\ge0}.
+\item If \m{w\equiv1\pmod\ell}, then \m{w^\ell\equiv1\pmod{\ell^2}}.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) The polynomial \m{(T-1)^{\ell^k}-(T^{\ell^k}-1)} has coefficients divisible by~$\ell$. (b) We have
+\m{w^i-1=(1+w+\dots+w^{i-1})(w-1)}, and $I_n$ is an ideal. (c) Put \m{f=w-1\in I_1}. In
+\m{w^\ell-1=\sum_{i=1}^{\ell}\binom{\ell}{i}f^i} the terms with \m{i<\ell} lie in \m{\ell I_1\subseteq I_2}, and
+\m{f^\ell\in I_\ell\subseteq I_2}.
+\end{proof}
+\leanline{\lean{frob}\sep\lean{powIn}}
+
+\begin{lemma}[one step]\label{l:step}
+Let $X$ be generated by $R$ elements and let \m{w\in\End(X)} with \m{w\equiv1\pmod{\ell^2}}. Then
+\[
+\len\cok(w^\ell-1)\ \le\ \len\cok(w-1)+R.
+\]
+\end{lemma}
+\begin{proof}
+Put \m{\nu=1+w+\dots+w^{\ell-1}}, so that \m{w^\ell-1=\nu\,(w-1)}. By Lemma~\ref{l:cong}(b) each $w^i$ is
+congruent to $1$ modulo~$\ell^2$, so \m{\nu\equiv\ell\pmod{\ell^2}}: for every \m{x\in X} there is $y$ with
+\m{\ell x=\nu x-\ell^2y}. Thus \m{\ell X\subseteq\nu(X)+\ell\cdot\ell X}. The module $\ell X$ is finitely
+generated, so Nakayama's lemma gives \m{\ell X\subseteq\nu(X)}. By Lemma~\ref{l:len}(a) and
+Lemma~\ref{l:small}(a), \m{\len\cok\nu\le\len X/\ell X\le R}, and Lemma~\ref{l:len}(b) finishes the proof.
+\end{proof}
+\leanline{\lean{phi}\sep\lean{step}}
+
+\begin{proposition}[growth]\label{p:growth}
+Let $X$ be generated by $R$ elements and let \m{g\in\End(X)} be unipotent modulo~$\ell$. Then for every
+\m{m\ge0}
+\[
+\len\cok\bigl(g^{\ell^m}-1\bigr)\ \le\ \len\cok\bigl(g^{\ell^{m_0}}-1\bigr)+R\cdot\max(m-m_0,0).
+\]
+\end{proposition}
+\begin{proof}
+For \m{m\le m_0}, the factorization \m{g^{\ell^{m_0}}-1=(g^{\ell^m}-1)(1+g^{\ell^m}+\cdots)} shows that the image of
+\m{g^{\ell^{m_0}}-1} lies in that of \m{g^{\ell^m}-1}; apply Lemma~\ref{l:len}(a).
+
+Let \m{k=m_0-2}, so that \m{R\le\ell^k}. Then, modulo the indicated powers of~$\ell$,
+\[
+(g-1)^{\ell^k}\equiv0\ (\ell),\qquad g^{\ell^k}\equiv1\ (\ell),\qquad g^{\ell^{k+1}}\equiv1\ (\ell^2),\qquad
+g^{\ell^n}\equiv1\ (\ell^2)\quad\text{for all }n\ge k+1,
+\]
+by Lemma~\ref{l:unip}(a) and parts (a), (c), (b) of Lemma~\ref{l:cong}, in this order. For such $n$, Lemma~\ref{l:step} with \m{w=g^{\ell^n}} gives
+\[
+\len\cok\bigl(g^{\ell^{n+1}}-1\bigr)\ \le\ \len\cok\bigl(g^{\ell^n}-1\bigr)+R ,
+\]
+and the claim for \m{m>m_0} follows by induction, starting from \m{n=m_0}.
+\end{proof}
+\leanline{\lean{mono}\sep\lean{growth}}
+
+\begin{proof}[Proof of Theorems A and B]
+Since \m{u\equiv1\pmod\ell}, also \m{u^h\equiv1\pmod\ell}, so \m{u^h\gamma} is unipotent modulo~$\ell$ by
+Lemma~\ref{l:unip}(b). Proposition~\ref{p:growth} for \m{g=u^h\gamma} is Theorem~B. For Theorem~A take the centres of
+Corollary~\ref{c:level} at the layer \m{j=m_0}; then by Theorem~B
+\[
+\tau(h,m)\ \le\ \sum_{i=1}^{R}\bigl(m_0+a+v(c_i-h)\bigr)+R\cdot\max(m-m_0,0)
+=\sum_{i=1}^{R}\bigl(\max(m,m_0)+a+v(c_i-h)\bigr).\qedhere
+\]
+\end{proof}
+
+% ------------------------------------------------------------------------------------- 6
+\sect{Exceptional twists}{s:exc}
+\begin{lemma}[separation]\label{l:sep}
+Let \m{c\in\Z_\ell} and let \m{Z\ge1} be an integer. At most one integer $h$ with \m{1\le h\le Z} satisfies
+\m{v(c-h)>\flog}.
+\end{lemma}
+\begin{proof}
+Let \m{h<h'} both do. Then \m{v(h'-h)>\flog}, so the positive integer \m{h'-h} is divisible by
+\m{\ell^{\flog+1}}, which is larger than~$Z$. But \m{h'-h<Z}.
+\end{proof}
+\leanline{\lean{near1}}
+
+\begin{proof}[Proof of Corollary C]
+By Lemma~\ref{l:sep} each centre contributes at most one element to~$\mathcal E_Z$. If \m{1\le h\le Z} is not
+in~$\mathcal E_Z$, then \m{v(c_i-h)\le\flog} for all~$i$, and Theorem~A gives the bound.
+\end{proof}
+
+In the archive the corollary is stated for the arithmetic lengths of Theorem~D, not for abstract modules; the
+argument is the one above. The separation lemma is proved there for a centre in any field with an ultrametric norm
+that extends the one of~$\Q_\ell$, and the number of centres may be any \m{R'\le R}; this generality is not used
+(§\ref{s:notes}).
+
+% ------------------------------------------------------------------------------------- 7
+\sect{Class groups in the cyclotomic tower}{s:arith}
+\subhead{Setting.} Let $L$ be a number field with algebraic closure~$\overline L$ and absolute Galois group
+\m{G_L=\Gal(\overline L/L)}. Let \m{\kappa\colon G_L\to\Z_\ell^\times} be the $\ell$-adic cyclotomic character:
+\m{\sigma(\zeta)=\zeta^{\kappa(\sigma)}} for every root of unity $\zeta$ of $\ell$-power order. Assume that $L$
+contains the $\ell$-th roots of unity, and the fourth roots if \m{\ell=2}, and let $\ell^a$ be the number of roots of
+unity of $\ell$-power order in~$L$. Then $L$ is totally complex, and \m{\kappa(G_L)=1+\ell^a\Z_\ell}, a group
+isomorphic to~$\Z_\ell$ (Lemma~\ref{l:layers}). Let
+$L_\infty$ be the field generated over $L$ by all roots of unity of $\ell$-power order, and $L_m$ the subfield of
+$L_\infty$ of degree $\ell^m$ over~$L$.
+
+For an integer~$h$ let $\QZ(-h)$ be the group $\QZ$ on which the Galois group of any number field acts through
+the power $\kappa^{-h}$ of its cyclotomic character, and $\Z_\ell(h)$ the group $\Z_\ell$ with the action
+through~$\kappa^{h}$. For a number field~$F$ let $G_{F,\ell}$ be the Galois group of its maximal extension
+unramified outside~$\ell$ and the infinite places, and
+\[
+\Sha^1_\ell(F,h)=\ker\Bigl(H^1\bigl(G_{F,\ell},\QZ(-h)\bigr)\longrightarrow
+\prod_{\mathfrak p\mid\ell}H^1\bigl(F_{\mathfrak p},\QZ(-h)\bigr)\Bigr),
+\]
+the classes that are trivial at every prime $\mathfrak p$ of $F$ above~$\ell$; here $F_{\mathfrak p}$ is the
+completion of $F$ at~$\mathfrak p$, and its cohomology is that of a decomposition group. Cohomology is that of
+continuous cochains.
+
+Let $D_\infty$ be the group of continuous homomorphisms \m{\varphi\colon\Gal(\overline L/L_\infty)\to\QZ} that
+vanish on every inertia group and on the decomposition groups of the places above~$\ell$; $G_L$ acts on it by
+conjugation, \m{(\sigma\varphi)(\rho)=\varphi(\sigma^{-1}\rho\sigma)}. The \kw{Iwasawa module} of this note is its dual
+\[
+X_\infty=\Hom_{\Z_\ell}(D_\infty,\QZ),\qquad(\sigma x)(\varphi)=x(\sigma^{-1}\varphi).
+\]
+By Pontryagin duality $X_\infty$ is the Galois group of the maximal abelian pro-$\ell$ extension of~$L_\infty$ that
+is unramified everywhere and in which the primes above~$\ell$ split completely, as in §\ref{s:results}; the
+archive works with the definition as a dual, which needs no topology on~$X_\infty$.
+\leanline{\lean{cZero} (the exponent~$a$)\sep\lean{IsLayer}\sep\lean{shaInv}\sep\lean{VLen}\sep\lean{XDual}}
+
+\subhead{The algebraic bridge.} The module $D_\infty$ is discrete and $X_\infty$ is compact. The next statement
+passes unipotence from one side to the other. It is pure algebra, and is proved in full in the archive's directory.
+
+\begin{proposition}[the dual module]\label{p:dual}
+Let $D$ be a module and \m{g\in\End(D)}. Put
+\[
+X=\Hom_{\Z_\ell}(D,\QZ),\qquad (g^\vee x)(\varphi)=x(g\varphi)\quad\text{for }x\in X,\ \varphi\in D .
+\] Suppose that $X$ is finitely generated and that \m{g-1} is locally nilpotent:
+for every \m{\varphi\in D} there is $N$ with \m{(g-1)^N\varphi=0}. Then $g^\vee$ is unipotent modulo~$\ell$.
+\end{proposition}
+\begin{proof}
+The module $\QZ$ is divisible, hence injective, since $\Z_\ell$ is a principal ideal domain. Let $D[\ell]$ be the
+submodule of elements killed by~$\ell$.
+
+\emph{$D[\ell]$ is finite.} Let \m{x_1,\dots,x_r} generate~$X$. A non-zero \m{\varphi\in D[\ell]} spans a module
+isomorphic to $\Z_\ell/\ell\Z_\ell$, which embeds into~$\QZ$; by injectivity the embedding extends to an element
+of~$X$ that does not vanish at~$\varphi$. Hence some $x_i$ does not vanish at~$\varphi$, and
+\m{\varphi\mapsto(x_1(\varphi),\dots,x_r(\varphi))} embeds $D[\ell]$ into the finite group of $r$-tuples of elements
+of $\QZ$ killed by~$\ell$.
+
+\emph{An element of $X$ that vanishes on $D[\ell]$ lies in~$\ell X$.} If \m{x\in X} vanishes on $D[\ell]$, then
+\m{\ell\varphi\mapsto x(\varphi)} is a well-defined homomorphism \m{\ell D\to\QZ}. By injectivity it extends to some
+\m{y\in X}, and \m{x=\ell y}.
+
+Now choose $N$ with \m{(g-1)^N=0} on the finite module~$D[\ell]$. For \m{x\in X} and \m{\varphi\in D[\ell]},
+\m{((g^\vee-1)^Nx)(\varphi)=x((g-1)^N\varphi)=0}. So \m{(g^\vee-1)^Nx\in\ell X}.
+\end{proof}
+\leanline{\lean{qzInj}\sep\lean{torsFin}\sep\lean{dualDiv}\sep\lean{dualUnip}}
+
+\subhead{Three inputs.} Inputs 1 and~3 are proved in neighbouring directories of the archive, or assumed as
+hypotheses of the cluster. We state them and indicate the standard arguments; they are not deformalized here.
+Input~2 is proved in §\ref{s:descent}.
+
+\statement{inksoft}{\textbf{Input 1} (local nilpotence).\enspace\emph{If \m{\sigma\in G_L} satisfies
+\m{\kappa(\sigma)\equiv1\pmod\ell}, then \m{\sigma-1} is locally nilpotent on~$D_\infty$.}
+
+\vspace{3pt}\textbf{Input 2} (descent).\enspace\emph{Let \m{\sigma\in G_L} be such that $\kappa(\sigma)$ generates
+$\kappa(G_L)$ topologically, and put \m{u=\kappa(\sigma)}. For all integers \m{h\ne0} and \m{m\ge0}, the length of
+$\Sha^1_\ell(L_m,h)$ equals the length of the cokernel of \m{(u^h\sigma)^{\ell^m}-1} on~$X_\infty$.}
+
+\vspace{3pt}\textbf{Input 3} (Poitou--Tate).\enspace\emph{Let $F$ be a number field; if \m{\ell=2}, let $F$ be totally
+complex. Then \m{\len\Sha^1_\ell(F,h)\le\len H^2(G_{F,\ell},\Z_\ell(h+1))} for every integer~$h$.}}
+\leanline{1 \lean{dinfNil}\sep 2 \lean{step0}, \lean{Descends}, \lean{descends}, hypothesis \lean{IsGen}\sep 3 \lean{shaLeV}}
+
+\emph{On Input 1.} An element $\varphi$ of~$D_\infty$ has order a power of~$\ell$, say~$\ell^k$, and is fixed by an
+open subgroup of~$G_L$ containing $\Gal(\overline L/L_\infty)$, hence by $\sigma^{\ell^n}$ for some~$n$. As in the
+proof of Lemma~\ref{l:cong}(a), \m{(T-1)^{\ell^n}-(T^{\ell^n}-1)} is $\ell$ times a polynomial with integer
+coefficients, so \m{(\sigma-1)^{\ell^n}\varphi} is $\ell$ times an element of the module generated by the
+conjugates $\sigma^i\varphi$, each of which is again fixed by~$\sigma^{\ell^n}$; repeating this $k$ times gives
+\m{(\sigma-1)^{k\ell^n}\varphi=0}.
+
+\emph{On Input 2.} The length of a group of cohomology classes over the layer~$L_m$ is expressed through one
+operator on the module~$X_\infty$, which belongs to the top of the tower. The classes over~$L_m$ are first identified
+with the elements of $D_\infty$ that are invariant under a twisted action of $\Gal(\overline L/L_m)$; this is the
+cohomological step. The invariants are the kernel of one operator on~$D_\infty$, and duality turns the kernel into a
+cokernel on~$X_\infty$. The proof is given in §\ref{s:descent}.
+
+\emph{On Input 3.} By the duality theorem of Poitou and Tate \cite[VIII, §6]{NSW}, $\Sha^1_\ell(F,h)$ is dual to
+the corresponding subgroup $\Sha^2$ of \m{H^2(G_{F,\ell},\Z_\ell(h+1))}; the coefficients are dual to each other
+because \m{\Hom(\QZ(-h),\QZ(1))=\Z_\ell(h+1)}, where $\QZ(1)$ is the group of roots of unity of $\ell$-power
+order. In the archive this statement carries three hypotheses (global duality, local duality, local
+finiteness), which the cluster passes on unchanged.
+
+\begin{proof}[Proof of Theorem D]
+Choose \m{\sigma\in G_L} such that \m{u=\kappa(\sigma)} generates \m{\kappa(G_L)=1+\ell^a\Z_\ell} topologically.
+Then \m{v(u-1)=a}, and \m{a\ge2} if \m{\ell=2}, so $u$ has level~$a$. By Input~1 for~$\sigma^{-1}$ and Proposition~\ref{p:dual}, applied to \m{D=D_\infty} and \m{g=\sigma^{-1}}, the
+action $\gamma$ of $\sigma$ on~$X_\infty$ is unipotent modulo~$\ell$. By Input~2, \m{\len\Sha^1_\ell(L_m,h)=\tau(h,m)} for \m{h\ge1}. Now (i) is Theorem~A: if
+\m{v(c_i-h)\le B} for all~$i$, its right-hand side is at most \m{R\,(\max(m,m_0)+a+B)}. And (ii) is Theorem~B,
+with $\tau(h,m_0)$ bounded by Input~3 for the field \m{F=L_{m_0}}, which is totally complex.
+\end{proof}
+\leanline{\lean{genLevel}\sep\lean{xUnip}\sep\lean{aDesc}, with \lean{memLev} and \lean{eqTwLen}\sep\lean{aTower}}
+
+\subhead{How the bound is used.}\label{s:use}
+Three steps lead from Theorem~D to the window of the guide~\cite[§6]{Gu}; they complete the cluster.
+
+\emph{Finite generation.} The module $X_\infty$ is generated by $R$ elements if and only if $D_\infty[\ell]$ has
+length at most~$R$. For an abelian number field, the theorem of Ferrero and Washington~\cite{FW} says that the
+Iwasawa invariant~$\mu$ of the cyclotomic $\Z_\ell$-extension vanishes. The archive states and proves it, for abelian
+fields containing the $\ell$-th roots of unity (the fourth roots if \m{\ell=2}), in the equivalent form that the
+$\ell$-rank of the class groups is bounded along the cyclotomic tower \cite[Ch.\,13]{Wa}, and deduces a bound for the length of $D_\infty[\ell]$, with one $R$ for a whole family of base
+fields.
+
+\emph{The reference layer.} For the group \m{H^2(G_{L_{m_0},\ell},\Z_\ell(h+1))} in (ii) the cluster takes as
+an input that it is finite, with a bound for its order in terms of~$h$, the degree and the discriminant of the
+field. So all the lengths in Theorem~D are finite, also at a centre, and the exceptional twists cost a bounded
+amount.
+
+\emph{The window.} By Corollary~C, for each of finitely many primes~$\ell$ there are at most $R_\ell$ exceptional
+twists up to~$Z$, where $R_\ell$ is the number of generators for~$\ell$. Their union has at most \m{\sum_\ell R_\ell}
+elements, whatever~$Z$. An exceptional twist spoils the estimate only on one interval of scales, and an interval
+lemma finds a range of scales that avoids all of them; this is carried out in §6 of the guide.
+\leanline{\lean{isTowerIff}\sep\lean{FW}, \lean{FWthm}\sep\lean{towerFixed}, \lean{fixedIn}, \lean{twoIn}\sep\lean{LemmaK}\sep\lean{FirstBound}\sep
+\lean{window}\sep\lean{thmBab}, \lean{thmBabK}}
+
+\begin{remark}[the classical picture]\label{r:classical}
+Suppose that $X$ is free of rank~$R$ over~$\Z_\ell$, and let \m{\Phi(T)=\det(T-(\gamma-1))} be the characteristic
+polynomial of \m{\gamma-1}. Factoring \m{(u^h\gamma)^{\ell^m}-1} over the roots of unity gives
+\[
+\tau(h,m)=\sum_{\zeta^{\ell^m}=1}v\bigl(\Phi(\zeta u^{-h}-1)\bigr).
+\]
+At the layer~$0$ this reads \m{\tau(h,0)=v(\Phi(u^{-h}-1))}: the twists with a large length are the integers
+close to a zero in~$\Z_\ell$ of the function \m{s\mapsto\Phi(u^{-s}-1)}. For the modules of this section, $\Phi$ is
+the characteristic polynomial of Iwasawa's theory \cite{Iw}, \cite[Ch.\,13]{Wa}, and for abelian fields and odd~$\ell$
+the main conjecture, proved by Mazur and Wiles~\cite{MW}, expresses the characteristic polynomials of closely related
+modules through $\ell$-adic $L$-functions. In this language an exceptional twist is, roughly, an integer that is
+$\ell$-adically very close to a zero of an $\ell$-adic $L$-function. None of this is used in the archive: the
+centres there come from a compactness argument, and only their number matters.
+\end{remark}
+
+% ------------------------------------------------------------------------------------- 8
+\sect{Descent to a layer}{s:descent}
+This section proves Input~2. The cohomological part of the proof is one isomorphism, which the archive proves in
+the neighbouring directory on towers of number fields. It is stated below as Input~2a, with a companion, Input~2b.
+Everything else is proved here: duality for modules over~$\Z_\ell$, the group of principal units, and the Galois
+theory of the tower.
+
+\subhead{Characters.} For a module $M$ put \m{M^\vee=\Hom_{\Z_\ell}(M,\QZ)}, the module of \kw{characters}
+of~$M$. Thus \m{X=D^\vee} in Proposition~\ref{p:dual}, and \m{X_\infty=D_\infty^\vee}. As in the proof of that
+proposition, we use that $\QZ$ is an injective module: a homomorphism from a submodule of~$M$ to~$\QZ$ extends to a
+character of~$M$.
+
+\begin{lemma}\label{l:char}
+Let $M$ be a module and $W$ a submodule of~$M$.
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item For every non-zero \m{x\in M} there is a character $\chi$ of~$M$ with \m{\chi(x)\ne0}.
+\item The restriction map \m{M^\vee\to W^\vee} is surjective. Its kernel is the image of the injective map
+\m{(M/W)^\vee\to M^\vee} given by composition with the quotient map \m{M\to M/W}.
+\item \m{\len M^\vee=\len M}.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) The elements \m{t\in\Z_\ell} with \m{tx=0} form an ideal other than~$\Z_\ell$, so this ideal is $0$ or
+$\ell^k\Z_\ell$ with \m{k\ge1}. Let $y$ be the class of $\ell^{-k}$ in~$\QZ$, and the class of $\ell^{-1}$ if the
+ideal is~$0$. Then \m{y\ne0}, and \m{ty=0} whenever \m{tx=0}. So \m{tx\mapsto ty} is a well-defined homomorphism
+from the submodule $\Z_\ell x$ to~$\QZ$, and a character $\chi$ that extends it has \m{\chi(x)=y}.
+
+(b) Restriction is surjective because $\QZ$ is injective. A character of~$M$ vanishes on~$W$ if and only if it
+factors through \m{M/W}, and then it does so in exactly one way.
+
+(c) Let $M$ have finite length~$n$. We use induction on~$n$; for \m{n=0} both modules are zero. Let \m{n\ge1}. A
+composition series of~$M$ gives a submodule $W$ of length \m{n-1} such that \m{M/W} is simple. A simple module
+over~$\Z_\ell$ is isomorphic to \m{\Z_\ell/\ell\Z_\ell}, so its characters correspond, by their value at the class
+of~$1$, to the elements of~$\QZ$ killed by~$\ell$. These form the group \m{\ell^{-1}\Z_\ell/\Z_\ell}, which has
+length~$1$. By (b) and the induction hypothesis,
+\m{\len M^\vee=\len(M/W)^\vee+\len W^\vee=1+(n-1)}.
+
+Now let $M$ be any module. For a submodule $W$ let \m{W^\perp\subseteq M^\vee} be the submodule of the characters
+that vanish on~$W$. If \m{W\subsetneq W'} are submodules of~$M$, then \m{{W'}^\perp\subsetneq W^\perp}: by (a) the
+module \m{M/W} has a character that does not vanish on the image of~$W'$, and its composition with \m{M\to M/W}
+lies in~$W^\perp$ and not in~${W'}^\perp$. So a chain of submodules of~$M$ gives a chain of the same length
+in~$M^\vee$, and \m{\len M\le\len M^\vee}. If the length of~$M$ is infinite, so is the length of~$M^\vee$.
+\end{proof}
+\leanline{(a) \lean{qzSep}, with \lean{qzAnn}\sep (b) \lean{exactDual}, \lean{dualKer}\sep (c) \lean{lenDual},
+with \lean{simpleDual} and \lean{leDual}}
+
+\begin{lemma}[kernel and cokernel]\label{l:cokdual}
+Let $D$ be a module, let \m{g\in\End(D)}, and let $g^\vee$ be the endomorphism of \m{X=D^\vee} defined in
+Proposition~\ref{p:dual}. The image of~$g^\vee$ consists of the characters of~$D$ that vanish on the kernel $\ker g$
+of~$g$, and
+\[
+\len\cok g^\vee=\len\ker g .
+\]
+\end{lemma}
+\begin{proof}
+A character of the form \m{g^\vee x=x\circ g} vanishes on~$\ker g$. Conversely, let \m{y\in X} vanish on~$\ker g$.
+Then \m{g\varphi\mapsto y(\varphi)} is a well-defined homomorphism \m{g(D)\to\QZ}. It extends to some \m{x\in X},
+and \m{y=g^\vee x}. So the image of~$g^\vee$ is the kernel of the restriction map \m{X\to(\ker g)^\vee}, which is
+surjective by Lemma~\ref{l:char}(b). Hence $\cok g^\vee$ is isomorphic to $(\ker g)^\vee$, and
+Lemma~\ref{l:char}(c) gives the lengths.
+\end{proof}
+\leanline{\lean{dualKer}\sep\lean{cokerDual}}
+
+\subhead{Principal units.} Let $U_0$ be the group $\Z_\ell^\times$ of units of~$\Z_\ell$, and for an integer
+\m{n\ge1} let \m{U_n=1+\ell^n\Z_\ell}. These are closed subgroups of~$\Z_\ell^\times$. An element of~$\Z_\ell$
+has level~$n$ (Definition~\ref{d:level}) if and only if it lies in $U_n$ and not in~$U_{n+1}$, where \m{n\ge1}, and
+\m{n\ge2} if \m{\ell=2}.
+
+\begin{lemma}\label{l:princ}
+Let \m{a\ge1} be an integer, and \m{a\ge2} if \m{\ell=2}.
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item For \m{n\ge1} the index of $U_n$ in~$\Z_\ell^\times$ is \m{\ell^{n-1}(\ell-1)}. For \m{m\ge0} the index of
+$U_{a+m}$ in~$U_a$ is~$\ell^m$.
+\item If $u$ has level~$a$, then $u^{\ell^m}$ has level \m{a+m} for every \m{m\ge0}.
+\item An element $u$ of~$U_a$ generates $U_a$ topologically if and only if it has level~$a$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) Reduction modulo~$\ell^n$ is a surjective homomorphism from $\Z_\ell^\times$ onto the group of units of the ring
+\m{\Z_\ell/\ell^n\Z_\ell}, which has \m{\ell^{n-1}(\ell-1)} elements, and its kernel is~$U_n$. The second index is
+the quotient of two of these numbers.
+
+(b) By Lemma~\ref{l:lte}, \m{v(u^{\ell^m}-1)=a+m}.
+
+(c) If \m{u\in U_{a+1}}, all powers of~$u$ lie in the closed subgroup~$U_{a+1}$, which does not contain the element
+\m{1+\ell^a} of~$U_a$. Now let $u$ have level~$a$, and let \m{m\ge0}. By Lemma~\ref{l:lte} an integer~$n$ satisfies
+\m{u^n\in U_{a+m}} if and only if $\ell^m$ divides~$n$. So the powers \m{u^0,u^1,\dots,u^{\ell^m-1}} lie in
+different cosets of $U_{a+m}$ in~$U_a$, and by (a) there are no other cosets. Thus every element of~$U_a$ is
+congruent modulo~$\ell^{a+m}$ to a power of~$u$, for every~$m$: it lies in the closure of the set of powers of~$u$.
+\end{proof}
+\leanline{\lean{princGen}\sep (a) \lean{pgIndex}\sep (b) \lean{pgEmult}, from \lean{lteOdd} and \lean{lteSq}\sep (c)
+\lean{pgExists}, \lean{princClosed}}
+
+\subhead{Layers.} We return to the setting of §\ref{s:arith}. For \m{n\ge0} let $\zeta_n$ be a root of unity of
+order~$\ell^n$ in~$\overline L$, and let
+\[
+V_n=\bigl\{\sigma\in G_L:\ \kappa(\sigma)\in U_n\bigr\}.
+\]
+Since \m{\sigma(\zeta_n)=\zeta_n^{\kappa(\sigma)}}, the elements of~$V_n$ are the elements of~$G_L$ that
+fix~$\zeta_n$. So
+\[
+V_n=\Gal\bigl(\overline L/L(\zeta_n)\bigr),
+\]
+and \m{V_n=G_L} if and only if \m{n\le a}. The field $L_\infty$ is the union of the fields $L(\zeta_n)$, and
+\m{\Gal(\overline L/L_\infty)} is the kernel of~$\kappa$.
+\leanline{\lean{layU} (the group $V_{a+m}$)\sep\lean{galOfCyc}\sep\lean{muQ}}
+
+\begin{lemma}\label{l:layers}
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item \m{\kappa(G_L)=U_a}, where \m{a\ge1}, and \m{a\ge2} if \m{\ell=2}. For every \m{m\ge0} the index of $V_{a+m}$
+in~$G_L$ is~$\ell^m$, the layer $L_m$ is the field \m{L(\zeta_{a+m})}, and \m{\Gal(\overline L/L_m)=V_{a+m}}.
+\item Let \m{L'\subseteq\overline L} be an extension of~$L$ of degree~$\ell^m$ that is generated over~$L$ by~$\zeta_k$
+for some \m{k\ge0}. Then \m{L'=L_m}.
+\item Let \m{\sigma\in G_L} be such that $\kappa(\sigma)$ generates $\kappa(G_L)$ topologically. Then
+$\kappa(\sigma)$ has level~$a$. For every \m{m\ge0} the element $\sigma^{\ell^m}$ lies in~$V_{a+m}$, and
+\m{\kappa(\sigma^{\ell^m})} generates \m{\kappa(V_{a+m})=U_{a+m}} topologically.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) By the choice of~$a$ the field $L$ contains~$\zeta_a$ and not~$\zeta_{a+1}$. It contains~$\zeta_1$, and
+$\zeta_2$ if \m{\ell=2}, which gives the inequalities for~$a$. Every element of~$G_L$ fixes~$\zeta_a$, so
+\m{\kappa(G_L)\subseteq U_a}. Some \m{\sigma\in G_L} moves~$\zeta_{a+1}$. Then \m{\kappa(\sigma)\notin U_{a+1}}, so
+$\kappa(\sigma)$ has level~$a$, and by Lemma~\ref{l:princ}(c) the closure of the set of its powers is~$U_a$. The
+image $\kappa(G_L)$ is compact, hence closed, and it contains these powers. So \m{\kappa(G_L)=U_a}.
+
+The character $\kappa$ maps the cosets of \m{V_{a+m}} in~$G_L$ bijectively onto the cosets of $U_{a+m}$ in~$U_a$, and
+there are $\ell^m$ of these by Lemma~\ref{l:princ}(a). By Galois theory the index of
+\m{V_{a+m}=\Gal(\overline L/L(\zeta_{a+m}))} in~$G_L$ is the degree of \m{L(\zeta_{a+m})} over~$L$. So
+\m{L(\zeta_{a+m})} is a subfield of~$L_\infty$ of degree~$\ell^m$ over~$L$. It is the only one: a subfield of this
+degree is the fixed field of a group \m{\kappa^{-1}(U)}, where $U$ is a closed subgroup of index~$\ell^m$ in~$U_a$.
+The quotient \m{U_a/U} has $\ell^m$ elements, so $U$ contains $u^{\ell^m}$ for a topological generator $u$
+of~$U_a$. Hence $U$ contains $U_{a+m}$ by Lemma~\ref{l:princ}(b) and~(c), and the two groups have the same index.
+
+(b) We have \m{L'=L(\zeta_k)}. If \m{k\le a}, then \m{L'=L}, so \m{m=0} and \m{L'=L_0}. If \m{k\ge a}, then by (a)
+the field \m{L'=L_{k-a}} has degree~$\ell^{k-a}$ over~$L$, so \m{k-a=m}.
+
+(c) The element $\kappa(\sigma)$ of~$U_a$ generates $U_a$ topologically, so it has level~$a$ by
+Lemma~\ref{l:princ}(c). By Lemma~\ref{l:princ}(b), \m{\kappa(\sigma^{\ell^m})=\kappa(\sigma)^{\ell^m}} has level
+\m{a+m}. Hence \m{\sigma^{\ell^m}\in V_{a+m}}, and by Lemma~\ref{l:princ}(c), with \m{a+m} in place of~$a$, its image
+under~$\kappa$ generates~$U_{a+m}$ topologically. Finally \m{\kappa(V_{a+m})=U_{a+m}\cap\kappa(G_L)=U_{a+m}}.
+\end{proof}
+\leanline{(a) \lean{cycRange}, \lean{layerGen}, \lean{layerUniq}, with \lean{galEmbTop}\sep (b) \lean{luKey},
+\lean{layerUniq}\sep (c) \lean{layerGen}}
+
+\subhead{Twists.} Let $h$ be an integer. We twist the actions of~$G_L$ on $D_\infty$ and on~$X_\infty$ by powers of
+the cyclotomic character: an element \m{\sigma\in G_L} acts on~$D_\infty$ as \m{\kappa(\sigma)^{-h}\sigma} and
+on~$X_\infty$ as \m{\kappa(\sigma)^{h}\sigma}. We write $D_\infty(-h)$ for the module $D_\infty$ with the first of
+these actions, and \m{D_\infty(-h)^V} for the submodule of the elements fixed by a subgroup~$V$ of~$G_L$. Since
+\m{(\sigma x)(\varphi)=x(\sigma^{-1}\varphi)} and \m{\kappa(\sigma)^h=\kappa(\sigma^{-1})^{-h}},
+\[
+\bigl(\kappa(\sigma)^{h}\sigma x\bigr)(\varphi)=x\bigl(\kappa(\sigma^{-1})^{-h}\sigma^{-1}\varphi\bigr)
+\qquad\text{for }x\in X_\infty,\ \varphi\in D_\infty .
+\]
+In the notation of Proposition~\ref{p:dual}: the operator \m{\kappa(\sigma)^h\sigma} on~$X_\infty$ is~$g^\vee$,
+where $g$ is the action of~$\sigma^{-1}$ on~$D_\infty(-h)$.
+\leanline{\lean{dTw}\sep\lean{xTw}\sep\lean{xTwApply}}
+
+\statement{inksoft}{\textbf{Input 2a} (the classes over a layer).\enspace\emph{Let \m{h\ne0} be an integer and
+let $F$ be a finite extension of~$L$ contained in~$L_\infty$. Then the $\Z_\ell$-modules $\Sha^1_\ell(F,h)$ and
+\m{D_\infty(-h)^{\Gal(\overline L/F)}} are isomorphic.}
+
+\vspace{3pt}\textbf{Input 2b} (invariants).\enspace\emph{Let $V$ be a subgroup of~$G_L$, and let \m{\eta\in V} be
+such that $\kappa(V)$ lies in the closure of the set of powers of~$\kappa(\eta)$. Then for every integer~$h$ the
+module \m{D_\infty(-h)^V} is the kernel of \m{g-1}, where $g$ is the action of~$\eta^{-1}$ on~$D_\infty(-h)$.}}
+\leanline{2a \lean{desc}, with the invariants \lean{ShaD}; the length of $\Sha^1_\ell$ in two descriptions,
+\lean{shaLenInv}\sep 2b \lean{shaDGen}}
+
+Both are proved in the neighbouring directory of the archive. We indicate the standard arguments; they are not
+deformalized here.
+
+\emph{On Input 2a.} The group \m{\Gal(L_\infty/F)} is isomorphic to~$\Z_\ell$, and a topological generator of it
+acts on $\QZ(-h)$ by a scalar different from~$1$ when \m{h\ne0}. So the cohomology of this group with coefficients
+$\QZ(-h)$ vanishes in degrees $1$ and~$2$, and restriction identifies the classes over~$F$ with the homomorphisms
+\m{\Gal(\overline L/L_\infty)\to\QZ} that are invariant under the twisted action of \m{\Gal(\overline L/F)}. The
+same holds place by place, so the local conditions correspond, and $\Sha^1_\ell(F,h)$ becomes the module of
+invariants in~$D_\infty(-h)$.
+
+\emph{On Input 2b.} An element of~$D_\infty$ has finite order and is fixed by an open subgroup of~$G_L$, so it is
+fixed by the twisted action of~$V_n$ when $n$ is large. For such~$n$ every \m{\rho\in V} is the product of a power
+of~$\eta$ and an element of~$V_n$, because $\kappa(\rho)$ is congruent modulo~$\ell^n$ to a power
+of~$\kappa(\eta)$. Hence an element fixed by~$\eta$ is fixed by~$V$; and it is fixed by~$\eta$ exactly when it is
+fixed by~$\eta^{-1}$.
+
+\begin{proof}[Proof of Input 2]
+Let \m{h\ne0} and \m{m\ge0} be integers, and put \m{\eta=\sigma^{\ell^m}}. By Lemma~\ref{l:layers}(a) the layer
+$L_m$ lies in~$L_\infty$ and \m{\Gal(\overline L/L_m)=V_{a+m}}. So Input~2a for \m{F=L_m} gives
+\[
+\len\Sha^1_\ell(L_m,h)=\len D_\infty(-h)^{V_{a+m}} .
+\]
+By Lemma~\ref{l:layers}(c) the element $\eta$ lies in~$V_{a+m}$, and $\kappa(\eta)$ generates $\kappa(V_{a+m})$
+topologically. So Input~2b applies to \m{V=V_{a+m}}: the module on the right is the kernel of \m{g-1}, where $g$ is
+the action of~$\eta^{-1}$ on~$D_\infty(-h)$. By the formula for the twisted actions, $g^\vee$ is the operator
+\m{\kappa(\eta)^h\eta} on~$X_\infty$. Now \m{\kappa(\eta)=u^{\ell^m}}, and the scalar $u^h$ commutes with~$\sigma$,
+so
+\[
+g^\vee=u^{\ell^mh}\sigma^{\ell^m}=(u^h\sigma)^{\ell^m}.
+\]
+Since \m{(g-1)^\vee=g^\vee-1}, Lemma~\ref{l:cokdual} gives
+\[
+\len\cok\bigl((u^h\sigma)^{\ell^m}-1\bigr)=\len\ker(g-1)=\len\Sha^1_\ell(L_m,h).\qedhere
+\]
+\end{proof}
+\leanline{\lean{step0}\sep\lean{descends}}
+
+The hypothesis \m{h\ne0} enters through Input~2a only. In the archive a layer is not a subfield of a fixed
+algebraic closure: it is any number field over~$L$ that is generated by the roots of unity of some order~$\ell^k$
+and has degree~$\ell^m$. The formal proof begins by embedding such a field into~$\overline L$, and
+Lemma~\ref{l:layers}(b) shows that the image is~$L_m$.
+
+% ------------------------------------------------------------------------------------- 9
+\sect{Two examples}{s:ex}
+Both examples have \m{\ell=3} and \m{u=4}, which has level \m{a=1}. The modules are free, so the lengths are
+valuations of determinants (Lemma~\ref{l:smith}); the build script of this note computes them in exact rational
+arithmetic from the matrices and compares them with the formulas below.
+
+\begin{example}[two centres]\label{e:one}
+Let \m{X=\Z_3^2} and
+\[
+\gamma=\begin{pmatrix}4^{-5}&1\\0&-2\end{pmatrix},\qquad \gamma\equiv\begin{pmatrix}1&1\\0&1\end{pmatrix}\pmod 3 ,
+\]
+so $\gamma$ is unipotent modulo~$3$, \m{R=2} and \m{m_0=\ExMzero}. The eigenvalues are $4^{-5}$ and~$-2$, and
+\m{(-2)^2=4}. The operator \m{(u^h\gamma)^{3^m}-1} is triangular with diagonal entries \m{4^{3^m(h-5)}-1} and
+\m{z-1}, where \m{z=(-2\cdot4^h)^{3^m}}; since \m{z\equiv1\pmod 3}, the numbers \m{z-1} and
+\m{z^2-1=4^{3^m(2h+1)}-1} have the same valuation. By Lemma~\ref{l:lte},
+\[
+\tau(h,m)=2\,(m+1)+v(5-h)+v\bigl(-\tfrac12-h\bigr)\qquad(h\ne5),\qquad\tau(5,m)=\infty .
+\]
+The centres are \m{c_1=5} and \m{c_2=-\frac12}, and Theorem~A is an equality for \m{m\ge m_0}. The first centre is
+an integer: at \m{h=5} the operator \m{(u^h\gamma)^{3^m}-1} is singular and the cokernel is infinite. The second
+is not an integer, and the integers \m{1,4,13,40,121,\dots} approach it. For \m{Z=\ExZ} we have
+\m{\flog=\ExK}, and the exceptional twists are \ExExc. Every other twist up to $\ExZ$ has
+\m{v(c_1-h)+v(c_2-h)\le\ExWorst}. The formula was confirmed for all \m{1\le h\le\ExZ} and the \ExLevels{} layers
+\m{0\le m<\ExLevels}.
+\end{example}
+
+\par\vspace{2pt}
+\noindent\makebox[\linewidth][c]{\input{figure.tex}}
+\par\vspace{-2pt}
+{\fontsize{9.2}{12.4}\selectfont\color{inksoft}\noindent\textbf{Figure.} Example~\ref{e:one}: the part of the
+length that depends on the twist. Each stem belongs to one centre; a label is the twist. The two stems that pass
+the dashed line are the exceptional twists for \m{Z=\ExZ}.\par}
+
+\begin{example}[why a reference layer]\label{e:two}
+Let \m{X=\Z_3^3} and let $\gamma$ permute the coordinates cyclically. Then \m{\gamma^3=1}, so
+\m{(\gamma-1)^3\equiv0\pmod 3} and $\gamma$ is unipotent modulo~$3$; here \m{R=3}. Since
+\m{\det(t\gamma-1)=t^3-1}, Lemma~\ref{l:lte} gives \m{\tau(h,0)=2+v(h)}, while \m{(u^h\gamma)^{3^m}} is the
+scalar \m{u^{3^mh}} for \m{m\ge1}, so \m{\tau(h,m)=3\,(1+m+v(h))}.
+
+\par\vspace{3pt}
+{\fontsize{9.6}{12.6}\selectfont\noindent\hspace*{2.1em}\begin{tabular}{@{}l@{\hspace{16pt}}*{5}{r@{\hspace{14pt}}}@{}}
+layer $m$ & 0 & 1 & 2 & 3 & 4\\\midrule
+$\tau(1,m)$ & \ExTwoRowOne\\
+$\tau(9,m)$ & \ExTwoRowNine
+\end{tabular}\par}
+\vspace{3pt}
+
+From the layer $1$ on, each step costs exactly \m{R=3}: Theorem~B is sharp. The step from the layer $0$ to the
+layer~$1$ costs \ExTwoJump{} at \m{h=9}, more than~$R$. Lemma~\ref{l:step} does not apply there, because
+\m{u^h\gamma} is not congruent to $1$ modulo~$9$. A reference layer is needed, and
+Proposition~\ref{p:growth} shows that it can be taken to depend on $\ell$ and $R$ alone.
+\end{example}
+
+\subhead{Modules with torsion.} The two examples are free modules. As a test of Proposition~\ref{p:growth} where
+determinants are not available, the script also draws \RandCases{} random modules, for \m{\ell=2,3,5}, each the sum
+of a free module of rank at least~$1$ and a non-zero finite module, with a random endomorphism that is unipotent
+modulo~$\ell$ and a random twist, and computes the lengths from invariant factors. In all \RandSteps{} steps between
+consecutive layers, starting at the layer \m{\lfloor\log_\ell R\rfloor+2}, the length grew by at most~$R$.
+
+% ------------------------------------------------------------------------------------- 10
+\sect{Notes on the formal text}{s:notes}
+Reading the Lean text for the mathematics, and not only for its statements, brought out the following points.
+
+\begin{enumerate}[label=\textup{\arabic*.},leftmargin=1.6em,itemsep=5pt]
+\item \emph{No logarithm, no structure theorem.} A textbook proof would take the $\ell$-adic logarithm of the
+eigenvalues, or the structure theorem for modules over the Iwasawa algebra, and would have to treat eigenvalues
+that are not principal units, as well as torsion. The formal proof replaces all of this by the ultrametric
+inequality of Lemma~\ref{l:units} and the compactness of~$\Z_\ell$. The centres are not computed and are not
+canonical: they depend on the presentation, on the lift~$S$, and on a choice in a non-empty intersection of balls.
+\item \emph{The reference layer has one layer to spare.} The formal proof of Proposition~\ref{p:growth} proves
+the step for all \m{n\ge\lfloor\log_\ell R\rfloor+2} and applies it from~$m_0$ on, and the centres can be taken
+at any layer. So Theorems A, B and~D hold with \m{\lfloor\log_\ell R\rfloor+2} in place of~$m_0$. This sharper
+form is not in the archive; the random test of §\ref{s:ex} starts at that layer. The archive's value is kept in
+the statements above.
+\item \emph{Unipotence is needed for growth only.} Corollary~\ref{c:level} holds for every endomorphism.
+\item \emph{The formal statement is weaker than its proof.} The archive's form of Theorem~D\,(i) asserts only
+that there exist a field with an ultrametric norm extending that of~$\Q_\ell$, centres in it, at most $R$ in
+number, and an exponent in place of~$a$ for which $L$ contains the roots of unity of that order. Its proof gives
+centres in~$\Z_\ell$, exactly~$R$ of them, and the exponent~$a$; this is the form stated above. The extra
+generality is not used by what follows.
+\item \emph{Infinite lengths are part of the statement.} Lengths take values in \m{\{0,1,\dots,\infty\}}, and
+Theorem~A holds at a singular twist only because both sides are infinite. Finiteness at every twist is a
+consequence of Theorem~D\,(ii) and of the finiteness of the group $H^2$, not of the algebra.
+\item \emph{Where the hypotheses on the field enter.} The roots of unity in~$L$ make \m{\kappa(G_L)} procyclic
+and give the level of~$u$. They also make $L$ totally complex, which Input~3 needs when \m{\ell=2}; the archive
+lists this as a separate hypothesis of Theorem~D and proves elsewhere that it is implied. That lemma is not
+used by the five final theorems: none of them reaches it in the graph of dependencies of the archive.
+\item \emph{The exponent is lifted twice.} Lemma~\ref{l:lte} rests in the archive on a statement about discrete
+valuation rings, which has its own proof in a directory on local rings. Lemma~\ref{l:princ}(b) rests there on two
+formulas for the multiplicity of~$\ell$ in \m{u^n-1}, one for odd~$\ell$ and one for \m{u\equiv1\pmod{\ell^2}},
+which a directory on bounds for class numbers deduces from the corresponding statement of the Lean library Mathlib.
+Neither refers to the other. Here both are Lemma~\ref{l:lte}.
+\item \emph{What is proved about descent, and where.} The formal proof of Input~2 belongs to the same unit of the
+archive as the algebra of this note (Appendix~A), and §\ref{s:descent} follows it. The step that is cohomology,
+Input~2a, and Input~2b lie outside this unit. Input~2b is stated for every integer~$h$, Input~2a and Input~2 for \m{h\ne0};
+Theorem~D uses \m{h\ge1}.
+\end{enumerate}
+
+Some proofs above differ from the formal ones. The archive proves Lemma~\ref{l:cong}(c) by an explicit
+computation with elements, where the ideals~$I_n$ are used here, and states Lemma~\ref{l:cong}(a) as an
+equivalence: one side is congruent to~$0$ if and only if the other is. Lemma~\ref{l:eigen} is proved there through
+the characteristic polynomial, and Lemma~\ref{l:lte} for a general discrete valuation ring. In
+Lemma~\ref{l:char}(c) the archive shows that the characters of a simple module are the multiples of one of them,
+where the isomorphism with \m{\Z_\ell/\ell\Z_\ell} is used here. It proves Lemma~\ref{l:princ}(c) from a statement
+of another directory: a closed subgroup of~$\Z_\ell^\times$ that contains an element of level~$a$ contains~$U_a$.
+The uniqueness of~$L_m$ as a subfield of~$L_\infty$, in the proof of Lemma~\ref{l:layers}(a), is not in the archive,
+where a layer is defined as in part~(b). In all other places the proofs follow the formal text step by step.
+
+For §\ref{s:descent} the formal proofs were not read in the Lean text itself. They were read in the structured
+proofs of the reading project, in which every step quotes the lines of the archive that it renders. A program
+compared the quotations with the archive, for all \UnitSteps{} steps of the \UnitProofs{} proofs of the unit, and
+found that no line of these proofs is left without a step. The statements of §\ref{s:descent} were compared with
+the Lean text, as everywhere in this note.
+
+% ------------------------------------------------------------------------------------- A
+\head{Appendix A. Concordance with the Lean archive}
+{\fontsize{9.6}{12.8}\selectfont\color{inksoft}\noindent Each name is a link to the lines of the declaration at
+commit {\leanfont\Pin} of the public mirror of the archive. The line ranges and the quotations below are read from
+the archive by the build script, which also checks them against the SHA-256 of each file. The reading project
+divides the part of the archive that the final theorems use into units. This note is the note of one unit: the
+\UnitInDir{} declarations of the directory that the final theorems use, and \UnitOutside{} declarations of the neighbouring
+directory on towers of number fields, those that prove Input~2. The table contains all \UnitMembers{} of them, and
+the build of the note fails if one is missing.\par}
+\vspace{4pt}
+{\fontsize{8.6}{11.6}\selectfont\renewcommand{\leanfont}{\ttfamily\fontsize{7.7}{10}\selectfont\color{leancol}}
+\setlength{\LTleft}{0pt}\setlength{\LTright}{\fill}\setlength{\tabcolsep}{0pt}
+\begin{longtable}{@{}p{30mm}p{56mm}p{43mm}r@{}}
+\textbf{In this note} & \textbf{Lean declaration} & \textbf{File} & \textbf{Lines}\\\midrule\endhead
+\ConcordanceRows
+\end{longtable}}
+
+\Needspace{8\baselineskip}
+\subhead{Four statements as they are written in the archive.} Theorem~D:
+\quoted{aTower}
+Its conclusion, with the second bound; here {\leanfont e} is the twist~$h$, {\leanfont s} the centres,
+{\leanfont c} an exponent which the proof takes to be the level~$a$, {\leanfont jZero l R} the reference
+layer~$m_0$, and {\leanfont shaInv} the length of $\Sha^1_\ell$:
+\quoted{ABound}
+\quoted{SecondBound}
+Theorem~A, where {\leanfont twLen γ u e m} is $\tau(h,m)$ and {\leanfont vl} is the valuation:
+\quoted{centres}
+Input~2, where {\leanfont γ} is the element~$\sigma$ of~$G_L$, {\leanfont xTw l l ⊤ e γ} is the operator $u^h\sigma$
+on~$X_\infty$, {\leanfont cokerLen} is the length of a cokernel, and {\leanfont IsLayer l m L₀ L₁} says that
+{\leanfont L₁} is a layer of degree~$\ell^m$ in the sense of Lemma~\ref{l:layers}(b):
+\quoted{step0}
+
+% ------------------------------------------------------------------------------------- notation
+\head{Notation}
+{\fontsize{9.6}{12.6}\selectfont\color{inksoft}\noindent The symbols of the text. A letter in brackets is the one
+used in the archive.\par}
+\vspace{4pt}
+\begingroup\fontsize{8.6}{10.9}\selectfont\raggedright
+\renewcommand{\leanfont}{\ttfamily\fontsize{7.6}{10}\selectfont\color{leancol}}
+\setlength{\columnsep}{9mm}\setlength{\parskip}{0pt}
+\begin{multicols}{2}
+\nt{$\ell$, $\Z_\ell$, $\Q_\ell$, $\Qbar$}{a prime; the $\ell$-adic integers and numbers; an algebraic closure}
+\nt{$v$, $v_\ell$, $|z|$}{$\ell$-adic valuation with \m{v(\ell)=1}; absolute value $\ell^{-v(z)}$}
+\nt{$X$, $R$, $\pi$}{a $\Z_\ell$-module; a number of generators; a surjection \m{\Z_\ell^R\to X}}
+\nt{$\len M$}{length of a module $M$}
+\nt{$\End(X)$, $\cok f$, $\ker f$}{endomorphisms; cokernel \m{X/f(X)}; kernel}
+\nt{$I_n$, $f\equiv g\pmod{\ell^n}$}{endomorphisms with image in $\ell^nX$; \m{f-g\in I_n}}
+\nt{$\gamma$, $N$}{the endomorphism under study; an exponent of nilpotence}
+\nt{$u$, $a$}{an element of $\Z_\ell$ and its level \m{v(u-1)} [$c$]}
+\nt{$h$, $m$, $m_0$}{twist [$e$]; layer; reference layer \m{\lfloor\log_\ell R\rfloor+3}, and $3$ if \m{R=0} [{\leanfont jZero}]}
+\nt{$\tau(h,m)$}{twisted length (Definition~\ref{d:tau}) [{\leanfont twLen}]}
+\nt{$c$, $c_i$}{a centre; the centres [$s_i$]}
+\nt{$Z$, $\mathcal E_Z$, $B$}{range of twists; exceptional twists up to~$Z$; a bound for \m{v(c_i-h)}}
+\nt{$f$, $g$, $w$, $\nu$}{endomorphisms; \m{\nu=1+w+\dots+w^{\ell-1}}}
+\nt{$A$, $P$, $Q$, $d_i$}{a square matrix; invertible matrices; elementary divisors (Lemma~\ref{l:smith})}
+\nt{$S$, $t$, $z$, $z_i$}{a matrix lifting an endomorphism; a scalar; an element of $\Qbar$; eigenvalues}
+\nt{$n$, $n'$, $i$, $j$, $k$, $r$}{integers: exponents, indices, layers}
+\nt{$x$, $y$, $b_n$, $r_n$}{elements of a module or of $\Z_\ell$; points and radii (Lemma~\ref{l:helly})}
+\nt{$T$}{an indeterminate}
+\nt{$D$, $D[\ell]$, $\varphi$, $g^\vee$}{a module, its elements killed by~$\ell$, an element; the dual endomorphism}
+\nt{$M^\vee$, $\chi$}{the characters \m{M\to\QZ} of a module~$M$ (§\ref{s:descent}); a character}
+\nt{$W$, $W'$, $W^\perp$}{submodules; the characters that vanish on~$W$}
+\nt{$L$, $\overline L$, $G_L$, $F$, $L'$}{number fields, an algebraic closure, the absolute Galois group}
+\nt{$\kappa$, $\sigma$, $\rho$, $\zeta$}{$\ell$-adic cyclotomic character; elements of $G_L$; a root of unity}
+\nt{$L_m$, $L_\infty$}{layers of the cyclotomic tower; their union}
+\nt{$U_n$, $U$}{the units \m{1+\ell^n\Z_\ell}, with \m{U_0=\Z_\ell^\times}; a closed subgroup of~$U_a$}
+\nt{$\zeta_n$, $V_n$, $V$}{a root of unity of order~$\ell^n$; the \m{\sigma\in G_L} with \m{\kappa(\sigma)\in U_n}; a subgroup of~$G_L$}
+\nt{$D_\infty(-h)$, $\eta$}{$D_\infty$ with the action twisted by~$\kappa^{-h}$; an element of~$G_L$, in the proof \m{\sigma^{\ell^m}}}
+\nt{$\QZ(-h)$, $\Z_\ell(h)$}{Tate twists}
+\nt{$G_{F,\ell}$, $H^1$, $H^2$}{Galois group unramified outside~$\ell$ and infinity; continuous cohomology}
+\nt{$\mathfrak p$, $F_{\mathfrak p}$}{a prime of $F$ above~$\ell$; the completion}
+\nt{$\Sha^1_\ell(F,h)$}{classes trivial above~$\ell$ (§\ref{s:arith}) [its length is {\leanfont shaInv}]}
+\nt{$D_\infty$, $X_\infty$}{unramified characters over $L_\infty$, split above~$\ell$; the Iwasawa module}
+\nt{$\mu$, $R_\ell$}{Iwasawa's invariant (§\ref{s:arith}); number of generators for~$\ell$}
+\nt{$\Phi(T)$, $s$}{characteristic polynomial; an $\ell$-adic variable (Remark~\ref{r:classical})}
+\nt{$E$}{in §\ref{s:intro}, the number field of the guide}
+\end{multicols}
+\endgroup
+
+% ------------------------------------------------------------------------------------- references
+\head{References}
+\begingroup\fontsize{9.4}{12.6}\selectfont\raggedright\renewcommand{\section}[2]{}
+\begin{thebibliography}{NSW}\setlength{\itemsep}{2pt}
+\bibitem[Al]{Al} L.\,Alpöge, announcement of proofs of the Riemann hypothesis and of the generalized Riemann
+  hypothesis for Dirichlet characters, 20 November 2026, with a Lean archive;
+  \href{\PinUrl}{public mirror of the archive at commit {\leanfont\Pin}}.
+\bibitem[At]{At} \href{\AtlasUrl}{Riemann proof atlas}: the declarations of the archive on a map of arXiv papers;
+  data at commit {\leanfont\AtlasCommit}.
+\bibitem[FW]{FW} B.\,Ferrero and L.\,C.\,Washington, The Iwasawa invariant $\mu_p$ vanishes for abelian number
+  fields, \emph{Ann. of Math.} (2) \textbf{109} (1979), 377--395.
+\bibitem[Gu]{Gu} \emph{The proof of the Riemann hypothesis announced by L.\,Alpöge: a guide to its architecture},
+  riemann-rev, \texttt{guide/proof-guide.pdf}.
+\bibitem[Iw]{Iw} K.\,Iwasawa, On $\Z_\ell$-extensions of algebraic number fields, \emph{Ann. of Math.} (2)
+  \textbf{98} (1973), 246--326.
+\bibitem[MW]{MW} B.\,Mazur and A.\,Wiles, Class fields of abelian extensions of~$\Q$, \emph{Invent. Math.}
+  \textbf{76} (1984), 179--330.
+\bibitem[NSW]{NSW} J.\,Neukirch, A.\,Schmidt and K.\,Wingberg, \emph{Cohomology of Number Fields}, 2nd ed.,
+  Grundlehren der mathematischen Wissenschaften 323, Springer, 2008.
+\bibitem[Wa]{Wa} L.\,C.\,Washington, \emph{Introduction to Cyclotomic Fields}, 2nd ed., Graduate Texts in
+  Mathematics 83, Springer, 1997.
+\end{thebibliography}
+\endgroup
+
+\end{document}

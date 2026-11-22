@@ -1,0 +1,1199 @@
+{
+ "digest": "tower-bound",
+ "archive_commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+ "directory": {
+  "path": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/",
+  "files": 29,
+  "lines": 1193
+ },
+ "declarations": {
+  "GenBy": {
+   "name": "GenBy",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    9,
+    10
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "def",
+   "statement": "def GenBy (R : ℕ) (X : Type) [AddCommGroup X] [Module ℤ_[l] X] : Prop :=\n  ∃ π : (Fin R → ℤ_[l]) →ₗ[ℤ_[l]] X, Function.Surjective π"
+  },
+  "jZero": {
+   "name": "jZero",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    12,
+    12
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "abbrev",
+   "statement": "abbrev jZero (l R : ℕ) : ℕ := Nat.log l R + 3"
+  },
+  "IsLevel": {
+   "name": "IsLevel",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    16,
+    16
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "def",
+   "statement": "def IsLevel (u : ℤ_[l]) (c : ℕ) : Prop := vl l (u - 1) = c ∧ 1 ≤ c ∧ (l = 2 → 2 ≤ c)"
+  },
+  "cokLen": {
+   "name": "cokLen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    20,
+    20
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "def",
+   "statement": "def cokLen (f : Module.End ℤ_[l] X) : ℕ∞ := Module.length ℤ_[l] (X ⧸ LinearMap.range f)"
+  },
+  "InPow": {
+   "name": "InPow",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    22,
+    22
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "def",
+   "statement": "def InPow (k : ℕ) (f : Module.End ℤ_[l] X) : Prop := ∀ x : X, ∃ y : X, f x = (l : ℤ_[l]) ^ k • y"
+  },
+  "Unip": {
+   "name": "Unip",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    24,
+    24
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "def",
+   "statement": "def Unip (γ : Module.End ℤ_[l] X) : Prop := ∃ N : ℕ, InPow 1 ((γ - 1) ^ N)"
+  },
+  "twLen": {
+   "name": "twLen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    26,
+    26
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "def",
+   "statement": "def twLen (γ : Module.End ℤ_[l] X) (u : ℤ_[l]) (e m : ℕ) : ℕ∞ := cokLen ((u ^ e • γ) ^ l ^ m - 1)"
+  },
+  "range": {
+   "name": "cokLen_le_of_range_le",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    28,
+    30
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "theorem",
+   "statement": "theorem cokLen_le_of_range_le {f g : Module.End ℤ_[l] X} (h : LinearMap.range g ≤ LinearMap.range f) :\n    cokLen f ≤ cokLen g"
+  },
+  "lenComp": {
+   "name": "Base.lenComp",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/SelmerTransport/LenComp.lean",
+   "lines": [
+    17,
+    41
+   ],
+   "file_sha256": "903d3068b9dc484775db08ad0d8874ca36fc2b64e57f2ba218d1a8b8bb89b210",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Base.lenComp :\n    ∀ (R N : Type) [CommRing R] [AddCommGroup N] [Module R N] (a b : Module.End R N),\n      Module.length R (LinearMap.ker (a * b)) ≤ Module.length R (LinearMap.ker a) + Module.length R (LinearMap.ker b) ∧\n      Module.length R (N ⧸ LinearMap.range (a * b)) ≤ Module.length R (N ⧸ LinearMap.range a) + Module.length R (N ⧸ LinearMap.range b)"
+  },
+  "smith": {
+   "name": "length_cokernel_eq_addVal_det",
+   "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/SelmerDuality/LengthDet.lean",
+   "lines": [
+    52,
+    68
+   ],
+   "file_sha256": "4cf0facb602469f2d9c37045d28a8175fb256005dae4ab69412c5a3f22074a5d",
+   "kind": "theorem",
+   "statement": "theorem length_cokernel_eq_addVal_det (Φ : Matrix n n O) :\n    Module.length O (H2 Φ) = IsDiscreteValuationRing.addVal O Φ.det"
+  },
+  "lift": {
+   "name": "lift",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsAlt.lean",
+   "lines": [
+    7,
+    44
+   ],
+   "file_sha256": "8b29aed2a5c7e3fbc65df2e3131490d96e9a1255b90df7ea04d43a15bd1ad29b",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.lift :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (R : ℕ) (g : Module.End ℤ_[l] X), GenBy l R X →\n      ∃ S : Matrix (Fin R) (Fin R) ℤ_[l], ∀ c : ℤ_[l], cokLen (c • g - 1) ≤ vl l (c • S - 1).det"
+  },
+  "lte": {
+   "name": "abelian₂.lte",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/LocalRingsCompletion/IsUnitAddMem.lean",
+   "lines": [
+    109,
+    126
+   ],
+   "file_sha256": "4a49dda7e455a1b64521e3f59183680197103511539dfc54131f68c3e6624df5",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.abelian₂.lte :\n    ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] [CharZero O] (l : ℕ), l.Prime → (l : O) ∈ maximalIdeal O → ∀ u : oneUnits O,\n      addVal O (l : O) < ((l - 1 : ℕ) : ℕ∞) * addVal O (pt u : O) → (∀ n : ℤ, addVal O (pt (u ^ n) : O) = addVal O (pt u : O) + addVal O (n : O))"
+  },
+  "lteNorm": {
+   "name": "lteNorm",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
+   "lines": [
+    19,
+    94
+   ],
+   "file_sha256": "e24722105b4c2121c0f3c5b902994973e1c4ebd98e8bdbdb2623511625b2cf1e",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.lteNorm :\n    ∀ (l : ℕ) [Fact l.Prime] (u : ℤ_[l]) (c : ℕ), IsLevel l u c → ‖u‖ = 1 ∧ (l : ℤ_[l]) ∣ u - 1 ∧\n      ∀ j a b : ℕ, ‖(u ^ l ^ j) ^ a - (u ^ l ^ j) ^ b‖ = ((l : ℝ) ^ (j + c))⁻¹ * ‖(a : ℤ_[l]) - b‖"
+  },
+  "units": {
+   "name": "padic_units_distance_le_max",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PadicUnitsDistanceLeMax.lean",
+   "lines": [
+    8,
+    35
+   ],
+   "file_sha256": "a66c415852356c2527d1e604f42c28c996f15d768ed5f7f204096f80daf7f4bd",
+   "kind": "theorem",
+   "statement": "private theorem padic_units_distance_le_max (l : ℕ) [Fact l.Prime] (a b : ℤ_[l]) (ha : ‖a‖ = 1) (hb : ‖b‖ = 1)\n    (z : PadicAlgCl l) :\n    ‖a - b‖ ≤ max ‖algebraMap ℚ_[l] (PadicAlgCl l) (a : ℚ_[l]) * z - 1‖\n      ‖algebraMap ℚ_[l] (PadicAlgCl l) (b : ℚ_[l]) * z - 1‖"
+  },
+  "helly": {
+   "name": "helly",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Helly.lean",
+   "lines": [
+    6,
+    25
+   ],
+   "file_sha256": "442f188f136ff8668c3b0b111e200f5056caea45e13a526de755a2f272048cf8",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.helly :\n    ∀ (l : ℕ) [Fact l.Prime] (x : ℕ → ℤ_[l]) (r : ℕ → ℝ), (∀ a b, ‖x a - x b‖ ≤ max (r a) (r b)) →\n      ∃ s : ℤ_[l], ∀ a, ‖s - x a‖ ≤ r a"
+  },
+  "ball": {
+   "name": "ball",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PadicUnitsDistanceLeMax.lean",
+   "lines": [
+    37,
+    63
+   ],
+   "file_sha256": "a66c415852356c2527d1e604f42c28c996f15d768ed5f7f204096f80daf7f4bd",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.ball :\n    ∀ (l : ℕ) [Fact l.Prime] (u : ℤ_[l]) (c : ℕ), IsLevel l u c → ∀ (j : ℕ) (z : PadicAlgCl l), ∃ s : ℤ_[l], ∀ e : ℕ,\n      ((l : ℝ) ^ (j + c))⁻¹ * ‖s - e‖ ≤ ‖algebraMap ℚ_[l] (PadicAlgCl l) (((u ^ l ^ j) ^ e : ℤ_[l]) : ℚ_[l]) * z - 1‖"
+  },
+  "detFactor": {
+   "name": "detFactor",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DetFactor.lean",
+   "lines": [
+    6,
+    49
+   ],
+   "file_sha256": "355ccb77d26389d204242fed23340dee64ec66de4359efd74a8c6a2e4efb89ac",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.detFactor :\n    ∀ (K : Type) [Field K] [IsAlgClosed K] (n : ℕ) (S : Matrix (Fin n) (Fin n) K),\n      ∃ z : Fin n → K, ∀ c : K, (c • S - 1).det = ∏ i, (c * z i - 1)"
+  },
+  "normVal": {
+   "name": "normVal",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
+   "lines": [
+    30,
+    46
+   ],
+   "file_sha256": "a15359daf2e89a988e1975a8f08b7dbf1efb00dfe0bba58fe6c5b89bba87239e",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.normVal :\n    ∀ (l : ℕ) [Fact l.Prime] (R c : ℕ) (d : ℤ_[l]) (x : Fin R → ℤ_[l]),\n      ∏ i, (((l : ℝ) ^ c)⁻¹ * ‖x i‖) ≤ ‖d‖ → vl l d ≤ ∑ i, ((c : ℕ∞) + vl l (x i))"
+  },
+  "detBound": {
+   "name": "detBound",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DetBound.lean",
+   "lines": [
+    9,
+    34
+   ],
+   "file_sha256": "5926650338f221b316f4a0322467df20ac1a5f2bb822f49e28a4ebdf3dd242db",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.detBound :\n    ∀ (l : ℕ) [Fact l.Prime] (u : ℤ_[l]) (c : ℕ), IsLevel l u c → ∀ (j R : ℕ) (S : Matrix (Fin R) (Fin R) ℤ_[l]),\n      ∃ s : Fin R → ℤ_[l], ∀ e : ℕ, vl l ((u ^ l ^ j) ^ e • S - 1).det ≤ ∑ i, (((j + c : ℕ) : ℕ∞) + vl l (s i - e))"
+  },
+  "level": {
+   "name": "exists_centres_level",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    23,
+    32
+   ],
+   "file_sha256": "529e8eb85c14a999966f3d8f4d7e415a87b4f33484c4d7db2f117678c507fd94",
+   "kind": "theorem",
+   "statement": "theorem exists_centres_level {R c : ℕ} (γ : Module.End ℤ_[l] X) {u : ℤ_[l]} (hX : GenBy l R X) (hu : IsLevel l u c) (j : ℕ) :\n    ∃ s : Fin R → ℤ_[l], ∀ e : ℕ, twLen γ u e j ≤ ∑ i, (((j + c : ℕ) : ℕ∞) + vl l (s i - e))"
+  },
+  "cokL": {
+   "name": "cokL",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLen.lean",
+   "lines": [
+    6,
+    41
+   ],
+   "file_sha256": "b415b72ecf40bc049e76164376efe8c0b61f093df6c674af22ff0ec803fea3a3",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.cokL :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (R : ℕ), GenBy l R X → cokLen ((l : ℤ_[l]) • (1 : Module.End ℤ_[l] X)) ≤ R"
+  },
+  "nilLen": {
+   "name": "nilLen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
+   "lines": [
+    29,
+    59
+   ],
+   "file_sha256": "06af67917eeccc0c4fe5da02b5779de5c3f1dcab525c77a9cc2b9d27c03940ad",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.nilLen :\n    ∀ (A M : Type) [CommRing A] [AddCommGroup M] [Module A M] (f : Module.End A M) (n : ℕ), IsNilpotent f →\n      Module.length A M ≤ n → f ^ n = 0"
+  },
+  "unipPow": {
+   "name": "unipPow",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/UnipPow.lean",
+   "lines": [
+    8,
+    46
+   ],
+   "file_sha256": "541c4f8f7d4073999026dcc3a6c70f838f6e9f2ebde3b671598fe2d84dbc3980",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.unipPow :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (R : ℕ) (g : Module.End ℤ_[l] X), GenBy l R X → Unip g → InPow 1 ((g - 1) ^ R)"
+  },
+  "frob": {
+   "name": "frob",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Imports.lean",
+   "lines": [
+    6,
+    36
+   ],
+   "file_sha256": "86f8eee544d9b15ef6f155a12ae71fbf35c8603876c2591376780d2e679bba2d",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.frob :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (g : Module.End ℤ_[l] X) (k : ℕ),\n      InPow 1 ((g - 1) ^ l ^ k) ↔ InPow 1 (g ^ l ^ k - 1)"
+  },
+  "powIn": {
+   "name": "powIn",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PowIn.lean",
+   "lines": [
+    6,
+    29
+   ],
+   "file_sha256": "f5157be365a845e777706d511dfa68793a7ec630ebacccec825822bcb8ee41c3",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.powIn :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (w : Module.End ℤ_[l] X),\n      (∀ k n : ℕ, InPow k (w - 1) → InPow k (w ^ n - 1)) ∧ (InPow 1 (w - 1) → InPow 2 (w ^ l - 1))"
+  },
+  "phi": {
+   "name": "phi",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsTer.lean",
+   "lines": [
+    7,
+    46
+   ],
+   "file_sha256": "70868d537a331002b29216bde7b388efa9e3910f0edab21d55b326572d6bc74c",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.phi :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] [Module.Finite ℤ_[l] X] (w : Module.End ℤ_[l] X), InPow 2 (w - 1) →\n      LinearMap.range ((l : ℤ_[l]) • (1 : Module.End ℤ_[l] X)) ≤ LinearMap.range (∑ i ∈ Finset.range l, w ^ i)"
+  },
+  "step": {
+   "name": "step",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsMore.lean",
+   "lines": [
+    9,
+    22
+   ],
+   "file_sha256": "b0b418e9e369bb8b6a836acffb2892dda46d275f089fb5a9e983ccd04cdfd566",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.step :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (R : ℕ) (w : Module.End ℤ_[l] X), GenBy l R X → InPow 2 (w - 1) →\n      cokLen (w ^ l - 1) ≤ cokLen (w - 1) + R"
+  },
+  "mono": {
+   "name": "mono",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsBis.lean",
+   "lines": [
+    6,
+    13
+   ],
+   "file_sha256": "428ea1b692aae883d0a121fdaffecfb6ad31363d8d1d517a187f4d52f7769034",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.mono :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (g : Module.End ℤ_[l] X) (a b : ℕ), a ∣ b →\n      cokLen (g ^ a - 1) ≤ cokLen (g ^ b - 1)"
+  },
+  "twist": {
+   "name": "twist",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsFurther.lean",
+   "lines": [
+    7,
+    50
+   ],
+   "file_sha256": "c6e3f211ed223073265773ab1f777c5411c87f39213e37a4dcd90de757558e2e",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.twist :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (g : Module.End ℤ_[l] X) (a : ℤ_[l]), (l : ℤ_[l]) ∣ a - 1 →\n      Unip g → Unip (a • g)"
+  },
+  "growth": {
+   "name": "growth",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Growth.lean",
+   "lines": [
+    11,
+    56
+   ],
+   "file_sha256": "f48f9a66ef01757fe817311237d4a0c1f14b20aff238e946715200004c02cf20",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.growth :\n    ∀ (l : ℕ) [Fact l.Prime] (X : Type) [AddCommGroup X] [Module ℤ_[l] X] (R : ℕ) (g : Module.End ℤ_[l] X), GenBy l R X → Unip g → ∀ m : ℕ,\n      cokLen (g ^ l ^ m - 1) ≤ cokLen (g ^ l ^ jZero l R - 1) + ((R * (m - jZero l R) : ℕ) : ℕ∞)"
+  },
+  "twgrowth": {
+   "name": "twLen_le_growth",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    17,
+    21
+   ],
+   "file_sha256": "529e8eb85c14a999966f3d8f4d7e415a87b4f33484c4d7db2f117678c507fd94",
+   "kind": "theorem",
+   "statement": "theorem twLen_le_growth {R c : ℕ} {γ : Module.End ℤ_[l] X} {u : ℤ_[l]} (hX : GenBy l R X) (hγ : Unip γ) (hu : IsLevel l u c)\n    (e m : ℕ) : twLen γ u e m ≤ twLen γ u e (jZero l R) + ((R * (m - jZero l R) : ℕ) : ℕ∞)"
+  },
+  "centres": {
+   "name": "exists_centres",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    34,
+    49
+   ],
+   "file_sha256": "529e8eb85c14a999966f3d8f4d7e415a87b4f33484c4d7db2f117678c507fd94",
+   "kind": "theorem",
+   "statement": "theorem exists_centres {R c : ℕ} {γ : Module.End ℤ_[l] X} {u : ℤ_[l]} (hX : GenBy l R X) (hγ : Unip γ) (hu : IsLevel l u c) :\n    ∃ s : Fin R → ℤ_[l], ∀ e m : ℕ,\n      twLen γ u e m ≤ ∑ i, (((max m (jZero l R) + c : ℕ) : ℕ∞) + vl l (s i - e))"
+  },
+  "centresnorm": {
+   "name": "exists_centres_norm",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    57,
+    69
+   ],
+   "file_sha256": "529e8eb85c14a999966f3d8f4d7e415a87b4f33484c4d7db2f117678c507fd94",
+   "kind": "theorem",
+   "statement": "theorem exists_centres_norm {R c : ℕ} {γ : Module.End ℤ_[l] X} {u : ℤ_[l]} (hX : GenBy l R X) (hγ : Unip γ)\n    (hu : IsLevel l u c) : ∃ s : Fin R → ℤ_[l], ∀ e m B : ℕ, (∀ i, (l : ℝ) ^ (-(B : ℤ)) ≤ ‖s i - e‖) →\n      twLen γ u e m ≤ ((R * (max m (jZero l R) + c + B) : ℕ) : ℕ∞)"
+  },
+  "near1": {
+   "name": "Win.near1",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Near1.lean",
+   "lines": [
+    6,
+    43
+   ],
+   "file_sha256": "ce808763ab7c876f1450be042cd5e57cb68961d7f7b12678c945eed5e2b52853",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Win.near1 :\n    ∀ (l : ℕ) [Fact l.Prime] (K : Type) [NormedField K] [NormedAlgebra ℚ_[l] K] [IsUltrametricDist K] (s : K) (Z a b : ℕ),\n      1 ≤ a → a ≤ Z → 1 ≤ b → b ≤ Z → ‖s - (a : K)‖ < (l : ℝ) ^ (-(Nat.log l Z : ℤ)) →\n        ‖s - (b : K)‖ < (l : ℝ) ^ (-(Nat.log l Z : ℤ)) → a = b"
+  },
+  "exc": {
+   "name": "Win.exc",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Exc.lean",
+   "lines": [
+    7,
+    42
+   ],
+   "file_sha256": "7bb13ceb4141dea9a35e93dbba8b71b06e44b172584e06c886b0c5a518146cfe",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Win.exc :\n    ∀ (l R : ℕ) [Fact l.Prime] (L₀ : Type) [Field L₀], ABound l R L₀ →\n      ∃ c : ℕ, (∃ ζ : L₀, IsPrimitiveRoot ζ (l ^ c)) ∧ ∀ Z : ℕ, ∃ Exc : Finset ℕ, FirstBound l R c L₀ Z Exc"
+  },
+  "qzInj": {
+   "name": "qzInj",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/QzInj.lean",
+   "lines": [
+    8,
+    27
+   ],
+   "file_sha256": "eace76bed30d0675a717a1b6282ab337c5ae49805169a281d82d9f05a246da29",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.qzInj :\n    ∀ (l : ℕ) [Fact l.Prime], Module.Injective ℤ_[l] (QZ l)"
+  },
+  "dualDiv": {
+   "name": "dualDiv",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualDiv.lean",
+   "lines": [
+    8,
+    31
+   ],
+   "file_sha256": "dc72aa197a781c19611dd61b3fee9dd231444f468b8a7fb7a5af28690afc83ff",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.dualDiv :\n    ∀ (l : ℕ) [Fact l.Prime] (D : Type) [AddCommGroup D] [Module ℤ_[l] D] (x : D →ₗ[ℤ_[l]] QZ l), (∀ φ : D, (l : ℤ_[l]) • φ = 0 → x φ = 0) →\n      ∃ y : D →ₗ[ℤ_[l]] QZ l, x = (l : ℤ_[l]) • y"
+  },
+  "torsFin": {
+   "name": "torsFin",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/TorsFin.lean",
+   "lines": [
+    9,
+    84
+   ],
+   "file_sha256": "d6784b162d3e7a28ea4fde6e26271e25940fd49d2257efa6664fa217168f323e",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.torsFin :\n    ∀ (l : ℕ) [Fact l.Prime] (D : Type) [AddCommGroup D] [Module ℤ_[l] D], Module.Finite ℤ_[l] (D →ₗ[ℤ_[l]] QZ l) →\n      {φ : D | (l : ℤ_[l]) • φ = 0}.Finite"
+  },
+  "dualUnip": {
+   "name": "dualUnip",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualUnip.lean",
+   "lines": [
+    9,
+    34
+   ],
+   "file_sha256": "57ae575a6998791bb7a9edad6e71af47cf10121e5c8cbe9ac98089197173faf1",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.dualUnip :\n    ∀ (l : ℕ) [Fact l.Prime] (D : Type) [AddCommGroup D] [Module ℤ_[l] D] (g : Module.End ℤ_[l] D) (t : Module.End ℤ_[l] (D →ₗ[ℤ_[l]] QZ l)),\n      Module.Finite ℤ_[l] (D →ₗ[ℤ_[l]] QZ l) → (∀ x φ, t x φ = x (g φ)) → (∀ φ : D, ∃ k : ℕ, ((g - 1) ^ k) φ = 0) → Unip t"
+  },
+  "XDual": {
+   "name": "XDual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    90,
+    99
+   ],
+   "file_sha256": "087733e315e76bbc37332cf27e466ba636d35940a911bc601abb931efbcec4e4",
+   "kind": "def",
+   "statement": "def XDual (N : ℕ) (U : Subgroup (G F Ω)) (R M : Type) [CommRing R] [AddCommGroup M] [Module R M] : Submodule R (U → M) where\n  carrier := {φ | IsLocallyConstant φ ∧ (∀ a b, φ (a * b) = φ a + φ b) ∧\n    (∀ (A : ValuationSubring Ω) (u : U), u.1 ∈ Ine (F := F) A → φ u = 0) ∧\n    ∀ A : ValuationSubring Ω, A.valuation (N : Ω) < 1 → ∀ u : U, u.1 ∈ Dec (F := F) A → φ u = 0}\n  zero_mem' := ⟨IsLocallyConstant.const _, by simp, by simp, by simp⟩\n  add_mem' {a b} ha hb := ⟨ha.1.add hb.1, fun x y => by simp only [Pi.add_apply, ha.2.1, hb.2.1]; abel,\n    fun A u h => by simp [ha.2.2.1 A u h, hb.2.2.1 A u h],\n    fun A hA u h => by simp [ha.2.2.2 A hA u h, hb.2.2.2 A hA u h]⟩\n  smul_mem' c a ha := ⟨ha.1.comp (c • ·), fun x y => by simp [ha.2.1], fun A u h => by simp [ha.2.2.1 A u h],\n    fun A hA u h => by simp [ha.2.2.2 A hA u h]⟩"
+  },
+  "IsTower": {
+   "name": "Tower.IsTower",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
+   "lines": [
+    120,
+    124
+   ],
+   "file_sha256": "c2e7a92efa7592787e53fe71e7c0de2c233bcd442adb1e05ad12f86383714056",
+   "kind": "structure",
+   "statement": "structure IsTower (R : ℕ) : Prop where\n  complex : IsTotallyComplex L\n  mu : HasMuQ l L\n  pos : 1 ≤ R\n  gen : GenLE ℤ_[l] (XP l L) R"
+  },
+  "IsLayer": {
+   "name": "IsLayer",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/StmtFields.lean",
+   "lines": [
+    47,
+    48
+   ],
+   "file_sha256": "6504b5c58704921aae65b2651c419051c6f0cf3c040bc517dc663cfa19dce50a",
+   "kind": "def",
+   "statement": "def IsLayer (l j : ℕ) (L L' : Type) [Field L] [Field L'] [Algebra L L'] : Prop :=\n  (∃ k : ℕ, IsCyclotomicExtension {l ^ k} L L') ∧ Module.finrank L L' = l ^ j"
+  },
+  "shaInv": {
+   "name": "shaInv",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/GaloisCohomologyLength/LevelInertiaLeLevelDec.lean",
+   "lines": [
+    70,
+    71
+   ],
+   "file_sha256": "ca48965bd757f2d2986d54c0e95fd92ab88899221c978728c6950ff886aa8f17",
+   "kind": "def",
+   "statement": "def shaInv (F : Type) [Field F] [NumberField F] (l : ℕ) [Fact l.Prime] (e : ℤ) : ℕ∞ :=\n  Module.length ℤ_[l] (ShaAbs (qzG F (AlgebraicClosure F) l e) (Above F l))"
+  },
+  "VLen": {
+   "name": "VLen",
+   "file": "Formalism/GaloisCohomology/Statement.lean",
+   "lines": [
+    80,
+    80
+   ],
+   "file_sha256": "67dc5835eb4b337dfbbbf7f0accd1198b59793ae70f5af34421a7c35410d632c",
+   "kind": "def",
+   "statement": "def VLen (D : LData F Ω l) (e : ℤ) : ℕ∞ := Module.length ℤ_[l] (H2 (zlTw D (e + 1)))"
+  },
+  "ABound": {
+   "name": "Win.ABound",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/SecondBound.lean",
+   "lines": [
+    19,
+    25
+   ],
+   "file_sha256": "d0e3d59ca3196bc37ccf563afbe6829d6497e607c533b7984f27d5b8c91a29d6",
+   "kind": "def",
+   "statement": "def ABound (l R : ℕ) [Fact l.Prime] (L₀ : Type) [Field L₀] : Prop :=\n  (∃ (K : Type) (_ : NormedField K) (_ : NormedAlgebra ℚ_[l] K) (_ : IsUltrametricDist K) (c R' : ℕ) (s : Fin R' → K),\n    R' ≤ R ∧ (∃ ζ : L₀, IsPrimitiveRoot ζ (l ^ c)) ∧\n    ∀ e : ℕ, 1 ≤ e → ∀ (m : ℕ) (L₁ : Type) [Field L₁] [NumberField L₁] [Algebra L₀ L₁], IsLayer l m L₀ L₁ →\n      ∀ B : ℕ, (∀ i, (l : ℝ) ^ (-(B : ℤ)) ≤ ‖s i - (e : K)‖) →\n        shaInv L₁ l e ≤ ((R' * (max m (jZero l R) + c + B) : ℕ) : ℕ∞)) ∧\n  SecondBound l R L₀"
+  },
+  "SecondBound": {
+   "name": "Win.SecondBound",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/SecondBound.lean",
+   "lines": [
+    13,
+    17
+   ],
+   "file_sha256": "d0e3d59ca3196bc37ccf563afbe6829d6497e607c533b7984f27d5b8c91a29d6",
+   "kind": "def",
+   "statement": "def SecondBound (l R : ℕ) [Fact l.Prime] (L₀ : Type) [Field L₀] : Prop :=\n  ∀ e : ℕ, 1 ≤ e → ∀ (m : ℕ) (L₁ : Type) [Field L₁] [NumberField L₁] [Algebra L₀ L₁], IsLayer l m L₀ L₁ →\n    ∀ (L₂ : Type) [Field L₂] [NumberField L₂] [Algebra L₀ L₂], IsLayer l (jZero l R) L₀ L₂ →\n      ∀ (Ω : Type) [Field Ω] [Algebra L₂ Ω] [IsAlgClosure L₂ Ω] (D : LData L₂ Ω l),\n        shaInv L₁ l e ≤ VLen D e + ((R * (m - jZero l R) : ℕ) : ℕ∞)"
+  },
+  "FirstBound": {
+   "name": "Win.FirstBound",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/SecondBound.lean",
+   "lines": [
+    27,
+    30
+   ],
+   "file_sha256": "d0e3d59ca3196bc37ccf563afbe6829d6497e607c533b7984f27d5b8c91a29d6",
+   "kind": "def",
+   "statement": "def FirstBound (l R c : ℕ) [Fact l.Prime] (L₀ : Type) [Field L₀] (Z : ℕ) (Exc : Finset ℕ) : Prop :=\n  Exc.card ≤ R ∧ ∀ e : ℕ, 1 ≤ e → e ≤ Z → e ∉ Exc →\n    ∀ (m : ℕ) (L₁ : Type) [Field L₁] [NumberField L₁] [Algebra L₀ L₁], IsLayer l m L₀ L₁ →\n      shaInv L₁ l e ≤ ((R * (max m (jZero l R) + c + Nat.log l Z) : ℕ) : ℕ∞)"
+  },
+  "dinfNil": {
+   "name": "Kum.dinfNil",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    62,
+    235
+   ],
+   "file_sha256": "d589ae989125c5652b51765825b355bb5112782f22a1371b0e4c8365ee263086",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Kum.dinfNil :\n    ∀ (F Ω : Type) [Field F] [NumberField F] [Field Ω] [Algebra F Ω] [IsAlgClosure F Ω] (l : ℕ) [Fact l.Prime] (N : ℕ) (U : Subgroup (G F Ω)) [U.Normal], IsClosed (U : Set (G F Ω)) → ∀ φ ∈ Dinf l N U, (∃ n, ∀ g ∈ levU l U n, funRep ℤ_[l] (QZ l) (cycU l U) g φ = φ) ∧\n    ∀ γ ∈ levU l U 1, ∃ k : ℕ, (l : ℤ_[l]) ^ k • φ = 0 ∧ ((funRep ℤ_[l] (QZ l) (cycU l U) γ - 1) ^ k) φ = 0"
+  },
+  "xUnip": {
+   "name": "xUnip",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/XUnip.lean",
+   "lines": [
+    9,
+    27
+   ],
+   "file_sha256": "5ae4c3f56a05c681cea47f9b2c6df9fcca869a059d75fcf751ce3d339a8b3f31",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.xUnip :\n    ∀ (k Ω : Type) [Field k] [NumberField k] [Field Ω] [Algebra k Ω] [IsAlgClosure k Ω] (l : ℕ) [Fact l.Prime] (N : ℕ)\n      (U : Subgroup (G k Ω)) [U.Normal], IsClosed (U : Set (G k Ω)) → Module.Finite ℤ_[l] (Xinf l N U) →\n      ∀ γ ∈ levU l U 1, Unip (xRep l N U γ)"
+  },
+  "step0": {
+   "name": "Tower.step0",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ExistsDescends.lean",
+   "lines": [
+    26,
+    46
+   ],
+   "file_sha256": "ad5198ddc985ff0ef9c7f4f15962c2a9584836b35f8c923027e9ea3bdd8c411d",
+   "kind": "theorem",
+   "statement": "theorem step0 (hμ : HasMuQ l L₀) {γ : G L₀ Ω} (hγ : IsGen l ⊤ γ) {e : ℤ} (he : e ≠ 0) (m : ℕ) (L₁ : Type) [Field L₁]\n    [NumberField L₁] [Algebra L₀ L₁] (hL : IsLayer l m L₀ L₁) :\n    shaInv L₁ l e = cokerLen (xTw l l (⊤ : Subgroup (G L₀ Ω)) e γ ^ l ^ m - 1)"
+  },
+  "isTowerIff": {
+   "name": "Tower.isTower_iff",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ExistsDescends.lean",
+   "lines": [
+    60,
+    62
+   ],
+   "file_sha256": "ad5198ddc985ff0ef9c7f4f15962c2a9584836b35f8c923027e9ea3bdd8c411d",
+   "kind": "theorem",
+   "statement": "theorem isTower_iff (R : ℕ) : IsTower l L₀ R ↔ HasMuQ l L₀ ∧ 1 ≤ R ∧ rankN l L₀ l ≤ R"
+  },
+  "Descends": {
+   "name": "Descends",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
+   "lines": [
+    16,
+    18
+   ],
+   "file_sha256": "30d198e1610fb4ce9152eec6d4baa3c1bfd5ac30c3e9fdc7fa33a4d4445b09e6",
+   "kind": "def",
+   "statement": "def Descends (γ : G L₀ (AlgebraicClosure L₀)) : Prop :=\n  ∀ e : ℕ, 1 ≤ e → ∀ (m : ℕ) (L₁ : Type) [Field L₁] [NumberField L₁] [Algebra L₀ L₁], IsLayer l m L₀ L₁ →\n    shaInv L₁ l e = cokerLen (xTw l l (⊤ : Subgroup (G L₀ (AlgebraicClosure L₀))) e γ ^ l ^ m - 1)"
+  },
+  "descends": {
+   "name": "descends",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Descends.lean",
+   "lines": [
+    8,
+    15
+   ],
+   "file_sha256": "10eeba6946e97802ec1aad528ca089a4ba962c988acedf3cb1fed27d9b15f037",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.descends :\n    ∀ (l : ℕ) [Fact l.Prime] (L₀ : Type) [Field L₀] [NumberField L₀], HasMuQ l L₀ →\n      ∀ γ : G L₀ (AlgebraicClosure L₀), IsGen l ⊤ γ → Descends l L₀ γ"
+  },
+  "cycRange": {
+   "name": "Tower.cycRange",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CycRange.lean",
+   "lines": [
+    9,
+    62
+   ],
+   "file_sha256": "ae21d648db4345afced65a2d37f1994c93d14f34a5538aa99ea4c677f2e26c0d",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.cycRange :\n    ∀ (L Ω : Type) [Field L] [NumberField L] [Field Ω] [Algebra L Ω] [IsAlgClosure L Ω] (l : ℕ) [Fact l.Prime], HasMuQ l L → (cycZ L Ω l).range = KStar.TotallyRealRoots.princ l (cZero l L)"
+  },
+  "genLevel": {
+   "name": "genLevel",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/GenLevel.lean",
+   "lines": [
+    11,
+    31
+   ],
+   "file_sha256": "cad2e80c77f57eec4b3827aca1b3a534e8e91ef4a8403c944be27404d6f01606",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.genLevel :\n    ∀ (l : ℕ) [Fact l.Prime] (L₀ : Type) [Field L₀] [NumberField L₀], HasMuQ l L₀ →\n      ∃ γ : G L₀ (AlgebraicClosure L₀), IsGen l ⊤ γ ∧ IsLevel l (cycZ L₀ _ l γ : ℤ_[l]) (cZero l L₀) ∧\n        ∃ ζ : L₀, IsPrimitiveRoot ζ (l ^ cZero l L₀)"
+  },
+  "shaLeV": {
+   "name": "shaLeV",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ShaLeV.lean",
+   "lines": [
+    7,
+    16
+   ],
+   "file_sha256": "bf65172b1182f9d50858d61ad23b75e9c2755963a01b90cd9aff14aa3f8f575b",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.shaLeV :\n    GlobalTheory.Published.PoitouTateDuality → LocalFinitenessK → LocalTateDualityK →\n      ∀ (F Ω : Type) [Field F] [NumberField F] [Field Ω] [Algebra F Ω] [IsAlgClosure F Ω] (l : ℕ) [Fact l.Prime],\n        PTCase F l → ∀ (D : LData F Ω l) (e : ℤ), shaLen D e ≤ VLen D e"
+  },
+  "aDesc": {
+   "name": "aBound_of_descends",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
+   "lines": [
+    36,
+    55
+   ],
+   "file_sha256": "30d198e1610fb4ce9152eec6d4baa3c1bfd5ac30c3e9fdc7fa33a4d4445b09e6",
+   "kind": "theorem",
+   "statement": "theorem aBound_of_descends (hP : GlobalTheory.Published.PoitouTateDuality) (hF : LocalFinitenessK) (hT : LocalTateDualityK) {R c : ℕ}\n    (ht : IsTower l L₀ R) {γ : G L₀ (AlgebraicClosure L₀)} (hu : IsLevel l (cycZ L₀ _ l γ : ℤ_[l]) c)\n    (hc : ∃ ζ : L₀, IsPrimitiveRoot ζ (l ^ c)) (h : Descends l L₀ γ) : Win.ABound l R L₀"
+  },
+  "aTower": {
+   "name": "aBound_of_isTower",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfIsTower.lean",
+   "lines": [
+    7,
+    11
+   ],
+   "file_sha256": "4249346d3d787ad97c32ccbc0e95b11d72ec30923358bf98246f95f71dbc465d",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.PropA.aBound_of_isTower (hP : GlobalTheory.Published.PoitouTateDuality) (hF : LocalFinitenessK) (hT : LocalTateDualityK)\n    (l : ℕ) [Fact l.Prime] (L₀ : Type) [Field L₀] [NumberField L₀] (R : ℕ) (ht : UpperTheory.V.Tower.IsTower l L₀ R) :\n    UpperTheory.V.Win.ABound l R L₀"
+  },
+  "FW": {
+   "name": "Published.FerreroWashington",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/PublishedTheorems/FerreroWashington.lean",
+   "lines": [
+    7,
+    11
+   ],
+   "file_sha256": "1f56d2c4c78367fc7165908ba2a5ae342a24a47e527bae0bc5609ad8e5a9f8c8",
+   "kind": "def",
+   "statement": "def FerreroWashington : Prop :=\n  ∀ (l : ℕ) [Fact l.Prime] (K : Type) [Field K] [NumberField K] [IsAbelianGalois ℚ K],\n    (∃ ζ : K, IsPrimitiveRoot ζ (if l = 2 then 4 else l)) →\n    ∃ r : ℕ, ∀ (n : ℕ) (K' : Type) [Field K'] [NumberField K'] [Algebra K K'] [IsCyclotomicExtension {l ^ n} K K'],\n      Nat.card (ClassGroup (𝓞 K') ⧸ (powMonoidHom l : ClassGroup (𝓞 K') →* ClassGroup (𝓞 K')).range) ≤ l ^ r"
+  },
+  "FWthm": {
+   "name": "FW.ferreroWashington",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/FerreroWashingtonIndex/FerreroWashington.lean",
+   "lines": [
+    104,
+    119
+   ],
+   "file_sha256": "425bd4e7cef263fd37a5b6c46639c3d31df40a9cb91e4894a71c30e313bba3fa",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.FW.ferreroWashington : UpperTheory.V.Published.FerreroWashington"
+  },
+  "towerFixed": {
+   "name": "Two.towerFixed",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/QuadraticExtensions/IsAlgClosureRat.lean",
+   "lines": [
+    98,
+    110
+   ],
+   "file_sha256": "eb9dcd0239166240b7856794bdd79c67ebda19d18f83f76dd93728725fa31420",
+   "kind": "theorem",
+   "statement": "theorem towerFixed (hFW : Published.FerreroWashington) (l : ℕ) [hl : Fact l.Prime] (h2 : l ≠ 2) (A : AbF) (hA : A.HasMu l) :\n    ∃ R : ℕ, ∀ (L : Type) [Field L] [NumberField L], IsAbField A L →\n      Tower.GenLE ℤ_[l] (Tower.XX l L) R ∧ Tower.IsTower l L R"
+  },
+  "fixedIn": {
+   "name": "Two.fixedIn",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/QuadraticExtensions/IsAlgClosureRat.lean",
+   "lines": [
+    139,
+    141
+   ],
+   "file_sha256": "eb9dcd0239166240b7856794bdd79c67ebda19d18f83f76dd93728725fa31420",
+   "kind": "theorem",
+   "statement": "theorem fixedIn (hFW : Published.FerreroWashington) (hA : TowerBound) : Win.FixedIn"
+  },
+  "twoIn": {
+   "name": "Two.twoIn",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/QuadraticExtensions/IsAlgClosureRat.lean",
+   "lines": [
+    133,
+    137
+   ],
+   "file_sha256": "eb9dcd0239166240b7856794bdd79c67ebda19d18f83f76dd93728725fa31420",
+   "kind": "theorem",
+   "statement": "theorem twoIn (hFW : Published.FerreroWashington) (hA : TowerBound) : Win.TwoIn"
+  },
+  "LemmaK": {
+   "name": "LemmaK",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GeneratorCountTuples/LemmaK.lean",
+   "lines": [
+    13,
+    17
+   ],
+   "file_sha256": "65f1f885b171ff2aaf4478e96a1099e6d8adb3e863f7b35cfa8641028d4ad4be",
+   "kind": "def",
+   "statement": "def LemmaK (CK : ℝ) : Prop :=\n  ∀ (l : ℕ) [Fact l.Prime] (L Ω : Type) [Field L] [NumberField L] [Field Ω] [Algebra L Ω] [IsAlgClosure L Ω]\n    (D : LData L Ω l), IsTotallyComplex L → HasMuQ l L → ∀ e : ℕ, 1 ≤ e →\n      Finite (H2 (zlTw D ((e : ℤ) + 1))) ∧\n        Real.log (Nat.card (H2 (zlTw D ((e : ℤ) + 1)))) ≤ kBound CK e (Module.finrank ℚ L) (discr L).natAbs"
+  },
+  "window": {
+   "name": "Win.window",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window.lean",
+   "lines": [
+    7,
+    43
+   ],
+   "file_sha256": "354e0ad1b87c54c46a40486a037d0a10b598ffc1b1d8e840e4f80560090a50be",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Win.window :\n    ∀ (R : ℕ) (eta Ct X : ℝ) (Exc : Finset ℕ), 0 < eta → eta ≤ Ct → 1 < X → Exc.card ≤ R →\n      ∃ Y : ℝ, InRange (2 ^ (R + 2) * (Ct / eta) ^ R) X Y ∧ ∀ x : ℝ, Y ≤ x → x ≤ Y ^ (2 : ℝ) → Good eta Ct Exc x"
+  },
+  "thmBab": {
+   "name": "Win.thmBab_of",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOf.lean",
+   "lines": [
+    11,
+    103
+   ],
+   "file_sha256": "c263c5de2b26c9ade93525ea218afa71304f44a9916bc97b7e2573f5fd61e33b",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Win.thmBab_of :\n    (∃ CK : ℝ, LemmaK CK) → FixedIn → TwoIn → ∃ K : BConst, ∀ Ct : ℝ, 1 ≤ Ct → ThmBab K Ct"
+  },
+  "thmBabK": {
+   "name": "Win.thmBab_of_lemmaK",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOfLemmaK.lean",
+   "lines": [
+    9,
+    12
+   ],
+   "file_sha256": "8c18862cdb0e969e14e8e7bb0b429a60f3be96587f907194d6604276d692a3ca",
+   "kind": "theorem",
+   "statement": "theorem thmBab_of_lemmaK (hP : GlobalTheory.Published.PoitouTateDuality) (hF : LocalFinitenessK) (hT : LocalTateDualityK)\n    (hFW : Published.FerreroWashington) (hK : ∃ CK : ℝ, LemmaK CK) : ∃ K : BConst, ∀ Ct : ℝ, 1 ≤ Ct → ThmBab K Ct"
+  },
+  "vl": {
+   "name": "vl",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
+   "lines": [
+    14,
+    14
+   ],
+   "file_sha256": "a18ef0948191d63fb80c2cc98625570c1883be49165a2a6d8dab2eac27247a0a",
+   "kind": "abbrev",
+   "statement": "abbrev vl (x : ℤ_[l]) : ℕ∞ := IsDiscreteValuationRing.addVal ℤ_[l] x"
+  },
+  "normDvd": {
+   "name": "norm_le_of_dvd'",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
+   "lines": [
+    7,
+    10
+   ],
+   "file_sha256": "e24722105b4c2121c0f3c5b902994973e1c4ebd98e8bdbdb2623511625b2cf1e",
+   "kind": "theorem",
+   "statement": "private theorem norm_le_of_dvd' {l : ℕ} [Fact l.Prime] {x y : ℤ_[l]} (h : x ∣ y) : ‖y‖ ≤ ‖x‖"
+  },
+  "normAddVal": {
+   "name": "norm_eq_of_addVal",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
+   "lines": [
+    12,
+    17
+   ],
+   "file_sha256": "e24722105b4c2121c0f3c5b902994973e1c4ebd98e8bdbdb2623511625b2cf1e",
+   "kind": "theorem",
+   "statement": "private theorem norm_eq_of_addVal {l : ℕ} [Fact l.Prime] {x y : ℤ_[l]}\n    (h : IsDiscreteValuationRing.addVal ℤ_[l] x = IsDiscreteValuationRing.addVal ℤ_[l] y) :\n    ‖x‖ = ‖y‖"
+  },
+  "dvdNorm": {
+   "name": "dvd_of_norm_le'",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
+   "lines": [
+    6,
+    19
+   ],
+   "file_sha256": "a15359daf2e89a988e1975a8f08b7dbf1efb00dfe0bba58fe6c5b89bba87239e",
+   "kind": "theorem",
+   "statement": "private theorem dvd_of_norm_le' {l : ℕ} [Fact l.Prime] {d y : ℤ_[l]} (h : ‖y‖ ≤ ‖d‖) : d ∣ y"
+  },
+  "vlProd": {
+   "name": "vl_prod",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
+   "lines": [
+    21,
+    28
+   ],
+   "file_sha256": "a15359daf2e89a988e1975a8f08b7dbf1efb00dfe0bba58fe6c5b89bba87239e",
+   "kind": "theorem",
+   "statement": "private theorem vl_prod {l : ℕ} [Fact l.Prime] {ι : Type} (s : Finset ι) (f : ι → ℤ_[l]) :\n    vl l (∏ i ∈ s, f i) = ∑ i ∈ s, vl l (f i)"
+  },
+  "nilSucc": {
+   "name": "nilLen_range_succ",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
+   "lines": [
+    6,
+    9
+   ],
+   "file_sha256": "06af67917eeccc0c4fe5da02b5779de5c3f1dcab525c77a9cc2b9d27c03940ad",
+   "kind": "theorem",
+   "statement": "private theorem nilLen_range_succ {A M : Type} [CommRing A] [AddCommGroup M] [Module A M]\n    (f : Module.End A M) (k : ℕ) :\n    LinearMap.range (f ^ (k + 1)) = (LinearMap.range (f ^ k)).map f"
+  },
+  "nilLt": {
+   "name": "nilLen_lt",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
+   "lines": [
+    11,
+    27
+   ],
+   "file_sha256": "06af67917eeccc0c4fe5da02b5779de5c3f1dcab525c77a9cc2b9d27c03940ad",
+   "kind": "theorem",
+   "statement": "private theorem nilLen_lt {A M : Type} [CommRing A] [AddCommGroup M] [Module A M]\n    (f : Module.End A M) (hf : IsNilpotent f) (k : ℕ) (hk : f ^ k ≠ 0) :\n    LinearMap.range (f ^ (k + 1)) < LinearMap.range (f ^ k)"
+  },
+  "vlNorm": {
+   "name": "vl_le_of_norm",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
+   "lines": [
+    51,
+    55
+   ],
+   "file_sha256": "529e8eb85c14a999966f3d8f4d7e415a87b4f33484c4d7db2f117678c507fd94",
+   "kind": "theorem",
+   "statement": "theorem vl_le_of_norm {x : ℤ_[l]} {B : ℕ} (h : (l : ℝ) ^ (-(B : ℤ)) ≤ ‖x‖) : vl l x ≤ B"
+  },
+  "memLev": {
+   "name": "mem_levU_one",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
+   "lines": [
+    22,
+    28
+   ],
+   "file_sha256": "30d198e1610fb4ce9152eec6d4baa3c1bfd5ac30c3e9fdc7fa33a4d4445b09e6",
+   "kind": "theorem",
+   "statement": "theorem mem_levU_one {k Ω : Type} [Field k] [NumberField k] [Field Ω] [Algebra k Ω] [IsAlgClosure k Ω] {γ : G k Ω}\n    (h : (l : ℤ_[l]) ∣ (cycZ k Ω l γ : ℤ_[l]) - 1) : γ ∈ levU l (⊤ : Subgroup (G k Ω)) 1"
+  },
+  "eqTwLen": {
+   "name": "Descends.eq_twLen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
+   "lines": [
+    30,
+    34
+   ],
+   "file_sha256": "30d198e1610fb4ce9152eec6d4baa3c1bfd5ac30c3e9fdc7fa33a4d4445b09e6",
+   "kind": "theorem",
+   "statement": "theorem Descends.eq_twLen {γ : G L₀ (AlgebraicClosure L₀)} (h : Descends l L₀ γ) {e : ℕ} (he : 1 ≤ e) {m : ℕ} {L₁ : Type}\n    [Field L₁] [NumberField L₁] [Algebra L₀ L₁] (hL : IsLayer l m L₀ L₁) :\n    shaInv L₁ l e = twLen (xRep l l (⊤ : Subgroup (G L₀ (AlgebraicClosure L₀))) γ) (cycZ L₀ _ l γ : ℤ_[l]) e m"
+  },
+  "qzSep": {
+   "name": "Tower.qzSep",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/QzSep.lean",
+   "lines": [
+    47,
+    66
+   ],
+   "file_sha256": "09f567f01e183629a95fd172ee7ba9e7aec9ab7628df3631996441b30f1265da",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.qzSep :\n    ∀ (l : ℕ) [Fact l.Prime] (M : Type) [AddCommGroup M] [Module ℤ_[l] M] (m : M), m ≠ 0 → ∃ f : M →ₗ[ℤ_[l]] QZ l, f m ≠ 0"
+  },
+  "qzAnn": {
+   "name": "exists_qz_ne_zero_annihilators_of_ne_zero",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/QzSep.lean",
+   "lines": [
+    8,
+    45
+   ],
+   "file_sha256": "09f567f01e183629a95fd172ee7ba9e7aec9ab7628df3631996441b30f1265da",
+   "kind": "theorem",
+   "statement": "private theorem exists_qz_ne_zero_annihilators_of_ne_zero (l : ℕ) [Fact l.Prime] (M : Type) [AddCommGroup M] [Module ℤ_[l] M]\n    (m : M) (hm : m ≠ 0) : ∃ x : QZ l, x ≠ 0 ∧ ∀ a : ℤ_[l], a • m = 0 → a • x = 0"
+  },
+  "exactDual": {
+   "name": "exact_dual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
+   "lines": [
+    39,
+    47
+   ],
+   "file_sha256": "b8d7cd4f494ae99b46bb3fccf55ea8ad1fb32843f5fdaafa3fd7fd55ad0fa12b",
+   "kind": "theorem",
+   "statement": "private theorem exact_dual (l : ℕ) [Fact l.Prime] {N : Type} [AddCommGroup N] [Module ℤ_[l] N]\n    (p : Submodule ℤ_[l] N) :\n    Function.Exact (LinearMap.lcomp ℤ_[l] (QZ l) p.mkQ) (LinearMap.lcomp ℤ_[l] (QZ l) p.subtype)"
+  },
+  "simpleDual": {
+   "name": "simple_dual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
+   "lines": [
+    49,
+    109
+   ],
+   "file_sha256": "b8d7cd4f494ae99b46bb3fccf55ea8ad1fb32843f5fdaafa3fd7fd55ad0fa12b",
+   "kind": "theorem",
+   "statement": "private theorem simple_dual (l : ℕ) [hl : Fact l.Prime]\n    (N : Type) [AddCommGroup N] [Module ℤ_[l] N] [hN : IsSimpleModule ℤ_[l] N] :\n    IsSimpleModule ℤ_[l] (N →ₗ[ℤ_[l]] QZ l)"
+  },
+  "leDual": {
+   "name": "le_dual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
+   "lines": [
+    10,
+    37
+   ],
+   "file_sha256": "b8d7cd4f494ae99b46bb3fccf55ea8ad1fb32843f5fdaafa3fd7fd55ad0fa12b",
+   "kind": "theorem",
+   "statement": "private theorem le_dual (l : ℕ) [Fact l.Prime] (N : Type) [AddCommGroup N] [Module ℤ_[l] N] :\n    Module.length ℤ_[l] N ≤ Module.length ℤ_[l] (N →ₗ[ℤ_[l]] QZ l)"
+  },
+  "lenDual": {
+   "name": "Tower.lenDual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
+   "lines": [
+    111,
+    137
+   ],
+   "file_sha256": "b8d7cd4f494ae99b46bb3fccf55ea8ad1fb32843f5fdaafa3fd7fd55ad0fa12b",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.lenDual :\n    ∀ (l : ℕ) [Fact l.Prime] (M : Type) [AddCommGroup M] [Module ℤ_[l] M], Module.length ℤ_[l] (M →ₗ[ℤ_[l]] QZ l) = Module.length ℤ_[l] M"
+  },
+  "dualKer": {
+   "name": "Tower.dualKer",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/DualKer.lean",
+   "lines": [
+    7,
+    40
+   ],
+   "file_sha256": "b81c4bf5ad05578ab74dc51f55e25e6b9e2e941c707669a169e3014584727bc2",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.dualKer :\n    ∀ (l : ℕ) [Fact l.Prime] (M : Type) [AddCommGroup M] [Module ℤ_[l] M] (M' : Type) [AddCommGroup M'] [Module ℤ_[l] M'] (T : M →ₗ[ℤ_[l]] M'),\n        LinearMap.range (LinearMap.lcomp ℤ_[l] (QZ l) T) = LinearMap.ker (LinearMap.lcomp ℤ_[l] (QZ l) (LinearMap.ker T).subtype) ∧\n        ∀ p : Submodule ℤ_[l] M, Function.Surjective (LinearMap.lcomp ℤ_[l] (QZ l) p.subtype)"
+  },
+  "cokerDual": {
+   "name": "Tower.cokerDual",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CokerDual.lean",
+   "lines": [
+    8,
+    19
+   ],
+   "file_sha256": "3aab5f9d6b12973fca8c9879da600f4317fd306405b74b5f1ea38f08ae8de1c8",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.cokerDual :\n    ∀ (l : ℕ) [Fact l.Prime] (M : Type) [AddCommGroup M] [Module ℤ_[l] M] (g : Module.End ℤ_[l] M) (t : Module.End ℤ_[l] (M →ₗ[ℤ_[l]] QZ l)), (∀ x φ, t x φ = x (g φ)) →\n        cokerLen t = Module.length ℤ_[l] (LinearMap.ker g)"
+  },
+  "pgIndex": {
+   "name": "pg_index",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
+   "lines": [
+    24,
+    30
+   ],
+   "file_sha256": "61c35790be33f00ee6a74c8871d0e4fc269a7c2b04bb18cf42beb8e42b44484a",
+   "kind": "theorem",
+   "statement": "private theorem pg_index {l : ℕ} [Fact l.Prime] {a : ℕ} (ha : 0 < a) :\n    (KStar.TotallyRealRoots.princ l a).index = l ^ (a - 1) * (l - 1)"
+  },
+  "pgExists": {
+   "name": "pg_exists",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
+   "lines": [
+    32,
+    47
+   ],
+   "file_sha256": "61c35790be33f00ee6a74c8871d0e4fc269a7c2b04bb18cf42beb8e42b44484a",
+   "kind": "theorem",
+   "statement": "private theorem pg_exists {l : ℕ} [Fact l.Prime] {c : ℕ} (h1 : 1 ≤ c) :\n    ∃ v ∈ KStar.TotallyRealRoots.princ l c, v ∉ KStar.TotallyRealRoots.princ l (c + 1)"
+  },
+  "pgEmult": {
+   "name": "pg_emult",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
+   "lines": [
+    13,
+    22
+   ],
+   "file_sha256": "61c35790be33f00ee6a74c8871d0e4fc269a7c2b04bb18cf42beb8e42b44484a",
+   "kind": "theorem",
+   "statement": "private theorem pg_emult {l : ℕ} [Fact l.Prime] {c : ℕ} (h1 : 1 ≤ c) (h2 : l = 2 → 2 ≤ c) {u : ℤ_[l]}\n    (hd : (l : ℤ_[l]) ^ c ∣ u - 1) (n : ℕ) :\n    emultiplicity (l : ℤ_[l]) (u ^ l ^ n - 1) = emultiplicity (l : ℤ_[l]) (u - 1) + n"
+  },
+  "princGen": {
+   "name": "Tower.princGen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
+   "lines": [
+    49,
+    117
+   ],
+   "file_sha256": "61c35790be33f00ee6a74c8871d0e4fc269a7c2b04bb18cf42beb8e42b44484a",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.princGen :\n    ∀ (l : ℕ) [Fact l.Prime] (c : ℕ), qExp l ≤ c →\n        (∀ u ∈ KStar.TotallyRealRoots.princ l c, (KStar.TotallyRealRoots.princ l c ≤ (Subgroup.zpowers u).topologicalClosure ↔ u ∉ KStar.TotallyRealRoots.princ l (c + 1))) ∧\n        (∀ u ∈ KStar.TotallyRealRoots.princ l c, u ∉ KStar.TotallyRealRoots.princ l (c + 1) → PropA.IsLevel l (u : ℤ_[l]) c ∧\n          ∀ m : ℕ, u ^ l ^ m ∈ KStar.TotallyRealRoots.princ l (c + m) ∧ u ^ l ^ m ∉ KStar.TotallyRealRoots.princ l (c + m + 1)) ∧\n        ∀ m : ℕ, (KStar.TotallyRealRoots.princ l (c + m)).relIndex (KStar.TotallyRealRoots.princ l c) = l ^ m"
+  },
+  "princClosed": {
+   "name": "princ_le_of_isClosed",
+   "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/TotallyRealRoots/Generate.lean",
+   "lines": [
+    103,
+    109
+   ],
+   "file_sha256": "3a977c7fb595fc6853d3725c964fc65a5f0f0f3853603ed5913a576ffa51b66f",
+   "kind": "theorem",
+   "statement": "theorem princ_le_of_isClosed {a : ℕ} (ha : 1 ≤ a) (ha2 : l = 2 → 2 ≤ a) {U : Subgroup ℤ_[l]ˣ}\n    (hU : IsClosed (U : Set ℤ_[l]ˣ)) {u : ℤ_[l]ˣ} (huU : u ∈ U)\n    (hu : emultiplicity (l : ℤ_[l]) ((u : ℤ_[l]) - 1) = a) : princ l a ≤ U"
+  },
+  "lteOdd": {
+   "name": "emultiplicity_pow_sub_one_odd",
+   "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/TotallyRealRoots/EmultiplicityPowSubOneOdd.lean",
+   "lines": [
+    46,
+    52
+   ],
+   "file_sha256": "3291bb939246a7d39c58f67ab98955970161da7b2291c17dd57341d27141b6b2",
+   "kind": "theorem",
+   "statement": "theorem emultiplicity_pow_sub_one_odd (hl : l ≠ 2) {u : ℤ_[l]} (hu : (l : ℤ_[l]) ∣ u - 1) (n : ℕ) :\n    emultiplicity (l : ℤ_[l]) (u ^ n - 1) =\n      emultiplicity (l : ℤ_[l]) (u - 1) + emultiplicity l n"
+  },
+  "lteSq": {
+   "name": "emultiplicity_pow_sub_one_sq",
+   "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/TotallyRealRoots/EmultiplicityPowSubOneOdd.lean",
+   "lines": [
+    72,
+    88
+   ],
+   "file_sha256": "3291bb939246a7d39c58f67ab98955970161da7b2291c17dd57341d27141b6b2",
+   "kind": "theorem",
+   "statement": "theorem emultiplicity_pow_sub_one_sq {u : ℤ_[l]} (hu : (l : ℤ_[l]) ^ 2 ∣ u - 1) (n : ℕ) :\n    emultiplicity (l : ℤ_[l]) (u ^ n - 1) =\n      emultiplicity (l : ℤ_[l]) (u - 1) + emultiplicity l n"
+  },
+  "cZero": {
+   "name": "Tower.cZero",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
+   "lines": [
+    104,
+    104
+   ],
+   "file_sha256": "c2e7a92efa7592787e53fe71e7c0de2c233bcd442adb1e05ad12f86383714056",
+   "kind": "def",
+   "statement": "def cZero : ℕ := sSup {c : ℕ | ∃ ζ : L, IsPrimitiveRoot ζ (l ^ c)}"
+  },
+  "layU": {
+   "name": "Tower.layU",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
+   "lines": [
+    108,
+    108
+   ],
+   "file_sha256": "c2e7a92efa7592787e53fe71e7c0de2c233bcd442adb1e05ad12f86383714056",
+   "kind": "abbrev",
+   "statement": "abbrev layU (m : ℕ) : Subgroup (G L Ω) := Un L Ω l (cZero l L + m)"
+  },
+  "muQ": {
+   "name": "Tower.muQ",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CycMemPrincIff.lean",
+   "lines": [
+    81,
+    104
+   ],
+   "file_sha256": "da1ad25f1808dc9aa4fbdc49c806c574dacc99e787202d97c3b3205306cfdb30",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.muQ :\n    ∀ (L Ω : Type) [Field L] [NumberField L] [Field Ω] [Algebra L Ω] [IsAlgClosure L Ω] (l : ℕ) [Fact l.Prime], (∀ c : ℕ, (∃ ζ : L, IsPrimitiveRoot ζ (l ^ c)) ↔ c ≤ cZero l L) ∧ (∀ c : ℕ, Un L Ω l c = ⊤ ↔ c ≤ cZero l L) ∧\n        (HasMuQ l L ↔ qExp l ≤ cZero l L) ∧ (HasMuQ l L → IsTotallyComplex L ∧ Procyc L Ω l) ∧ (Procyc L Ω l ↔ l ≠ 2 ∨ HasMuQ l L)"
+  },
+  "galOfCyc": {
+   "name": "Kum.galOfCyc",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/GalOfCyc.lean",
+   "lines": [
+    5,
+    65
+   ],
+   "file_sha256": "a3381d37ebe0ba5b1df2306da484e46a6e3a3930ebf23e3ae903c003674cd7d1",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Kum.galOfCyc :\n    ∀ (F Ω : Type) [Field F] [NumberField F] [Field Ω] [Algebra F Ω] [IsAlgClosure F Ω] (l : ℕ) [Fact l.Prime] (n : ℕ) (E K : Type) [Field E] [Field K] [Algebra E K] [Algebra E Ω] [Algebra K Ω] [IsScalarTower E K Ω] [IsCyclotomicExtension {l ^ n} E K], galOf F K Ω = levU l (galOf F E Ω) n"
+  },
+  "galEmbTop": {
+   "name": "Base.galEmbTop",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/SelmerTransport/GalEmbTop.lean",
+   "lines": [
+    32,
+    69
+   ],
+   "file_sha256": "41c8b114a4026f317e51e9fa467c34495ad3c7e0e23c36e9ec5825737e3e6f3b",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Base.galEmbTop :\n    ∀ (k E Ω : Type) [Field k] [NumberField k] [Field E] [NumberField E] [Field Ω] [Algebra k E] [Algebra k Ω] [Algebra E Ω]\n      [IsScalarTower k E Ω] [IsAlgClosure k Ω] [IsAlgClosure E Ω],\n      Topology.IsEmbedding (galEmb k E Ω) ∧ IsOpen (galOf k E Ω : Set (G k Ω)) ∧ (galOf k E Ω).index = Module.finrank k E"
+  },
+  "luKey": {
+   "name": "lu_key",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerUniq.lean",
+   "lines": [
+    11,
+    23
+   ],
+   "file_sha256": "ac241f9755ba3bb82412d47b6f40c30f814fb3c373b0e08e3871d5d93529be6d",
+   "kind": "theorem",
+   "statement": "private theorem lu_key (L Ω : Type) [Field L] [NumberField L] [Field Ω] [Algebra L Ω] [IsAlgClosure L Ω] (l : ℕ)\n    [Fact l.Prime] (hmu : HasMuQ l L) (n : ℕ) (L₁ : Type) [Field L₁] [NumberField L₁] [Algebra L L₁] [Algebra L₁ Ω]\n    [IsScalarTower L L₁ Ω] [IsCyclotomicExtension {l ^ n} L L₁] :\n    galOf L L₁ Ω = layU l L Ω (n - cZero l L) ∧ Module.finrank L L₁ = l ^ (n - cZero l L)"
+  },
+  "layerUniq": {
+   "name": "Tower.layerUniq",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerUniq.lean",
+   "lines": [
+    25,
+    43
+   ],
+   "file_sha256": "ac241f9755ba3bb82412d47b6f40c30f814fb3c373b0e08e3871d5d93529be6d",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.layerUniq :\n    ∀ (L Ω : Type) [Field L] [NumberField L] [Field Ω] [Algebra L Ω] [IsAlgClosure L Ω] (l : ℕ) [Fact l.Prime], HasMuQ l L → (∀ m, IsLayer l m L (layF l L Ω m)) ∧\n        (∀ (m : ℕ) (L₁ : Type) [Field L₁] [NumberField L₁] [Algebra L L₁] [Algebra L₁ Ω] [IsScalarTower L L₁ Ω], IsLayer l m L L₁ → galOf L L₁ Ω = layU l L Ω m) ∧\n        ∀ (n : ℕ) (L₁ : Type) [Field L₁] [NumberField L₁] [Algebra L L₁], IsCyclotomicExtension {l ^ n} L L₁ → IsLayer l (n - cZero l L) L L₁"
+  },
+  "layerGen": {
+   "name": "Tower.layerGen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerGen.lean",
+   "lines": [
+    10,
+    39
+   ],
+   "file_sha256": "7d9b62ae58d979495d03c383b629b1fcf1f3a871c99ea018b7d5176d41d0dda4",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.layerGen :\n    ∀ (L Ω : Type) [Field L] [NumberField L] [Field Ω] [Algebra L Ω] [IsAlgClosure L Ω] (l : ℕ) [Fact l.Prime], HasMuQ l L → (∀ m, (layU l L Ω m).index = l ^ m) ∧\n        ∀ γ : G L Ω, IsGen l ⊤ γ → PropA.IsLevel l (cycZ L Ω l γ : ℤ_[l]ˣ) (cZero l L) ∧ γ ∈ levU l ⊤ 1 ∧ ∀ m, IsGen l (layU l L Ω m) (γ ^ l ^ m)"
+  },
+  "IsGen": {
+   "name": "Tower.IsGen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
+   "lines": [
+    36,
+    37
+   ],
+   "file_sha256": "c2e7a92efa7592787e53fe71e7c0de2c233bcd442adb1e05ad12f86383714056",
+   "kind": "def",
+   "statement": "def IsGen (γ : G k Ω) : Prop :=\n  γ ∈ U ∧ U.map (cycZ k Ω l) ≤ (Subgroup.zpowers (cycZ k Ω l γ)).topologicalClosure"
+  },
+  "dTw": {
+   "name": "Tower.dTw",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
+   "lines": [
+    56,
+    56
+   ],
+   "file_sha256": "c2e7a92efa7592787e53fe71e7c0de2c233bcd442adb1e05ad12f86383714056",
+   "kind": "def",
+   "statement": "def dTw (e : ℤ) : Representation ℤ_[l] (G k Ω) (Dinf l N U) := twist (dRep l N U) (cycZ k Ω l ^ (-e))"
+  },
+  "xTw": {
+   "name": "Tower.xTw",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
+   "lines": [
+    58,
+    58
+   ],
+   "file_sha256": "c2e7a92efa7592787e53fe71e7c0de2c233bcd442adb1e05ad12f86383714056",
+   "kind": "def",
+   "statement": "def xTw (e : ℤ) : Representation ℤ_[l] (G k Ω) (Xinf l N U) := twist (xRep l N U) (cycZ k Ω l ^ e)"
+  },
+  "xTwApply": {
+   "name": "Tower.xTw_apply_apply",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
+   "lines": [
+    66,
+    69
+   ],
+   "file_sha256": "c2e7a92efa7592787e53fe71e7c0de2c233bcd442adb1e05ad12f86383714056",
+   "kind": "theorem",
+   "statement": "theorem xTw_apply_apply (e : ℤ) (g : G k Ω) (x : Xinf l N U) (φ : Dinf l N U) :\n    xTw l N U e g x φ = x (dTw l N U e g⁻¹ φ)"
+  },
+  "ShaD": {
+   "name": "Tower.ShaD",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
+   "lines": [
+    73,
+    74
+   ],
+   "file_sha256": "c2e7a92efa7592787e53fe71e7c0de2c233bcd442adb1e05ad12f86383714056",
+   "kind": "abbrev",
+   "statement": "abbrev ShaD (e : ℤ) : Submodule ℤ_[l] (Dinf l N U) :=\n  Representation.invariants ((dTw l N U e).comp V.subtype : Representation ℤ_[l] V (Dinf l N U))"
+  },
+  "desc": {
+   "name": "Tower.desc",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/Imports.lean",
+   "lines": [
+    10,
+    147
+   ],
+   "file_sha256": "4ce26c6acf620009cc862839ad9fbfcb478889979b89f8587c108bf96b241e20",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.desc :\n    ∀ (k L Ω : Type) [Field k] [NumberField k] [Field L] [NumberField L] [Field Ω] [Algebra k L] [Algebra k Ω] [Algebra L Ω] [IsScalarTower k L Ω] [IsAlgClosure k Ω] [IsAlgClosure L Ω] (l : ℕ) [Fact l.Prime] (D : LData L Ω l) (e : ℤ) (U : Subgroup (G k Ω)) [U.Normal], e ≠ 0 → Procyc L Ω l → cycU l U = cycU l (galOf k L Ω) →\n        ∃ Φ : Sha D e ≃ₗ[ℤ_[l]] ShaD l l U (galOf k L Ω) e, IsDesc L D e U Φ.toLinearMap"
+  },
+  "shaLenInv": {
+   "name": "shaLen_eq_shaInv",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/GaloisCohomologyLength/ShaLenEqShaInv.lean",
+   "lines": [
+    58,
+    60
+   ],
+   "file_sha256": "7318de124d0f827b4bc8b25c5805fcf14f869b6f2e9989b2c8bd26ee4c6ed9c5",
+   "kind": "theorem",
+   "statement": "theorem shaLen_eq_shaInv (D : LData F Ω l) (e : ℤ) : shaLen D e = shaInv F l e"
+  },
+  "shaDGen": {
+   "name": "Tower.shaDGen",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ShaDGen.lean",
+   "lines": [
+    9,
+    59
+   ],
+   "file_sha256": "a4070db25e51fe1f80e161e14a106eccf616a0ff1884ddb4991cf338d9eefa47",
+   "kind": "theorem",
+   "statement": "theorem UpperTheory.V.Tower.shaDGen :\n    ∀ (k Ω : Type) [Field k] [NumberField k] [Field Ω] [Algebra k Ω] [IsAlgClosure k Ω] (l : ℕ) [Fact l.Prime] (N : ℕ) (U V : Subgroup (G k Ω)) [U.Normal] (e : ℤ) (γ : G k Ω), IsClosed (U : Set (G k Ω)) → V ≤ U → IsGen l V γ →\n        ShaD l N U V e = LinearMap.ker (dTw l N U e γ - 1) ∧ ShaD l N U V e = LinearMap.ker (dTw l N U e γ⁻¹ - 1)"
+  }
+ }
+}

@@ -1,0 +1,810 @@
+{
+ "atlas": "https://nasqret.github.io/riemann-proof-atlas/",
+ "atlas_commit": "d05bd171f52d456e0bca6d809d4b6af3ffd802eb",
+ "source_pin": "40e56bab026552e089d7afcfeff08d2defb9c005",
+ "bundle": "iwasawa-7c448cddb3",
+ "declarations_in_atlas": 818755,
+ "bundles_in_atlas": 4983,
+ "rows": [
+  {
+   "row": 385690,
+   "name": "UpperTheory.V.PropA.mem_levU_one",
+   "directory": "AdditiveValuationNorms",
+   "line": 22,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385691,
+   "name": "UpperTheory.V.PropA.Descends.eq_twLen",
+   "directory": "AdditiveValuationNorms",
+   "line": 30,
+   "bundle": "galois-cohom-87319d7293",
+   "bundle_label": "Galois and profinite cohomology · FinalU",
+   "subject": "Galois and profinite cohomology",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385692,
+   "name": "UpperTheory.V.PropA.aBound_of_descends",
+   "directory": "AdditiveValuationNorms",
+   "line": 36,
+   "bundle": "iwasawa-7c448cddb3",
+   "bundle_label": "Assemble the arithmetic tower window",
+   "subject": "Iwasawa theory and cyclotomic class-group towers",
+   "placed_by": "blueprint"
+  },
+  {
+   "row": 385693,
+   "name": "UpperTheory.V.PropA.aBound_of_isTower",
+   "directory": "AdditiveValuationNorms",
+   "line": 7,
+   "bundle": "iwasawa-7c448cddb3",
+   "bundle_label": "Assemble the arithmetic tower window",
+   "subject": "Iwasawa theory and cyclotomic class-group towers",
+   "placed_by": "blueprint"
+  },
+  {
+   "row": 385694,
+   "name": "UpperTheory.V.PropA.cokL",
+   "directory": "AdditiveValuationNorms",
+   "line": 6,
+   "bundle": "source-63f8b032f14d21fd",
+   "bundle_label": "Matrices, determinants and linear algebra · Automorphic Varieties · 1",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "refined: kernel-value"
+  },
+  {
+   "row": 385695,
+   "name": "UpperTheory.V.PropA.cokLen_le_of_range_le",
+   "directory": "AdditiveValuationNorms",
+   "line": 28,
+   "bundle": "linear-f8accc3c8c",
+   "bundle_label": "Matrices, determinants and linear algebra · FixBdQZero",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385696,
+   "name": "UpperTheory.V.PropA.descends",
+   "directory": "AdditiveValuationNorms",
+   "line": 8,
+   "bundle": "galois-cohom-87319d7293",
+   "bundle_label": "Galois and profinite cohomology · FinalU",
+   "subject": "Galois and profinite cohomology",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385697,
+   "name": "UpperTheory.V.PropA.detBound",
+   "directory": "AdditiveValuationNorms",
+   "line": 9,
+   "bundle": "linear-f8accc3c8c",
+   "bundle_label": "Matrices, determinants and linear algebra · FixBdQZero",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385698,
+   "name": "UpperTheory.V.PropA.detFactor",
+   "directory": "AdditiveValuationNorms",
+   "line": 6,
+   "bundle": "linear-f8accc3c8c",
+   "bundle_label": "Matrices, determinants and linear algebra · FixBdQZero",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385699,
+   "name": "UpperTheory.V.PropA.dualDiv",
+   "directory": "AdditiveValuationNorms",
+   "line": 8,
+   "bundle": "source-63f8b032f14d21fd",
+   "bundle_label": "Matrices, determinants and linear algebra · Automorphic Varieties · 1",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "refined: kernel-value"
+  },
+  {
+   "row": 385700,
+   "name": "UpperTheory.V.PropA.dualUnip",
+   "directory": "AdditiveValuationNorms",
+   "line": 9,
+   "bundle": "source-acbb52bd36fc5cd8",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 1",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 385701,
+   "name": "UpperTheory.V.PropA.twLen_le_growth",
+   "directory": "AdditiveValuationNorms",
+   "line": 17,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385702,
+   "name": "UpperTheory.V.PropA.exists_centres_level",
+   "directory": "AdditiveValuationNorms",
+   "line": 23,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385703,
+   "name": "UpperTheory.V.PropA.exists_centres",
+   "directory": "AdditiveValuationNorms",
+   "line": 34,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385704,
+   "name": "UpperTheory.V.PropA.vl_le_of_norm",
+   "directory": "AdditiveValuationNorms",
+   "line": 51,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385705,
+   "name": "UpperTheory.V.PropA.exists_centres_norm",
+   "directory": "AdditiveValuationNorms",
+   "line": 57,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385706,
+   "name": "UpperTheory.V.PropA.genLevel",
+   "directory": "AdditiveValuationNorms",
+   "line": 11,
+   "bundle": "galois-cohom-87319d7293",
+   "bundle_label": "Galois and profinite cohomology · FinalU",
+   "subject": "Galois and profinite cohomology",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385707,
+   "name": "UpperTheory.V.PropA.growth",
+   "directory": "AdditiveValuationNorms",
+   "line": 11,
+   "bundle": "source-acbb52bd36fc5cd8",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 1",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 385708,
+   "name": "UpperTheory.V.PropA.helly",
+   "directory": "AdditiveValuationNorms",
+   "line": 6,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385709,
+   "name": "UpperTheory.V.PropA.frob",
+   "directory": "AdditiveValuationNorms",
+   "line": 6,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-value"
+  },
+  {
+   "row": 385710,
+   "name": "UpperTheory.V.PropA.lift",
+   "directory": "AdditiveValuationNorms",
+   "line": 7,
+   "bundle": "linear-f8accc3c8c",
+   "bundle_label": "Matrices, determinants and linear algebra · FixBdQZero",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385711,
+   "name": "UpperTheory.V.PropA.mono",
+   "directory": "AdditiveValuationNorms",
+   "line": 6,
+   "bundle": "source-63f8b032f14d21fd",
+   "bundle_label": "Matrices, determinants and linear algebra · Automorphic Varieties · 1",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "refined: kernel-value"
+  },
+  {
+   "row": 385712,
+   "name": "UpperTheory.V.PropA.twist",
+   "directory": "AdditiveValuationNorms",
+   "line": 7,
+   "bundle": "source-acbb52bd36fc5cd8",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 1",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 385713,
+   "name": "UpperTheory.V.PropA.step",
+   "directory": "AdditiveValuationNorms",
+   "line": 9,
+   "bundle": "source-63f8b032f14d21fd",
+   "bundle_label": "Matrices, determinants and linear algebra · Automorphic Varieties · 1",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "refined: kernel-value"
+  },
+  {
+   "row": 385714,
+   "name": "UpperTheory.V.PropA.phi",
+   "directory": "AdditiveValuationNorms",
+   "line": 7,
+   "bundle": "linear-f8accc3c8c",
+   "bundle_label": "Matrices, determinants and linear algebra · FixBdQZero",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385715,
+   "name": "norm_le_of_dvd'",
+   "directory": "AdditiveValuationNorms",
+   "line": 7,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385716,
+   "name": "norm_eq_of_addVal",
+   "directory": "AdditiveValuationNorms",
+   "line": 12,
+   "bundle": "local-fields-ff1c25ef38",
+   "bundle_label": "Local fields, valuation and ramification · FrobFix",
+   "subject": "Local fields, valuation and ramification",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385717,
+   "name": "UpperTheory.V.PropA.lteNorm",
+   "directory": "AdditiveValuationNorms",
+   "line": 19,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385718,
+   "name": "nilLen_range_succ",
+   "directory": "AdditiveValuationNorms",
+   "line": 6,
+   "bundle": "linear-f8accc3c8c",
+   "bundle_label": "Matrices, determinants and linear algebra · FixBdQZero",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385719,
+   "name": "nilLen_lt",
+   "directory": "AdditiveValuationNorms",
+   "line": 11,
+   "bundle": "linear-f8accc3c8c",
+   "bundle_label": "Matrices, determinants and linear algebra · FixBdQZero",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385720,
+   "name": "UpperTheory.V.PropA.nilLen",
+   "directory": "AdditiveValuationNorms",
+   "line": 29,
+   "bundle": "rings-d1d96c5ab6",
+   "bundle_label": "Commutative algebra, ideals and modules · ConjConst",
+   "subject": "Commutative algebra, ideals and modules",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385721,
+   "name": "dvd_of_norm_le'",
+   "directory": "AdditiveValuationNorms",
+   "line": 6,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385722,
+   "name": "vl_prod",
+   "directory": "AdditiveValuationNorms",
+   "line": 21,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385723,
+   "name": "UpperTheory.V.PropA.normVal",
+   "directory": "AdditiveValuationNorms",
+   "line": 30,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385724,
+   "name": "padic_units_distance_le_max",
+   "directory": "AdditiveValuationNorms",
+   "line": 8,
+   "bundle": "padic-arithmetic-bcc9961a23",
+   "bundle_label": "p-adic arithmetic and power series · ExistsDeterminantPairOverAlgebraicIntegers",
+   "subject": "p-adic arithmetic and power series",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385725,
+   "name": "UpperTheory.V.PropA.ball",
+   "directory": "AdditiveValuationNorms",
+   "line": 37,
+   "bundle": "padic-arithmetic-bcc9961a23",
+   "bundle_label": "p-adic arithmetic and power series · ExistsDeterminantPairOverAlgebraicIntegers",
+   "subject": "p-adic arithmetic and power series",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385726,
+   "name": "UpperTheory.V.PropA.powIn",
+   "directory": "AdditiveValuationNorms",
+   "line": 6,
+   "bundle": "source-acbb52bd36fc5cd8",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 1",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 385727,
+   "name": "UpperTheory.V.PropA.qzInj",
+   "directory": "AdditiveValuationNorms",
+   "line": 8,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 385728,
+   "name": "UpperTheory.V.PropA.shaLeV",
+   "directory": "AdditiveValuationNorms",
+   "line": 7,
+   "bundle": "galois-cohom-87319d7293",
+   "bundle_label": "Galois and profinite cohomology · FinalU",
+   "subject": "Galois and profinite cohomology",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 385729,
+   "name": "UpperTheory.V.PropA.torsFin",
+   "directory": "AdditiveValuationNorms",
+   "line": 9,
+   "bundle": "source-63f8b032f14d21fd",
+   "bundle_label": "Matrices, determinants and linear algebra · Automorphic Varieties · 1",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "refined: kernel-value"
+  },
+  {
+   "row": 385730,
+   "name": "UpperTheory.V.PropA.unipPow",
+   "directory": "AdditiveValuationNorms",
+   "line": 8,
+   "bundle": "source-63f8b032f14d21fd",
+   "bundle_label": "Matrices, determinants and linear algebra · Automorphic Varieties · 1",
+   "subject": "Matrices, determinants and linear algebra",
+   "placed_by": "refined: kernel-value"
+  },
+  {
+   "row": 385731,
+   "name": "UpperTheory.V.PropA.xUnip",
+   "directory": "AdditiveValuationNorms",
+   "line": 9,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397026,
+   "name": "act_root",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397027,
+   "name": "exists_pow",
+   "directory": "LayeredIsomorphisms",
+   "line": 11,
+   "bundle": "iwasawa-5716cc9ff6",
+   "bundle_label": "Iwasawa theory and cyclotomic class-group towers · CyclotomicCharacterPlusPart",
+   "subject": "Iwasawa theory and cyclotomic class-group towers",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397028,
+   "name": "mem_fix",
+   "directory": "LayeredIsomorphisms",
+   "line": 16,
+   "bundle": "finite-groups-e27dbf5954",
+   "bundle_label": "Group theory and finite groups · H2SubsingletonTransport",
+   "subject": "Group theory and finite groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397029,
+   "name": "ker_congr",
+   "directory": "LayeredIsomorphisms",
+   "line": 21,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 397030,
+   "name": "exists_res",
+   "directory": "LayeredIsomorphisms",
+   "line": 25,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397031,
+   "name": "equiv_of_range",
+   "directory": "LayeredIsomorphisms",
+   "line": 31,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397032,
+   "name": "equiv_of_fix",
+   "directory": "LayeredIsomorphisms",
+   "line": 36,
+   "bundle": "galois-cohom-0b3ce6799d",
+   "bundle_label": "Galois and profinite cohomology · ExistsAlgebraicClosureLift",
+   "subject": "Galois and profinite cohomology",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397033,
+   "name": "UpperTheory.V.Win.abiso",
+   "directory": "LayeredIsomorphisms",
+   "line": 47,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397034,
+   "name": "UpperTheory.V.Win.exc",
+   "directory": "LayeredIsomorphisms",
+   "line": 7,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 397035,
+   "name": "UpperTheory.V.Win.final",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397036,
+   "name": "UpperTheory.V.Win.disc",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "iwasawa-5716cc9ff6",
+   "bundle_label": "Iwasawa theory and cyclotomic class-group towers · CyclotomicCharacterPlusPart",
+   "subject": "Iwasawa theory and cyclotomic class-group towers",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397037,
+   "name": "UpperTheory.V.Win.point",
+   "directory": "LayeredIsomorphisms",
+   "line": 9,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397038,
+   "name": "UpperTheory.V.Win.kexp",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397039,
+   "name": "isTotallyComplex_of_hasMuQ",
+   "directory": "LayeredIsomorphisms",
+   "line": 7,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397040,
+   "name": "UpperTheory.V.Win.klen",
+   "directory": "LayeredIsomorphisms",
+   "line": 23,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397041,
+   "name": "UpperTheory.V.Win.kmono",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "source-b29dbcdddefa8869",
+   "bundle_label": "Commutative algebra, ideals and modules · Automorphic Varieties · 1",
+   "subject": "Commutative algebra, ideals and modules",
+   "placed_by": "refined: kernel-value"
+  },
+  {
+   "row": 397042,
+   "name": "UpperTheory.V.Win.layerdisc",
+   "directory": "LayeredIsomorphisms",
+   "line": 8,
+   "bundle": "iwasawa-5716cc9ff6",
+   "bundle_label": "Iwasawa theory and cyclotomic class-group towers · CyclotomicCharacterPlusPart",
+   "subject": "Iwasawa theory and cyclotomic class-group towers",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397043,
+   "name": "UpperTheory.V.Win.layeremb",
+   "directory": "LayeredIsomorphisms",
+   "line": 7,
+   "bundle": "iwasawa-5716cc9ff6",
+   "bundle_label": "Iwasawa theory and cyclotomic class-group towers · CyclotomicCharacterPlusPart",
+   "subject": "Iwasawa theory and cyclotomic class-group towers",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397044,
+   "name": "winlx_up",
+   "directory": "LayeredIsomorphisms",
+   "line": 7,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "module-neighbours"
+  },
+  {
+   "row": 397045,
+   "name": "winlx_max",
+   "directory": "LayeredIsomorphisms",
+   "line": 21,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397046,
+   "name": "winlx_step",
+   "directory": "LayeredIsomorphisms",
+   "line": 42,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397047,
+   "name": "UpperTheory.V.Win.layerex",
+   "directory": "LayeredIsomorphisms",
+   "line": 66,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397048,
+   "name": "nonempty_ringEquiv_of_isCyclotomic_finrank_eq",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "rings-0df258ed7a",
+   "bundle_label": "Commutative algebra, ideals and modules · LocTwo",
+   "subject": "Commutative algebra, ideals and modules",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397049,
+   "name": "UpperTheory.V.Win.layeriso",
+   "directory": "LayeredIsomorphisms",
+   "line": 38,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397050,
+   "name": "UpperTheory.V.Win.logs",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397051,
+   "name": "UpperTheory.V.Win.near1",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "source-7a2310808435ca5f",
+   "bundle_label": "Divisibility, congruences and arithmetic functions · Automorphic Varieties · 1",
+   "subject": "Divisibility, congruences and arithmetic functions",
+   "placed_by": "refined: kernel-type"
+  },
+  {
+   "row": 397052,
+   "name": "ne_top_and_toNat_le_of_le_one_add",
+   "directory": "LayeredIsomorphisms",
+   "line": 14,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397053,
+   "name": "UpperTheory.V.Win.partA",
+   "directory": "LayeredIsomorphisms",
+   "line": 24,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397054,
+   "name": "exists_isPrimitiveRoot_of_hasMu_of_isAbField",
+   "directory": "LayeredIsomorphisms",
+   "line": 15,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397055,
+   "name": "UpperTheory.V.Win.partB",
+   "directory": "LayeredIsomorphisms",
+   "line": 50,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397056,
+   "name": "UpperTheory.V.Win.point2",
+   "directory": "LayeredIsomorphisms",
+   "line": 8,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397057,
+   "name": "UpperTheory.V.Win.rootdeg",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "number-fields-44573282b5",
+   "bundle_label": "Global fields, idèles and class groups · ArtKer",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397058,
+   "name": "UpperTheory.V.Win.Good.mono",
+   "directory": "LayeredIsomorphisms",
+   "line": 48,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397059,
+   "name": "UpperTheory.V.Win.thmBab_of",
+   "directory": "LayeredIsomorphisms",
+   "line": 11,
+   "bundle": "iwasawa-7c448cddb3",
+   "bundle_label": "Assemble the arithmetic tower window",
+   "subject": "Iwasawa theory and cyclotomic class-group towers",
+   "placed_by": "blueprint"
+  },
+  {
+   "row": 397060,
+   "name": "UpperTheory.V.Win.thmBab_of_lemmaK",
+   "directory": "LayeredIsomorphisms",
+   "line": 9,
+   "bundle": "iwasawa-7c448cddb3",
+   "bundle_label": "Assemble the arithmetic tower window",
+   "subject": "Iwasawa theory and cyclotomic class-group towers",
+   "placed_by": "blueprint"
+  },
+  {
+   "row": 397061,
+   "name": "UpperTheory.V.Win.vvat",
+   "directory": "LayeredIsomorphisms",
+   "line": 7,
+   "bundle": "number-fields-af3225c4d0",
+   "bundle_label": "Global fields, idèles and class groups · AdelicHeightInfGLLeOpNorm",
+   "subject": "Global fields, idèles and class groups",
+   "placed_by": "declaration"
+  },
+  {
+   "row": 397062,
+   "name": "UpperTheory.V.Win.window",
+   "directory": "LayeredIsomorphisms",
+   "line": 7,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  },
+  {
+   "row": 397063,
+   "name": "UpperTheory.V.Win.window1",
+   "directory": "LayeredIsomorphisms",
+   "line": 6,
+   "bundle": "source-f812961c1341b425",
+   "bundle_label": "Automorphic representations, trace formulae and theta lifting · Automorphic Varieties · 3",
+   "subject": "Automorphic representations, trace formulae and theta lifting",
+   "placed_by": "refined: module-context"
+  }
+ ]
+}

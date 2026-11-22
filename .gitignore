@@ -14,6 +14,7 @@ book/_static/atlas/
 # LaTeX intermediates (the PDF itself is committed)
 blueprint/build/
 guide/build/
+digests/*/build/
 *.aux
 *.fdb_latexmk
 *.fls

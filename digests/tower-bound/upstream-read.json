@@ -1,0 +1,77 @@
+{
+ "what": "changes of cited declarations on the upstream default branch that were read, with the verdict; an entry counts while the upstream file has the recorded hash",
+ "read": [
+  {
+   "declaration": "Kum.dinfNil",
+   "change": "proof changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "3e7214399a259c97d3352c7547e0712b22163e30609eb73f2dc3b6e8fd3e66fb",
+   "verdict": "Four tactic lines inside the proof adapted to a newer library (explicit argument of map_add, the coefficient function of polynomials). Statement unchanged.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "Tower.isTower_iff",
+   "change": "statement changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "c37cc5d18103b5389e8979a742574097bbbafcea10bedfc6b49f2ba781a5b736",
+   "verdict": "The declaration is no longer in this file. The note cites it once, in the section on how the bound is used, and says that the final theorems do not reach it; nothing in the note depends on it.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "Tower.layerUniq",
+   "change": "proof changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "7df9be322700b38f8e7fc0fa4c4a54fdaa746071444dc3905bbb939f9d7a5296",
+   "verdict": "One step: the embedding into the algebraic closure is obtained by an explicit call with its instance arguments. Statement unchanged.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "Tower.step0",
+   "change": "proof changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "c37cc5d18103b5389e8979a742574097bbbafcea10bedfc6b49f2ba781a5b736",
+   "verdict": "One step: the embedding into the algebraic closure is obtained by an explicit call with its instance arguments. Statement unchanged; the proof follows the same steps as in section 8 of the note.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "Win.thmBab_of",
+   "change": "proof changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "71ad3ce8a9e904505011b4bcb21f6a9c67665e57b882372b8a72cfba0017de4b",
+   "verdict": "One line: dif_pos replaced by dite_eq_left. Statement unchanged.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "detBound",
+   "change": "proof changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "a639b4f2e0d205181fc180205e77bcfd601b1fa2d446ca36f2d671c37c772f2a",
+   "verdict": "One line: the library lemma Finset.prod_le_prod is now called Finset.prod_le_prod₀. Statement unchanged.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "frob",
+   "change": "proof changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "002999203a69f489dbda5efed7a320db9a03ec551b827c0d0859f0ed90f4545d",
+   "verdict": "One line: the coefficient function of polynomials is written differently. Statement unchanged.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "lift",
+   "change": "proof changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "3052ddaadc00c0286beb1507710f5d139984a2b6467a33836d8102e7f4164c4f",
+   "verdict": "One rfl line removed from the proof. Statement unchanged.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "shaInv",
+   "change": "statement changed",
+   "upstream_commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+   "file_sha256": "1dbbf9a5156fac494b1039db8b5e0cf0898e21b26f2c8d3871ccbe94bb4abdbe",
+   "verdict": "Only the spelling of one implicit argument changed (Above (F := F) l); the definition is the same.",
+   "read": "2026-11-22"
+  }
+ ]
+}

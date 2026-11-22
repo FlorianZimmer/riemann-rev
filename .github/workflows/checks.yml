@@ -32,6 +32,8 @@ jobs:
         run: python -B scripts/check_project.py
       - name: the README is what the data give
         run: python -B scripts/build_readme.py --check
+      - name: the digest agrees with its records and its examples recompute
+        run: python -B scripts/build_digest.py --check
   lean:
     name: Lean skeleton builds without axioms
     # not in a private copy of the repository (no free minutes there)

@@ -1,0 +1,669 @@
+{
+ "schema": 2,
+ "digest": "tower-bound",
+ "upstream": "leanprover-community/riemann-hypothesis",
+ "base": "40e56bab026552e089d7afcfeff08d2defb9c005",
+ "checked": "2026-11-22 16:56 UTC",
+ "cited": {
+  "directories": 15,
+  "files": 65,
+  "declarations": 108
+ },
+ "main": {
+  "commit": "8f328277481a6178eb0dbbb262b2419a3c8bfe02",
+  "committed": "2026-11-22T16:51:36Z",
+  "file_absent": [],
+  "statement_changed": [
+   "Tower.isTower_iff",
+   "shaInv"
+  ],
+  "proof_changed": [
+   "detBound",
+   "Kum.dinfNil",
+   "frob",
+   "Tower.layerUniq",
+   "lift",
+   "Tower.step0",
+   "Win.thmBab_of"
+  ],
+  "file_sha256": {
+   "Tower.isTower_iff": "c37cc5d18103b5389e8979a742574097bbbafcea10bedfc6b49f2ba781a5b736",
+   "shaInv": "1dbbf9a5156fac494b1039db8b5e0cf0898e21b26f2c8d3871ccbe94bb4abdbe",
+   "detBound": "a639b4f2e0d205181fc180205e77bcfd601b1fa2d446ca36f2d671c37c772f2a",
+   "Kum.dinfNil": "3e7214399a259c97d3352c7547e0712b22163e30609eb73f2dc3b6e8fd3e66fb",
+   "frob": "002999203a69f489dbda5efed7a320db9a03ec551b827c0d0859f0ed90f4545d",
+   "Tower.layerUniq": "7df9be322700b38f8e7fc0fa4c4a54fdaa746071444dc3905bbb939f9d7a5296",
+   "lift": "3052ddaadc00c0286beb1507710f5d139984a2b6467a33836d8102e7f4164c4f",
+   "Tower.step0": "c37cc5d18103b5389e8979a742574097bbbafcea10bedfc6b49f2ba781a5b736",
+   "Win.thmBab_of": "71ad3ce8a9e904505011b4bcb21f6a9c67665e57b882372b8a72cfba0017de4b"
+  }
+ },
+ "open_pull_requests": {
+  "checked": 42,
+  "touching": [
+   {
+    "number": 4,
+    "title": "chore: minimize imports",
+    "head": "50100c586985687aa29344fc0e792c008036ff8b",
+    "updated": "2026-11-22T00:11:12Z",
+    "file_absent": [],
+    "statement_changed": [],
+    "proof_changed": [
+     "detFactor",
+     "Kum.dinfNil",
+     "Tower.dualKer",
+     "lift"
+    ]
+   },
+   {
+    "number": 44,
+    "title": "Simplify the shared five-theorem proof and reduce its Lean source by 1.54 million lines",
+    "head": "c9b3e57f0fe987012d32c2523635387bfe56d5a5",
+    "updated": "2026-11-21T22:00:24Z",
+    "file_absent": [
+     "ball",
+     "Tower.desc",
+     "descends",
+     "detBound",
+     "detFactor",
+     "dualDiv",
+     "dualUnip",
+     "dvd_of_norm_le'",
+     "exact_dual",
+     "genLevel",
+     "growth",
+     "helly",
+     "Tower.layerGen",
+     "Tower.layerUniq",
+     "le_dual",
+     "Tower.lenDual",
+     "lift",
+     "lteNorm",
+     "lu_key",
+     "mono",
+     "Tower.muQ",
+     "Win.near1",
+     "nilLen",
+     "nilLen_lt",
+     "nilLen_range_succ",
+     "norm_eq_of_addVal",
+     "norm_le_of_dvd'",
+     "normVal",
+     "pg_emult",
+     "pg_exists",
+     "pg_index",
+     "phi",
+     "Tower.princGen",
+     "exists_qz_ne_zero_annihilators_of_ne_zero",
+     "Tower.qzSep",
+     "Tower.shaDGen",
+     "simple_dual",
+     "step",
+     "Win.thmBab_of",
+     "torsFin",
+     "twist",
+     "unipPow",
+     "padic_units_distance_le_max",
+     "vl_prod",
+     "Win.window",
+     "xUnip"
+    ],
+    "statement_changed": [],
+    "proof_changed": []
+   },
+   {
+    "number": 55,
+    "title": "Remove declarations that are unused in the proof",
+    "head": "607375a494cceb57576114deb9e1b8fff53ca0cb",
+    "updated": "2026-11-22T08:50:36Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff"
+    ],
+    "proof_changed": []
+   },
+   {
+    "number": 58,
+    "title": "Collapse 24,027 single-declaration thin re-export wrappers (stacked on #55)",
+    "head": "7ea35ecdeb780dbd53230d6a99bbfcd1353430b7",
+    "updated": "2026-11-22T01:29:47Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff"
+    ],
+    "proof_changed": []
+   },
+   {
+    "number": 61,
+    "title": "Collapse 5,544 more thin re-export wrappers — Wave 2 (stacked on #58)",
+    "head": "7aeffe025d58838cae6df3c33f07987c3af67076",
+    "updated": "2026-11-22T11:47:22Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff"
+    ],
+    "proof_changed": []
+   },
+   {
+    "number": 62,
+    "title": "Shorten machine-dumped terms and reuse repeated proofs in 76 modules",
+    "head": "31a38861da6da8f71b16d18e935ac4f6794141d9",
+    "updated": "2026-11-22T14:12:19Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 63,
+    "title": "Consolidate 133,202 small sibling modules into 22,831 antichain bundles (−110,371 files, −67.1%)",
+    "head": "b8f54654a52be8aee49242459fb28d6697fd8d30",
+    "updated": "2026-11-22T14:21:55Z",
+    "file_absent": [
+     "ball",
+     "cokL",
+     "Tower.cokerDual",
+     "Tower.cycRange",
+     "detBound",
+     "detFactor",
+     "Kum.dinfNil",
+     "dualDiv",
+     "Tower.dualKer",
+     "dvd_of_norm_le'",
+     "exact_dual",
+     "Win.exc",
+     "frob",
+     "Base.galEmbTop",
+     "Kum.galOfCyc",
+     "helly",
+     "Tower.layerGen",
+     "Tower.layerUniq",
+     "le_dual",
+     "Base.lenComp",
+     "Tower.lenDual",
+     "lift",
+     "abelian₂.lte",
+     "lteNorm",
+     "emultiplicity_pow_sub_one_odd",
+     "emultiplicity_pow_sub_one_sq",
+     "lu_key",
+     "mono",
+     "Tower.muQ",
+     "Win.near1",
+     "nilLen",
+     "nilLen_lt",
+     "nilLen_range_succ",
+     "norm_eq_of_addVal",
+     "norm_le_of_dvd'",
+     "normVal",
+     "pg_emult",
+     "pg_exists",
+     "pg_index",
+     "phi",
+     "powIn",
+     "princ_le_of_isClosed",
+     "Tower.princGen",
+     "exists_qz_ne_zero_annihilators_of_ne_zero",
+     "Tower.qzSep",
+     "Tower.shaDGen",
+     "shaLen_eq_shaInv",
+     "simple_dual",
+     "length_cokernel_eq_addVal_det",
+     "step",
+     "torsFin",
+     "twist",
+     "unipPow",
+     "padic_units_distance_le_max",
+     "vl_prod",
+     "Win.window"
+    ],
+    "statement_changed": [],
+    "proof_changed": []
+   },
+   {
+    "number": 67,
+    "title": "Remove proof syntax that was flagged unused by Lean's linters",
+    "head": "977f1a2fc24f90eef38f4e66e0c225d37735d487",
+    "updated": "2026-11-22T08:50:36Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff"
+    ],
+    "proof_changed": [
+     "detFactor",
+     "Kum.dinfNil",
+     "Tower.dualKer",
+     "lift"
+    ]
+   },
+   {
+    "number": 74,
+    "title": "Give four duplicated theorems a single defining module",
+    "head": "74efb4e7dbcc9fd9368c11e126661ff9bf273be8",
+    "updated": "2026-11-22T16:42:30Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 78,
+    "title": "Add `docs/references.bib`, docstring citations and a cross-reference tag for five statements",
+    "head": "25f9d796ce67aa7c80a937df1074216005e21b06",
+    "updated": "2026-11-22T16:30:56Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 79,
+    "title": "Remove heartbeat overrides",
+    "head": "90d23d60feda4ba5c41c6c7f8835c1de67bee799",
+    "updated": "2026-11-22T16:21:28Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 80,
+    "title": "Remove stub-check guards from the 4.36 port (stacked on #66)",
+    "head": "2bab9a1e9bc8ee243c8c239de2174d9e9ed21d13",
+    "updated": "2026-11-22T16:42:32Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 81,
+    "title": "Remove debugging output from the 4.36 port (stacked on #66)",
+    "head": "c35f536f327025742b2d1f0851d4460772bf4e5b",
+    "updated": "2026-11-22T16:42:34Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 88,
+    "title": "Add a formal-conjectures Comparator setup and gather the setups in comparator/",
+    "head": "1313f85cc02255a652a7ce97477f3aa20731078d",
+    "updated": "2026-11-22T16:29:50Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 91,
+    "title": "Combine reviewed proof cleanups on Lean 4.36",
+    "head": "039a209ecb5ccea56449f7ae63289f3b78e53246",
+    "updated": "2026-11-22T16:42:36Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 97,
+    "title": "Run the Lean auto-formatter over `src/` (stacked on #66)",
+    "head": "79660a576307085788485c3cb7bc5c6464e8e14d",
+    "updated": "2026-11-22T16:42:38Z",
+    "file_absent": [],
+    "statement_changed": [
+     "XDual",
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "Win.ABound",
+     "Descends",
+     "Published.FerreroWashington",
+     "Win.FirstBound",
+     "LemmaK",
+     "Win.SecondBound",
+     "aBound_of_descends",
+     "aBound_of_isTower",
+     "ball",
+     "exists_centres",
+     "exists_centres_norm",
+     "cokL",
+     "Tower.cokerDual",
+     "Tower.cycRange",
+     "Tower.dTw",
+     "Tower.desc",
+     "descends",
+     "detBound",
+     "detFactor",
+     "Kum.dinfNil",
+     "dualDiv",
+     "Tower.dualKer",
+     "dualUnip",
+     "dvd_of_norm_le'",
+     "Descends.eq_twLen",
+     "exact_dual",
+     "Win.exc",
+     "Two.fixedIn",
+     "frob",
+     "Base.galEmbTop",
+     "Kum.galOfCyc",
+     "genLevel",
+     "growth",
+     "helly",
+     "Tower.layerGen",
+     "Tower.layerUniq",
+     "le_dual",
+     "Base.lenComp",
+     "Tower.lenDual",
+     "exists_centres_level",
+     "lift",
+     "abelian₂.lte",
+     "lteNorm",
+     "emultiplicity_pow_sub_one_odd",
+     "emultiplicity_pow_sub_one_sq",
+     "lu_key",
+     "mem_levU_one",
+     "mono",
+     "Tower.muQ",
+     "Win.near1",
+     "nilLen",
+     "nilLen_lt",
+     "nilLen_range_succ",
+     "norm_eq_of_addVal",
+     "normVal",
+     "pg_emult",
+     "pg_exists",
+     "pg_index",
+     "phi",
+     "powIn",
+     "princ_le_of_isClosed",
+     "Tower.princGen",
+     "exists_qz_ne_zero_annihilators_of_ne_zero",
+     "qzInj",
+     "Tower.qzSep",
+     "cokLen_le_of_range_le",
+     "Tower.shaDGen",
+     "shaLeV",
+     "simple_dual",
+     "length_cokernel_eq_addVal_det",
+     "step",
+     "Tower.step0",
+     "Win.thmBab_of",
+     "Win.thmBab_of_lemmaK",
+     "torsFin",
+     "Two.towerFixed",
+     "twLen_le_growth",
+     "twist",
+     "unipPow",
+     "padic_units_distance_le_max",
+     "vl_prod",
+     "Win.window",
+     "Tower.xTw_apply_apply",
+     "xUnip"
+    ]
+   },
+   {
+    "number": 98,
+    "title": "Minimize and privatize imports (stacked on #79)",
+    "head": "e2d63d253904023ae299743da96a19ea8cd73fce",
+    "updated": "2026-11-22T12:42:36Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 104,
+    "title": "Speed up the slowest proofs (stacked on #79)",
+    "head": "2ea000c90de863f15260573296e84ca49b578d1f",
+    "updated": "2026-11-22T16:22:19Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 109,
+    "title": "Restore #68 shared GL finiteness proof on Lean 4.36 (−180 files, −9,730 lines)",
+    "head": "0d0a55648da91f6d3f19abde039f290a5687d7b0",
+    "updated": "2026-11-22T15:42:22Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 110,
+    "title": "Simplify explicit type dumps in cpR and std_cpR (NonzeroPlacesOverPrimesOfLifts.lean)",
+    "head": "5cdd8a23b713f8d2c0f60b4b414372b08479def0",
+    "updated": "2026-11-22T15:43:11Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 113,
+    "title": "Add a manually triggered workflow that runs the Lean auto-formatter over `src/`",
+    "head": "7455952b33cd81f8c7ab71b97688ad565ea1ce2f",
+    "updated": "2026-11-22T15:52:42Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 114,
+    "title": "docs: add comments to HomAppHomOfRestrictImage.lean‎",
+    "head": "0fb9cbcfa39be82b85e5b7e545522e77985a74c4",
+    "updated": "2026-11-22T16:23:49Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 115,
+    "title": "Land the first reviewed Lean 4.36 cleanup batch",
+    "head": "4fc58675a153d93ad726a0ee9fc414589e11f22f",
+    "updated": "2026-11-22T16:19:59Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 116,
+    "title": "Remove duplicate declarations from ExceptionalGroupG2 (−2,638 lines)",
+    "head": "cee3c8c5b86e35f826bc864771ec48fc96cd8030",
+    "updated": "2026-11-22T16:44:21Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   },
+   {
+    "number": 117,
+    "title": "Simplify explicit typeclass dumps in 4 more CapelliIdentities files (Lean 4.36)",
+    "head": "0cbc37ea9bb26dfe63d6c282c064d1d3f988848f",
+    "updated": "2026-11-22T16:44:53Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Tower.isTower_iff",
+     "shaInv"
+    ],
+    "proof_changed": [
+     "detBound",
+     "Kum.dinfNil",
+     "frob",
+     "Tower.layerUniq",
+     "lift",
+     "Tower.step0",
+     "Win.thmBab_of"
+    ]
+   }
+  ]
+ }
+}

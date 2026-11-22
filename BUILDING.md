@@ -27,6 +27,7 @@ Everything except the prose is generated. All commands are run from the reposito
 | `make pdf` | compiles the illustrated blueprint | `blueprint/atlas-blueprint.pdf` |
 | `make guide` | compiles the guide; fails if a symbol is missing from the notation list, on an overfull box, or on a changed page count | `guide: guide/proof-guide.pdf, … pages` |
 | `make guide-gif` | the guide as an animated GIF | `guide gif: … frames` |
+| `make digest` | compiles the deformalization digest: checks its record of Lean declarations, recomputes the examples and the figure; fails on an unknown Lean key, a symbol missing from the notation list or an overfull box | `digest: digests/tower-bound/tower-bound.pdf, … pages` |
 | `make book` | builds the Jupyter Book; notebooks are executed and contain assertions | `build succeeded` |
 | `make readme` | regenerates `README.md` from the data | `readme: README.md, … lines` |
 | `make site` | assembles the web site in `_site/`: home page, atlas, guide, blueprint, book | `site: _site/, … files` |
