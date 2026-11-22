@@ -1,0 +1,394 @@
+{
+ "schema": 2,
+ "digest": "local-nilpotence",
+ "upstream": "leanprover-community/riemann-hypothesis",
+ "base": "40e56bab026552e089d7afcfeff08d2defb9c005",
+ "checked": "2026-11-22 17:58 UTC",
+ "cited": {
+  "directories": 9,
+  "files": 13,
+  "declarations": 27
+ },
+ "main": {
+  "commit": "c7791603122c0328f79e49f6be5d7d4402effc53",
+  "committed": "2026-11-22T17:50:19Z",
+  "file_absent": [],
+  "statement_changed": [
+   "Kum.funRepMem"
+  ],
+  "proof_changed": [
+   "Kum.dinfNil",
+   "exists_prime_pow_smul_eq_zero_qz"
+  ],
+  "file_sha256": {
+   "Kum.funRepMem": "f2416dd7f8dec772942959f5aeaf24d364b1c8769dd94d4185777df6bbc17a8f",
+   "Kum.dinfNil": "3e7214399a259c97d3352c7547e0712b22163e30609eb73f2dc3b6e8fd3e66fb",
+   "exists_prime_pow_smul_eq_zero_qz": "3e7214399a259c97d3352c7547e0712b22163e30609eb73f2dc3b6e8fd3e66fb"
+  }
+ },
+ "open_pull_requests": {
+  "checked": 41,
+  "touching": [
+   {
+    "number": 4,
+    "title": "chore: minimize imports",
+    "head": "50100c586985687aa29344fc0e792c008036ff8b",
+    "updated": "2026-11-22T00:11:12Z",
+    "file_absent": [],
+    "statement_changed": [],
+    "proof_changed": [
+     "Kum.dinfNil"
+    ]
+   },
+   {
+    "number": 44,
+    "title": "Simplify the shared five-theorem proof and reduce its Lean source by 1.54 million lines",
+    "head": "c9b3e57f0fe987012d32c2523635387bfe56d5a5",
+    "updated": "2026-11-21T22:00:24Z",
+    "file_absent": [
+     "PropA.dualUnip",
+     "Tower.shaDGen",
+     "PropA.xUnip"
+    ],
+    "statement_changed": [],
+    "proof_changed": []
+   },
+   {
+    "number": 62,
+    "title": "Shorten machine-dumped terms and reuse repeated proofs in 76 modules",
+    "head": "31a38861da6da8f71b16d18e935ac4f6794141d9",
+    "updated": "2026-11-22T17:16:36Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 67,
+    "title": "Remove proof syntax that was flagged unused by Lean's linters",
+    "head": "977f1a2fc24f90eef38f4e66e0c225d37735d487",
+    "updated": "2026-11-22T08:50:36Z",
+    "file_absent": [],
+    "statement_changed": [],
+    "proof_changed": [
+     "Kum.dinfNil"
+    ]
+   },
+   {
+    "number": 74,
+    "title": "Give four duplicated theorems a single defining module",
+    "head": "f31ab6435355e24214ff0e86e24a59394322892e",
+    "updated": "2026-11-22T17:55:31Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 78,
+    "title": "Add `docs/references.bib`, docstring citations and a cross-reference tag for five statements",
+    "head": "fd9ef1ba16d58f3748c89b6741a7b4c1f444a877",
+    "updated": "2026-11-22T17:31:40Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 79,
+    "title": "Remove heartbeat overrides",
+    "head": "90d23d60feda4ba5c41c6c7f8835c1de67bee799",
+    "updated": "2026-11-22T16:21:28Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 80,
+    "title": "Remove stub-check guards from the 4.36 port (stacked on #66)",
+    "head": "59057b1de27671658ab87022f0899613f91ae3b4",
+    "updated": "2026-11-22T17:55:32Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 81,
+    "title": "Remove debugging output from the 4.36 port (stacked on #66)",
+    "head": "6f3d67880dcd8dde6b76f6ec6d8a0b7fd2114145",
+    "updated": "2026-11-22T17:55:34Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 86,
+    "title": "Report vm.max_map_count at job start, fix the AWS template, clarify doctor output",
+    "head": "9422ada52f367cf8b1da05ce8df9ca0b7ff727a0",
+    "updated": "2026-11-22T17:18:39Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 87,
+    "title": "Shorten checked proofs across 816 Lean modules",
+    "head": "dbbf5d8bdf07025202ee4954437d41481ae69847",
+    "updated": "2026-11-22T17:29:34Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 88,
+    "title": "Add a formal-conjectures Comparator setup and gather the setups in comparator/",
+    "head": "24e73b1ff2c9c965e39c68c32e50bdaf13a7db7a",
+    "updated": "2026-11-22T17:26:13Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 91,
+    "title": "Combine reviewed proof cleanups on Lean 4.36",
+    "head": "68fc637250dd1538cdda48bdb41dc99b46e939c7",
+    "updated": "2026-11-22T17:55:36Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 97,
+    "title": "Run the Lean auto-formatter over `src/` (stacked on #66)",
+    "head": "c97a0fa101f9e2d70e163df2de9c2e3f79edcd79",
+    "updated": "2026-11-22T17:55:38Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.XDual",
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.Dinf",
+     "Gal.Ine",
+     "conjGal_mem_Dec",
+     "conjGal_mem_Ine",
+     "Gal.cycZ",
+     "Kum.dinfNil",
+     "PropA.dualUnip",
+     "Kum.funRep",
+     "Base.levU",
+     "mem_princ_iff_pow_dvd_sub_one",
+     "pow_succ_dvd_pow_prime_sub_one",
+     "exists_princ_subset_of_mem_nhds_one",
+     "exists_prime_pow_smul_eq_zero_qz",
+     "Tower.shaDGen",
+     "PropA.xUnip"
+    ]
+   },
+   {
+    "number": 98,
+    "title": "Minimize and privatize imports (stacked on #79)",
+    "head": "86692ef803d35b2ad0ea1ec0ebddadd3f860b33c",
+    "updated": "2026-11-22T17:19:58Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 104,
+    "title": "Speed up the slowest proofs (stacked on #79)",
+    "head": "2ea000c90de863f15260573296e84ca49b578d1f",
+    "updated": "2026-11-22T16:22:19Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 109,
+    "title": "Restore #68 shared GL finiteness proof on Lean 4.36 (−180 files, −9,730 lines)",
+    "head": "0d0a55648da91f6d3f19abde039f290a5687d7b0",
+    "updated": "2026-11-22T17:00:11Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 110,
+    "title": "Simplify explicit type dumps in cpR and std_cpR (NonzeroPlacesOverPrimesOfLifts.lean)",
+    "head": "5cdd8a23b713f8d2c0f60b4b414372b08479def0",
+    "updated": "2026-11-22T15:43:11Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 113,
+    "title": "Add a manually triggered workflow that runs the Lean auto-formatter over `src/`",
+    "head": "7455952b33cd81f8c7ab71b97688ad565ea1ce2f",
+    "updated": "2026-11-22T15:52:42Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 114,
+    "title": "docs: add comments to HomAppHomOfRestrictImage.lean‎",
+    "head": "0fb9cbcfa39be82b85e5b7e545522e77985a74c4",
+    "updated": "2026-11-22T16:23:49Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 116,
+    "title": "Remove duplicate declarations from ExceptionalGroupG2 (−2,638 lines)",
+    "head": "cee3c8c5b86e35f826bc864771ec48fc96cd8030",
+    "updated": "2026-11-22T16:55:08Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 117,
+    "title": "Simplify explicit typeclass dumps in 4 more CapelliIdentities files (Lean 4.36)",
+    "head": "0cbc37ea9bb26dfe63d6c282c064d1d3f988848f",
+    "updated": "2026-11-22T16:44:53Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 119,
+    "title": "Reuse 3 existing Main-cone proofs and prune 80 duplicate modules (−3,777 lines)",
+    "head": "c5bfbbf9e1d83ce7b43b7890dcb9f17858cc68b3",
+    "updated": "2026-11-22T17:22:36Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   },
+   {
+    "number": 120,
+    "title": "Collapse 28,169 thin wrappers and consolidate 93,601 modules into 20,258 bundles (−101,512 files, −67.9%)",
+    "head": "3d763952ed4721fce70b4c94a925e4d74865bcab",
+    "updated": "2026-11-22T17:25:34Z",
+    "file_absent": [
+     "Kum.dinfNil",
+     "Kum.funRepMem",
+     "mem_princ_iff_pow_dvd_sub_one",
+     "pow_succ_dvd_pow_prime_sub_one",
+     "exists_princ_subset_of_mem_nhds_one",
+     "exists_prime_pow_smul_eq_zero_qz",
+     "Tower.shaDGen"
+    ],
+    "statement_changed": [],
+    "proof_changed": []
+   },
+   {
+    "number": 121,
+    "title": "README: lead with `lake comparator`, and say which files are unchanged",
+    "head": "803b29a7ecc66af9d00050a452722655e495e1c5",
+    "updated": "2026-11-22T17:51:56Z",
+    "file_absent": [],
+    "statement_changed": [
+     "Kum.funRepMem"
+    ],
+    "proof_changed": [
+     "Kum.dinfNil",
+     "exists_prime_pow_smul_eq_zero_qz"
+    ]
+   }
+  ]
+ }
+}

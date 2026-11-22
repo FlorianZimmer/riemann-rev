@@ -1,0 +1,2788 @@
+{
+ "what": "the declarations of the unit of the reading project's ledger that this note is the note of",
+ "ledger": 1,
+ "unit": 6292,
+ "archive_commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+ "structured_proofs": {
+  "proofs": 103,
+  "lines": 2210,
+  "leaf_steps": 856,
+  "leaf_steps_quoting_their_lines": 856,
+  "lines_no_step_accounts_for": 0
+ },
+ "members": [
+  {
+   "name": "conjGal_mem_decompositionSubgroup_comap",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:19:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtConj.lean",
+   "lines": [
+    19,
+    32
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:30:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:40:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "isFrob_comap_conjGal",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:45:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtConj.lean",
+   "lines": [
+    45,
+    51
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:19:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:34:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:40:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:30:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:40:9",
+    "Formalism.ConjugateSelfDual.Statement:28:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "conjGal_mem_ine_comap",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:53:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtConj.lean",
+   "lines": [
+    53,
+    61
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:19:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:34:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtConj:40:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:30:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:40:9",
+    "Formalism.ConjugateSelfDual.Statement:25:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "int_mem",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:10:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtFrob.lean",
+   "lines": [
+    10,
+    14
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "int_mem'",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:17:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtFrob.lean",
+   "lines": [
+    17,
+    18
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:10:17"
+   ]
+  },
+  {
+   "name": "place_between",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:20:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtFrob.lean",
+   "lines": [
+    20,
+    57
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:17:17",
+    "Formalism.ConjugateSelfDual.Statement:20:5"
+   ]
+  },
+  {
+   "name": "coe_res_smul",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:62:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtFrob.lean",
+   "lines": [
+    62,
+    64
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "res_frob",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:66:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtFrob.lean",
+   "lines": [
+    66,
+    76
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:17:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:62:17",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:23:5",
+    "Formalism.ConjugateSelfDual.Statement:28:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "GroundTheory.GlobalFields.SemilocalAlgebras.Galois:17:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.artFrob",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:81:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtFrob.lean",
+   "lines": [
+    81,
+    97
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:20:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtFrob:66:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:10:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:23:5",
+    "Formalism.ConjugateSelfDual.Statement:28:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:16:8",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:19:10",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:22:10",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:31:9",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:69:5",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:73:9",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.TrivialModulus:25:9",
+    "GroundTheory.GlobalFields.CompletionAtPlace.Inertia:163:9",
+    "GroundTheory.GlobalFields.ExistenceTheorem.ExistsIsAbelianGaloisRangeIdeleClassNormEqOfFini:14:10",
+    "GroundTheory.GlobalFields.SemilocalAlgebras.Galois:17:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.artSurj",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ArtSurj:5:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ArtSurj.lean",
+   "lines": [
+    5,
+    42
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:10:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:16:8",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:19:10",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:22:10",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:69:5"
+   ]
+  },
+  {
+   "name": "index_range_eq_card_ker",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:6:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CardSUnit.lean",
+   "lines": [
+    6,
+    17
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "mem_unit_of_pow_mem",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:19:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CardSUnit.lean",
+   "lines": [
+    19,
+    24
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "powK_subgroupOf",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:26:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CardSUnit.lean",
+   "lines": [
+    26,
+    40
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:19:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:80:5"
+   ]
+  },
+  {
+   "name": "card_ker_eq",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:42:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CardSUnit.lean",
+   "lines": [
+    42,
+    60
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "GroundTheory.GlobalFields.SUnits:82:9"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.cardSUnit",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:62:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CardSUnit.lean",
+   "lines": [
+    62,
+    68
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:26:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:42:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:6:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:80:5",
+    "GroundTheory.GlobalFields.ExistenceTheorem.PowerIndex:62:9",
+    "GroundTheory.GlobalFields.ExistenceTheorem.PowerIndex:87:9",
+    "GroundTheory.GlobalFields.SUnits:108:1",
+    "GroundTheory.GlobalFields.SUnits:159:1"
+   ]
+  },
+  {
+   "name": "card_parity_sign_length_of_eq",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSel:8:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CardSel.lean",
+   "lines": [
+    8,
+    16
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "UpperTheory.V.Kum.cardSel",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSel:18:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CardSel.lean",
+   "lines": [
+    18,
+    44
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSel:8:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:21:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:80:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:84:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:30:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClSurj:53:9"
+   ]
+  },
+  {
+   "name": "clMapBasic_mem",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:5:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClMapBasic.lean",
+   "lines": [
+    5,
+    8
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "clMapBasic_lemma",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:10:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClMapBasic.lean",
+   "lines": [
+    10,
+    25
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:5:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:51:9"
+   ]
+  },
+  {
+   "name": "clMap_refl_apply",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:26:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClMapBasic.lean",
+   "lines": [
+    26,
+    39
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:5:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:51:9"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clMapBasic",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:41:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClMapBasic.lean",
+   "lines": [
+    41,
+    69
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:10:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:26:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClMapBasic:5:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:51:9"
+   ]
+  },
+  {
+   "name": "mk_eq_finprod",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:5:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClProd.lean",
+   "lines": [
+    5,
+    20
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5"
+   ]
+  },
+  {
+   "name": "count_eq_ordv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:22:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClProd.lean",
+   "lines": [
+    22,
+    34
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clProd",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:36:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClProd.lean",
+   "lines": [
+    36,
+    48
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:22:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:36:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:5:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.artCl",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:10:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClPullApply.lean",
+   "lines": [
+    10,
+    12
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:10:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:16:8",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:22:10",
+    "GroundTheory.GlobalFields.ClassFieldConsequences.HilbertClassField:69:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.artU",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:17:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClPullApply.lean",
+   "lines": [
+    17,
+    17
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:10:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:17:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:126:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clPull",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:19:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClPullApply.lean",
+   "lines": [
+    19,
+    21
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:17:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clPull_apply",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:23:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClPullApply.lean",
+   "lines": [
+    23,
+    24
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:10:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClPullApply:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:126:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clSubUniv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClSubUniv:5:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ClSubUniv.lean",
+   "lines": [
+    5,
+    39
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.cobOfGen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CobOfGen:6:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CobOfGen.lean",
+   "lines": [
+    6,
+    10
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.IntegralCasts.CapelliIdentities.CoboundaryOfGenerator:1067:9",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:33:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "cycZ_eq_of_intertwined",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:20:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CycZConjGal.lean",
+   "lines": [
+    20,
+    27
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "mem_levU_of_intertwined",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:29:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CycZConjGal.lean",
+   "lines": [
+    29,
+    36
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:20:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "mem_cycU_of_intertwined",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:38:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CycZConjGal.lean",
+   "lines": [
+    38,
+    45
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:20:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "levU_antitone",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:47:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CycZConjGal.lean",
+   "lines": [
+    47,
+    49
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.UnitsMapSurjOfZmod:18:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "fix_lemma_5",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:51:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CycZConjGal.lean",
+   "lines": [
+    51,
+    77
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.LevCompact:36:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "restr_restr",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:79:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CycZConjGal.lean",
+   "lines": [
+    79,
+    83
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:117:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "eqHom_cycU_exists_lift_levU",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:85:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CycZConjGal.lean",
+   "lines": [
+    85,
+    130
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:29:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:38:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:47:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:51:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:79:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:112:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:117:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RestrMem:5:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:82:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:201:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:204:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.eqExt",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:132:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/CycZConjGal.lean",
+   "lines": [
+    132,
+    177
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:29:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:38:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:47:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:51:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:79:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CycZConjGal:85:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:112:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:117:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RestrMem:5:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:201:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:204:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:18:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:30:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:46:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "mem_princ_iff_pow_dvd_sub_one",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:7:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    7,
+    12
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:10:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19"
+   ]
+  },
+  {
+   "name": "pow_succ_dvd_pow_prime_sub_one",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:14:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    14,
+    29
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "exists_prime_pow_smul_eq_zero_qz",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:31:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    31,
+    43
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Formalism.GaloisCohomology.Statement:13:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
+  },
+  {
+   "name": "exists_princ_subset_of_mem_nhds_one",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:45:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    45,
+    60
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:7:17",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.dinfNil",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:62:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    62,
+    235
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:14:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:31:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:45:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:62:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:7:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:121:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:198:1",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.RestrictionMemInvariantH1:115:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "ReciprocityTheory.GaloisValuations.Global:101:9",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "dvd_of_ram",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DvdOfIne:34:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DvdOfIne.lean",
+   "lines": [
+    34,
+    53
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "dvd_fin",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DvdOfIne:55:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DvdOfIne.lean",
+   "lines": [
+    55,
+    62
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DvdOfIne:34:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DvdOfIne:6:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.dvdOfIne",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DvdOfIne:64:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DvdOfIne.lean",
+   "lines": [
+    64,
+    90
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "CompanionTheory.AutomorphicTheory.HeckeStandardModules.ExistsCen:115:9",
+    "CompanionTheory.AutomorphicTheory.HeckeStandardModules.ExistsCen:21:5",
+    "CompanionTheory.AutomorphicTheory.HeckeStandardModules.ExistsCen:34:10",
+    "CompanionTheory.AutomorphicTheory.HeckeStandardModules.ExistsCen:84:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DvdOfIne:55:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "ext_of_prod",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ExtCocycle:10:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ExtCocycle.lean",
+   "lines": [
+    10,
+    75
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ExtCocycle:10:17",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:33:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.extCocycle",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ExtCocycle:77:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ExtCocycle.lean",
+   "lines": [
+    77,
+    155
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ExistsGen:32:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ExtCocycle:10:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:188:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.VanishCyc:85:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.FinrankAdjoinRootsEqRootDeg:51:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.GalDefs:10:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.GalOpen:90:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:10:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:59:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:7:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.NuFinite:60:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:101:9",
+    "ReciprocityTheory.GaloisValuations.Global:90:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:33:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.finChar",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FinChar:49:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/FinChar.lean",
+   "lines": [
+    49,
+    127
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSUnit:62:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CardSel:18:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DvdOfIne:64:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FinChar:40:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FinChar:49:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FinChar:9:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:21:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:80:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.PlaceDict:45:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadExists:6:9",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:50:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "rootSet_X_pow_sub_one_eq_setOf_exists_mem_singleton",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FnCycMap:5:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/FnCycMap.lean",
+   "lines": [
+    5,
+    11
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FnCycMap:5:17"
+   ]
+  },
+  {
+   "name": "apply_mem_fn_of_isLift",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FnCycMap:13:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/FnCycMap.lean",
+   "lines": [
+    13,
+    38
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.fnCyc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FnCycMap:40:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/FnCycMap.lean",
+   "lines": [
+    40,
+    85
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FnCycMap:13:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FnCycMap:5:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:184:1",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.funRepMem",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FunRepMem:5:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/FunRepMem.lean",
+   "lines": [
+    5,
+    46
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:121:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.RestrictionMemInvariantH1:115:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.RestrictionMemInvariantH1:120:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:30:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:64:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:69:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:77:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.levU_anti",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.MinusLenLeOfCl:27:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/MinusLenLeOfCl.lean",
+   "lines": [
+    27,
+    30
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.MinusLenLeOfCl:27:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:49:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.galOf_Fn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.MinusLenLeOfCl:48:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/MinusLenLeOfCl.lean",
+   "lines": [
+    48,
+    50
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FnCycMap:40:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.GalOfCyc:5:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:51:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.princ_smul_eq_self_of_pow_smul_eq_zero",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.MinusLenLeOfCl:89:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/MinusLenLeOfCl.lean",
+   "lines": [
+    89,
+    96
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:49:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.locConst_qzG",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.MinusLenLeOfCl:98:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/MinusLenLeOfCl.lean",
+   "lines": [
+    98,
+    117
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.MinusLenLeOfCl:89:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.QzBasic:15:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.PrincTop:27:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "ReciprocityTheory.GaloisValuations.Global:101:9",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.primeCl",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    16,
+    17
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clSub",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    19,
+    19
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ClS",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:21:8",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    21,
+    21
+   ],
+   "kind": "abbrev",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.idMap",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    23,
+    27
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.mk0_idMap_congr",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:29:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    29,
+    36
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clFun",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:38:13",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    38,
+    39
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:38:13"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.class_fun_mk0",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:41:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    41,
+    43
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:29:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:38:13"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clMap",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    45,
+    49
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:38:13",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:41:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.class_map_mk0",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:51:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    51,
+    52
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:41:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ClDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:56:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    56,
+    61
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:56:5",
+    "Formalism.GaloisCohomology.Statement:50:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ordv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    63,
+    63
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ordv_mul",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:65:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    65,
+    66
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ordv_one",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:68:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    68,
+    68
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ordv_inv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:70:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    70,
+    70
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.SelK",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    72,
+    76
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:65:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:68:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:70:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.powK",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:80:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    80,
+    80
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "UpperTheory.V.Kum.radCl",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    82,
+    82
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.XDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    90,
+    99
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.conjCond",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    103,
+    107
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.EqHom",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    109,
+    110
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.EqEig",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:112:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    112,
+    113
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:112:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.restr",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:117:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    117,
+    117
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.funRep",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:121:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    121,
+    124
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:121:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.RestrictionMemInvariantH1:115:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.toGal",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:126:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    126,
+    129
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:126:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.clCond",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:131:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    131,
+    136
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:131:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ClEq",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:138:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    138,
+    140
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:131:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:56:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ClEig",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:142:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    142,
+    144
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:112:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:131:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:138:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ClTw",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:146:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    146,
+    151
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:146:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.ClMinus",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:153:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    153,
+    154
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.IsRad",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:156:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    156,
+    157
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.isAlgClosure_sub",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:161:10",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    161,
+    162
+   ],
+   "kind": "instance",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "UpperTheory.V.Kum.Uinf",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    170,
+    170
+   ],
+   "kind": "abbrev",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.Fn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    172,
+    173
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.isSplittingField_Fn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:175:10",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    175,
+    177
+   ],
+   "kind": "instance",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.instFiniteDimensionalSubtypeMemIntermediateFieldFn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:179:1",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    179,
+    180
+   ],
+   "kind": "instance",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:175:10"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.instNormalSubtypeMemIntermediateFieldFn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:182:1",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    182,
+    182
+   ],
+   "kind": "instance",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:175:10"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.instNumberFieldSubtypeMemIntermediateFieldFn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:184:1",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    184,
+    184
+   ],
+   "kind": "instance",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:179:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.Un",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    186,
+    186
+   ],
+   "kind": "abbrev",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.cycR",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:188:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    188,
+    189
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.Procyc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    191,
+    191
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:188:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.Dinf",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    195,
+    195
+   ],
+   "kind": "abbrev",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.Xinf",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:197:8",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    197,
+    197
+   ],
+   "kind": "abbrev",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.resTriv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:205:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    205,
+    210
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:205:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:59:9",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:66:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.resInf",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:214:5",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    214,
+    217
+   ],
+   "kind": "def",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:205:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:214:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:145:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:19:1",
+    "Formalism.GaloisCohomology.Statement:20:1",
+    "Formalism.GaloisCohomology.Statement:21:1",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:67:5",
+    "ReciprocityTheory.GaloisValuations.Global:128:5",
+    "ReciprocityTheory.GaloisValuations.Global:133:10",
+    "ReciprocityTheory.GaloisValuations.Global:141:8",
+    "ReciprocityTheory.GaloisValuations.Global:145:5",
+    "ReciprocityTheory.GaloisValuations.Global:90:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:66:8",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.resInf_mk",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:219:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    219,
+    220
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:214:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:19:1",
+    "Formalism.GaloisCohomology.Statement:20:1",
+    "Formalism.GaloisCohomology.Statement:21:1",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:67:5",
+    "ReciprocityTheory.GaloisValuations.Global:128:5",
+    "ReciprocityTheory.GaloisValuations.Global:133:10",
+    "ReciprocityTheory.GaloisValuations.Global:141:8",
+    "ReciprocityTheory.GaloisValuations.Global:145:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:66:8",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "prod_add",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:11:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClKer.lean",
+   "lines": [
+    11,
+    17
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5"
+   ]
+  },
+  {
+   "name": "fin_add",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:19:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClKer.lean",
+   "lines": [
+    19,
+    24
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:19:17"
+   ]
+  },
+  {
+   "name": "mem_clSub",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:26:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClKer.lean",
+   "lines": [
+    26,
+    49
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:11:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:19:17"
+   ]
+  },
+  {
+   "name": "exists_ordv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:51:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClKer.lean",
+   "lines": [
+    51,
+    70
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:36:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5"
+   ]
+  },
+  {
+   "name": "mem_unit",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:72:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClKer.lean",
+   "lines": [
+    72,
+    77
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "ordv_pow",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:79:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClKer.lean",
+   "lines": [
+    79,
+    80
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.radClKer",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:84:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClKer.lean",
+   "lines": [
+    84,
+    105
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:36:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:65:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:70:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:80:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:11:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:19:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:26:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:51:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:72:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:79:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:30:9"
+   ]
+  },
+  {
+   "name": "ordv_units_map_ringEquiv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMap:41:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClMap.lean",
+   "lines": [
+    41,
+    58
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMap:6:17"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.radClMap",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMap:60:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClMap.lean",
+   "lines": [
+    60,
+    104
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:23:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:51:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMap:41:17"
+   ]
+  },
+  {
+   "name": "finSupp",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:6:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClMul.lean",
+   "lines": [
+    6,
+    12
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:36:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5"
+   ]
+  },
+  {
+   "name": "mk_radCl",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:14:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClMul.lean",
+   "lines": [
+    14,
+    18
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:6:17"
+   ]
+  },
+  {
+   "name": "mk_primeCl",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:20:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClMul.lean",
+   "lines": [
+    20,
+    22
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5"
+   ]
+  },
+  {
+   "name": "ordv_pow'",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:24:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClMul.lean",
+   "lines": [
+    24,
+    28
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:65:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:68:9"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.radClMul",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:30:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClMul.lean",
+   "lines": [
+    30,
+    70
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:36:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:65:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:14:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:20:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:24:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:6:17"
+   ]
+  },
+  {
+   "name": "exists_frac_of_mem",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClSurj:6:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClSurj.lean",
+   "lines": [
+    6,
+    26
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5"
+   ]
+  },
+  {
+   "name": "mk_finprod_congr",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClSurj:28:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClSurj.lean",
+   "lines": [
+    28,
+    51
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.radClSurj",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClSurj:53:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadClSurj.lean",
+   "lines": [
+    53,
+    93
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ClProd:36:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:21:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClSurj:28:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClSurj:6:17"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.radConj",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadConj:5:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadConj.lean",
+   "lines": [
+    5,
+    11
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:156:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.radXDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadXDual:8:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RadXDual.lean",
+   "lines": [
+    8,
+    55
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DvdOfIne:64:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:126:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:156:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadExists:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ToGalDict:7:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:65:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:69:9",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:265:9",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.reflMap",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflMap:34:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ReflMap.lean",
+   "lines": [
+    34,
+    107
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:156:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:80:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClKer:84:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:30:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadXDual:8:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflMap:29:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflMap:8:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.reflRoot",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflRoot:91:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ReflRoot.lean",
+   "lines": [
+    91,
+    133
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:156:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflRoot:23:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflRoot:34:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflRoot:65:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:81:10",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:29:5"
+   ]
+  },
+  {
+   "name": "reflTw_empty",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:9:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ReflTw.lean",
+   "lines": [
+    9,
+    14
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5"
+   ]
+  },
+  {
+   "name": "reflTw_one",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:16:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ReflTw.lean",
+   "lines": [
+    16,
+    17
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:68:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5"
+   ]
+  },
+  {
+   "name": "reflTw_pow",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:19:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ReflTw.lean",
+   "lines": [
+    19,
+    27
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:30:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:16:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:9:17"
+   ]
+  },
+  {
+   "name": "reflTw_pow_eq",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:29:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ReflTw.lean",
+   "lines": [
+    29,
+    33
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:30:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:9:17"
+   ]
+  },
+  {
+   "name": "reflTw_key",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:44:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ReflTw.lean",
+   "lines": [
+    44,
+    69
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:156:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadConj:5:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadXDual:8:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:39:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.reflTw",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:71:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ReflTw.lean",
+   "lines": [
+    71,
+    111
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:146:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:153:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:156:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:63:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:72:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:80:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:82:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMap:60:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadClMul:30:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RadXDual:8:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:19:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:29:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:35:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ReflTw:44:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:29:5",
+    "Formalism.GaloisCohomology.Statement:39:17"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.resInfConj",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfConj:5:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ResInfConj.lean",
+   "lines": [
+    5,
+    12
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:214:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:219:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:121:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:125:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:143:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:148:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:155:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:256:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:259:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:30:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:40:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:19:1",
+    "Formalism.GaloisCohomology.Statement:20:1",
+    "Formalism.GaloisCohomology.Statement:21:1",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:67:5",
+    "ReciprocityTheory.GaloisValuations.Global:128:5",
+    "ReciprocityTheory.GaloisValuations.Global:133:10",
+    "ReciprocityTheory.GaloisValuations.Global:141:8",
+    "ReciprocityTheory.GaloisValuations.Global:145:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:66:8",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.resInfInj",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfInj:58:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ResInfInj.lean",
+   "lines": [
+    58,
+    171
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.ContScal:7:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CobOfGen:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ExistsGen:32:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:188:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:205:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:214:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfInj:10:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfInj:22:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfInj:58:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:10:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:13:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:19:1",
+    "Formalism.GaloisCohomology.Statement:20:1",
+    "Formalism.GaloisCohomology.Statement:21:1",
+    "Formalism.GaloisCohomology.Statement:29:5",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:67:5",
+    "ReciprocityTheory.GaloisValuations.Global:101:9",
+    "ReciprocityTheory.GaloisValuations.Global:128:5",
+    "ReciprocityTheory.GaloisValuations.Global:133:10",
+    "ReciprocityTheory.GaloisValuations.Global:141:8",
+    "ReciprocityTheory.GaloisValuations.Global:145:5",
+    "ReciprocityTheory.GaloisValuations.Global:90:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:33:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:66:8",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.coc_conj_triv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfMem:7:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ResInfMem.lean",
+   "lines": [
+    7,
+    12
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": []
+  },
+  {
+   "name": "UpperTheory.V.Kum.resInfMem",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfMem:14:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ResInfMem.lean",
+   "lines": [
+    14,
+    72
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:214:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:219:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.PlaceDict:45:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfMem:14:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfMem:7:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:145:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:168:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:176:9",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:25:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:19:1",
+    "Formalism.GaloisCohomology.Statement:20:1",
+    "Formalism.GaloisCohomology.Statement:21:1",
+    "Formalism.GaloisCohomology.Statement:50:5",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:67:5",
+    "Formalism.GaloisCohomology.Statement:75:5",
+    "ReciprocityTheory.GaloisValuations.Global:128:5",
+    "ReciprocityTheory.GaloisValuations.Global:133:10",
+    "ReciprocityTheory.GaloisValuations.Global:141:8",
+    "ReciprocityTheory.GaloisValuations.Global:145:5",
+    "ReciprocityTheory.GaloisValuations.Global:148:9",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:340:9",
+    "ReciprocityTheory.GaloisValuations.Global:45:5",
+    "ReciprocityTheory.GaloisValuations.Global:69:9",
+    "ReciprocityTheory.GaloisValuations.Global:90:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:147:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:66:8",
+    "ReciprocityTheory.Hypotheses.GalCoh:132:5",
+    "ReciprocityTheory.Hypotheses.GalCoh:137:9",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.decCob",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfOnto:15:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ResInfOnto.lean",
+   "lines": [
+    15,
+    100
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AbelianVarietyTheory.Proofs.FoundationProofs.ExistsDecompositionGroupCyclotomicCharacterZpowN:32:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:14:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.NonemptyH0GlobalEquivGaloisImage:25:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.NonemptyH0GlobalEquivGaloisImage:58:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.CobOfGen:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ExistsGen:32:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:188:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.QzBasic:15:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfOnto:15:17",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:49:9",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:19:1",
+    "Formalism.GaloisCohomology.Statement:20:1",
+    "Formalism.GaloisCohomology.Statement:21:1",
+    "Formalism.GaloisCohomology.Statement:50:5",
+    "ReciprocityTheory.GaloisValuations.Global:101:9",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:392:9",
+    "ReciprocityTheory.GaloisValuations.Global:90:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:33:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:59:9",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.resInfOnto",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfOnto:102:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ResInfOnto.lean",
+   "lines": [
+    102,
+    166
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:26:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:29:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:41:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:60:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.NonemptyH0GlobalEquivGaloisImage:18:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.NonemptyH0GlobalEquivGaloisImage:25:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.ShaInfl:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ExtCocycle:77:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:214:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:219:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.PlaceDict:45:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.QzBasic:15:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfMem:14:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfOnto:102:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ResInfOnto:15:17",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:25:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:19:1",
+    "Formalism.GaloisCohomology.Statement:20:1",
+    "Formalism.GaloisCohomology.Statement:21:1",
+    "Formalism.GaloisCohomology.Statement:50:5",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:67:5",
+    "Formalism.GaloisCohomology.Statement:71:5",
+    "Formalism.GaloisCohomology.Statement:75:5",
+    "ReciprocityTheory.GaloisValuations.ContinuousConstSMulQuotient:168:5",
+    "ReciprocityTheory.GaloisValuations.Global:128:5",
+    "ReciprocityTheory.GaloisValuations.Global:133:10",
+    "ReciprocityTheory.GaloisValuations.Global:141:8",
+    "ReciprocityTheory.GaloisValuations.Global:145:5",
+    "ReciprocityTheory.GaloisValuations.Global:148:9",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5",
+    "ReciprocityTheory.GaloisValuations.Global:90:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:138:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:147:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:33:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:59:9",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:66:8",
+    "ReciprocityTheory.Hypotheses.GalCoh:132:5",
+    "ReciprocityTheory.Hypotheses.GalCoh:137:9",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.restrMem",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.RestrMem:5:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/RestrMem.lean",
+   "lines": [
+    5,
+    31
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:112:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:117:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.toGalDict",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ToGalDict:7:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/ToGalDict.lean",
+   "lines": [
+    7,
+    32
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:126:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:65:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:69:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.GalEmbTop:32:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:17:9",
+    "ReciprocityTheory.GaloisValuations.Global:45:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.vanishCyc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.VanishCyc:85:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/VanishCyc.lean",
+   "lines": [
+    85,
+    163
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.VanishCyc:55:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.VanishCyc:5:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.VanishCyc:85:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.xdualBase",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualBase:7:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/XdualBase.lean",
+   "lines": [
+    7,
+    44
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:126:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:170:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ToGalDict:7:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:65:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:69:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.GalEmbTop:32:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.xe_closed",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:13:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/XdualExt.lean",
+   "lines": [
+    13,
+    25
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:13:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:49:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:101:9",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.xe_anti",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:28:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/XdualExt.lean",
+   "lines": [
+    28,
+    28
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.UnitsMapSurjOfZmod:18:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.xe_inter",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:31:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/XdualExt.lean",
+   "lines": [
+    31,
+    45
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:31:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:49:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.xe_spread",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:47:17",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/XdualExt.lean",
+   "lines": [
+    47,
+    78
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:13:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:28:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:31:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
+  },
+  {
+   "name": "UpperTheory.V.Kum.xdualExt",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:82:9",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/XdualExt.lean",
+   "lines": [
+    82,
+    117
+   ],
+   "kind": "theorem",
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DecCompact:54:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.HomExt:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:117:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:28:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.XdualExt:47:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:204:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.Places:5:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:20:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:50:5",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.Global:45:5",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
+  }
+ ]
+}

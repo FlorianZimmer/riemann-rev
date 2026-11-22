@@ -1,0 +1,521 @@
+% !TEX program = lualatex
+% ---------------------------------------------------------------------------------------------
+%  Deformalization 2: local nilpotence over a cyclotomic tower   (riemann-rev)
+%
+%  Build:  python3 -B scripts/build_digest.py local-nilpotence
+%
+%  One part of a unit of the Lean archive behind L. Alpöge's announced proof of RH, rewritten as ordinary
+%  mathematics. The prose is hand-written. Lean names, line ranges and counts come from data.tex; the quoted
+%  Lean statements are copied from the archive by the script. The note was written from the reading project's
+%  structured proofs; the Lean files of the unit were not opened (§ "Notes on the formal text").
+%
+%  Rules of the text: standard terminology; every symbol is explained where it first appears and listed again
+%  in the notation at the end; no letter has two meanings. Letters follow the first note of the series: the
+%  cyclotomic character is kappa (the archive's cycZ), U_n are the principal units; the archive's closed normal
+%  subgroup U is H here, its levU l U n is H_n and its cycU l U is H_infinity.
+%
+%  Layout: the reading edition of the guide (11 pt Libertinus on a 140 mm measure); preamble as in the first note.
+% ---------------------------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+\ifdefined\pdfvariable\pdfvariable suppressoptionalinfo \numexpr 1+2+4+8\relax\fi
+\usepackage[a4paper,hmargin=35mm,top=22mm,bottom=27mm,footskip=12mm,nohead]{geometry}
+
+\usepackage{fontspec}
+\directlua{
+  luaotfload.add_fallback("gfallback", {"STIXTwoMath-Regular.otf:mode=node;", "DejaVuSans.ttf:mode=node;"})
+  luaotfload.add_fallback("gmonofallback", {"DejaVuSansMono.ttf:mode=node;", "STIXTwoMath-Regular.otf:mode=node;"})
+}
+\setmainfont{LibertinusSerif}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-Semibold,BoldItalicFont=*-SemiboldItalic,RawFeature={fallback=gfallback}]
+\setsansfont{Inter}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,RawFeature={fallback=gfallback}]
+\setmonofont{JetBrainsMono}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,Scale=MatchLowercase,
+  RawFeature={-calt;-liga;fallback=gmonofallback}]
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[math-style=TeX]{unicode-math}
+\setmathfont{LibertinusMath-Regular.otf}
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,positioning,backgrounds}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+
+\definecolor{ink}{HTML}{0F172A}
+\definecolor{inksoft}{HTML}{475569}
+\definecolor{inkfaint}{HTML}{94A3B8}
+\definecolor{rulegrey}{HTML}{CBD5E1}
+\definecolor{arith}{HTML}{C2410C}
+\definecolor{est}{HTML}{7C3AED}
+\definecolor{ana}{HTML}{0891B2}
+\definecolor{ok}{HTML}{047857}
+\definecolor{leancol}{HTML}{3730A3}
+
+\title{Local nilpotence over a cyclotomic tower}
+\author{riemann-rev}
+\date{}
+
+% ------------------------------------------------------------------------------------- macros
+\newcommand{\leanfont}{\ttfamily\fontsize{8.6}{10.5}\selectfont\color{leancol}}
+\newcommand{\lean}[1]{\csname LN@#1\endcsname}
+\newcommand{\leanquote}[1]{\csname LQ@#1\endcsname}
+\input{data.tex}
+
+\linespread{1.08}                       % 11 pt on 14.7 pt
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5.5pt plus 1.5pt minus 0.5pt}
+\setlength{\abovedisplayskip}{7.5pt plus 2pt minus 3pt}
+\setlength{\belowdisplayskip}{7.5pt plus 2pt minus 3pt}
+\setlength{\abovedisplayshortskip}{3pt plus 2pt}
+\setlength{\belowdisplayshortskip}{6pt plus 2pt minus 2pt}
+\emergencystretch=1.5em
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\relpenalty=7000 \binoppenalty=9000
+\raggedbottom
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\sffamily\fontsize{7.6}{9}\selectfont\color{inkfaint}\thepage\,/\,\pageref*{LastPage}}
+\setlist{topsep=2pt,partopsep=0pt,parsep=0pt,itemsep=4pt,leftmargin=2.1em,labelsep=0.55em}
+
+\newcommand{\Sha}{\text{\normalfont Ш}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Qbar}{\overline{\Q}_\ell}
+\newcommand{\QZ}{\Q_\ell/\Z_\ell}
+\newcommand{\len}{\operatorname{len}}
+\newcommand{\cok}{\operatorname{cok}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\kw}[1]{\emph{#1}}
+\newcommand{\m}[1]{\mbox{$#1$}}        % a short formula that must not be broken across lines
+\newcommand{\flog}{\lfloor\log_\ell Z\rfloor}
+\newcommand{\head}[1]{\par\addvspace{17pt plus 4pt minus 2pt}\Needspace{6\baselineskip}%
+  \noindent{\fontsize{13.2}{16}\selectfont\bfseries\color{ink}#1}\par\nopagebreak\vspace{-1pt}}
+\newcommand{\sect}[2]{\refstepcounter{section}\label{#2}\par\addvspace{19pt plus 4pt minus 2pt}\Needspace{7\baselineskip}%
+  \noindent\llap{{\fontsize{13.2}{16}\selectfont\bfseries\color{inkfaint}\thesection}\hspace{9pt}}%
+  {\fontsize{13.2}{16}\selectfont\bfseries\color{ink}#1}\par\nopagebreak\vspace{-1pt}}
+\newcommand{\subhead}[1]{\par\addvspace{9pt plus 2pt}\Needspace{4\baselineskip}\noindent\textbf{#1}\enspace\ignorespaces}
+% where a statement lives in the Lean archive
+\newcommand{\leantag}{{\sffamily\bfseries\fontsize{6.3}{8}\selectfont\color{leancol}\addfontfeatures{LetterSpace=7}LEAN}}
+\newcommand{\sep}{\unskip\nobreak\hspace{5pt}{\color{inkfaint}\textperiodcentered}\hspace{5pt plus 2pt}\ignorespaces}
+\newcommand{\leanline}[1]{\par\nopagebreak\vspace{-2.5pt}{\fontsize{8.9}{12.4}\selectfont\color{inksoft}\raggedright
+  \noindent\llap{\leantag\hspace{9pt}}#1\par}\vspace{1pt}}
+% a displayed statement in a tinted box: #1 colour, #2 text
+\newcommand{\statement}[2]{\par\addvspace{7pt}\begingroup\setlength{\fboxsep}{8.5pt}\setlength{\fboxrule}{0.6pt}%
+  \noindent\fcolorbox{#1!30!white}{#1!3!white}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{#2}}%
+  \endgroup\par\addvspace{7pt}}
+\newcommand{\nt}[2]{\par\noindent\hangindent=1.1em\hangafter=1 #1\enspace{\color{inksoft}#2}\par\vspace{1pt}}
+\newcommand{\legdot}[1]{\tikz[baseline=-0.62ex]\fill[#1] (0,0) circle (2.5pt);\hspace{3pt}}
+\newcommand{\crow}[4]{\csname CS@#1\endcsname & #2 & \textcolor{inksoft}{#3} & \textcolor{inksoft}{#4}\\}
+\newcommand{\leanquoteline}[2]{\par\noindent\hangindent=\dimexpr#1\fontdimen2\font+2.2em\relax\hangafter=1
+  \hspace*{#1\fontdimen2\font}#2}
+\newcommand{\quoted}[1]{\par\vspace{3pt}{\ttfamily\fontsize{7.5}{10.4}\selectfont\color{leancol}\raggedright
+  \setlength{\parskip}{0pt}\leanquote{#1}\par}\vspace{4pt}}
+\newcommand{\bx}[3]{{\sffamily\bfseries\fontsize{7.3}{9.2}\selectfont\color{#1!82!black}#2}\\[1.5pt]#3}
+\newcommand{\cs}[2]{\expandafter\newcommand\csname CS@#1\endcsname{#2}}
+
+% theorems
+\newtheoremstyle{plainx}{7pt plus 2pt}{7pt plus 2pt}{\itshape}{}{\bfseries}{.}{0.5em}{}
+\newtheoremstyle{uprightx}{7pt plus 2pt}{7pt plus 2pt}{}{}{\bfseries}{.}{0.5em}{}
+\theoremstyle{plainx}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{uprightx}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\renewcommand{\qedsymbol}{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.5pt}\fbox{\rule{0pt}{0.46em}\hspace{0.46em}}}}
+\makeatletter
+\renewenvironment{proof}[1][Proof]{\par\pushQED{\qed}\normalfont\topsep0pt\partopsep0pt
+  \trivlist\item[\hskip\labelsep\itshape #1.]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+% where each declaration of the concordance is treated
+\cs{XDual}{Def.~\ref{d:char}} \cs{Dinf}{Def.~\ref{d:char}} \cs{Xinf}{Def.~\ref{d:char}}
+\cs{funRep}{§\ref{s:setting}, conjugation} \cs{conjCond}{Prop.~\ref{p:action}(c)} \cs{EqHom}{Prop.~\ref{p:action}(c)}
+\cs{Un}{§\ref{s:setting}, the groups} \cs{funRepMem}{Prop.~\ref{p:action}} \cs{memPrinc}{Lemma~\ref{l:four}(a)}
+\cs{powSucc}{Lemma~\ref{l:four}(b)} \cs{qzTors}{Lemma~\ref{l:four}(c)} \cs{princNhds}{Lemma~\ref{l:four}(d)}
+\cs{dinfNil}{Theorem A} \cs{G}{§\ref{s:setting}} \cs{QZ}{§\ref{s:setting}} \cs{cycZ}{§\ref{s:setting}}
+\cs{Dec}{Def.~\ref{d:char}} \cs{Ine}{Def.~\ref{d:char}} \cs{princ}{§\ref{s:setting}, the groups}
+\cs{levU}{§\ref{s:setting}, the groups} \cs{cycU}{§\ref{s:setting}, the groups} \cs{conjHom}{§\ref{s:setting}, conjugation}
+\cs{conjDec}{Prop.~\ref{p:action}, proof} \cs{conjIne}{Prop.~\ref{p:action}, proof} \cs{xUnip}{§\ref{s:use}}
+\cs{dualUnip}{§\ref{s:use}} \cs{shaDGen}{§\ref{s:use}}
+
+\begin{document}
+\color{ink}
+
+% ------------------------------------------------------------------------------------- title
+{\raggedright
+{\sffamily\bfseries\fontsize{7.2}{9}\selectfont\color{leancol}\addfontfeatures{LetterSpace=8}DEFORMALIZATION 2\par}
+\vspace{5pt}
+{\fontsize{21.5}{25.5}\selectfont\bfseries Local nilpotence over a cyclotomic tower\par}
+\vspace{5pt}
+{\fontsize{12.4}{16}\selectfont\itshape\color{inksoft} One part of a unit of the Lean archive behind the proof of the
+Riemann hypothesis announced by L.\,Alpöge, read back into mathematics\par}}
+\vspace{8pt}
+{\color{rulegrey}\hrule height 0.6pt}
+\vspace{7pt}
+\thispagestyle{empty}
+
+\textbf{Summary.} Let $F$ be a number field with algebraic closure~$\Omega$, let $\ell$ be a prime, and let $\kappa$ be
+the $\ell$-adic cyclotomic character of \m{G=\Gal(\Omega/F)}. The group $G$ acts by conjugation on the characters of
+the kernel of~$\kappa$, with values in~$\QZ$. We show that every locally constant character~$\varphi$ is fixed by
+all~$g$ with \m{\kappa(g)\equiv1} modulo~$\ell^n$, for some~$n$, and that for every $\gamma$ with
+\m{\kappa(\gamma)\equiv1} modulo~$\ell$ a power of \m{\gamma-1} kills~$\varphi$; the exponent $\ell^nk_0$ suffices,
+where $\ell^{k_0}$ kills~$\varphi$. This is the \kw{local nilpotence} that the first note of this
+series~\cite{N1} used as an input. By duality it makes $\gamma$ unipotent modulo~$\ell$ on the Iwasawa module.
+The proof is a compactness argument in the profinite group~$G$ and one congruence between polynomials.
+
+\statement{leancol}{\fontsize{9.6}{13.2}\selectfont\textbf{What this note is.} On 20 November 2026 L.\,Alpöge
+announced a proof of the Riemann hypothesis, with a Lean archive \cite{Al}. That is a claim, and nothing here asserts
+that the hypothesis is proved. The reading project divides the part of the archive that the final theorems use
+into units. This note treats one part of one unit, on Kummer theory: \UnitInNote{} of its \UnitMembers{}
+declarations, those that define the modules of characters and prove local nilpotence. The other \UnitElsewhere{}
+belong to notes to come (§\ref{s:notes}). Everything stated here is proved in full. Every statement was compared
+with its formal counterpart at commit \href{\PinUrl}{{\leanfont\Pin}} of the public mirror; Appendix~A is the
+concordance of \ConcDecls{} declarations. The note was written from the structured proofs of the reading project,
+without opening the Lean files of the unit (§\ref{s:notes}).}
+
+% ------------------------------------------------------------------------------------- 1
+\sect{The statement}{s:intro}
+In the first note~\cite{N1} the lengths of certain groups of Galois cohomology along the cyclotomic tower of a
+number field were expressed through one operator on one module, the Iwasawa module~$X_\infty$, and the estimates
+needed that this operator is unipotent modulo~$\ell$. The module $X_\infty$ is the dual of a discrete module
+$D_\infty$ of characters, and on a discrete module unipotence takes the form proved here: every element is killed
+by a power of \m{\gamma-1}. The first note stated this as its Input~1, with a sketch. This note proves it, in the
+generality of the archive. The notation is set up in §\ref{s:setting}.
+
+\statement{arith}{\phantomsection\label{t:A}\textbf{Theorem A} (local nilpotence).\enspace\emph{Let $H$ be a closed
+normal subgroup of~$G$, let \m{N\ge0} be an integer, and let $\varphi$ be an element of the module
+\m{D_\infty=D_N(H_\infty,\QZ)} of characters of \m{H_\infty=H\cap\ker\kappa}.}
+\begin{enumerate}[label=\textup{(\roman*)},topsep=3pt,itemsep=1pt]
+\item \emph{There is an integer \m{n\ge0} such that \m{g\varphi=\varphi} for every \m{g\in H_n}.}
+\item \emph{Some power of $\ell$ kills~$\varphi$. If \m{\ell^{k_0}\varphi=0} and $n$ is as in \textup{(i)}, then for
+every \m{\gamma\in H_1} and \m{k=\ell^nk_0}}
+\[
+(\gamma-1)^{k}\varphi=0\qquad\text{\emph{and}}\qquad\ell^{k}\varphi=0 .
+\]
+\end{enumerate}}
+\leanline{\lean{dinfNil}}
+
+Here $H_n$ is the group of all \m{g\in H} with \m{\kappa(g)\equiv1} modulo~$\ell^n$, and $g\varphi$ is the character
+\m{x\mapsto\varphi(g^{-1}xg)}. The archive states (ii) as the existence of one exponent~$k$ with the two
+properties; its proof gives the value above.
+
+% ------------------------------------------------------------------------------------- 2
+\sect{Characters and conjugation}{s:setting}
+\subhead{Conventions.} Throughout, $\ell$ is a prime number, $\Z_\ell$ the ring of $\ell$-adic integers, $\Q_\ell$ its
+field of fractions, and $\QZ$ the quotient group, a module over~$\Z_\ell$. Let $F$ be a number field, $\Omega$ an
+algebraic closure of~$F$, and \m{G=\Gal(\Omega/F)} the group of automorphisms of $\Omega$ over~$F$, with its usual
+topology: the subgroups \m{\Gal(\Omega/E)}, for $E$ a finite extension of $F$ in~$\Omega$, are a basis of
+neighbourhoods of~$1$. The group $G$ is profinite: it is compact, and every neighbourhood of~$1$ contains an open
+normal subgroup \cite[Ch.\,I, §1]{NSW}. The \kw{$\ell$-adic cyclotomic character} is the continuous homomorphism
+\m{\kappa\colon G\to\Z_\ell^\times} to the group of units of~$\Z_\ell$ with \m{g(\zeta)=\zeta^{\kappa(g)}} for every
+root of unity $\zeta$ of $\ell$-power order in~$\Omega$.
+\leanline{\lean{G}\sep\lean{QZ}\sep\lean{cycZ}}
+
+\subhead{The groups.} For \m{n\ge1} let \m{U_n=1+\ell^n\Z_\ell}, and let \m{U_0=\Z_\ell^\times}; these are open
+subgroups of~$\Z_\ell^\times$. For a subgroup $H$ of~$G$ put
+\[
+H_n=\{g\in H:\ \kappa(g)\in U_n\}\quad(n\ge0),\qquad H_\infty=H\cap\ker\kappa .
+\]
+So \m{H_0=H}, the groups $H_n$ decrease, and $H_\infty$ is their intersection. If $H$ is normal in~$G$, so are
+all of these. For \m{H=G} the group $G_n$ is the Galois group of $\Omega$ over the field generated over~$F$ by
+the roots of unity of order~$\ell^n$, and $G_\infty$ that of $\Omega$ over the field $F_\infty$ generated by all
+roots of unity of $\ell$-power order.
+\leanline{\lean{princ} (the group $U_n$)\sep\lean{levU} (the group $H_n$)\sep\lean{cycU} (the group
+$H_\infty$)\sep\lean{Un} (the group $G_n$)}
+
+\begin{definition}\label{d:char}
+A \kw{valuation ring} of $\Omega$ is a subring $A$ such that \m{x\in A} or \m{x^{-1}\in A} for every non-zero
+\m{x\in\Omega}; its maximal ideal $\mathfrak m_A$ consists of the non-units of~$A$. The \kw{decomposition group}
+$G_A$ is the group of all \m{g\in G} with \m{g(A)=A}, and the \kw{inertia group} $I_A$ is the subgroup of those
+that act trivially on the residue field~\m{A/\mathfrak m_A}.
+
+Let $C$ be a subgroup of~$G$, let \m{N\ge0} be an integer, and let $M$ be a module over a commutative ring~$R$.
+The module \m{D_N(C,M)} consists of the homomorphisms \m{\varphi\colon C\to M} that are locally constant, vanish
+on \m{C\cap I_A} for every valuation ring $A$ of~$\Omega$, and vanish on \m{C\cap G_A} for every valuation ring
+$A$ with \m{N\in\mathfrak m_A}. It is an $R$-module under pointwise operations. For a subgroup $H$ of~$G$ put
+\[
+D_\infty=D_N(H_\infty,\QZ),\qquad X_\infty=\Hom_{\Z_\ell}(D_\infty,\QZ).
+\]
+\end{definition}
+\leanline{\lean{Dec}\sep\lean{Ine}\sep\lean{XDual}\sep\lean{Dinf}\sep\lean{Xinf}}
+
+The elements of \m{D_N(C,M)} are the characters of~$C$ that are unramified at every place of~$\Omega$ and trivial
+on the decomposition groups of the places above the primes that divide~$N$. For \m{H=G} and \m{N=\ell} the modules
+$D_\infty$ and $X_\infty$ are those of the first note \cite[§7]{N1}, with \m{L=F}.
+
+\subhead{Conjugation.} Let $C$ be a normal subgroup of~$G$. For \m{g\in G} and a function \m{\varphi\colon C\to M}
+put
+\[
+(g\varphi)(x)=\varphi(g^{-1}xg)\qquad(x\in C).
+\]
+This is an $R$-linear action of $G$ on the module of all functions \m{C\to M}: \m{(gh)\varphi=g(h\varphi)}.
+\leanline{\lean{conjHom}\sep\lean{funRep}}
+
+\begin{proposition}\label{p:action}
+Let $C$ be a normal subgroup of~$G$, let \m{N\ge0}, and let $M$ be a module over a commutative ring~$R$.
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item If \m{\varphi\in D_N(C,M)} and \m{g\in G}, then \m{g\varphi\in D_N(C,M)}.
+\item If \m{\varphi\in D_N(C,M)} and \m{g\in C}, then \m{g\varphi=\varphi}.
+\item Let $\rho$ be a representation of $G$ on~$M$ by $R$-linear maps. An element $\varphi$ of \m{D_N(C,M)}
+satisfies \m{\varphi(gxg^{-1})=\rho(g)\varphi(x)} for all \m{g\in G} and \m{x\in C} if and only if
+\m{\rho(g)\bigl((g\varphi)(x)\bigr)=\varphi(x)} for all \m{g\in G} and \m{x\in C}.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(a) The map \m{x\mapsto g^{-1}xg} is a continuous homomorphism of $C$ to itself, so $g\varphi$ is a locally
+constant homomorphism. Let $A$ be a valuation ring of~$\Omega$. Then \m{g^{-1}(A)} is a valuation ring with maximal
+ideal \m{g^{-1}(\mathfrak m_A)}, and
+\[
+g^{-1}G_Ag=G_{g^{-1}(A)},\qquad g^{-1}I_Ag=I_{g^{-1}(A)} .
+\]
+So for \m{x\in C\cap I_A} the element \m{g^{-1}xg} lies in \m{C\cap I_{g^{-1}(A)}}, where $\varphi$ vanishes. If
+\m{N\in\mathfrak m_A}, then \m{N=g^{-1}(N)} lies in \m{g^{-1}(\mathfrak m_A)}, and the same argument applies to the
+decomposition groups.
+
+(b) For \m{g\in C} the three factors of \m{g^{-1}xg} lie in~$C$, and
+\m{\varphi(g^{-1}xg)=-\varphi(g)+\varphi(x)+\varphi(g)=\varphi(x)}, because $M$ is commutative.
+
+(c) Put \m{y=g^{-1}xg}. The second condition reads \m{\rho(g)\varphi(y)=\varphi(gyg^{-1})}, and $y$ runs through $C$
+when $x$ does.
+\end{proof}
+\leanline{\lean{funRepMem}, with \lean{conjDec} and \lean{conjIne}\sep the first condition of (c):
+\lean{conjCond}, \lean{EqHom}}
+
+By (a) the group $G$ acts on \m{D_N(C,M)}, and by (b) the action factors through~$G/C$. For \m{C=H_\infty} this is
+the action on $D_\infty$ in Theorem~A, and it factors through \m{G/H_\infty}.
+
+% ------------------------------------------------------------------------------------- 3
+\sect{Four facts about \texorpdfstring{$\ell$}{l}-adic numbers}{s:four}
+\begin{lemma}\label{l:four}
+\begin{enumerate}[label=\textup{(\alph*)},topsep=2pt,itemsep=2pt]
+\item A unit $u$ of~$\Z_\ell$ lies in the kernel of the reduction of units modulo~$\ell^m$ if and only if $\ell^m$
+divides \m{u-1}. So this kernel is~$U_m$.
+\item Let \m{v\in\Z_\ell} and \m{j\ge0}. If $\ell^{j+1}$ divides \m{v-1}, then $\ell^{j+2}$ divides \m{v^\ell-1}.
+\item Every element of~$\QZ$ is killed by a power of~$\ell$.
+\item Every neighbourhood of~$1$ in~$\Z_\ell^\times$ contains $U_n$ for some~$n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) The reduction of $u$ is~$1$ exactly when \m{u-1} lies in the kernel $\ell^m\Z_\ell$ of the reduction of~$\Z_\ell$.
+
+(b) Write \m{v-1=\ell^{j+1}c} with \m{c\in\Z_\ell}, and \m{v^\ell-1=(v-1)\,s} with \m{s=1+v+\dots+v^{\ell-1}}. Each
+\m{v^i-1} is divisible by \m{v-1}, so \m{s-\ell=\sum_{i<\ell}(v^i-1)=(v-1)\,d} for some \m{d\in\Z_\ell}. Hence
+\[
+v^\ell-1=\ell^{j+1}c\,\bigl(\ell+\ell^{j+1}c\,d\bigr)=\ell^{j+2}\bigl(c+\ell^{j}c^2d\bigr).
+\]
+
+(c) An element of $\QZ$ is the class of some \m{x\in\Q_\ell}, and \m{\ell^mx\in\Z_\ell} for large~$m$.
+
+(d) The topology of $\Z_\ell^\times$ is induced from~$\Z_\ell$, so a neighbourhood of~$1$ contains all units $u$
+with \m{u-1\in\ell^n\Z_\ell} for some~$n$.
+\end{proof}
+\leanline{(a) \lean{memPrinc}\sep (b) \lean{powSucc}\sep (c) \lean{qzTors}\sep (d) \lean{princNhds}}
+
+By (b) and induction, an element $v$ of \m{1+\ell\Z_\ell} satisfies
+\begin{equation}\label{e:pow}
+v^{\ell^j}\equiv1\pmod{\ell^{j+1}}\qquad\text{for every }j\ge0 .
+\end{equation}
+
+% ------------------------------------------------------------------------------------- 4
+\sect{Proof of Theorem A}{s:proof}
+Write \m{C=H_\infty}. It is a normal subgroup of~$G$, and it is closed, because $H$ is closed and $\kappa$ is
+continuous. So $C$ is compact. The proof uses of $\varphi$ only that it is a locally constant homomorphism
+\m{C\to\QZ}.
+
+\subhead{Proof of (i).} The kernel of~$\varphi$ is an open subgroup of~$C$, so it is the intersection of $C$ with
+an open subset of~$G$ that contains~$1$. This subset contains an open normal subgroup $W$ of~$G$. Thus
+\begin{equation}\label{e:w}
+\varphi(x)=0\qquad\text{for all }x\in W\cap C .
+\end{equation}
+\emph{Every \m{c\in C} fixes~$\varphi$.} This is Proposition~\ref{p:action}(b); it uses only that $\varphi$ is a
+homomorphism.
+
+\emph{Every \m{w\in W} fixes~$\varphi$.} Let \m{x\in C}. The element \m{w^{-1}xwx^{-1}} lies in~$C$, because $C$ is
+normal, and in~$W$, because it is the product of $w^{-1}$ and \m{xwx^{-1}} and $W$ is normal. By \eqref{e:w},
+\[
+(w\varphi)(x)=\varphi\bigl(w^{-1}xwx^{-1}\cdot x\bigr)=\varphi\bigl(w^{-1}xwx^{-1}\bigr)+\varphi(x)=\varphi(x).
+\]
+Since \m{(ab)\varphi=a(b\varphi)}, every element of the set
+\[
+S=\{wc:\ w\in W,\ c\in C\}
+\]
+fixes~$\varphi$. The set $S$ is a union of cosets of the open subgroup~$W$, so it is open.
+
+Let $K$ be the set of the elements of $H$ that are not in~$S$. It is closed in the compact group~$G$, hence compact,
+and its image $\kappa(K)$ is a compact, hence closed, subset of~$\Z_\ell^\times$. It does not contain~$1$: an
+element of $H$ with \m{\kappa=1} lies in $C$, and \m{C\subseteq S}. By Lemma~\ref{l:four}(d) there is $n$ such that
+$U_n$ does not meet~$\kappa(K)$. Let \m{g\in H_n}. Then \m{\kappa(g)\in U_n}, so \m{g\notin K}; as \m{g\in H}, this
+means \m{g\in S}, and $g$ fixes~$\varphi$.
+
+\subhead{Proof of (ii).} The function $\varphi$ is locally constant on a compact space, so it takes finitely many
+values. By Lemma~\ref{l:four}(c) each of them is killed by a power of~$\ell$. So \m{\ell^{k_0}\varphi=0} for some
+\m{k_0\ge0}.
+
+Let $n$ be as in~(i), put \m{q=\ell^n}, and let \m{\gamma\in H_1}. Then \m{\kappa(\gamma)\in1+\ell\Z_\ell}, and by
+\eqref{e:pow} with \m{j=n} the unit \m{\kappa(\gamma^q)=\kappa(\gamma)^{q}} lies in~$U_n$. So \m{\gamma^q\in H_n}, and
+by (i)
+\begin{equation}\label{e:q}
+\gamma^q\varphi=\varphi .
+\end{equation}
+Let $T$ be the endomorphism \m{\gamma-1} of the $\Z_\ell$-module of all functions \m{C\to\QZ}, and let $J$ be the
+set of polynomials \m{P\in\Z[Y]} with \m{P(T)\varphi=0}. It is an ideal of the polynomial ring~$\Z[Y]$. It contains
+\[
+(Y+1)^q-1\qquad\text{and}\qquad\ell^{k_0},
+\]
+the first by \eqref{e:q}, since \m{T+1=\gamma}, and the second by the choice of~$k_0$. Now $q$ is a power of~$\ell$,
+so \m{(Y+1)^q=Y^q+1} in the polynomial ring over the field with $\ell$ elements. Hence there is \m{Q\in\Z[Y]} with
+\[
+(Y+1)^q-Y^q-1=\ell\,Q ,\qquad\text{that is,}\qquad Y^q=\bigl((Y+1)^q-1\bigr)-\ell\,Q .
+\]
+Modulo~$J$ this gives \m{Y^q\equiv-\ell Q}, and then
+\[
+Y^{qk_0}\equiv(-Q)^{k_0}\,\ell^{k_0}\equiv0\pmod J .
+\]
+So \m{T^{qk_0}\varphi=0}, which is \m{(\gamma-1)^k\varphi=0} for \m{k=qk_0=\ell^nk_0}. Finally \m{\ell^k\varphi=0}
+because \m{k\ge k_0}. \hfill\qedsymbol
+
+\medskip
+The exponent does not depend on~$\gamma$. For \m{\ell=2} every unit of $\Z_2$ is congruent to~$1$ modulo~$2$, so
+\m{H_1=H} and (ii) holds for every \m{\gamma\in H}.
+
+% ------------------------------------------------------------------------------------- 5
+\sect{Where the theorem is used}{s:use}
+\emph{Unipotence on the dual.} Let $H$ be a closed normal subgroup of~$G$ and \m{\gamma\in H_1}. By Theorem~A(ii)
+for~$\gamma^{-1}$, the operator \m{\gamma^{-1}-1} is locally nilpotent on~$D_\infty$: every element is killed by
+a power of it. If $X_\infty$ is finitely generated over~$\Z_\ell$, the proposition on dual modules of the first note
+\cite[Prop.\,7.1]{N1} shows that the action of $\gamma$ on~$X_\infty$, \m{(\gamma x)(\varphi)=x(\gamma^{-1}\varphi)},
+is unipotent modulo~$\ell$: some power of \m{\gamma-1} maps $X_\infty$ into~$\ell X_\infty$. For \m{H=G} and
+\m{N=\ell} this is how Input~1 of the first note enters the proof of its Theorem~D.
+
+\emph{Invariants.} Part (i) is used in the descent to a layer of the tower \cite[§8, Input~2b]{N1}. There one has a
+subgroup $V$ of~$G$ and an element \m{\eta\in V} such that $\kappa(V)$ lies in the closure of the set of powers
+of~$\kappa(\eta)$, and one needs that an element of $D_\infty$ fixed by~$\eta$ is fixed by~$V$, for the action
+twisted by a power of~$\kappa$. By (i) the element is fixed by~$G_n$ for some~$n$. This also holds for the twisted
+action when $n$ is at least the exponent~$k_0$ of~(ii), because a unit in~$U_n$ then acts trivially on an element
+killed by~$\ell^{k_0}$. And every element of $V$ is the product of a power of~$\eta$ and an element of~$G_n$.
+\leanline{\lean{xUnip}, by \lean{dualUnip}\sep\lean{shaDGen}}
+
+% ------------------------------------------------------------------------------------- 6
+\sect{Notes on the formal text}{s:notes}
+\begin{enumerate}[label=\textup{\arabic*.},leftmargin=1.6em,itemsep=5pt]
+\item \emph{The conditions at the places are not used.} The formal statement takes $\varphi$ in~$D_\infty$. Its
+proof unfolds this hypothesis once and keeps two of its four clauses: $\varphi$ is locally constant, and it is
+additive. The clauses on inertia and decomposition groups are not referred to again, and neither is the
+integer~$N$. So Theorem~A holds for every locally constant homomorphism \m{H_\infty\to\QZ}. The conditions matter
+for Proposition~\ref{p:action}(a), which makes $D_\infty$ a module with an action of~$G$.
+\item \emph{The exponent.} The formal statement asserts that some~$k$ has the two properties of~(ii). The proof
+constructs \m{k=\ell^nk_0}, the same for all~$\gamma$; this is the form stated above.
+\item \emph{Where the hypotheses on $H$ enter.} Closedness gives the compactness of $H_\infty$, used for the open
+subgroup~$W$ and for the finitely many values, and the compactness of the set~$K$. Normality makes $H_\infty$ normal,
+so that conjugation acts.
+\item \emph{The coefficients.} The module $\QZ$ enters through Lemma~\ref{l:four}(c) alone. The argument of
+§\ref{s:proof} applies to locally constant homomorphisms into any module whose elements are killed by powers
+of~$\ell$. This remark is ours; the archive states the theorem for~$\QZ$.
+\item \emph{The polynomial ideal} is the device of the formal proof, followed here step by step. The sketch in the
+first note used the same congruence, applied $k_0$ times to elements; the ideal does this bookkeeping once.
+\item \emph{The rest of the unit.} The unit of the archive that holds these declarations has \UnitMembers{}
+declarations that the final theorems use. This note treats \UnitInNote. The others are, by source file:
+
+\par\vspace{2pt}
+{\fontsize{9.2}{12}\selectfont\noindent\hspace*{1.2em}\begin{tabular}{@{}l@{\hspace{14pt}}r@{}}
+\ElsewhereRows
+\end{tabular}\par}
+\vspace{2pt}
+
+The grouping is provisional. Each group is the subject of a note to come.
+\end{enumerate}
+
+\subhead{How this note was written.} The reading project supplied a dossier of the unit: the statements, a
+glossary, and a structured proof of every theorem in which each step quotes the lines of the archive that it
+renders. A program compared the quotations with the archive, for all \UnitSteps{} steps of the \UnitProofs{}
+proofs of the unit, and found that no line of these proofs is left without a step. The proofs of this note were
+written from those structured proofs. The Lean files of the unit were not opened. The statement of item~1 rests
+on the quoted lines of the structured proof of the theorem: the hypothesis on~$\varphi$ occurs in four of them
+and nowhere else. The statements quoted below were read from the archive by the build script, and they agree
+with the dossier's.
+
+% ------------------------------------------------------------------------------------- A
+\head{Appendix A. Concordance with the Lean archive}
+{\fontsize{9.6}{12.8}\selectfont\color{inksoft}\noindent Each name is a link to the lines of the declaration at
+commit {\leanfont\Pin} of the public mirror of the archive. The line ranges and the quotations below are read from
+the archive by the build script, which also checks them against the SHA-256 of each file. The first thirteen rows
+are the declarations of the unit that this note treats.\par}
+\vspace{4pt}
+{\fontsize{8.6}{11.6}\selectfont\renewcommand{\leanfont}{\ttfamily\fontsize{7.7}{10}\selectfont\color{leancol}}
+\setlength{\LTleft}{0pt}\setlength{\LTright}{\fill}\setlength{\tabcolsep}{0pt}
+\begin{longtable}{@{}p{30mm}p{56mm}p{43mm}r@{}}
+\textbf{In this note} & \textbf{Lean declaration} & \textbf{File} & \textbf{Lines}\\\midrule\endhead
+\ConcordanceRows
+\end{longtable}}
+
+\Needspace{8\baselineskip}
+\subhead{Three statements as they are written in the archive.} Theorem~A; here {\leanfont U} is the group~$H$,
+{\leanfont levU l U n} is~$H_n$, {\leanfont cycU l U} is~$H_\infty$, and {\leanfont funRep} is the action by
+conjugation:
+\quoted{dinfNil}
+The module of characters \m{D_N(C,M)}, where {\leanfont U} is the group~$C$:
+\quoted{XDual}
+Proposition~\ref{p:action}:
+\quoted{funRepMem}
+
+% ------------------------------------------------------------------------------------- notation
+\head{Notation}
+{\fontsize{9.6}{12.6}\selectfont\color{inksoft}\noindent The symbols of the text. A name in brackets is the one
+used in the archive.\par}
+\vspace{4pt}
+\begingroup\fontsize{8.6}{10.9}\selectfont\raggedright
+\renewcommand{\leanfont}{\ttfamily\fontsize{7.6}{10}\selectfont\color{leancol}}
+\setlength{\columnsep}{9mm}\setlength{\parskip}{0pt}
+\begin{multicols}{2}
+\nt{$\ell$, $\Z_\ell$, $\Q_\ell$, $\QZ$}{a prime; the $\ell$-adic integers and numbers; their quotient group}
+\nt{$F$, $\Omega$, $E$, $F_\infty$}{a number field; an algebraic closure; a finite extension; $F$ with all roots of unity of $\ell$-power order}
+\nt{$G$, $G_n$, $G_\infty$}{\m{\Gal(\Omega/F)}; the groups $H_n$, $H_\infty$ for \m{H=G} [{\leanfont Un}]}
+\nt{$\kappa$, $\zeta$}{the $\ell$-adic cyclotomic character [{\leanfont cycZ}]; a root of unity}
+\nt{$U_n$}{the units \m{1+\ell^n\Z_\ell}, with \m{U_0=\Z_\ell^\times} [{\leanfont princ}]}
+\nt{$H$, $H_n$, $H_\infty$}{a subgroup of $G$; its elements with \m{\kappa\in U_n} [{\leanfont levU}]; \m{H\cap\ker\kappa} [{\leanfont cycU}]}
+\nt{$C$, $N$, $R$, $M$}{a subgroup of~$G$; an integer \m{\ge0}; a commutative ring; an $R$-module}
+\nt{$A$, $\mathfrak m_A$, $G_A$, $I_A$}{a valuation ring of~$\Omega$; its maximal ideal; decomposition and inertia groups}
+\nt{$D_N(C,M)$, $D_\infty$, $X_\infty$}{characters of $C$ (Definition~\ref{d:char}) [{\leanfont XDual}]; \m{D_N(H_\infty,\QZ)}; its dual}
+\nt{$\varphi$, $g\varphi$}{a character; its conjugate \m{x\mapsto\varphi(g^{-1}xg)}}
+\nt{$g$, $h$, $\gamma$, $\eta$, $x$, $y$, $c$, $w$, $a$, $b$}{elements of~$G$ (also: $c$, $d$ elements of $\Z_\ell$ in Lemma~\ref{l:four}; $x$ in $\Q_\ell$)}
+\nt{$\rho$}{a representation of $G$ on~$M$}
+\nt{$u$, $v$, $s$, $d$}{elements of~$\Z_\ell$; \m{s=1+v+\dots+v^{\ell-1}}}
+\nt{$W$, $S$, $K$, $V$}{an open normal subgroup; the set $WC$; the set \m{H\smallsetminus S}; a subgroup of $G$ (§\ref{s:use})}
+\nt{$n$, $m$, $j$, $i$, $k$, $k_0$, $q$}{integers; \m{\ell^{k_0}\varphi=0}; \m{q=\ell^n}}
+\nt{$T$, $J$, $P$, $Q$, $Y$}{the operator \m{\gamma-1}; the ideal of polynomials that kill~$\varphi$; polynomials; the indeterminate}
+\nt{$L$}{the number field of the first note}
+\end{multicols}
+\endgroup
+
+% ------------------------------------------------------------------------------------- references
+\head{References}
+\begingroup\fontsize{9.4}{12.6}\selectfont\raggedright\renewcommand{\section}[2]{}
+\begin{thebibliography}{NSW}\setlength{\itemsep}{2pt}
+\bibitem[Al]{Al} L.\,Alpöge, announcement of proofs of the Riemann hypothesis and of the generalized Riemann
+  hypothesis for Dirichlet characters, 20 November 2026, with a Lean archive;
+  \href{\PinUrl}{public mirror of the archive at commit {\leanfont\Pin}}.
+\bibitem[N1]{N1} \emph{Twisted cokernels in a cyclotomic tower}, Deformalization~1, riemann-rev,
+  \href{https://nasqret.github.io/riemann-rev/digests/tower-bound.pdf}{\texttt{digests/tower-bound.pdf}}.
+\bibitem[NSW]{NSW} J.\,Neukirch, A.\,Schmidt and K.\,Wingberg, \emph{Cohomology of Number Fields}, 2nd ed.,
+  Grundlehren der mathematischen Wissenschaften 323, Springer, 2008.
+\end{thebibliography}
+\endgroup
+
+\end{document}

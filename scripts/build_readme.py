@@ -613,6 +613,7 @@ def build() -> str:
 
     # ------------------------------------------------------------------ contents
     n_digest = len(load("digests/tower-bound/concordance.json")["declarations"])
+    n_second = len(load("digests/local-nilpotence/concordance.json")["declarations"])
     add("## What is in this repository\n")
     add(table(["", "What", "Where"], [
         ["📄", "**The guide.** The whole argument in standard mathematical terminology: flow diagram, the theorem, the "
@@ -624,6 +625,11 @@ def build() -> str:
                f"{n_digest} Lean declarations with their source lines, and computed examples.",
          f"[**read online**]({SITE}/digests/tower-bound.pdf) · "
          "[`digests/tower-bound/tower-bound.pdf`](digests/tower-bound/tower-bound.pdf)"],
+        ["🔬", f"**Deformalization 2: local nilpotence over a cyclotomic tower.** An input of the first note proved in "
+               f"full: every character of the cyclotomic kernel is killed by a power of γ − 1. Written from structured "
+               f"proofs of the Lean text, with a concordance of {n_second} Lean declarations.",
+         f"[**read online**]({SITE}/digests/local-nilpotence.pdf) · "
+         "[`digests/local-nilpotence/local-nilpotence.pdf`](digests/local-nilpotence/local-nilpotence.pdf)"],
         ["🗺️", f"**The atlas.** An interactive map: the {len(comps)} components, a guided tour, the blueprint graph of "
                f"{n_decl} declarations with their dependencies, illustrated ideas and the verification ledger. One "
                "self-contained HTML file.",

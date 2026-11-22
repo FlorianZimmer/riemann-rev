@@ -1,0 +1,29 @@
+{
+ "what": "changes of cited declarations on the upstream default branch that were read, with the verdict; an entry counts while the upstream file has the recorded hash",
+ "read": [
+  {
+   "declaration": "Kum.dinfNil",
+   "change": "proof changed",
+   "upstream_commit": "c7791603122c0328f79e49f6be5d7d4402effc53",
+   "file_sha256": "3e7214399a259c97d3352c7547e0712b22163e30609eb73f2dc3b6e8fd3e66fb",
+   "verdict": "Four tactic lines inside the proof adapted to a newer library (explicit argument of map_add, the coefficient function of polynomials). Statement unchanged; the steps of section 4 of the note are the same.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "Kum.funRepMem",
+   "change": "statement changed",
+   "upstream_commit": "c7791603122c0328f79e49f6be5d7d4402effc53",
+   "file_sha256": "f2416dd7f8dec772942959f5aeaf24d364b1c8769dd94d4185777df6bbc17a8f",
+   "verdict": "The arguments R and M of funRep are now implicit, written (R := R) (M := M), and the statement is set on more lines. The same statement.",
+   "read": "2026-11-22"
+  },
+  {
+   "declaration": "exists_prime_pow_smul_eq_zero_qz",
+   "change": "proof changed",
+   "upstream_commit": "c7791603122c0328f79e49f6be5d7d4402effc53",
+   "file_sha256": "3e7214399a259c97d3352c7547e0712b22163e30609eb73f2dc3b6e8fd3e66fb",
+   "verdict": "One rewriting lemma added to a tactic line (PadicInt.mem_subring_iff). Statement unchanged.",
+   "read": "2026-11-22"
+  }
+ ]
+}

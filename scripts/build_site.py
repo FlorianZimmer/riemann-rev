@@ -7,8 +7,9 @@
     _site/index.html                    the home page, generated here from data/model.json
     _site/atlas/index.html              the atlas (a copy; links that leave the site go to the repository)
     _site/guide/proof-guide.{pdf,gif}   the guide
-    _site/digests/tower-bound.pdf       the first deformalization digest
-    _site/digests/tower-bound.json      its reader index (declaration, place in the note, page, PDF destination)
+    _site/digests/<slug>.pdf            the deformalization notes (tower-bound, local-nilpotence)
+    _site/digests/<slug>.json           their reader indexes (declaration, place in the note, page, PDF destination)
+    _site/digests/editions/             every published edition of a note, named by its SHA-256
     _site/blueprint/atlas-blueprint.pdf the illustrated blueprint
     _site/book/                         the Jupyter Book (book/_build/html)
 
@@ -109,6 +110,10 @@ def home(has_book: bool) -> str:
     cards.append(("arith", "Deformalization 1", "Twisted cokernels in a cyclotomic tower: one cluster of the archive "
                   f"rewritten as ordinary mathematics, with complete proofs of its algebra and a concordance of "
                   f"{n_digest} Lean declarations.", "digests/tower-bound.pdf", "Read the note (PDF)"))
+    n_second = len(load("digests/local-nilpotence/concordance.json")["declarations"])
+    cards.append(("arith", "Deformalization 2", "Local nilpotence over a cyclotomic tower: an input of the first note "
+                  "proved in full, written from the structured proofs of the Lean text, with a concordance of "
+                  f"{n_second} Lean declarations.", "digests/local-nilpotence.pdf", "Read the note (PDF)"))
     if has_book:
         cards.append(("ana", "The book", f"{chapters} chapters with formulas, figures and computations that are "
                                          "executed every time the site is built.", "book/", "Open the book"))
@@ -214,13 +219,14 @@ def main() -> int:
     (OUT / "atlas" / "index.html").write_text(site_atlas(), encoding="utf-8")
     for rel in ("guide/proof-guide.pdf", "guide/proof-guide.gif", "blueprint/atlas-blueprint.pdf"):
         shutil.copy2(ROOT / rel, OUT / rel)
-    shutil.copy2(ROOT / "digests/tower-bound/tower-bound.pdf", OUT / "digests" / "tower-bound.pdf")
-    # for readers that show the note beside the Lean text: every cited declaration with its place in the PDF
-    shutil.copy2(ROOT / "digests/tower-bound/reader.json", OUT / "digests" / "tower-bound.json")
-    # every published edition of the note stays at a permanent address, named by its SHA-256
     (OUT / "digests" / "editions").mkdir(exist_ok=True)
-    for f in sorted((ROOT / "digests/tower-bound/editions").glob("*.pdf")):
-        shutil.copy2(f, OUT / "digests" / "editions" / f.name)
+    for slug in ("tower-bound", "local-nilpotence"):
+        shutil.copy2(ROOT / f"digests/{slug}/{slug}.pdf", OUT / "digests" / f"{slug}.pdf")
+        # for readers that show the note beside the Lean text: every cited declaration with its place in the PDF
+        shutil.copy2(ROOT / f"digests/{slug}/reader.json", OUT / "digests" / f"{slug}.json")
+        # every published edition of a note stays at a permanent address, named by its SHA-256
+        for f in sorted((ROOT / f"digests/{slug}/editions").glob("*.pdf")):
+            shutil.copy2(f, OUT / "digests" / "editions" / f.name)
     if has_book:
         shutil.copytree(book, OUT / "book", ignore=shutil.ignore_patterns(".doctrees", ".buildinfo"))
     (OUT / "index.html").write_text(home(has_book), encoding="utf-8")

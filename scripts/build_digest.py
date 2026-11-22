@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """Build a deformalization digest: one cluster of the Lean archive rewritten as ordinary mathematics.
 
-    python3 -B scripts/build_digest.py            # data.tex and figure, LuaLaTeX, checks
+    python3 -B scripts/build_digest.py [SLUG ...]  # data.tex and figure, LuaLaTeX, checks (all digests if none named)
     python3 -B scripts/build_digest.py --refresh  # first re-read the Lean archive (needs its source)
     python3 -B scripts/build_digest.py --check    # only verify the stored records
     python3 -B scripts/build_digest.py --edition  # build, and keep the PDF as a published edition (editions/)
 
 The first digest is digests/tower-bound/ ("Twisted cokernels in a cyclotomic tower"). Its text,
-tower-bound.tex, is hand-written. Everything in it that is a Lean name, a line range, a count or a
+tower-bound.tex, is hand-written, and its declarations, examples and outline are listed in this file.
+Every later digest digests/<slug>/ has a file spec.py with DIRECTORY, DECLS, OUTLINE and, optionally,
+QUOTED, LETTERED and ELSEWHERE (for a note that treats one part of its unit: the subjects of the other
+members, by source file). Everything in a note that is a Lean name, a line range, a count or a
 number of an example is generated here:
 
 * concordance.json  the declarations of the cluster with their pinned line ranges, the SHA-256 of
@@ -26,10 +29,12 @@ list does not mention.
 """
 from __future__ import annotations
 
+import collections
 import hashlib
 import json
 import os
 import re
+import runpy
 import shutil
 import subprocess
 import sys
@@ -40,8 +45,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from build_guide import check_notation, tex_escape, url_escape  # noqa: E402
 
-DIGEST = "tower-bound"
+FIRST = "tower-bound"   # the first digest: its declarations, examples and outline are in this file
+DIGEST = FIRST
 D = ROOT / "digests" / DIGEST
+ATLAS = EXAMPLES = True  # the first digest starts from a cluster of the embedding atlas and has computed examples
+ELSEWHERE: list = []     # (id, title, [source file names]): members of the unit that other notes will treat
 PAGES = None        # fixed after the first build (so that a change of length is noticed)
 ATLAS_SITE = "https://nasqret.github.io/riemann-proof-atlas/"
 ATLAS_RAW = "https://raw.githubusercontent.com/nasqret/riemann-proof-atlas/"
@@ -523,60 +531,67 @@ def data_tex(conc: dict, atlas: dict, ex: dict, model: dict, cov: dict | None = 
     for key, d in conc["declarations"].items():
         out.append(r"\expandafter\newcommand\csname LN@%s\endcsname{\href{%s}{\leanfont %s}}"
                    % (key, url_escape(lean_url(model, d)), tex_escape(d["name"])))
-    rows = atlas["rows"]
-    av = [r for r in rows if r["directory"] == "AdditiveValuationNorms"]
     files = sorted({d["file"] for d in conc["declarations"].values()})
-    subj: dict[str, int] = {}
-    for r in av:
-        subj[r["subject"]] = subj.get(r["subject"], 0) + 1
-    order = sorted(subj.items(), key=lambda kv: (-kv[1], kv[0]))
-    inb = [r for r in rows if r["bundle"] == atlas["bundle"]]
-    assert sorted(r["name"].split(".")[-1] for r in inb) == sorted(
-        conc["declarations"][k]["name"].split(".")[-1] for k in CLUSTER), "the cluster changed in the atlas"
-    tiers = {n["declaration"].split(".")[-1]: n["tier"] for n in model["nodes"] if n["id"].startswith("tower-")}
-    named = [conc["declarations"][k]["name"].split(".")[-1] for k in CLUSTER]
-    checked = [n for n in named if tiers.get(n) == "checked"]
-    covered = [n for n in named if tiers.get(n) == "covered"]
-    assert len(checked) + len(covered) == len(CLUSTER), tiers
     commit = model["pins"]["mirror_commit"]
-    e1, e2 = ex["ex1"], ex["ex2"]
     num = lambda n: f"{n:,}".replace(",", "{,}")       # noqa: E731
-    out += [
-        r"\newcommand{\Pin}{%s}" % commit[:8],
-        r"\newcommand{\PinUrl}{%s}" % url_escape(model["pins"]["mirror"] + "/tree/" + commit + "/src"),
-        r"\newcommand{\AtlasUrl}{%s}" % url_escape(ATLAS_SITE),
-        r"\newcommand{\AtlasClusterUrl}{%s}" % url_escape(ATLAS_SITE + "#theorem=%d" % min(r["row"] for r in inb)),
-        r"\newcommand{\AtlasCommit}{%s}" % atlas["atlas_commit"][:8],
-        r"\newcommand{\AtlasDecls}{%s}" % num(atlas["declarations_in_atlas"]),
-        r"\newcommand{\AtlasBundles}{%s}" % num(atlas["bundles_in_atlas"]),
-        r"\newcommand{\ClusterSize}{%d}" % len(inb),
-        r"\newcommand{\DirDecls}{%d}" % len(av),
-        r"\newcommand{\DirFiles}{%d}" % conc["directory"]["files"],
-        r"\newcommand{\DirLines}{%s}" % num(conc["directory"]["lines"]),
-        r"\newcommand{\ConcDecls}{%d}" % len(conc["declarations"]),
-        r"\newcommand{\ConcFiles}{%d}" % len(files),
-        r"\newcommand{\NChecked}{%d}" % len(checked),
-        r"\newcommand{\NCovered}{%d}" % len(covered),
-        r"\newcommand{\SubjectCount}{%d}" % len(order),
-        r"\newcommand{\SubjectRows}{%s}" % "".join(r"%s & %d\\" % (tex_escape(s), n) for s, n in order),
-        r"\newcommand{\ExZ}{%d}" % e1["Z"],
-        r"\newcommand{\ExK}{%d}" % e1["k"],
-        r"\newcommand{\ExMzero}{%d}" % e1["m0"],
-        r"\newcommand{\ExLevels}{%d}" % e1["levels_checked"],
-        r"\newcommand{\ExExc}{%s}" % " and ".join(str(h) for h in e1["exceptional"]),
-        r"\newcommand{\ExWorst}{%d}" % e1["worst_ordinary"],
-        r"\newcommand{\ExTwoMzero}{%d}" % e2["m0"],
-        r"\newcommand{\ExTwoRowOne}{%s}" % " & ".join(str(x) for x in e2["table"][1]),
-        r"\newcommand{\ExTwoRowNine}{%s}" % " & ".join(str(x) for x in e2["table"][9]),
-        r"\newcommand{\ExTwoJump}{%d}" % e2["jumps"][0],
-        r"\newcommand{\RandCases}{%d}" % ex["random"]["cases"],
-        r"\newcommand{\RandSteps}{%d}" % ex["random"]["steps"],
-        r"\newcommand{\RandSharp}{%d}" % ex["random"]["sharp"],
-    ]
+    out += [r"\newcommand{\Pin}{%s}" % commit[:8],
+            r"\newcommand{\PinUrl}{%s}" % url_escape(model["pins"]["mirror"] + "/tree/" + commit + "/src")]
+    if ATLAS:
+        rows = atlas["rows"]
+        av = [r for r in rows if r["directory"] == "AdditiveValuationNorms"]
+        subj: dict[str, int] = {}
+        for r in av:
+            subj[r["subject"]] = subj.get(r["subject"], 0) + 1
+        order = sorted(subj.items(), key=lambda kv: (-kv[1], kv[0]))
+        inb = [r for r in rows if r["bundle"] == atlas["bundle"]]
+        assert sorted(r["name"].split(".")[-1] for r in inb) == sorted(
+            conc["declarations"][k]["name"].split(".")[-1] for k in CLUSTER), "the cluster changed in the atlas"
+        tiers = {n["declaration"].split(".")[-1]: n["tier"] for n in model["nodes"] if n["id"].startswith("tower-")}
+        named = [conc["declarations"][k]["name"].split(".")[-1] for k in CLUSTER]
+        checked = [n for n in named if tiers.get(n) == "checked"]
+        covered = [n for n in named if tiers.get(n) == "covered"]
+        assert len(checked) + len(covered) == len(CLUSTER), tiers
+        out += [
+            r"\newcommand{\AtlasUrl}{%s}" % url_escape(ATLAS_SITE),
+            r"\newcommand{\AtlasClusterUrl}{%s}" % url_escape(ATLAS_SITE + "#theorem=%d" % min(r["row"] for r in inb)),
+            r"\newcommand{\AtlasCommit}{%s}" % atlas["atlas_commit"][:8],
+            r"\newcommand{\AtlasDecls}{%s}" % num(atlas["declarations_in_atlas"]),
+            r"\newcommand{\AtlasBundles}{%s}" % num(atlas["bundles_in_atlas"]),
+            r"\newcommand{\ClusterSize}{%d}" % len(inb),
+            r"\newcommand{\DirDecls}{%d}" % len(av),
+            r"\newcommand{\NChecked}{%d}" % len(checked),
+            r"\newcommand{\NCovered}{%d}" % len(covered),
+            r"\newcommand{\SubjectCount}{%d}" % len(order),
+            r"\newcommand{\SubjectRows}{%s}" % "".join(r"%s & %d\\" % (tex_escape(s), n) for s, n in order),
+        ]
+    out += [r"\newcommand{\DirFiles}{%d}" % conc["directory"]["files"],
+            r"\newcommand{\DirLines}{%s}" % num(conc["directory"]["lines"]),
+            r"\newcommand{\ConcDecls}{%d}" % len(conc["declarations"]),
+            r"\newcommand{\ConcFiles}{%d}" % len(files)]
+    if EXAMPLES:
+        e1, e2 = ex["ex1"], ex["ex2"]
+        out += [
+            r"\newcommand{\ExZ}{%d}" % e1["Z"],
+            r"\newcommand{\ExK}{%d}" % e1["k"],
+            r"\newcommand{\ExMzero}{%d}" % e1["m0"],
+            r"\newcommand{\ExLevels}{%d}" % e1["levels_checked"],
+            r"\newcommand{\ExExc}{%s}" % " and ".join(str(h) for h in e1["exceptional"]),
+            r"\newcommand{\ExWorst}{%d}" % e1["worst_ordinary"],
+            r"\newcommand{\ExTwoMzero}{%d}" % e2["m0"],
+            r"\newcommand{\ExTwoRowOne}{%s}" % " & ".join(str(x) for x in e2["table"][1]),
+            r"\newcommand{\ExTwoRowNine}{%s}" % " & ".join(str(x) for x in e2["table"][9]),
+            r"\newcommand{\ExTwoJump}{%d}" % e2["jumps"][0],
+            r"\newcommand{\RandCases}{%d}" % ex["random"]["cases"],
+            r"\newcommand{\RandSteps}{%d}" % ex["random"]["steps"],
+            r"\newcommand{\RandSharp}{%d}" % ex["random"]["sharp"],
+        ]
     if cov:
         out += [r"\newcommand{\UnitMembers}{%d}" % cov["used"],
                 r"\newcommand{\UnitInDir}{%d}" % cov["in_directory"],
                 r"\newcommand{\UnitOutside}{%d}" % (cov["used"] - cov["in_directory"]),
+                r"\newcommand{\UnitInNote}{%d}" % cov["in_note"],
+                r"\newcommand{\UnitElsewhere}{%d}" % cov["elsewhere"],
+                r"\newcommand{\ElsewhereRows}{%s}" % "".join(r"%s & %d\\" % (tex_escape(t), n) for t, n in cov["subjects"]),
                 r"\newcommand{\UnitProofs}{%d}" % cov["proofs"]["proofs"],
                 r"\newcommand{\UnitSteps}{%d}" % cov["proofs"]["leaf_steps"]]
         assert cov["proofs"]["leaf_steps_quoting_their_lines"] == cov["proofs"]["leaf_steps"]
@@ -639,6 +654,8 @@ OUTLINE = [
 
 
 def outline(conc: dict, unit: dict) -> dict:
+    """The nodes partition the unit: a member is in the node that lists its key, or, when this note treats one
+    part of the unit, in the node of the subject (ELSEWHERE) that owns its source file."""
     site = lambda ident: (ident.rsplit(":", 2)[0].replace(".", "/") + ".lean", int(ident.rsplit(":", 2)[1]))  # noqa: E731
     key_at = {(d["file"], d["lines"][0]): k for k, d in conc["declarations"].items()}
     members = {m["id"]: m for m in unit["members"]}
@@ -647,27 +664,41 @@ def outline(conc: dict, unit: dict) -> dict:
         for k in keys:
             assert k in conc["declarations"] and k not in node_of, f"outline: {k} is unknown or in two nodes"
             node_of[k] = nid
-    key_of = {m["id"]: key_at[(m["file"], m["lines"][0])] for m in unit["members"]}
-    missing = sorted(set(key_of.values()) - set(node_of))
-    extra = sorted(set(node_of) - set(key_of.values()))
-    assert not missing and not extra, f"outline is not a partition of the unit: missing {missing}, not in the unit {extra}"
-    edges: dict[tuple[str, str], int] = {}
-    granted: dict[str, dict] = {nid: {"cited": set(), "other": set()} for nid, *_ in OUTLINE}
+    file_node = {f: eid for eid, _, files in ELSEWHERE for f in files}
+    where, missing = {}, []
     for m in unit["members"]:
-        here = node_of[key_of[m["id"]]]
+        k = key_at.get((m["file"], m["lines"][0]))
+        n = node_of.get(k) or file_node.get(m["file"].rsplit("/", 1)[-1])
+        if n is None:
+            missing.append(m["name"])
+        where[m["id"]] = n
+    extra = sorted(set(node_of) - {key_at.get((m["file"], m["lines"][0])) for m in unit["members"]})
+    assert not missing and not extra, f"outline is not a partition of the unit: missing {sorted(missing)}, not in the unit {extra}"
+    ids = [nid for nid, *_ in OUTLINE] + [eid for eid, *_ in ELSEWHERE]
+    edges: dict[tuple[str, str], int] = {}
+    granted: dict[str, dict] = {nid: {"cited": set(), "other": set()} for nid in ids}
+    for m in unit["members"]:
+        here = where[m["id"]]
         for u in m["uses"]:
             if u in members:
-                there = node_of[key_of[u]]
+                there = where[u]
                 if there != here:
                     edges[(there, here)] = edges.get((there, here), 0) + 1
             elif site(u) in key_at:
                 granted[here]["cited"].add(key_at[site(u)])
             else:
                 granted[here]["other"].add(u)
-    return {"nodes": [{"id": nid, "title": title, "text": text, "declarations": keys,
-                       "takes_for_granted": sorted(granted[nid]["cited"]),
-                       "other_declarations_used": len(granted[nid]["other"])} for nid, title, text, keys in OUTLINE],
-            "edges": [{"from": a, "to": b, "uses": n} for (a, b), n in sorted(edges.items())]}
+    nodes = [{"id": nid, "title": title, "text": text, "declarations": keys,
+              "takes_for_granted": sorted(granted[nid]["cited"]),
+              "other_declarations_used": len(granted[nid]["other"])} for nid, title, text, keys in OUTLINE]
+    if ELSEWHERE:
+        count = collections.Counter(where.values())
+        for n in nodes:
+            n.update(in_this_note=True, members=count[n["id"]])
+        nodes += [{"id": eid, "title": title, "text": "not treated in this note", "declarations": [],
+                   "takes_for_granted": sorted(granted[eid]["cited"]), "other_declarations_used": len(granted[eid]["other"]),
+                   "in_this_note": False, "members": count[eid]} for eid, title, _ in ELSEWHERE]
+    return {"nodes": nodes, "edges": [{"from": a, "to": b, "uses": n} for (a, b), n in sorted(edges.items())]}
 
 
 LETTERED = [("Theorem A", "t:A"), ("Theorem B", "t:B"), ("Cor. C", "t:C"), ("Theorem D", "t:D"), ("Input 1", "i:1"),
@@ -681,9 +712,14 @@ def reader_index(conc: dict, tex: str, aux: str, cov: dict | None, pdf: Path) ->
               for m in re.finditer(r"\\newlabel\{([^}]+)\}\{\{([^}]*)\}\{(\d+)\}\{(?:[^{}]|\{[^{}]*\})*\}\{([^}]*)\}", aux)}
     where = dict(re.findall(r"\\cs\{(\w+)\}\{((?:[^{}]|\{[^{}]*\})*)\}", tex))
     unit_sites = set()
+    # the identity of a declaration in the archive, MODULE:LINE:COLUMN: for the members of the unit from unit.json,
+    # for the others from ids.json (supplied by the reading project and checked against the archive when received)
+    ident = json.loads((D / "ids.json").read_text(encoding="utf-8")) if (D / "ids.json").exists() else {}
+    member_id = {}
     if cov:
         unit = json.loads((D / "unit.json").read_text(encoding="utf-8"))
         unit_sites = {(m["file"], m["lines"][0]) for m in unit["members"]}
+        member_id = {(m["file"], m["lines"][0]): m["id"] for m in unit["members"]}
     rows, items = [], {}
     for key, d in conc["declarations"].items():
         raw = where[key]
@@ -693,7 +729,9 @@ def reader_index(conc: dict, tex: str, aux: str, cov: dict | None, pdf: Path) ->
         assert label in labels, f"{key}: no anchor for '{raw}'"
         items.setdefault(label, {"item": label, "title": re.split(r"[,(]", text)[0].strip(), "page": labels[label]["page"],
                                  "dest": labels[label]["dest"], "declarations": []})["declarations"].append(key)
-        rows.append({"key": key, "name": d["name"], "kind": d["kind"], "file": d["file"], "lines": d["lines"],
+        did = member_id.get((d["file"], d["lines"][0])) or ident.get(key)
+        assert did is None or did.rsplit(":", 2)[:2] == [d["file"][:-5].replace("/", "."), str(d["lines"][0])], f"{key}: {did}"
+        rows.append({"key": key, "id": did, "name": d["name"], "kind": d["kind"], "file": d["file"], "lines": d["lines"],
                      "in_unit": (d["file"], d["lines"][0]) in unit_sites, "item": label, "where": text,
                      "page": labels[label]["page"], "dest": labels[label]["dest"]})
     editions = [{"file": f"editions/{f.name}", "sha256": sha256(f)} for f in sorted((D / "editions").glob("*.pdf"))]
@@ -714,14 +752,46 @@ def unit_coverage(conc: dict) -> dict | None:
     unit = json.loads(f.read_text(encoding="utf-8"))
     sites = {(d["file"], d["lines"][0]) for d in conc["declarations"].values()}
     used = [m for m in unit["members"] if m["scope"] == "used"]
-    return {"proofs": unit["structured_proofs"], "members": len(unit["members"]), "used": len(used), "in_directory": sum(1 for m in used if m["file"].startswith(A)),
-            "missing": sorted(m["name"] for m in used if (m["file"], m["lines"][0]) not in sites),
+    later = {f for _, _, files in ELSEWHERE for f in files}
+    here = [m for m in used if (m["file"], m["lines"][0]) in sites]
+    other = [m for m in used if (m["file"], m["lines"][0]) not in sites and m["file"].rsplit("/", 1)[-1] in later]
+    subjects = [(title, sum(1 for m in other if m["file"].rsplit("/", 1)[-1] in files)) for _, title, files in ELSEWHERE]
+    return {"proofs": unit["structured_proofs"], "members": len(unit["members"]), "used": len(used), "subjects": subjects,
+            "in_note": len(here), "elsewhere": len(other), "in_directory": sum(1 for m in used if m["file"].startswith(A)),
+            "missing": sorted(m["name"] for m in used if m not in here and m not in other),
             "different_lines": sorted(m["name"] for m in used for d in conc["declarations"].values()
                                       if (d["file"], d["lines"][0]) == (m["file"], m["lines"][0]) and d["lines"] != m["lines"])}
 
 
+_FIRST = {"A": A, "DECLS": DECLS, "CLUSTER": CLUSTER, "QUOTED": QUOTED, "OUTLINE": OUTLINE, "LETTERED": LETTERED}
+
+
+def configure(slug: str) -> None:
+    """Point the builder at one digest: the first one from this file, any other from digests/<slug>/spec.py."""
+    global DIGEST, D, A, DECLS, CLUSTER, QUOTED, OUTLINE, LETTERED, ATLAS, EXAMPLES, ELSEWHERE
+    DIGEST, D = slug, ROOT / "digests" / slug
+    if slug == FIRST:
+        A, DECLS, CLUSTER, QUOTED, OUTLINE, LETTERED = (_FIRST[k] for k in ("A", "DECLS", "CLUSTER", "QUOTED", "OUTLINE", "LETTERED"))
+        ATLAS, EXAMPLES, ELSEWHERE = True, True, []
+    else:
+        spec = runpy.run_path(str(D / "spec.py"))
+        A, DECLS, OUTLINE = spec["DIRECTORY"], spec["DECLS"], spec["OUTLINE"]
+        QUOTED, LETTERED, ELSEWHERE = spec.get("QUOTED", []), spec.get("LETTERED", []), spec.get("ELSEWHERE", [])
+        CLUSTER, ATLAS, EXAMPLES = [], False, False
+
+
 def main() -> int:
-    args = set(sys.argv[1:])
+    """Every digest named on the command line, or all of them."""
+    named = [a for a in sys.argv[1:] if not a.startswith("--")]
+    slugs = named or sorted(p.name for p in (ROOT / "digests").iterdir() if (p / f"{p.name}.tex").exists())
+    status = 0
+    for slug in slugs:
+        configure(slug)
+        status |= build()
+    return status
+
+def build() -> int:
+    args = {a for a in sys.argv[1:] if a.startswith("--")}
     model = json.loads((ROOT / "data/model.json").read_text(encoding="utf-8"))
     D.mkdir(parents=True, exist_ok=True)
     cfile, afile = D / "concordance.json", D / "atlas-cluster.json"
@@ -736,9 +806,9 @@ def main() -> int:
     if "--refresh-atlas" in args:
         afile.write_text(json.dumps(refresh_atlas(), indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     conc = json.loads(cfile.read_text(encoding="utf-8"))
-    atlas = json.loads(afile.read_text(encoding="utf-8"))
+    atlas = json.loads(afile.read_text(encoding="utf-8")) if ATLAS else None
     problems = []
-    if conc["archive_commit"] != model["pins"]["mirror_commit"] or atlas["source_pin"] != conc["archive_commit"]:
+    if conc["archive_commit"] != model["pins"]["mirror_commit"] or (ATLAS and atlas["source_pin"] != conc["archive_commit"]):
         problems.append("the concordance, the atlas and the model do not name the same commit of the archive")
     if [k for k, *_ in DECLS] != list(conc["declarations"]):
         problems.append("concordance.json does not list the declarations of DECLS (run --refresh)")
@@ -751,16 +821,19 @@ def main() -> int:
     if cov and (cov["missing"] or cov["different_lines"]):
         problems.append("members of the unit that the concordance does not account for: "
                         + ", ".join(cov["missing"] + cov["different_lines"]))
-    ex = examples()
+    ex = examples() if EXAMPLES else None
     if "--check" in args:
-        print("digest: concordance of %d declarations%s%s; examples recomputed%s"
-              % (len(conc["declarations"]), " compared with the archive" if src else " (archive not present)",
-                 "" if not cov else ", all %d used members of its unit among them" % cov["used"] if not cov["missing"]
-                 else ", %d of %d used members of its unit" % (cov["used"] - len(cov["missing"]), cov["used"]),
-                 "" if not problems else " -- PROBLEMS: " + "; ".join(problems)))
+        said = ("" if not cov else ", %d of the %d used members of its unit unaccounted for" % (len(cov["missing"]), cov["used"])
+                if cov["missing"] else ", all %d used members of its unit among them" % cov["used"] if not cov["elsewhere"]
+                else ", %d of the %d used members of its unit among them and the other %d assigned to notes to come"
+                % (cov["in_note"], cov["used"], cov["elsewhere"]))
+        print("digest: %s: concordance of %d declarations%s%s%s%s"
+              % (DIGEST, len(conc["declarations"]), " compared with the archive" if src else " (archive not present)", said,
+                 "; examples recomputed" if EXAMPLES else "", "" if not problems else " -- PROBLEMS: " + "; ".join(problems)))
         return 1 if problems else 0
     (D / "data.tex").write_text(data_tex(conc, atlas, ex, model, cov), encoding="utf-8")
-    (D / "figure.tex").write_text(figure(ex), encoding="utf-8")
+    if EXAMPLES:
+        (D / "figure.tex").write_text(figure(ex), encoding="utf-8")
     tex = (D / f"{DIGEST}.tex").read_text(encoding="utf-8")
     used = set(re.findall(r"\\lean\{([^}]+)\}", tex))
     unknown = sorted(used - set(conc["declarations"]))

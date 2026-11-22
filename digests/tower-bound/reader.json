@@ -796,6 +796,7 @@
  "declarations": [
   {
    "key": "GenBy",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
    "name": "GenBy",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -811,6 +812,7 @@
   },
   {
    "key": "jZero",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:12:8",
    "name": "jZero",
    "kind": "abbrev",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -826,6 +828,7 @@
   },
   {
    "key": "IsLevel",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
    "name": "IsLevel",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -841,6 +844,7 @@
   },
   {
    "key": "cokLen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
    "name": "cokLen",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -856,6 +860,7 @@
   },
   {
    "key": "InPow",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5",
    "name": "InPow",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -871,6 +876,7 @@
   },
   {
    "key": "Unip",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
    "name": "Unip",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -886,6 +892,7 @@
   },
   {
    "key": "twLen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5",
    "name": "twLen",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -901,6 +908,7 @@
   },
   {
    "key": "range",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:28:9",
    "name": "cokLen_le_of_range_le",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -916,6 +924,7 @@
   },
   {
    "key": "lenComp",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.LenComp:17:9",
    "name": "Base.lenComp",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/SelmerTransport/LenComp.lean",
@@ -931,6 +940,7 @@
   },
   {
    "key": "smith",
+   "id": "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.SelmerDuality.LengthDet:52:9",
    "name": "length_cokernel_eq_addVal_det",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/SelmerDuality/LengthDet.lean",
@@ -946,6 +956,7 @@
   },
   {
    "key": "lift",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsAlt:7:9",
    "name": "lift",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsAlt.lean",
@@ -961,6 +972,7 @@
   },
   {
    "key": "lte",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.LocalRingsCompletion.IsUnitAddMem:109:9",
    "name": "abelian₂.lte",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/LocalRingsCompletion/IsUnitAddMem.lean",
@@ -976,6 +988,7 @@
   },
   {
    "key": "lteNorm",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:19:9",
    "name": "lteNorm",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
@@ -991,6 +1004,7 @@
   },
   {
    "key": "units",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PadicUnitsDistanceLeMax:8:17",
    "name": "padic_units_distance_le_max",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PadicUnitsDistanceLeMax.lean",
@@ -1006,6 +1020,7 @@
   },
   {
    "key": "helly",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Helly:6:9",
    "name": "helly",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Helly.lean",
@@ -1021,6 +1036,7 @@
   },
   {
    "key": "ball",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PadicUnitsDistanceLeMax:37:9",
    "name": "ball",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PadicUnitsDistanceLeMax.lean",
@@ -1036,6 +1052,7 @@
   },
   {
    "key": "detFactor",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DetFactor:6:9",
    "name": "detFactor",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DetFactor.lean",
@@ -1051,6 +1068,7 @@
   },
   {
    "key": "normVal",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:30:9",
    "name": "normVal",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
@@ -1066,6 +1084,7 @@
   },
   {
    "key": "detBound",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DetBound:9:9",
    "name": "detBound",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DetBound.lean",
@@ -1081,6 +1100,7 @@
   },
   {
    "key": "level",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:23:9",
    "name": "exists_centres_level",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
@@ -1096,6 +1116,7 @@
   },
   {
    "key": "cokL",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLen:6:9",
    "name": "cokL",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLen.lean",
@@ -1111,6 +1132,7 @@
   },
   {
    "key": "nilLen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:29:9",
    "name": "nilLen",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
@@ -1126,6 +1148,7 @@
   },
   {
    "key": "unipPow",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.UnipPow:8:9",
    "name": "unipPow",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/UnipPow.lean",
@@ -1141,6 +1164,7 @@
   },
   {
    "key": "frob",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Imports:6:9",
    "name": "frob",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Imports.lean",
@@ -1156,6 +1180,7 @@
   },
   {
    "key": "powIn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PowIn:6:9",
    "name": "powIn",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PowIn.lean",
@@ -1171,6 +1196,7 @@
   },
   {
    "key": "phi",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsTer:7:9",
    "name": "phi",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsTer.lean",
@@ -1186,6 +1212,7 @@
   },
   {
    "key": "step",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsMore:9:9",
    "name": "step",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsMore.lean",
@@ -1201,6 +1228,7 @@
   },
   {
    "key": "mono",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsBis:6:9",
    "name": "mono",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsBis.lean",
@@ -1216,6 +1244,7 @@
   },
   {
    "key": "twist",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsFurther:7:9",
    "name": "twist",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsFurther.lean",
@@ -1231,6 +1260,7 @@
   },
   {
    "key": "growth",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Growth:11:9",
    "name": "growth",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Growth.lean",
@@ -1246,6 +1276,7 @@
   },
   {
    "key": "twgrowth",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:17:9",
    "name": "twLen_le_growth",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
@@ -1261,6 +1292,7 @@
   },
   {
    "key": "centres",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:34:9",
    "name": "exists_centres",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
@@ -1276,6 +1308,7 @@
   },
   {
    "key": "centresnorm",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:57:9",
    "name": "exists_centres_norm",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
@@ -1291,6 +1324,7 @@
   },
   {
    "key": "near1",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.Near1:6:9",
    "name": "Win.near1",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Near1.lean",
@@ -1306,6 +1340,7 @@
   },
   {
    "key": "exc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.Exc:7:9",
    "name": "Win.exc",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Exc.lean",
@@ -1321,6 +1356,7 @@
   },
   {
    "key": "qzInj",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.QzInj:8:9",
    "name": "qzInj",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/QzInj.lean",
@@ -1336,6 +1372,7 @@
   },
   {
    "key": "dualDiv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DualDiv:8:9",
    "name": "dualDiv",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualDiv.lean",
@@ -1351,6 +1388,7 @@
   },
   {
    "key": "torsFin",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.TorsFin:9:9",
    "name": "torsFin",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/TorsFin.lean",
@@ -1366,6 +1404,7 @@
   },
   {
    "key": "dualUnip",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DualUnip:9:9",
    "name": "dualUnip",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualUnip.lean",
@@ -1381,6 +1420,7 @@
   },
   {
    "key": "XDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
    "name": "XDual",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
@@ -1396,6 +1436,7 @@
   },
   {
    "key": "IsTower",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:120:11",
    "name": "Tower.IsTower",
    "kind": "structure",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
@@ -1411,6 +1452,7 @@
   },
   {
    "key": "IsLayer",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.StmtFields:47:5",
    "name": "IsLayer",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/StmtFields.lean",
@@ -1426,6 +1468,7 @@
   },
   {
    "key": "shaInv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:70:5",
    "name": "shaInv",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/GaloisCohomologyLength/LevelInertiaLeLevelDec.lean",
@@ -1441,6 +1484,7 @@
   },
   {
    "key": "VLen",
+   "id": "Formalism.GaloisCohomology.Statement:80:5",
    "name": "VLen",
    "kind": "def",
    "file": "Formalism/GaloisCohomology/Statement.lean",
@@ -1456,6 +1500,7 @@
   },
   {
    "key": "ABound",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.SecondBound:19:5",
    "name": "Win.ABound",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/SecondBound.lean",
@@ -1471,6 +1516,7 @@
   },
   {
    "key": "SecondBound",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.SecondBound:13:5",
    "name": "Win.SecondBound",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/SecondBound.lean",
@@ -1486,6 +1532,7 @@
   },
   {
    "key": "FirstBound",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.SecondBound:27:5",
    "name": "Win.FirstBound",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/SecondBound.lean",
@@ -1501,6 +1548,7 @@
   },
   {
    "key": "dinfNil",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:62:9",
    "name": "Kum.dinfNil",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
@@ -1516,6 +1564,7 @@
   },
   {
    "key": "xUnip",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.XUnip:9:9",
    "name": "xUnip",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/XUnip.lean",
@@ -1531,6 +1580,7 @@
   },
   {
    "key": "step0",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.ExistsDescends:26:9",
    "name": "Tower.step0",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ExistsDescends.lean",
@@ -1546,6 +1596,7 @@
   },
   {
    "key": "isTowerIff",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.ExistsDescends:60:9",
    "name": "Tower.isTower_iff",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ExistsDescends.lean",
@@ -1561,6 +1612,7 @@
   },
   {
    "key": "Descends",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:16:5",
    "name": "Descends",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
@@ -1576,6 +1628,7 @@
   },
   {
    "key": "descends",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Descends:8:9",
    "name": "descends",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Descends.lean",
@@ -1591,6 +1644,7 @@
   },
   {
    "key": "cycRange",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycRange:9:9",
    "name": "Tower.cycRange",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CycRange.lean",
@@ -1606,6 +1660,7 @@
   },
   {
    "key": "genLevel",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.GenLevel:11:9",
    "name": "genLevel",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/GenLevel.lean",
@@ -1621,6 +1676,7 @@
   },
   {
    "key": "shaLeV",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ShaLeV:7:9",
    "name": "shaLeV",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ShaLeV.lean",
@@ -1636,6 +1692,7 @@
   },
   {
    "key": "aDesc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:36:9",
    "name": "aBound_of_descends",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
@@ -1651,6 +1708,7 @@
   },
   {
    "key": "aTower",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfIsTower:7:9",
    "name": "aBound_of_isTower",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfIsTower.lean",
@@ -1666,6 +1724,7 @@
   },
   {
    "key": "FW",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.PublishedTheorems.FerreroWashington:7:5",
    "name": "Published.FerreroWashington",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/PublishedTheorems/FerreroWashington.lean",
@@ -1681,6 +1740,7 @@
   },
   {
    "key": "FWthm",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.FerreroWashingtonIndex.FerreroWashington:104:9",
    "name": "FW.ferreroWashington",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/FerreroWashingtonIndex/FerreroWashington.lean",
@@ -1696,6 +1756,7 @@
   },
   {
    "key": "towerFixed",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.QuadraticExtensions.IsAlgClosureRat:98:9",
    "name": "Two.towerFixed",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/QuadraticExtensions/IsAlgClosureRat.lean",
@@ -1711,6 +1772,7 @@
   },
   {
    "key": "fixedIn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.QuadraticExtensions.IsAlgClosureRat:139:9",
    "name": "Two.fixedIn",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/QuadraticExtensions/IsAlgClosureRat.lean",
@@ -1726,6 +1788,7 @@
   },
   {
    "key": "twoIn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.QuadraticExtensions.IsAlgClosureRat:133:9",
    "name": "Two.twoIn",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/QuadraticExtensions/IsAlgClosureRat.lean",
@@ -1741,6 +1804,7 @@
   },
   {
    "key": "LemmaK",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GeneratorCountTuples.LemmaK:13:5",
    "name": "LemmaK",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GeneratorCountTuples/LemmaK.lean",
@@ -1756,6 +1820,7 @@
   },
   {
    "key": "window",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.Window:7:9",
    "name": "Win.window",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window.lean",
@@ -1771,6 +1836,7 @@
   },
   {
    "key": "thmBab",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.ThmBabOf:11:9",
    "name": "Win.thmBab_of",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOf.lean",
@@ -1786,6 +1852,7 @@
   },
   {
    "key": "thmBabK",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.ThmBabOfLemmaK:9:9",
    "name": "Win.thmBab_of_lemmaK",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOfLemmaK.lean",
@@ -1801,6 +1868,7 @@
   },
   {
    "key": "vl",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
    "name": "vl",
    "kind": "abbrev",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
@@ -1816,6 +1884,7 @@
   },
   {
    "key": "normDvd",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:7:17",
    "name": "norm_le_of_dvd'",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
@@ -1831,6 +1900,7 @@
   },
   {
    "key": "normAddVal",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:12:17",
    "name": "norm_eq_of_addVal",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
@@ -1846,6 +1916,7 @@
   },
   {
    "key": "dvdNorm",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:6:17",
    "name": "dvd_of_norm_le'",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
@@ -1861,6 +1932,7 @@
   },
   {
    "key": "vlProd",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:21:17",
    "name": "vl_prod",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
@@ -1876,6 +1948,7 @@
   },
   {
    "key": "nilSucc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:6:17",
    "name": "nilLen_range_succ",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
@@ -1891,6 +1964,7 @@
   },
   {
    "key": "nilLt",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:11:17",
    "name": "nilLen_lt",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
@@ -1906,6 +1980,7 @@
   },
   {
    "key": "vlNorm",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:51:9",
    "name": "vl_le_of_norm",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
@@ -1921,6 +1996,7 @@
   },
   {
    "key": "memLev",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:22:9",
    "name": "mem_levU_one",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
@@ -1936,6 +2012,7 @@
   },
   {
    "key": "eqTwLen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:30:9",
    "name": "Descends.eq_twLen",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
@@ -1951,6 +2028,7 @@
   },
   {
    "key": "qzSep",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.QzSep:47:9",
    "name": "Tower.qzSep",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/QzSep.lean",
@@ -1966,6 +2044,7 @@
   },
   {
    "key": "qzAnn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.QzSep:8:17",
    "name": "exists_qz_ne_zero_annihilators_of_ne_zero",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/QzSep.lean",
@@ -1981,6 +2060,7 @@
   },
   {
    "key": "exactDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:39:17",
    "name": "exact_dual",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
@@ -1996,6 +2076,7 @@
   },
   {
    "key": "simpleDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:49:17",
    "name": "simple_dual",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
@@ -2011,6 +2092,7 @@
   },
   {
    "key": "leDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:10:17",
    "name": "le_dual",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
@@ -2026,6 +2108,7 @@
   },
   {
    "key": "lenDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:111:9",
    "name": "Tower.lenDual",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
@@ -2041,6 +2124,7 @@
   },
   {
    "key": "dualKer",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.DualKer:7:9",
    "name": "Tower.dualKer",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/DualKer.lean",
@@ -2056,6 +2140,7 @@
   },
   {
    "key": "cokerDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CokerDual:8:9",
    "name": "Tower.cokerDual",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CokerDual.lean",
@@ -2071,6 +2156,7 @@
   },
   {
    "key": "pgIndex",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:24:17",
    "name": "pg_index",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
@@ -2086,6 +2172,7 @@
   },
   {
    "key": "pgExists",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:32:17",
    "name": "pg_exists",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
@@ -2101,6 +2188,7 @@
   },
   {
    "key": "pgEmult",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:13:17",
    "name": "pg_emult",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
@@ -2116,6 +2204,7 @@
   },
   {
    "key": "princGen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:49:9",
    "name": "Tower.princGen",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
@@ -2131,6 +2220,7 @@
   },
   {
    "key": "princClosed",
+   "id": "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.Generate:103:9",
    "name": "princ_le_of_isClosed",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/TotallyRealRoots/Generate.lean",
@@ -2146,6 +2236,7 @@
   },
   {
    "key": "lteOdd",
+   "id": "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.EmultiplicityPowSubOneOdd:46:9",
    "name": "emultiplicity_pow_sub_one_odd",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/TotallyRealRoots/EmultiplicityPowSubOneOdd.lean",
@@ -2161,6 +2252,7 @@
   },
   {
    "key": "lteSq",
+   "id": "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.EmultiplicityPowSubOneOdd:72:9",
    "name": "emultiplicity_pow_sub_one_sq",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/TotallyRealRoots/EmultiplicityPowSubOneOdd.lean",
@@ -2176,6 +2268,7 @@
   },
   {
    "key": "cZero",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:104:5",
    "name": "Tower.cZero",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
@@ -2191,6 +2284,7 @@
   },
   {
    "key": "layU",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:108:8",
    "name": "Tower.layU",
    "kind": "abbrev",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
@@ -2206,6 +2300,7 @@
   },
   {
    "key": "muQ",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycMemPrincIff:81:9",
    "name": "Tower.muQ",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CycMemPrincIff.lean",
@@ -2221,6 +2316,7 @@
   },
   {
    "key": "galOfCyc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.GalOfCyc:5:9",
    "name": "Kum.galOfCyc",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/GalOfCyc.lean",
@@ -2236,6 +2332,7 @@
   },
   {
    "key": "galEmbTop",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.GalEmbTop:32:9",
    "name": "Base.galEmbTop",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/SelmerTransport/GalEmbTop.lean",
@@ -2251,6 +2348,7 @@
   },
   {
    "key": "luKey",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerUniq:11:17",
    "name": "lu_key",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerUniq.lean",
@@ -2266,6 +2364,7 @@
   },
   {
    "key": "layerUniq",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerUniq:25:9",
    "name": "Tower.layerUniq",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerUniq.lean",
@@ -2281,6 +2380,7 @@
   },
   {
    "key": "layerGen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerGen:10:9",
    "name": "Tower.layerGen",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerGen.lean",
@@ -2296,6 +2396,7 @@
   },
   {
    "key": "IsGen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:36:5",
    "name": "Tower.IsGen",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
@@ -2311,6 +2412,7 @@
   },
   {
    "key": "dTw",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:56:5",
    "name": "Tower.dTw",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
@@ -2326,6 +2428,7 @@
   },
   {
    "key": "xTw",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:58:5",
    "name": "Tower.xTw",
    "kind": "def",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
@@ -2341,6 +2444,7 @@
   },
   {
    "key": "xTwApply",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:66:9",
    "name": "Tower.xTw_apply_apply",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
@@ -2356,6 +2460,7 @@
   },
   {
    "key": "ShaD",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:73:8",
    "name": "Tower.ShaD",
    "kind": "abbrev",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/XTwApplyApply.lean",
@@ -2371,6 +2476,7 @@
   },
   {
    "key": "desc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.Imports:10:9",
    "name": "Tower.desc",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/Imports.lean",
@@ -2386,6 +2492,7 @@
   },
   {
    "key": "shaLenInv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.ShaLenEqShaInv:58:9",
    "name": "shaLen_eq_shaInv",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/GaloisCohomologyLength/ShaLenEqShaInv.lean",
@@ -2401,6 +2508,7 @@
   },
   {
    "key": "shaDGen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.ShaDGen:9:9",
    "name": "Tower.shaDGen",
    "kind": "theorem",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ShaDGen.lean",

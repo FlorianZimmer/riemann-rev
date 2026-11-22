@@ -1,0 +1,725 @@
+{
+ "schema": 1,
+ "digest": "local-nilpotence",
+ "archive_commit": "40e56bab026552e089d7afcfeff08d2defb9c005",
+ "pdf": "local-nilpotence.pdf",
+ "pdf_sha256": "0d6916877cbe4167761a4cf8367c34767079f8da97775a6c9ce81018a54e765a",
+ "pages": 8,
+ "editions": [
+  {
+   "file": "editions/local-nilpotence-0d6916877cbe.pdf",
+   "sha256": "0d6916877cbe4167761a4cf8367c34767079f8da97775a6c9ce81018a54e765a"
+  }
+ ],
+ "unit": {
+  "ledger": 1,
+  "id": 6292,
+  "used_members": 144
+ },
+ "items": [
+  {
+   "item": "t:A",
+   "title": "Theorem A",
+   "page": 1,
+   "dest": "section*.1",
+   "declarations": [
+    "dinfNil"
+   ]
+  },
+  {
+   "item": "d:char",
+   "title": "Def. 2.1",
+   "page": 2,
+   "dest": "theorem.2.1",
+   "declarations": [
+    "XDual",
+    "Dinf",
+    "Xinf",
+    "Dec",
+    "Ine"
+   ]
+  },
+  {
+   "item": "s:setting",
+   "title": "§2",
+   "page": 2,
+   "dest": "section.2",
+   "declarations": [
+    "funRep",
+    "Un",
+    "G",
+    "QZ",
+    "cycZ",
+    "princ",
+    "levU",
+    "cycU",
+    "conjHom"
+   ]
+  },
+  {
+   "item": "l:four",
+   "title": "Lemma 3.1",
+   "page": 3,
+   "dest": "theorem.3.1",
+   "declarations": [
+    "memPrinc",
+    "powSucc",
+    "qzTors",
+    "princNhds"
+   ]
+  },
+  {
+   "item": "p:action",
+   "title": "Prop. 2.2",
+   "page": 3,
+   "dest": "theorem.2.2",
+   "declarations": [
+    "conjCond",
+    "EqHom",
+    "funRepMem",
+    "conjDec",
+    "conjIne"
+   ]
+  },
+  {
+   "item": "s:use",
+   "title": "§5",
+   "page": 4,
+   "dest": "section.5",
+   "declarations": [
+    "xUnip",
+    "dualUnip",
+    "shaDGen"
+   ]
+  }
+ ],
+ "outline": {
+  "nodes": [
+   {
+    "id": "characters",
+    "title": "Characters and conjugation",
+    "text": "locally constant homomorphisms with conditions at the places; conjugation acts on them",
+    "declarations": [
+     "XDual",
+     "Dinf",
+     "Xinf",
+     "funRep",
+     "conjCond",
+     "EqHom",
+     "Un",
+     "funRepMem"
+    ],
+    "takes_for_granted": [
+     "Dec",
+     "G",
+     "Ine",
+     "QZ",
+     "conjDec",
+     "conjHom",
+     "conjIne",
+     "cycU",
+     "levU"
+    ],
+    "other_declarations_used": 6,
+    "in_this_note": true,
+    "members": 8
+   },
+   {
+    "id": "nilpotence",
+    "title": "Local nilpotence",
+    "text": "a character is fixed by a congruence subgroup, and is killed by a power of g - 1",
+    "declarations": [
+     "memPrinc",
+     "powSucc",
+     "qzTors",
+     "princNhds",
+     "dinfNil"
+    ],
+    "takes_for_granted": [
+     "Dec",
+     "G",
+     "Ine",
+     "QZ",
+     "conjHom",
+     "cycU",
+     "cycZ",
+     "levU",
+     "princ"
+    ],
+    "other_declarations_used": 6,
+    "in_this_note": true,
+    "members": 5
+   },
+   {
+    "id": "artin",
+    "title": "The Artin map and class groups",
+    "text": "not treated in this note",
+    "declarations": [],
+    "takes_for_granted": [
+     "Dec",
+     "G",
+     "Ine"
+    ],
+    "other_declarations_used": 24,
+    "in_this_note": false,
+    "members": 23
+   },
+   {
+    "id": "kummer",
+    "title": "Kummer generators, units and Selmer groups",
+    "text": "not treated in this note",
+    "declarations": [],
+    "takes_for_granted": [
+     "Dec",
+     "G",
+     "Ine"
+    ],
+    "other_declarations_used": 21,
+    "in_this_note": false,
+    "members": 30
+   },
+   {
+    "id": "reflection",
+    "title": "Reflection",
+    "text": "not treated in this note",
+    "declarations": [],
+    "takes_for_granted": [
+     "G"
+    ],
+    "other_declarations_used": 12,
+    "in_this_note": false,
+    "members": 8
+   },
+   {
+    "id": "restriction",
+    "title": "Restriction to the cyclotomic kernel",
+    "text": "not treated in this note",
+    "declarations": [],
+    "takes_for_granted": [
+     "Dec",
+     "G",
+     "Ine",
+     "QZ",
+     "cycU",
+     "cycZ",
+     "levU",
+     "princ"
+    ],
+    "other_declarations_used": 91,
+    "in_this_note": false,
+    "members": 32
+   },
+   {
+    "id": "definitions",
+    "title": "Definitions of the other subjects",
+    "text": "not treated in this note",
+    "declarations": [],
+    "takes_for_granted": [
+     "G",
+     "QZ",
+     "cycU",
+     "cycZ"
+    ],
+    "other_declarations_used": 20,
+    "in_this_note": false,
+    "members": 38
+   }
+  ],
+  "edges": [
+   {
+    "from": "artin",
+    "to": "kummer",
+    "uses": 6
+   },
+   {
+    "from": "artin",
+    "to": "restriction",
+    "uses": 1
+   },
+   {
+    "from": "characters",
+    "to": "definitions",
+    "uses": 2
+   },
+   {
+    "from": "characters",
+    "to": "kummer",
+    "uses": 1
+   },
+   {
+    "from": "characters",
+    "to": "nilpotence",
+    "uses": 2
+   },
+   {
+    "from": "characters",
+    "to": "reflection",
+    "uses": 8
+   },
+   {
+    "from": "characters",
+    "to": "restriction",
+    "uses": 21
+   },
+   {
+    "from": "definitions",
+    "to": "artin",
+    "uses": 21
+   },
+   {
+    "from": "definitions",
+    "to": "kummer",
+    "uses": 72
+   },
+   {
+    "from": "definitions",
+    "to": "reflection",
+    "uses": 30
+   },
+   {
+    "from": "definitions",
+    "to": "restriction",
+    "uses": 35
+   },
+   {
+    "from": "kummer",
+    "to": "reflection",
+    "uses": 10
+   }
+  ]
+ },
+ "declarations": [
+  {
+   "key": "XDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:90:5",
+   "name": "Kum.XDual",
+   "kind": "def",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    90,
+    99
+   ],
+   "in_unit": true,
+   "item": "d:char",
+   "where": "Def. 2.1",
+   "page": 2,
+   "dest": "theorem.2.1"
+  },
+  {
+   "key": "Dinf",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+   "name": "Kum.Dinf",
+   "kind": "abbrev",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    195,
+    195
+   ],
+   "in_unit": true,
+   "item": "d:char",
+   "where": "Def. 2.1",
+   "page": 2,
+   "dest": "theorem.2.1"
+  },
+  {
+   "key": "Xinf",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:197:8",
+   "name": "Kum.Xinf",
+   "kind": "abbrev",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    197,
+    197
+   ],
+   "in_unit": true,
+   "item": "d:char",
+   "where": "Def. 2.1",
+   "page": 2,
+   "dest": "theorem.2.1"
+  },
+  {
+   "key": "funRep",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:121:5",
+   "name": "Kum.funRep",
+   "kind": "def",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    121,
+    124
+   ],
+   "in_unit": true,
+   "item": "s:setting",
+   "where": "§2, conjugation",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "conjCond",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:103:5",
+   "name": "Kum.conjCond",
+   "kind": "def",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    103,
+    107
+   ],
+   "in_unit": true,
+   "item": "p:action",
+   "where": "Prop. 2.2(c)",
+   "page": 3,
+   "dest": "theorem.2.2"
+  },
+  {
+   "key": "EqHom",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:109:5",
+   "name": "Kum.EqHom",
+   "kind": "def",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    109,
+    110
+   ],
+   "in_unit": true,
+   "item": "p:action",
+   "where": "Prop. 2.2(c)",
+   "page": 3,
+   "dest": "theorem.2.2"
+  },
+  {
+   "key": "Un",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+   "name": "Kum.Un",
+   "kind": "abbrev",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/Mk0IdMapCongr.lean",
+   "lines": [
+    186,
+    186
+   ],
+   "in_unit": true,
+   "item": "s:setting",
+   "where": "§2, the groups",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "funRepMem",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FunRepMem:5:9",
+   "name": "Kum.funRepMem",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/FunRepMem.lean",
+   "lines": [
+    5,
+    46
+   ],
+   "in_unit": true,
+   "item": "p:action",
+   "where": "Prop. 2.2",
+   "page": 3,
+   "dest": "theorem.2.2"
+  },
+  {
+   "key": "memPrinc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:7:17",
+   "name": "mem_princ_iff_pow_dvd_sub_one",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    7,
+    12
+   ],
+   "in_unit": true,
+   "item": "l:four",
+   "where": "Lemma 3.1(a)",
+   "page": 3,
+   "dest": "theorem.3.1"
+  },
+  {
+   "key": "powSucc",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:14:17",
+   "name": "pow_succ_dvd_pow_prime_sub_one",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    14,
+    29
+   ],
+   "in_unit": true,
+   "item": "l:four",
+   "where": "Lemma 3.1(b)",
+   "page": 3,
+   "dest": "theorem.3.1"
+  },
+  {
+   "key": "qzTors",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:31:17",
+   "name": "exists_prime_pow_smul_eq_zero_qz",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    31,
+    43
+   ],
+   "in_unit": true,
+   "item": "l:four",
+   "where": "Lemma 3.1(c)",
+   "page": 3,
+   "dest": "theorem.3.1"
+  },
+  {
+   "key": "princNhds",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:45:17",
+   "name": "exists_princ_subset_of_mem_nhds_one",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    45,
+    60
+   ],
+   "in_unit": true,
+   "item": "l:four",
+   "where": "Lemma 3.1(d)",
+   "page": 3,
+   "dest": "theorem.3.1"
+  },
+  {
+   "key": "dinfNil",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:62:9",
+   "name": "Kum.dinfNil",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/KummerTheory/DinfNil.lean",
+   "lines": [
+    62,
+    235
+   ],
+   "in_unit": true,
+   "item": "t:A",
+   "where": "Theorem A",
+   "page": 1,
+   "dest": "section*.1"
+  },
+  {
+   "key": "G",
+   "id": null,
+   "name": "G",
+   "kind": "abbrev",
+   "file": "Formalism/ConjugateSelfDual/Statement.lean",
+   "lines": [
+    6,
+    6
+   ],
+   "in_unit": false,
+   "item": "s:setting",
+   "where": "§2",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "QZ",
+   "id": null,
+   "name": "QZ",
+   "kind": "def",
+   "file": "Formalism/GaloisCohomology/Statement.lean",
+   "lines": [
+    15,
+    15
+   ],
+   "in_unit": false,
+   "item": "s:setting",
+   "where": "§2",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "cycZ",
+   "id": null,
+   "name": "Gal.cycZ",
+   "kind": "def",
+   "file": "ReciprocityTheory/GaloisValuations/Global.lean",
+   "lines": [
+    90,
+    92
+   ],
+   "in_unit": false,
+   "item": "s:setting",
+   "where": "§2",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "Dec",
+   "id": null,
+   "name": "Gal.Dec",
+   "kind": "def",
+   "file": "ReciprocityTheory/GaloisValuations/Global.lean",
+   "lines": [
+    15,
+    15
+   ],
+   "in_unit": false,
+   "item": "d:char",
+   "where": "Def. 2.1",
+   "page": 2,
+   "dest": "theorem.2.1"
+  },
+  {
+   "key": "Ine",
+   "id": null,
+   "name": "Gal.Ine",
+   "kind": "def",
+   "file": "ReciprocityTheory/GaloisValuations/Global.lean",
+   "lines": [
+    45,
+    64
+   ],
+   "in_unit": false,
+   "item": "d:char",
+   "where": "Def. 2.1",
+   "page": 2,
+   "dest": "theorem.2.1"
+  },
+  {
+   "key": "princ",
+   "id": null,
+   "name": "princ",
+   "kind": "def",
+   "file": "Development/AutomorphicArithmetic/CyclotomicBounds/ClassNumberBounds/TotallyRealRoots/LeNuIffPowMemPrinc.lean",
+   "lines": [
+    16,
+    16
+   ],
+   "in_unit": false,
+   "item": "s:setting",
+   "where": "§2, the groups",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "levU",
+   "id": null,
+   "name": "Base.levU",
+   "kind": "def",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/SelmerTransport/ConjStableShaFam.lean",
+   "lines": [
+    187,
+    187
+   ],
+   "in_unit": false,
+   "item": "s:setting",
+   "where": "§2, the groups",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "cycU",
+   "id": null,
+   "name": "Base.cycU",
+   "kind": "def",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/SelmerTransport/ConjStableShaFam.lean",
+   "lines": [
+    189,
+    189
+   ],
+   "in_unit": false,
+   "item": "s:setting",
+   "where": "§2, the groups",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "conjHom",
+   "id": null,
+   "name": "Base.conjHom",
+   "kind": "def",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/SelmerTransport/RestrictionMemInvariantH1.lean",
+   "lines": [
+    115,
+    118
+   ],
+   "in_unit": false,
+   "item": "s:setting",
+   "where": "§2, conjugation",
+   "page": 2,
+   "dest": "section.2"
+  },
+  {
+   "key": "conjDec",
+   "id": null,
+   "name": "conjGal_mem_Dec",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/PartsConj.lean",
+   "lines": [
+    69,
+    75
+   ],
+   "in_unit": false,
+   "item": "p:action",
+   "where": "Prop. 2.2, proof",
+   "page": 3,
+   "dest": "theorem.2.2"
+  },
+  {
+   "key": "conjIne",
+   "id": null,
+   "name": "conjGal_mem_Ine",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/PartsConj.lean",
+   "lines": [
+    77,
+    81
+   ],
+   "in_unit": false,
+   "item": "p:action",
+   "where": "Prop. 2.2, proof",
+   "page": 3,
+   "dest": "theorem.2.2"
+  },
+  {
+   "key": "xUnip",
+   "id": null,
+   "name": "PropA.xUnip",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/XUnip.lean",
+   "lines": [
+    9,
+    27
+   ],
+   "in_unit": false,
+   "item": "s:use",
+   "where": "§5",
+   "page": 4,
+   "dest": "section.5"
+  },
+  {
+   "key": "dualUnip",
+   "id": null,
+   "name": "PropA.dualUnip",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualUnip.lean",
+   "lines": [
+    9,
+    34
+   ],
+   "in_unit": false,
+   "item": "s:use",
+   "where": "§5",
+   "page": 4,
+   "dest": "section.5"
+  },
+  {
+   "key": "shaDGen",
+   "id": null,
+   "name": "Tower.shaDGen",
+   "kind": "theorem",
+   "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ShaDGen.lean",
+   "lines": [
+    9,
+    59
+   ],
+   "in_unit": false,
+   "item": "s:use",
+   "where": "§5",
+   "page": 4,
+   "dest": "section.5"
+  }
+ ]
+}
