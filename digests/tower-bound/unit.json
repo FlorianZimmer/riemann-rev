@@ -13,673 +13,1308 @@
  "members": [
   {
    "name": "UpperTheory.V.PropA.Descends",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:16:5",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
    "lines": [
     16,
     18
    ],
    "kind": "def",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:70:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:197:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:58:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.StmtFields:47:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.mem_levU_one",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:22:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
    "lines": [
     22,
     28
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:10:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.Descends.eq_twLen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:30:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
    "lines": [
     30,
     34
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:70:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:197:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:58:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:63:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.StmtFields:47:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.aBound_of_descends",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:36:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfDescends.lean",
    "lines": [
     36,
     55
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AbelianVarietyTheory.PublishedTheorems.GaloisCohomology₂.ExistsPrimitiveRootPow:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:22:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:30:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:12:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:17:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:57:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:19:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ShaLeV:7:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.XUnip:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.Formula:26:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:70:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.ShaLenEqShaInv:58:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:197:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.SecondBound:11:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.SecondBound:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.SecondBound:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:116:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:120:11",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:14:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.StmtFields:47:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.LocalTateDualityK:41:5",
+    "Formalism.GaloisCohomology.LocalTateDualityK:47:5",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:78:5",
+    "Formalism.GaloisCohomology.Statement:80:5",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.aBound_of_isTower",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfIsTower:7:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ABoundOfIsTower.lean",
    "lines": [
     7,
     11
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AbelianVarietyTheory.PublishedTheorems.GaloisCohomology₂.ExistsPrimitiveRootPow:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:36:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Descends:8:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.GenLevel:11:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.LayeredIsomorphisms.SecondBound:19:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:104:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:120:11",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:36:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.LocalTateDualityK:41:5",
+    "Formalism.GaloisCohomology.LocalTateDualityK:47:5",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.cokL",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLen:6:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLen.lean",
    "lines": [
     6,
     41
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.GenBy",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     9,
     10
    ],
    "kind": "def",
-   "scope": "used"
+   "scope": "used",
+   "uses": []
   },
   {
    "name": "UpperTheory.V.PropA.jZero",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:12:8",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     12,
     12
    ],
    "kind": "abbrev",
-   "scope": "used"
+   "scope": "used",
+   "uses": []
   },
   {
    "name": "UpperTheory.V.PropA.vl",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     14,
     14
    ],
    "kind": "abbrev",
-   "scope": "used"
+   "scope": "used",
+   "uses": []
   },
   {
    "name": "UpperTheory.V.PropA.IsLevel",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     16,
     16
    ],
    "kind": "def",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.cokLen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     20,
     20
    ],
    "kind": "def",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.InPow",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     22,
     22
    ],
    "kind": "def",
-   "scope": "used"
+   "scope": "used",
+   "uses": []
   },
   {
    "name": "UpperTheory.V.PropA.Unip",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     24,
     24
    ],
    "kind": "def",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.twLen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     26,
     26
    ],
    "kind": "def",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.cokLen_le_of_range_le",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:28:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/CokLenLeOfRangeLe.lean",
    "lines": [
     28,
     30
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.descends",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Descends:8:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Descends.lean",
    "lines": [
     8,
     15
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ABoundOfDescends:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GeneratorCountTuples.LemmaK:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.ExistsDescends:26:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:36:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.StmtFields:47:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.detBound",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DetBound:9:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DetBound.lean",
    "lines": [
     9,
     34
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DetFactor:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:30:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PadicUnitsDistanceLeMax:37:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.detFactor",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DetFactor:6:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DetFactor.lean",
    "lines": [
     6,
     49
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": []
   },
   {
    "name": "UpperTheory.V.PropA.dualDiv",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DualDiv:8:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualDiv.lean",
    "lines": [
     8,
     31
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.QzInj:8:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.dualUnip",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DualUnip:9:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/DualUnip.lean",
    "lines": [
     9,
     34
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DualDiv:8:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.TorsFin:9:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.twLen_le_growth",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:17:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
    "lines": [
     17,
     21
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:12:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Growth:11:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsFurther:7:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:19:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.exists_centres_level",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:23:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
    "lines": [
     23,
     32
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DetBound:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsAlt:7:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.exists_centres",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:34:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
    "lines": [
     34,
     49
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:12:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:17:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:23:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:34:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.vl_le_of_norm",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:51:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
    "lines": [
     51,
     55
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:30:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.exists_centres_norm",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:57:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ExistsCentresLevel.lean",
    "lines": [
     57,
     69
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:12:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:26:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:34:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ExistsCentresLevel:51:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.genLevel",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.GenLevel:11:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/GenLevel.lean",
    "lines": [
     11,
     31
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:193:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GeneratorCountTuples.LemmaK:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycMemPrincIff:81:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycRange:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:49:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:104:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:36:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.growth",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Growth:11:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Growth.lean",
    "lines": [
     11,
     56
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:12:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Growth:11:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Imports:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsBis:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsMore:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PowIn:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.UnipPow:8:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.helly",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Helly:6:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Helly.lean",
    "lines": [
     6,
     25
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Helly:6:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.frob",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Imports:6:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/Imports.lean",
    "lines": [
     6,
     36
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.lift",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsAlt:7:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsAlt.lean",
    "lines": [
     7,
     44
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsAlt:7:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.SelmerDuality.H1cEqH1:55:8",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.SelmerDuality.LengthDet:52:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.mono",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsBis:6:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsBis.lean",
    "lines": [
     6,
     13
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:28:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.twist",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsFurther:7:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsFurther.lean",
    "lines": [
     7,
     50
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsFurther:7:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.step",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsMore:9:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsMore.lean",
    "lines": [
     9,
     22
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLen:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:20:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:28:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsTer:7:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.LenComp:17:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.phi",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsTer:7:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ImportsTer.lean",
    "lines": [
     7,
     46
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ImportsTer:7:9"
+   ]
   },
   {
    "name": "norm_le_of_dvd'",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:7:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
    "lines": [
     7,
     10
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": []
   },
   {
    "name": "norm_eq_of_addVal",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:12:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
    "lines": [
     12,
     17
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:7:17"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.lteNorm",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:19:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/LteNorm.lean",
    "lines": [
     19,
     94
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:12:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:19:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.LocalRingsCompletion.IsCharOneOfSubsingleton:114:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.LocalRingsCompletion.IsCharOneOfSubsingleton:124:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.LocalRingsCompletion.IsCharOneOfSubsingleton:126:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.LocalRingsCompletion.IsUnitAddMem:109:9"
+   ]
   },
   {
    "name": "nilLen_range_succ",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:6:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
    "lines": [
     6,
     9
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": []
   },
   {
    "name": "nilLen_lt",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:11:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
    "lines": [
     11,
     27
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:6:17"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.nilLen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:29:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NilLen.lean",
    "lines": [
     29,
     59
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:11:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:29:9"
+   ]
   },
   {
    "name": "dvd_of_norm_le'",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:6:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
    "lines": [
     6,
     19
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": []
   },
   {
    "name": "vl_prod",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:21:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
    "lines": [
     21,
     28
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.normVal",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:30:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/NormVal.lean",
    "lines": [
     30,
     46
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:21:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NormVal:6:17"
+   ]
   },
   {
    "name": "padic_units_distance_le_max",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PadicUnitsDistanceLeMax:8:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PadicUnitsDistanceLeMax.lean",
    "lines": [
     8,
     35
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PadicUnitsDistanceLeMax:8:17"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.ball",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PadicUnitsDistanceLeMax:37:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PadicUnitsDistanceLeMax.lean",
    "lines": [
     37,
     63
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.Helly:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.LteNorm:19:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PadicUnitsDistanceLeMax:8:17"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.powIn",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.PowIn:6:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/PowIn.lean",
    "lines": [
     6,
     29
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.qzInj",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.QzInj:8:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/QzInj.lean",
    "lines": [
     8,
     27
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.QzBasic:15:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.shaLeV",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.ShaLeV:7:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/ShaLeV.lean",
    "lines": [
     7,
     16
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AbelianVarietyTheory.Proofs.FoundationProofs.LengthEqLengthInvariantsOfTorsionLevels:165:5",
+    "Development.AbelianVarietyTheory.Proofs.FoundationProofs.LengthEqLengthInvariantsOfTorsionLevels:251:8",
+    "Development.AbelianVarietyTheory.Proofs.FoundationProofs.LengthEqLengthInvariantsOfTorsionLevels:255:9",
+    "Development.AbelianVarietyTheory.Proofs.FoundationProofs.LengthEqLengthInvariantsOfTorsionLevels:462:9",
+    "Development.AbelianVarietyTheory.Proofs.FoundationProofs.LengthEqLengthInvariantsOfTorsionLevels:517:9",
+    "Development.AbelianVarietyTheory.PublishedTheorems.GaloisCohomology₂.ExistsPrimitiveRootPow:13:5",
+    "Development.AbelianVarietyTheory.PublishedTheorems.GaloisCohomology₂.PoitouTateNineTermTransgressionZeroApply:150:5",
+    "Development.AbelianVarietyTheory.PublishedTheorems.GaloisCohomology₂.PoitouTateNineTermTransgressionZeroApply:163:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.LocalTateDualityK:41:5",
+    "Formalism.GaloisCohomology.LocalTateDualityK:47:5",
+    "Formalism.GaloisCohomology.Statement:101:5",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:67:5",
+    "Formalism.GaloisCohomology.Statement:71:5",
+    "Formalism.GaloisCohomology.Statement:78:5",
+    "Formalism.GaloisCohomology.Statement:80:5",
+    "Formalism.GaloisCohomology.Statement:82:5",
+    "Formalism.GaloisCohomology.Statement:92:5",
+    "ReciprocityTheory.GaloisValuations.Global:128:5",
+    "ReciprocityTheory.GaloisValuations.Global:133:10",
+    "ReciprocityTheory.GaloisValuations.Global:141:8",
+    "ReciprocityTheory.GaloisValuations.Global:15:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:102:8",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:126:8",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:68:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:97:5",
+    "ReciprocityTheory.Hypotheses.GalCoh:132:5",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:21:5"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.torsFin",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.TorsFin:9:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/TorsFin.lean",
    "lines": [
     9,
     84
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.QzInj:8:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ZmodToQZ:5:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.unipPow",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.UnipPow:8:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/UnipPow.lean",
    "lines": [
     8,
     46
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLen:6:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:22:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.NilLen:29:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.UnipPow:8:9"
+   ]
   },
   {
    "name": "UpperTheory.V.PropA.xUnip",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.XUnip:9:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/AdditiveValuationNorms/XUnip.lean",
    "lines": [
     9,
     27
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.DualUnip:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.DinfNil:62:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:121:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:197:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:198:1",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:41:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:45:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:48:9",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.cokerDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CokerDual:8:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CokerDual.lean",
    "lines": [
     8,
     19
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.DualKer:7:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:111:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:24:5",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.cycRange",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycRange:9:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/CycRange.lean",
    "lines": [
     9,
     62
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:193:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GeneratorCountTuples.LemmaK:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycMemPrincIff:81:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycRange:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:49:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:104:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:101:9",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.dualKer",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.DualKer:7:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/DualKer.lean",
    "lines": [
     7,
     40
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.QzInj:8:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.step0",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.ExistsDescends:26:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/ExistsDescends.lean",
    "lines": [
     26,
     46
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.LevelInertiaLeLevelDec:70:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.GaloisCohomologyLength.ShaLenEqShaInv:58:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:195:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:197:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:189:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:193:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:209:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GeneratorCountTuples.LemmaK:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CokerDual:8:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycMemPrincIff:81:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.IdealNormClassCongr:99:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.Imports:10:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerGen:10:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerUniq:25:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.ShaDGen:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:104:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:108:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:110:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:24:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:36:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:56:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:58:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:66:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:73:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.StmtFields:47:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "Formalism.GaloisCohomology.GaloisCohomologyProofs.LdataNonempty:48:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1",
+    "Formalism.GaloisCohomology.Statement:19:1",
+    "Formalism.GaloisCohomology.Statement:20:1",
+    "Formalism.GaloisCohomology.Statement:21:1",
+    "Formalism.GaloisCohomology.Statement:54:11",
+    "Formalism.GaloisCohomology.Statement:67:5",
+    "Formalism.GaloisCohomology.Statement:75:5",
+    "Formalism.GaloisCohomology.Statement:78:5",
+    "ReciprocityTheory.GaloisValuations.Global:128:5",
+    "ReciprocityTheory.GaloisValuations.Global:133:10",
+    "ReciprocityTheory.GaloisValuations.Global:141:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:42:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:57:5",
+    "ReciprocityTheory.GaloisValuations.SeparatedDvrSecondCohomologyMem:66:8",
+    "ReciprocityTheory.Hypotheses.GalCohDefs:12:1"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.layerGen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerGen:10:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerGen.lean",
    "lines": [
     10,
     39
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:193:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GeneratorCountTuples.LemmaK:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycMemPrincIff:81:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycRange:9:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerGen:10:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:49:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:104:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:108:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:36:5",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
   },
   {
    "name": "lu_key",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerUniq:11:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerUniq.lean",
    "lines": [
     11,
     23
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.GalOfCyc:5:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:186:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:191:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:187:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:193:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:51:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:65:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.GalEmbTop:32:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GeneratorCountTuples.LemmaK:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.CycMemPrincIff:81:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerGen:10:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerUniq:11:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:104:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:108:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:36:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8",
+    "ReciprocityTheory.GaloisValuations.Global:90:5"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.layerUniq",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerUniq:25:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LayerUniq.lean",
    "lines": [
     25,
     43
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.FnCycMap:40:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:172:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.Mk0IdMapCongr:184:1",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:43:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GeneratorCountTuples.LemmaK:9:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LayerUniq:11:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:104:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:108:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.XTwApplyApply:110:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.PartsConj:13:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.StmtFields:47:5",
+    "Formalism.ConjugateSelfDual.Statement:6:8"
+   ]
   },
   {
    "name": "le_dual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:10:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
    "lines": [
     10,
     37
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.QzSep:47:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "exact_dual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:39:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
    "lines": [
     39,
     47
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.DualKer:7:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "simple_dual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:49:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
    "lines": [
     49,
     109
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.KummerTheory.ZmodToQZ:5:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.QzSep:47:9",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.lenDual",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:111:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/LenDual.lean",
    "lines": [
     111,
     137
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.DualKer:7:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:10:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:39:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.LenDual:49:17",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   },
   {
    "name": "pg_emult",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:13:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
    "lines": [
     13,
     22
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:13:17",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.EmultiplicityPowSubOneOdd:46:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.EmultiplicityPowSubOneOdd:72:9"
+   ]
   },
   {
    "name": "pg_index",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:24:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
    "lines": [
     24,
     30
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:10:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.UnitsMapSurjOfZmod:32:9"
+   ]
   },
   {
    "name": "pg_exists",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:32:17",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
    "lines": [
     32,
     47
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:32:17",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:49:9"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.princGen",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:49:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/PrincGen.lean",
    "lines": [
     49,
     117
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:14:8",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.CokLenLeOfRangeLe:16:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.GaloisLibrary.SelmerTransport.ConjStableShaFam:193:5",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:13:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:24:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:32:17",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.PrincGen:49:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.Generate:103:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:16:19",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.LeNuIffPowMemPrinc:49:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.PrincTop:27:9",
+    "Development.AutomorphicArithmetic.CyclotomicBounds.ClassNumberBounds.TotallyRealRoots.UnitsMapSurjOfZmod:18:9"
+   ]
   },
   {
    "name": "UpperTheory.V.Tower.qzSep",
+   "id": "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.QzSep:47:9",
    "file": "Development/AutomorphicArithmetic/AutomorphicVarieties/NumberFieldTowers/QzSep.lean",
    "lines": [
     47,
     66
    ],
    "kind": "theorem",
-   "scope": "used"
+   "scope": "used",
+   "uses": [
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.AdditiveValuationNorms.QzInj:8:9",
+    "Development.AutomorphicArithmetic.AutomorphicVarieties.NumberFieldTowers.QzSep:8:17",
+    "Formalism.GaloisCohomology.Statement:15:5",
+    "Formalism.GaloisCohomology.Statement:17:1",
+    "Formalism.GaloisCohomology.Statement:18:1"
+   ]
   }
  ]
 }

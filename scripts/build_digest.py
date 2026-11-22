@@ -4,6 +4,7 @@
     python3 -B scripts/build_digest.py            # data.tex and figure, LuaLaTeX, checks
     python3 -B scripts/build_digest.py --refresh  # first re-read the Lean archive (needs its source)
     python3 -B scripts/build_digest.py --check    # only verify the stored records
+    python3 -B scripts/build_digest.py --edition  # build, and keep the PDF as a published edition (editions/)
 
 The first digest is digests/tower-bound/ ("Twisted cokernels in a cyclotomic tower"). Its text,
 tower-bound.tex, is hand-written. Everything in it that is a Lean name, a line range, a count or a
@@ -610,6 +611,99 @@ def directory_stats(src: Path) -> dict:
     return {"path": A, "files": len(files), "lines": sum(len(f.read_text(encoding="utf-8").split("\n")) - 1 for f in files)}
 
 
+# The outline of the chapter: every declaration of the unit belongs to exactly one node (checked). The edges and
+# what a node takes for granted are computed from the dependencies recorded in unit.json.
+OUTLINE = [
+    ("setting", "Setting", "modules over the l-adic integers, twisted lengths, the reference layer",
+     ["GenBy", "jZero", "IsLevel", "cokLen", "InPow", "Unip", "twLen", "vl"]),
+    ("presentation", "Presentation", "the length of a cokernel is at most the valuation of a determinant",
+     ["range", "lift"]),
+    ("eigenvalues", "Eigenvalues", "the determinant of tS - 1 is the product of the t z_i - 1", ["detFactor"]),
+    ("centre", "One centre for each eigenvalue", "lifting the exponent, the ultrametric inequality, compactness",
+     ["lteNorm", "normDvd", "normAddVal", "units", "helly", "ball", "normVal", "dvdNorm", "vlProd", "detBound", "level"]),
+    ("unipotence", "Unipotence", "(gamma - 1)^R vanishes modulo l; stable under twists",
+     ["cokL", "nilLen", "nilSucc", "nilLt", "unipPow", "twist"]),
+    ("congruences", "Congruences", "g^(l^n) is 1 modulo l^2 from a small layer on", ["frob", "powIn"]),
+    ("step", "One step", "from one layer to the next the length grows by at most R", ["phi", "step"]),
+    ("growth", "Theorem B", "every layer is controlled by the reference layer", ["mono", "growth", "twgrowth"]),
+    ("centres", "Theorem A and Corollary C", "one set of centres for all layers; at most R exceptional twists",
+     ["centres", "centresnorm", "vlNorm"]),
+    ("dual", "The dual module", "locally nilpotent on a discrete module, so unipotent on its dual",
+     ["qzInj", "torsFin", "dualDiv", "dualUnip", "xUnip"]),
+    ("descent", "Descent to a layer", "the length over a layer is a twisted length on the Iwasawa module",
+     ["Descends", "step0", "descends", "eqTwLen", "qzSep", "exactDual", "simpleDual", "leDual", "lenDual", "dualKer",
+      "cokerDual", "pgIndex", "pgExists", "pgEmult", "princGen", "luKey", "layerUniq", "layerGen", "cycRange"]),
+    ("reference", "The reference layer", "the length at one layer is bounded by a second cohomology group", ["shaLeV"]),
+    ("tower", "Theorem D", "class groups in the cyclotomic tower", ["genLevel", "memLev", "aDesc", "aTower"]),
+]
+
+
+def outline(conc: dict, unit: dict) -> dict:
+    site = lambda ident: (ident.rsplit(":", 2)[0].replace(".", "/") + ".lean", int(ident.rsplit(":", 2)[1]))  # noqa: E731
+    key_at = {(d["file"], d["lines"][0]): k for k, d in conc["declarations"].items()}
+    members = {m["id"]: m for m in unit["members"]}
+    node_of = {}
+    for nid, _, _, keys in OUTLINE:
+        for k in keys:
+            assert k in conc["declarations"] and k not in node_of, f"outline: {k} is unknown or in two nodes"
+            node_of[k] = nid
+    key_of = {m["id"]: key_at[(m["file"], m["lines"][0])] for m in unit["members"]}
+    missing = sorted(set(key_of.values()) - set(node_of))
+    extra = sorted(set(node_of) - set(key_of.values()))
+    assert not missing and not extra, f"outline is not a partition of the unit: missing {missing}, not in the unit {extra}"
+    edges: dict[tuple[str, str], int] = {}
+    granted: dict[str, dict] = {nid: {"cited": set(), "other": set()} for nid, *_ in OUTLINE}
+    for m in unit["members"]:
+        here = node_of[key_of[m["id"]]]
+        for u in m["uses"]:
+            if u in members:
+                there = node_of[key_of[u]]
+                if there != here:
+                    edges[(there, here)] = edges.get((there, here), 0) + 1
+            elif site(u) in key_at:
+                granted[here]["cited"].add(key_at[site(u)])
+            else:
+                granted[here]["other"].add(u)
+    return {"nodes": [{"id": nid, "title": title, "text": text, "declarations": keys,
+                       "takes_for_granted": sorted(granted[nid]["cited"]),
+                       "other_declarations_used": len(granted[nid]["other"])} for nid, title, text, keys in OUTLINE],
+            "edges": [{"from": a, "to": b, "uses": n} for (a, b), n in sorted(edges.items())]}
+
+
+LETTERED = [("Theorem A", "t:A"), ("Theorem B", "t:B"), ("Cor. C", "t:C"), ("Theorem D", "t:D"), ("Input 1", "i:1"),
+            ("Input 2a", "i:2a"), ("Input 2b", "i:2b"), ("Input 2", "i:2"), ("Input 3", "i:3")]
+
+
+def reader_index(conc: dict, tex: str, aux: str, cov: dict | None, pdf: Path) -> dict:
+    """What a reader that shows the note beside the Lean text needs: for every cited declaration, where the
+    note treats it (the words of the concordance table, the page, the named destination in the PDF)."""
+    labels = {m.group(1): {"number": m.group(2), "page": int(m.group(3)), "dest": m.group(4)}
+              for m in re.finditer(r"\\newlabel\{([^}]+)\}\{\{([^}]*)\}\{(\d+)\}\{(?:[^{}]|\{[^{}]*\})*\}\{([^}]*)\}", aux)}
+    where = dict(re.findall(r"\\cs\{(\w+)\}\{((?:[^{}]|\{[^{}]*\})*)\}", tex))
+    unit_sites = set()
+    if cov:
+        unit = json.loads((D / "unit.json").read_text(encoding="utf-8"))
+        unit_sites = {(m["file"], m["lines"][0]) for m in unit["members"]}
+    rows, items = [], {}
+    for key, d in conc["declarations"].items():
+        raw = where[key]
+        refs = re.findall(r"\\ref\{([^}]+)\}", raw)
+        label = next((lab for words, lab in LETTERED if raw.replace("~", " ").startswith(words)), refs[0] if refs else None)
+        text = re.sub(r"\\ref\{([^}]+)\}", lambda m: labels[m.group(1)]["number"], raw).replace("~", " ").replace("\\,", " ")
+        assert label in labels, f"{key}: no anchor for '{raw}'"
+        items.setdefault(label, {"item": label, "title": re.split(r"[,(]", text)[0].strip(), "page": labels[label]["page"],
+                                 "dest": labels[label]["dest"], "declarations": []})["declarations"].append(key)
+        rows.append({"key": key, "name": d["name"], "kind": d["kind"], "file": d["file"], "lines": d["lines"],
+                     "in_unit": (d["file"], d["lines"][0]) in unit_sites, "item": label, "where": text,
+                     "page": labels[label]["page"], "dest": labels[label]["dest"]})
+    editions = [{"file": f"editions/{f.name}", "sha256": sha256(f)} for f in sorted((D / "editions").glob("*.pdf"))]
+    return {"schema": 1, "digest": conc["digest"], "archive_commit": conc["archive_commit"],
+            "pdf": f"{DIGEST}.pdf", "pdf_sha256": sha256(pdf), "pages": None, "editions": editions,
+            "unit": None if not cov else {"ledger": unit["ledger"], "id": unit["unit"], "used_members": cov["used"]},
+            "items": sorted(items.values(), key=lambda i: (i["page"], i["item"])),
+            "outline": None if not cov else outline(conc, unit), "declarations": rows}
+
+
 def unit_coverage(conc: dict) -> dict | None:
     """Gate N-C (coverage of a note). unit.json lists the declarations of the unit of the reading project's
     ledger that this note is the note of (written by the private gold test from a dossier). Every member
@@ -692,6 +786,13 @@ def main() -> int:
     shutil.copyfile(build / f"{DIGEST}.pdf", D / f"{DIGEST}.pdf")
     info = subprocess.run(["pdfinfo", str(D / f"{DIGEST}.pdf")], capture_output=True, text=True).stdout
     pages = int(re.search(r"Pages:\s+(\d+)", info).group(1))
+    index = reader_index(conc, tex, (build / f"{DIGEST}.aux").read_text(encoding="utf-8"), cov, D / f"{DIGEST}.pdf")
+    if "--edition" in args:       # keep this PDF as a published edition, named by its hash, and list it in the index
+        (D / "editions").mkdir(exist_ok=True)
+        shutil.copyfile(D / f"{DIGEST}.pdf", D / "editions" / f"{DIGEST}-{sha256(D / (DIGEST + '.pdf'))[:12]}.pdf")
+        index = reader_index(conc, tex, (build / f"{DIGEST}.aux").read_text(encoding="utf-8"), cov, D / f"{DIGEST}.pdf")
+    index["pages"] = pages
+    (D / "reader.json").write_text(json.dumps(index, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     if PAGES is not None and pages != PAGES:
         problems.append(f"{pages} pages instead of {PAGES}")
     over = re.findall(r"Overfull \\hbox \(([\d.]+)pt too wide\)", log)

@@ -8,6 +8,7 @@
     _site/atlas/index.html              the atlas (a copy; links that leave the site go to the repository)
     _site/guide/proof-guide.{pdf,gif}   the guide
     _site/digests/tower-bound.pdf       the first deformalization digest
+    _site/digests/tower-bound.json      its reader index (declaration, place in the note, page, PDF destination)
     _site/blueprint/atlas-blueprint.pdf the illustrated blueprint
     _site/book/                         the Jupyter Book (book/_build/html)
 
@@ -214,6 +215,12 @@ def main() -> int:
     for rel in ("guide/proof-guide.pdf", "guide/proof-guide.gif", "blueprint/atlas-blueprint.pdf"):
         shutil.copy2(ROOT / rel, OUT / rel)
     shutil.copy2(ROOT / "digests/tower-bound/tower-bound.pdf", OUT / "digests" / "tower-bound.pdf")
+    # for readers that show the note beside the Lean text: every cited declaration with its place in the PDF
+    shutil.copy2(ROOT / "digests/tower-bound/reader.json", OUT / "digests" / "tower-bound.json")
+    # every published edition of the note stays at a permanent address, named by its SHA-256
+    (OUT / "digests" / "editions").mkdir(exist_ok=True)
+    for f in sorted((ROOT / "digests/tower-bound/editions").glob("*.pdf")):
+        shutil.copy2(f, OUT / "digests" / "editions" / f.name)
     if has_book:
         shutil.copytree(book, OUT / "book", ignore=shutil.ignore_patterns(".doctrees", ".buildinfo"))
     (OUT / "index.html").write_text(home(has_book), encoding="utf-8")
